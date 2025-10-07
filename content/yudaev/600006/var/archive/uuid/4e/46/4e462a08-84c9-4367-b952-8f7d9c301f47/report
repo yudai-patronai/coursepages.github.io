@@ -1,0 +1,15 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="229" judge-id="108" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>4e462a08-84c9-4367-b952-8f7d9c301f47</uuid>
+  <compiler_output>000229.c: In function 'main':
+000229.c:7:7: warning: assignment makes integer from pointer without a cast [enabled by default]
+   sum = sum + argv[i];
+       ^
+000229.c:8:2: error: 'return' with no value, in function returning non-void [-Werror=return-type]
+  return ;
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

@@ -1,0 +1,19 @@
+n=int(input())
+A = []
+for i in range(n):
+    A.append(list(map(int, input().split())))
+P = []
+for i in range(n):
+    P.append([0] * n)
+i=0
+while i<n:
+    j=0
+    while j<n:
+        z=n-i-1
+        P[j][z]=A[i][j]
+        j+=1
+    i+=1
+for row in P:
+    for elem in row:
+        print(elem, end = ' ')
+    print()

@@ -1,0 +1,44 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="256" judge-id="8" status="PT" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="1" score="2" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>b799f0f9-6d85-4ad5-bb89-6bafb95d91b1</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="500" real-time="506" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=407, stime=93, ptime=500, rtime=506, maxvsz=117993472, maxrss=134062080, nvcsw=16, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=303104, maxrss=1318912, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="40">LD_LIBRARY_PATH=/home/judges/compile/lib</output>
+      <correct size="42">LD_LIBRARY_PATH=/home/judges/compile/lib
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="WA" time="501" real-time="508" max-memory-used="18554325737472" nominal-score="2" score="0"  checker-comment="Different number of lines: output: 1, correct: 2" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=404, stime=97, ptime=501, rtime=508, maxvsz=18554325737472, maxrss=134062080, nvcsw=16, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=303104, maxrss=1318912, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="73">LD_LIBRARY_PATH=/home/judges/compile/libPATH=/usr/local/bin:/usr/bin:/bin</output>
+      <correct size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="49">Different number of lines: output: 1, correct: 2
+</checker>
+    </test>
+  </tests>
+</testing-report>

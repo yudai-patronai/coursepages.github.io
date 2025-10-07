@@ -1,0 +1,12 @@
+n,m = list(map(int,input().split()))
+l=[[None] * m for a in range(n)]
+for i in range(n):
+    l[i] = list(map(int,input().split()))
+max_element=l[0][0]
+answer=[0,0]
+for q in range(len(l)):
+    for w in range(len(l[q])):
+        if max_element < l[q][w]:
+            max_element = l[q][w]
+            answer = [q, w]
+print(*answer)

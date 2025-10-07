@@ -1,0 +1,11 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="7" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>28bb8c3e-539a-4ba7-b9de-5962394b237b</uuid>
+  <compiler_output>000007.c:1:19: fatal error: fstream: No such file or directory
+ #include &lt;fstream&gt;
+                   ^
+compilation terminated.
+</compiler_output>
+</testing-report>

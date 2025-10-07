@@ -1,0 +1,17 @@
+n = int(input())
+B = [0] * n
+for i in range(n):
+    B[i] = [0] * n
+for i in range(n):
+    B[i] = (input().split())
+    for j in range(n):
+        B[i][j] = int(B[i][j])
+f = True
+for i in range(n):
+    for j in range(n):
+        if B[i][j] != B[j][i]:
+            f = False
+if f:
+    print('YES')
+else:
+    print('NO')

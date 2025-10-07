@@ -1,0 +1,25 @@
+Date: 2016/10/16 06:22:06
+From: sorglos (uid 21614)
+Ip: 93.175.6.29
+Command: submit
+Status: ok
+Run-id: 107
+Run-status: CG
+
+Date: 2016/10/16 06:22:10
+From: SYSTEM
+Status: testing completed
+Run-id: 107
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/16 06:22:06.931393
+  Request completion time:           2016/10/16 06:22:10.992360
+  Total testing duration:            4.061
+  Waiting in compile queue duration: 0.690
+  Compilation duration:              0.221
+  Waiting in serve queue duration:   0.136
+  Waiting in run queue duration:     0.218
+  Testing duration:                  2.651
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.145
+

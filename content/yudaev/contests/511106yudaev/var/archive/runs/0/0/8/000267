@@ -1,0 +1,7 @@
+def min4(a, b, c, d):
+    A=[]
+    A.append(a)
+    A.append(b)
+    A.append(c)
+    A.append(d)
+    return(min(A))

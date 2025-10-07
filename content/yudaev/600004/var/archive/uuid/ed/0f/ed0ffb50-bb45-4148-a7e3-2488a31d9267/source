@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+int dec_arr[MAX_SIZE][MAX_SIZE] = {};
+
+int Decomp(int n, int k)
+{
+
+    if(n < 0)
+        return 0;
+
+    if(k == 1 || n <= 1)
+        return 1;
+
+    if(dec_arr[n][k] > 0)
+        return dec_arr[n][k];
+
+    dec_arr[n][k] =  Decomp(n, k - 1) + Decomp(n - k, k);
+
+    return dec_arr[n][k];
+
+}
+
+int main()
+{
+
+    int num;
+    scanf("%d", &num);
+    printf("%d", Decomp(num, num));
+
+    return 0;
+
+}

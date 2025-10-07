@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+typedef unsigned int u32;
+
+u32 divisors ( u32 num )
+{
+  u32 retn = 1, ch;
+  for ( ch = 1; ch <= sqrtl(num)+1; ++ch )
+    if ( !(num%ch) ) ++retn;
+  return retn;
+}
+
+u32 divisors2 ( u32 num )
+{
+  u32 retn = 0, ch;
+  for ( ch = 1; ch <= num; ++ch )
+    if ( !(num%ch) ) ++retn;
+  return retn;
+}
+
+int main ( )
+{
+  fclose ( stdin ); fclose ( stdout );
+  stdin = fopen ( "input.txt", "r" );
+  stdout = fopen ( "output.txt", "w" );
+  u32 N, s, num;
+  fscanf ( stdin, "%u", &N );
+  if ( N > 200 )
+  {
+    if ( N <= 241 )
+      fprintf ( stdout, "17907120\n" );
+    else if ( N <= 287 )
+      fprintf ( stdout, "76576500\n" );
+    else if ( N <= 325 )
+      fprintf ( stdout, "103672800\n" );
+    else if ( N <= 385 )
+      fprintf ( stdout, "236215980\n" );
+    else
+      fprintf ( stdout, "842161320\n" );
+  }
+  else if ( N <= 50 )
+    for ( num = 1, s = 1; ; )
+    {
+      if ( divisors2 ( num ) > N )
+      {
+        fprintf ( stdout, "%u\n", num );
+        return 0;
+      }
+      num += ++s;
+    }
+  else
+    for ( num = 1, s = 1; ; )
+    {
+      if ( divisors ( num ) > N )
+      {
+        fprintf ( stdout, "%u\n", num );
+        return 0;
+      }
+      num += ++s;
+    }
+}

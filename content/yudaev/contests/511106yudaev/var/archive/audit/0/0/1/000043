@@ -1,0 +1,50 @@
+Date: 2015/10/15 20:08:54
+From: andpago (uid 18484)
+Ip: 93.175.8.27
+Command: submit
+Status: ok
+Run-id: 43
+Run-status: CG
+
+Date: 2015/10/15 20:08:56
+From: SYSTEM
+Status: testing completed
+Run-id: 43
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/15 20:08:54.147675
+  Request completion time:           2015/10/15 20:08:56.613544
+  Total testing duration:            2.466
+  Waiting in compile queue duration: 0.829
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.063
+  Waiting in run queue duration:     0.789
+  Testing duration:                  0.261
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.520
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 43
+Run-status: CG
+
+Date: 2015/12/09 20:30:00
+From: SYSTEM
+Status: testing completed
+Run-id: 43
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:24.503995
+  Request completion time:           2015/12/09 20:30:00.576085
+  Total testing duration:            67056.072
+  Waiting in compile queue duration: 0.355
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   20.148
+  Waiting in run queue duration:     887.169
+  Testing duration:                  0.249
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66148.148
+

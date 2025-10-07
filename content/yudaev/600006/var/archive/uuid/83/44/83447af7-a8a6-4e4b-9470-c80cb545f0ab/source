@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int tau(int a) {
+    int r = 0, i;
+    for (i = 1; i*i < a; i++) {
+        if (a % i == 0) r++;
+    }
+    r <<= 1;
+    if (i*i == a) r++;
+    return r;
+}
+
+int tautr(int n) {
+    if (n % 2 == 0) {
+        return tau(n/2) * tau(n+1);
+    } else {
+        return tau(n) * tau((n+1)/2);
+    }
+}
+
+int main() {
+    if (freopen("input.txt", "rt", stdin)) {
+        if (freopen("output.txt", "wt", stdout)) {
+            int n, i = 0;
+            scanf("%d", &n);
+            while (tautr(++i) <= n);
+            printf("%d", i*(i+1)/2);
+            fclose(stdout);
+            fclose(stdin);
+            return 0;
+        } else {
+            printf("БЕДА С ФАЙЛОМ output.txt");
+            return 1;
+        }
+    } else {
+        printf("БЕДА С ФАЙЛОМ input.txt");
+        return 2;
+    }
+}

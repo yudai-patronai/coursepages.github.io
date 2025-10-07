@@ -1,0 +1,25 @@
+Date: 2016/10/31 11:32:47
+From: Tagir (uid 21575)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 76
+Run-status: CG
+
+Date: 2016/10/31 11:32:54
+From: SYSTEM
+Status: testing completed
+Run-id: 76
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/31 11:32:47.969851
+  Request completion time:           2016/10/31 11:32:54.059217
+  Total testing duration:            6.089
+  Waiting in compile queue duration: 0.228
+  Compilation duration:              0.266
+  Waiting in serve queue duration:   0.061
+  Waiting in run queue duration:     0.453
+  Testing duration:                  4.581
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.500
+

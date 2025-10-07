@@ -1,0 +1,18 @@
+s1=input().split()
+n=int(s1[0])
+m=int(s1[1])
+A=[]
+n1=1
+m1=1
+S=0
+B=[]
+for i in range(n):
+    A.append(list(map(int,input().split())))
+for i in range(n):
+    B=B+A[i]
+    if int(max(B))>S:
+        S=max(B)
+        n1=i
+        m1=B.index(max(B))
+    B=[]
+print(n1,m1)

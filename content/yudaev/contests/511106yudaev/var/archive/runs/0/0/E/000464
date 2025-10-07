@@ -1,0 +1,12 @@
+n=input()
+n=int(n)
+Mass= []
+for i in range(n):
+    Mass.append(input().split())
+def Rotate(Mass):
+    C=list(zip(*Mass))
+    for i in range(n):
+        for j in range(n):
+            print(C[i][n-j-1],end=' ')
+        print()    
+Rotate(Mass)

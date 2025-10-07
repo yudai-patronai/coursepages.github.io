@@ -1,0 +1,21 @@
+n = int(input())
+snow = ['.']*n
+for i in range(n):
+    snow[i] = ['.']*n
+   
+for i in range(n):
+    snow[i][n//2] = '*'
+
+for i in range(n):
+    snow[n//2][i] = '*'
+
+for i in range(n):
+    snow[i][i] = '*'
+
+for i in range(n):
+    snow[n-1-i][i] = '*'
+    
+for i in range(n):
+    for j in range(n):
+        print (snow[i][j],end=' ')
+    print ()

@@ -1,0 +1,50 @@
+Date: 2015/12/08 23:46:24
+From: RitaGV (uid 18618)
+Ip: 213.87.148.231
+Command: submit
+Status: ok
+Run-id: 546
+Run-status: CG
+
+Date: 2015/12/08 23:46:27
+From: SYSTEM
+Status: testing completed
+Run-id: 546
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/08 23:46:25.000428
+  Request completion time:           2015/12/08 23:46:27.304529
+  Total testing duration:            2.304
+  Waiting in compile queue duration: 0.130
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   0.003
+  Waiting in run queue duration:     0.125
+  Testing duration:                  1.501
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.542
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 546
+Run-status: CG
+
+Date: 2015/12/09 20:30:10
+From: SYSTEM
+Status: testing completed
+Run-id: 546
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:42.559220
+  Request completion time:           2015/12/09 20:30:11.035845
+  Total testing duration:            67048.477
+  Waiting in compile queue duration: 0.595
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   4.926
+  Waiting in run queue duration:     971.451
+  Testing duration:                  1.152
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66070.349
+

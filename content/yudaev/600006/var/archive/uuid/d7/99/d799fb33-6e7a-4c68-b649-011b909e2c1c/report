@@ -1,0 +1,49 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="186" judge-id="65" status="PT" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>d799fb33-6e7a-4c68-b649-011b909e2c1c</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="WA" time="512" real-time="520" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Line 1 differs: output: ?PATH=/usr/local/bin:/usr/bin:/bin? correct: ?LD_LIBRARY_PATH=/home/judges/compile/lib?" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=414, stime=98, ptime=512, rtime=520, maxvsz=117993472, maxrss=134062080, nvcsw=16, nivcsw=10 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=303104, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="34">PATH=/usr/local/bin:/usr/bin:/bin
+</output>
+      <correct size="42">LD_LIBRARY_PATH=/home/judges/compile/lib
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="112">Line 1 differs: output:
+&gt;PATH=/usr/local/bin:/usr/bin:/bin&lt;
+correct:
+&gt;LD_LIBRARY_PATH=/home/judges/compile/lib&lt;
+</checker>
+    </test>
+    <test num="2" status="WA" time="512" real-time="520" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Different number of lines: output: 1, correct: 2" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=410, stime=102, ptime=512, rtime=520, maxvsz=117993472, maxrss=134062080, nvcsw=18, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=1, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="34">PATH=/usr/local/bin:/usr/bin:/bin
+</output>
+      <correct size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="49">Different number of lines: output: 1, correct: 2
+</checker>
+    </test>
+  </tests>
+</testing-report>

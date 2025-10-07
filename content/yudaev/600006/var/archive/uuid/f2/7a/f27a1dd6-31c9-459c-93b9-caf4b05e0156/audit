@@ -1,0 +1,25 @@
+Date: 2016/11/01 11:14:34
+From: GriazevArtem (uid 21860)
+Ip: 213.87.145.111
+Command: submit
+Status: ok
+Run-id: 144
+Run-status: CG
+
+Date: 2016/11/01 11:14:39
+From: SYSTEM
+Status: testing completed
+Run-id: 144
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/01 11:14:34.715130
+  Request completion time:           2016/11/01 11:14:39.807425
+  Total testing duration:            5.092
+  Waiting in compile queue duration: 0.260
+  Compilation duration:              0.192
+  Waiting in serve queue duration:   0.828
+  Waiting in run queue duration:     0.107
+  Testing duration:                  2.952
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.753
+

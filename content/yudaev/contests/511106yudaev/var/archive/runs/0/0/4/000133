@@ -1,0 +1,19 @@
+
+
+n=int(input())
+A=[]
+for i in range(n):
+    A.append(list('.')*n) 
+
+for i in range(n):
+    
+    A[n//2][i]='*'
+    
+    A[i][n//2]='*'
+    
+    A[i][i]='*'
+    
+    A[i][n-i-1]='*'
+
+for row in A: 
+    print(' '.join(row))

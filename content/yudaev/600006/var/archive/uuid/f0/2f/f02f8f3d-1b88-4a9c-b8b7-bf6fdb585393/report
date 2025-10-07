@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="175" judge-id="54" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>f02f8f3d-1b88-4a9c-b8b7-bf6fdb585393</uuid>
+  <compiler_output>000175.c: In function 'main':
+000175.c:11:3: error: 'c' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   return c;
+   ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

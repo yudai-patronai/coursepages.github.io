@@ -1,0 +1,25 @@
+Date: 2016/10/10 23:00:54
+From: AlekseyAV (uid 21621)
+Ip: 93.175.6.183
+Command: submit
+Status: ok
+Run-id: 71
+Run-status: CG
+
+Date: 2016/10/10 23:01:26
+From: SYSTEM
+Status: testing completed
+Run-id: 71
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/10 23:00:54.797688
+  Request completion time:           2016/10/10 23:01:26.265762
+  Total testing duration:            31.468
+  Waiting in compile queue duration: 0.980
+  Compilation duration:              0.255
+  Waiting in serve queue duration:   0.790
+  Waiting in run queue duration:     0.783
+  Testing duration:                  27.809
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.848
+

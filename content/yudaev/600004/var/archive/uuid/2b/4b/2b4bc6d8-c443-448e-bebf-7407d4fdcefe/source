@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+	long int i, n, a, b, c, d[5003];
+	scanf("%ld", &n);
+	scanf("%ld %ld %ld", &a, &b, &c);
+	d[0] = a;
+	d[1] = b;
+	d[2] = c;
+	for (i = 1; i < n; i++)
+	{
+		scanf("%ld %ld %ld", &a, &b, &c);
+		if (d[i] > d[i - 1] + a)
+			d[i] = d[i - 1] + a;
+		if (d[i + 1] > d[i - 1] + b && i + 1 < n)
+			d[i + 1] = d[i - 1] + b;
+		d[i + 2] = d[i - 1] + c;
+	}
+	printf("%ld", d[n-1]);
+	return 0;
+}

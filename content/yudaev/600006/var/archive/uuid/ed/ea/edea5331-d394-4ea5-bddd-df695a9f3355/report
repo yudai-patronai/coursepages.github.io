@@ -1,0 +1,27 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="369" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>edea5331-d394-4ea5-bddd-df695a9f3355</uuid>
+  <compiler_output>000369.c: In function 'main':
+000369.c:14:7: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+     m1, m2, n1, n2 = 0;
+       ^
+000369.c:14:11: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+     m1, m2, n1, n2 = 0;
+           ^
+000369.c:14:15: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+     m1, m2, n1, n2 = 0;
+               ^
+000369.c:29:9: error: implicit declaration of function 'sqrt' [-Werror=implicit-function-declaration]
+         for (i = 1; i &lt;= sqrt(n1); i++)
+         ^
+000369.c:29:26: warning: incompatible implicit declaration of built-in function 'sqrt' [enabled by default]
+         for (i = 1; i &lt;= sqrt(n1); i++)
+                          ^
+000369.c:55:5: error: implicit declaration of function 'close' [-Werror=implicit-function-declaration]
+     close(fn);
+     ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

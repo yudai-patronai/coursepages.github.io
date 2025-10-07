@@ -1,0 +1,21 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="175" judge-id="3" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>9739c1c1-ebb6-4881-872e-d7b64b0f82f6</uuid>
+  <compiler_output>000175.c: In function 'main':
+000175.c:8:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = 1; i &lt;= 90; i++) {
+  ^
+000175.c:8:2: note: use option -std=c99 or -std=gnu99 to compile your code
+000175.c:9:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int j = 1; j &lt;= 90; j++) {
+   ^
+000175.c:14:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int ii = 1; ii &lt;= 90; ii++) {
+  ^
+000175.c:15:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int jj = 1; jj &lt;= 90; jj++) {
+   ^
+</compiler_output>
+</testing-report>

@@ -1,0 +1,29 @@
+n = int(input())
+mas = []
+for i in range(n):
+    mas.append([])
+    for j in range(n):
+        mas[i].append(".")
+#print(mas)
+i = n//2
+for j in range (n):
+    mas[i][j] = '*'
+#print(mas)
+j =  n//2
+for i in range (n):
+    mas[i][j] = '*'
+#print(mas)
+for i in range (n):
+    for j in range (n):
+        if i == j:
+            mas[i][j] = '*'
+#print(mas)
+for i in range (n):
+    for j in range (n):
+        if i + j == n-1:
+            mas[i][j] = '*'
+#print(mas)
+for row in mas:
+    for elem in row:
+        print(elem, end=' ')
+    print()

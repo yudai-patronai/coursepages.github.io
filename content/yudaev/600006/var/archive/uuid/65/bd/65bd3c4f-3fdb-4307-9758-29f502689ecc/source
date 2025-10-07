@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+
+int main(int argc, char* argv[]) {
+
+    char c;
+    FILE* from = fopen(argv[1], "rt");
+    FILE* to = fopen(argv[2], "wt");
+
+    while(fread(&c, 1, 1, from))
+        fwrite(&c, 1, 1, to);
+
+    rewind(from);
+    rewind(to);
+
+    fclose(from);
+    fclose(to);
+
+    return 0;
+
+}

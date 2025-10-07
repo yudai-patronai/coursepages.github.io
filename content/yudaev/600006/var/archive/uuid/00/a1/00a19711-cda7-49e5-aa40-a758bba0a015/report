@@ -1,0 +1,11 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="310" judge-id="37" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>00a19711-cda7-49e5-aa40-a758bba0a015</uuid>
+  <compiler_output>000310.c:1:19: fatal error: stdio.i: No such file or directory
+ #include &lt;stdio.i&gt;
+                   ^
+compilation terminated.
+</compiler_output>
+</testing-report>

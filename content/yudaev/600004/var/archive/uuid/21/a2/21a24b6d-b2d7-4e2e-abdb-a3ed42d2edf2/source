@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+
+#define UNKNOWN -1
+int
+main ()
+{
+  int i, n, tickets[3], times[5002];
+  for (i = 0; i < 5002; i++)
+    times[i] = UNKNOWN;
+  scanf ("%d %d %d %d", &n, &times[0], &times[1], &times[2]);
+  for (i = 1; i < n; i++)
+  {
+	scanf ("%d %d %d", &tickets[0], &tickets[1], &tickets[2]);
+	if ((UNKNOWN == times[i]) || (times[i - 1] + tickets[0] < times[i]))
+	  times[i] = times[i - 1] + tickets[0];
+	if ((UNKNOWN == times[i + 1]) || (times[i - 1] + tickets[1] < times[i + 1]))
+	  times[i + 1] = times[i - 1] + tickets[1];
+	if ((UNKNOWN == times[i + 2]) || (times[i - 1] + tickets[2] < times[i + 2]))
+	  times[i + 2] = times[i - 1] + tickets[2];
+    printf ("%d %d %d\n", times[i], times[i + 1], times[i + 2]);
+  }
+  for (i = 0; i < n; i++)
+    printf ("%d %d\n", i, times[i]);
+  return 0;
+}

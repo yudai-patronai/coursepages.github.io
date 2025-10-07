@@ -1,0 +1,25 @@
+Date: 2016/10/10 10:15:49
+From: vasiliydz (uid 20419)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 29
+Run-status: CG
+
+Date: 2016/10/10 10:16:18
+From: SYSTEM
+Status: testing completed
+Run-id: 29
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/10 10:15:49.968881
+  Request completion time:           2016/10/10 10:16:18.647151
+  Total testing duration:            28.678
+  Waiting in compile queue duration: 0.362
+  Compilation duration:              0.365
+  Waiting in serve queue duration:   0.474
+  Waiting in run queue duration:     0.198
+  Testing duration:                  27.267
+  Post-processing duration:          0.004
+  Waiting in serve queue duration:   0.008
+

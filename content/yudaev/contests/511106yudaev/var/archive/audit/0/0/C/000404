@@ -1,0 +1,50 @@
+Date: 2015/10/19 22:27:06
+From: abushaa (uid 18443)
+Ip: 93.175.8.187
+Command: submit
+Status: ok
+Run-id: 404
+Run-status: CG
+
+Date: 2015/10/19 22:27:09
+From: SYSTEM
+Status: testing completed
+Run-id: 404
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/19 22:27:06.099260
+  Request completion time:           2015/10/19 22:27:09.190751
+  Total testing duration:            3.091
+  Waiting in compile queue duration: 0.452
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.567
+  Waiting in run queue duration:     0.908
+  Testing duration:                  0.262
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.897
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 404
+Run-status: CG
+
+Date: 2015/12/09 20:30:11
+From: SYSTEM
+Status: testing completed
+Run-id: 404
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:36.652308
+  Request completion time:           2015/12/09 20:30:11.656450
+  Total testing duration:            67055.004
+  Waiting in compile queue duration: 0.535
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   11.018
+  Waiting in run queue duration:     976.994
+  Testing duration:                  0.249
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66066.204
+

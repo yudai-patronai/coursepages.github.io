@@ -1,0 +1,15 @@
+n, m = input().split()
+n, m = int(n), int(m)
+Mass = []
+for i in range(n):
+    Mass.append([float(x) for x in input().split()])
+n_of_maximum = 0
+m_of_maximum = 0
+maximum = Mass[0][0]
+for i in range(n):
+    for j in range(m):
+        if Mass[i][j] > maximum:
+            n_of_maximum = i
+            m_of_maximum = j
+            maximum = Mass[i][j]
+print(n_of_maximum, m_of_maximum)

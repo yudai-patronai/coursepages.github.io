@@ -1,0 +1,15 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="233" judge-id="112" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>c8ed9dea-f3e7-47f4-8d9c-61f3ea900c62</uuid>
+  <compiler_output>000233.c: In function 'main':
+000233.c:27:32: error: 'size' undeclared (first use in this function)
+             fprintf(fn, &quot;%ld&quot;, size);
+                                ^
+000233.c:27:32: note: each undeclared identifier is reported only once for each function it appears in
+000233.c:29:18: warning: unused variable 'size' [-Wunused-variable]
+             long size = ftell(fm);
+                  ^
+</compiler_output>
+</testing-report>

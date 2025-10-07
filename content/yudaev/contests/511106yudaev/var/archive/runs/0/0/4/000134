@@ -1,0 +1,11 @@
+
+n,m=list(map(int,input().split()))
+A=[]
+for row in range(n):
+    A.append(list()) 
+    for column in range(m): 
+             
+        A[row].append('.' if (row+column)%2==0 else '*')
+
+for row in A:
+    print(' '.join(row))

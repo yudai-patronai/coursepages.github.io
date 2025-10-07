@@ -1,0 +1,24 @@
+nm=input().split()
+nm[0]=int(nm[0])
+nm[1]=int(nm[1])
+A=[]
+
+for i in range(nm[0]):
+     row=input().split()
+     for i in range(len(row)):
+        row[i]=int(row[i])
+     A.append(row)
+
+ij=input().split()
+i=int(ij[0])
+j=int(ij[1])
+
+
+def SwapColumns(A,i,j):
+    for k in range(len(A)):
+         A[k][i],A[k][j]=A[k][j],A[k][i]
+    return A 
+
+
+for row in SwapColumns(A,i,j):
+        print(' '.join([str(elem) for elem in row]))  

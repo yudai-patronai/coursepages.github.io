@@ -1,0 +1,70 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="187" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>26b0edb6-4741-4b1f-ad11-8f9759833450</uuid>
+  <compiler_output>000187.c:76:8: error: redefinition of 'struct stack'
+ struct stack
+        ^
+000187.c:11:8: note: originally defined here
+ struct stack
+        ^
+000187.c:83:6: error: conflicting types for 'push'
+ void push(struct stack* d, int x, int y, int z)
+      ^
+000187.c:16:6: note: previous definition of 'push' was here
+ void push(struct stack* a, int number, char* family)
+      ^
+000187.c:101:5: error: redefinition of 'main'
+ int main()
+     ^
+000187.c:36:5: note: previous definition of 'main' was here
+ int main()
+     ^
+000187.c:131:8: error: redefinition of 'struct cop'
+ struct cop
+        ^
+000187.c:69:8: note: originally defined here
+ struct cop
+        ^
+000187.c:138:8: error: redefinition of 'struct stack'
+ struct stack
+        ^
+000187.c:76:8: note: originally defined here
+ struct stack
+        ^
+000187.c:144:6: error: conflicting types for 'push'
+ void push(struct stack* d, int x, int y, int z)
+      ^
+000187.c:16:6: note: previous definition of 'push' was here
+ void push(struct stack* a, int number, char* family)
+      ^
+000187.c:155:12: error: conflicting types for 'pull'
+ struct cop pull(struct stack* d)
+            ^
+000187.c:94:12: note: previous definition of 'pull' was here
+ struct cop pull(struct stack* d)
+            ^
+000187.c:162:5: error: redefinition of 'main'
+ int main()
+     ^
+000187.c:36:5: note: previous definition of 'main' was here
+ int main()
+     ^
+000187.c:249:5: error: redefinition of 'main'
+ int main(){
+     ^
+000187.c:36:5: note: previous definition of 'main' was here
+ int main()
+     ^
+000187.c: In function 'main':
+000187.c:121:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+000187.c: In function 'main':
+000187.c:181:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

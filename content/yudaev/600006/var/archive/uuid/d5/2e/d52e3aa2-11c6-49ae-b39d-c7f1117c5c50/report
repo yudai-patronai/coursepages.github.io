@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="302" judge-id="29" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>d52e3aa2-11c6-49ae-b39d-c7f1117c5c50</uuid>
+  <compiler_output>000302.c: In function 'main':
+000302.c:9:3: error: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Werror=format=]
+   sscanf (argv[i], &quot;%d&quot;, a);
+   ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

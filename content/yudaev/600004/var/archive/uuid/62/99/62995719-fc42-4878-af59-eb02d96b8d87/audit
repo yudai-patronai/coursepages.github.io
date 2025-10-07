@@ -1,0 +1,25 @@
+Date: 2016/10/10 10:42:18
+From: colver (uid 20874)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 39
+Run-status: CG
+
+Date: 2016/10/10 10:42:46
+From: SYSTEM
+Status: testing completed
+Run-id: 39
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/10 10:42:18.390853
+  Request completion time:           2016/10/10 10:42:46.706030
+  Total testing duration:            28.315
+  Waiting in compile queue duration: 0.385
+  Compilation duration:              0.297
+  Waiting in serve queue duration:   0.992
+  Waiting in run queue duration:     0.297
+  Testing duration:                  26.185
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.157
+

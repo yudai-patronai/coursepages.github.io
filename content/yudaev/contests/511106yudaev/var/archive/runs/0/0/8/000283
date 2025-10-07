@@ -1,0 +1,7 @@
+nums = int(input()) 
+A = [["." for k in range(nums)] for m in range(nums)] 
+for m in range(nums): 
+    for k in range(nums): 
+        if m == k or k == (nums//2) or (m+k) == (nums-1) or m == (nums//2): 
+            A[m][k] = "*" 
+print(str(A)[2:-2].replace("[","").replace("],","\n").replace("'","").replace(" ","").replace(","," "))

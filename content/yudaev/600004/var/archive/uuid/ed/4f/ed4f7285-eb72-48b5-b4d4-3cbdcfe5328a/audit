@@ -1,0 +1,25 @@
+Date: 2016/10/18 17:55:16
+From: uva_alex (uid 21882)
+Ip: 10.55.121.49
+Command: submit
+Status: ok
+Run-id: 138
+Run-status: CG
+
+Date: 2016/10/18 17:55:21
+From: SYSTEM
+Status: testing completed
+Run-id: 138
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/18 17:55:16.480390
+  Request completion time:           2016/10/18 17:55:21.548209
+  Total testing duration:            5.068
+  Waiting in compile queue duration: 0.206
+  Compilation duration:              0.288
+  Waiting in serve queue duration:   0.203
+  Waiting in run queue duration:     0.795
+  Testing duration:                  2.769
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.806
+

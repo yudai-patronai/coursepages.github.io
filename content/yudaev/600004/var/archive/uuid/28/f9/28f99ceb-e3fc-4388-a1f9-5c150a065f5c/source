@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    int N;
+    int M;
+    scanf("%i %i", &N, &M);
+    int i;
+    int j;
+    long long F[22][22];
+    for (i = 0; i <= 21; i++)
+        F[i][0] = 1;
+    for (i = 0; i <= 21; i++)
+        F[0][i] = 1;
+    for (i = 1; i <= N; i++)
+        for (j = 1; j <= M; j++)
+            F[i][j] = F[i][j-1] + F[i-1][j];
+    printf("%lli\n", F[N][M]);
+    return 0;
+}

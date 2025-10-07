@@ -1,0 +1,11 @@
+n_m = input().split()
+n = int(n_m[0])
+m = int(n_m[1])
+A = []
+for i in range(n):
+    A.append([int(j) for j in input().split()])
+
+for i in range(m):
+    for j in range(n):
+        print (A[j][i],end=' ')
+    print ()

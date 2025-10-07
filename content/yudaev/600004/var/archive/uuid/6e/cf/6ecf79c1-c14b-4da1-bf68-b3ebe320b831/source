@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int nodes[21][21], N, i, M, j;
+
+int main()
+{
+    scanf("%d %d", &N, &M);
+    M++;
+    N++;
+    nodes[0][0]=1;
+    for(j = 1; j < M; j++)
+        nodes[0][j] = 1;
+    for(i = 1; i < N; i++)
+        nodes[i][0] = 1;
+
+    for(i = 1; i < N; i++)
+        for(j = 1; j < M; j++)
+            nodes[i][j] = nodes[i-1][j] + nodes[i][j-1];
+    printf("%d", nodes[N-1][M-1]);
+    return 0;
+}

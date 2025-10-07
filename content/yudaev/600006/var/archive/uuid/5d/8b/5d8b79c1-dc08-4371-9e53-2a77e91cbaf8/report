@@ -1,0 +1,81 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="343" judge-id="70" status="PT" scoring="KIROV" run-tests="5" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="50" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>5d8b79c1-dc08-4371-9e53-2a77e91cbaf8</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="WA" time="503" real-time="510" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Line 1 differs: output: ?Can't open file? correct: ?Usage: stat filename?" visibility="full" >
+  <program-stats-str>{ utime=408, stime=95, ptime=503, rtime=510, maxvsz=117993472, maxrss=134053888, nvcsw=18, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="16">Can't open file
+</output>
+      <correct size="21">Usage: stat filename
+</correct>
+      <stderr size="432">TEST
+PASSED
+==767== Syscall param open(filename) points to unaddressable byte(s)
+==767==    at 0x33C4EE7190: __open_nocancel (in /usr/lib64/libc-2.17.so)
+==767==    by 0x33C4E77A0F: _IO_file_fopen@@GLIBC_2.2.5 (in /usr/lib64/libc-2.17.so)
+==767==    by 0x33C4E6C0D3: __fopen_internal (in /usr/lib64/libc-2.17.so)
+==767==    by 0x400753: main (000343.c:15)
+==767==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==767== 
+</stderr>
+      <checker size="74">Line 1 differs: output:
+&gt;Can't open file&lt;
+correct:
+&gt;Usage: stat filename&lt;
+</checker>
+    </test>
+    <test num="2" status="WA" time="503" real-time="510" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;trampampam&lt;
+</args>
+  <program-stats-str>{ utime=411, stime=92, ptime=503, rtime=510, maxvsz=117993472, maxrss=134950912, nvcsw=17, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="21">Usage: stat filename
+</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="505" real-time="512" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=419, stime=86, ptime=505, rtime=512, maxvsz=117993472, maxrss=134950912, nvcsw=17, nivcsw=7 }</program-stats-str>
+      <input size="12">123456789ab
+</input>
+      <output size="21">Usage: stat filename
+</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="505" real-time="513" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;output.txt&lt;
+</args>
+  <program-stats-str>{ utime=414, stime=91, ptime=505, rtime=513, maxvsz=117993472, maxrss=134950912, nvcsw=18, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="21">Usage: stat filename
+</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="504" real-time="514" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=408, stime=96, ptime=504, rtime=514, maxvsz=117993472, maxrss=134008832, nvcsw=15, nivcsw=6 }</program-stats-str>
+      <input too-big="yes" original-size="1048576" />
+      <output size="21">Usage: stat filename
+</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+  </tests>
+</testing-report>

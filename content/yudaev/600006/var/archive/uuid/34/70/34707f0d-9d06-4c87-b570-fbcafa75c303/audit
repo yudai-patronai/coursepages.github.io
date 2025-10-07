@@ -1,0 +1,25 @@
+Date: 2016/11/01 08:34:39
+From: uteshevia (uid 21789)
+Ip: 93.175.6.226
+Command: submit
+Status: ok
+Run-id: 121
+Run-status: CG
+
+Date: 2016/11/01 08:39:31
+From: SYSTEM
+Status: testing completed
+Run-id: 121
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/01 08:34:39.403645
+  Request completion time:           2016/11/01 08:39:31.375351
+  Total testing duration:            291.972
+  Waiting in compile queue duration: 0.919
+  Compilation duration:              0.187
+  Waiting in serve queue duration:   0.241
+  Waiting in run queue duration:     287.576
+  Testing duration:                  2.939
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.110
+

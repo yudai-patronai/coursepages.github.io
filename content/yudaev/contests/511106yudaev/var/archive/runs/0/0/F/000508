@@ -1,0 +1,29 @@
+def plus_one(A, x, y):
+    if A[x][y] != '*':
+        A[x][y] += 1
+N, M, K = list(map(int, input().split()))
+pole = [[0 for i in range(M)] for j in range(N)]
+for i in range(K):
+    x, y = list(map(int, input().split()))
+    x, y = x-1, y-1
+    pole[x][y] = '*'
+    if x > 0:
+        plus_one(pole, x-1, y)
+    if y > 0:
+        plus_one(pole, x, y-1)
+    if x > 0 and y > 0:
+        plus_one(pole, x-1, y-1)
+    if x < N - 1:
+        plus_one(pole, x+1, y)
+    if y < M - 1:
+        plus_one(pole, x, y+1)
+    if x < N - 1 and y < M - 1:
+        plus_one(pole, x+1, y+1)
+    if x < N - 1 and y > 0:
+        plus_one(pole, x+1, y-1)
+    if y < M - 1 and x > 0:
+        plus_one(pole, x-1, y+1)
+for i in range(N):
+    for j in range(M):
+        print(pole[i][j], end=' 
+    print()

@@ -1,0 +1,23 @@
+n,m=list(map(int, input().split()))
+C=[]
+A=[]
+for x in range(n):
+    for y in range(m):
+        A.append('.')
+    C+=[A]
+    A=[]
+for x in range(n):
+    e=-1
+    h=-2
+    if x%2==0:
+        for y in range(m):
+            if -y-1==e:
+                C[x][e]='*'
+                e-=2
+    if x%2==1:
+        for y in range(m):
+            if -y-1==h:
+                C[x][h]='*'
+                h-=2
+for x in range(n):
+        print(' '.join(C[x]) )

@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int max(int a, int b) {
+
+    return (b > a) ? b : a;
+
+}
+
+int main() {
+
+    int INF = 1e9;
+    int i = 0;
+    int j = 0;
+    int total = 0;
+    int dp[110][110];
+    int src[110][110];
+    int ans = -INF;
+
+    for(i = 0; i < 110; ++i)
+        for(j = 0; j < 110; ++j) {
+            dp[i][j] = -INF;
+            src[i][j] = -INF;
+        }
+
+    scanf("%d", &total);
+    for(i = 1; i <= total; ++i)
+        for(j = 1; j <= i; ++j)
+            scanf("%d", &src[i][j]);
+
+    dp[1][1] = src[1][1];
+    for(i = 2; i <= total; ++i)
+        for(j = 1; j <= i; ++j)
+            dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) + src[i][j];
+
+    for(i = 1; i <= total; ++i)
+        ans = max(ans, dp[total][i]);
+
+    printf("%d\n", ans);
+
+    return 0;
+
+}

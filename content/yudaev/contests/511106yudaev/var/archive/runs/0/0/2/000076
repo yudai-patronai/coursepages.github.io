@@ -1,0 +1,13 @@
+def min4(a,b,c,d):
+    e1=min(a,b)
+    e2=min(b,c)
+    e3=min(c,d)
+    g1=min(e1,e2)
+    g2=min(e2,e3)
+    t=min(g1,g2)
+    return t
+x=int(input())
+y=int(input())
+z=int(input())
+u=int(input())
+print(min4(x,y,z,u))

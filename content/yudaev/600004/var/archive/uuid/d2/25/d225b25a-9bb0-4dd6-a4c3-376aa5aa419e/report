@@ -1,0 +1,86 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="361" judge-id="1" status="PT" scoring="KIROV" run-tests="5" contest-id="600004" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="4" score="4" max-score="100" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>d225b25a-9bb0-4dd6-a4c3-376aa5aa419e</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="515" real-time="522" max-memory-used="117993472" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+  <program-stats-str>{ utime=416, stime=99, ptime=515, rtime=522, maxvsz=117993472, maxrss=133828608, nvcsw=18, nivcsw=6 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">2 2
+</input>
+      <output size="2">6
+</output>
+      <correct size="2">6
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="515" real-time="521" max-memory-used="117993472" nominal-score="1" score="1"  checker-comment="OK" >
+  <program-stats-str>{ utime=426, stime=89, ptime=515, rtime=521, maxvsz=117993472, maxrss=133824512, nvcsw=15, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=307200, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">3 4
+</input>
+      <output size="3">35
+</output>
+      <correct size="3">35
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="3" status="OK" time="515" real-time="523" max-memory-used="117993472" nominal-score="1" score="1"  checker-comment="OK" >
+  <program-stats-str>{ utime=425, stime=90, ptime=515, rtime=523, maxvsz=117993472, maxrss=133824512, nvcsw=18, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=303104, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">9 1
+</input>
+      <output size="3">10
+</output>
+      <correct size="3">10
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="OK" time="515" real-time="523" max-memory-used="117993472" nominal-score="1" score="1"  checker-comment="OK" >
+  <program-stats-str>{ utime=428, stime=87, ptime=515, rtime=523, maxvsz=117993472, maxrss=133828608, nvcsw=17, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=303104, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">1 9
+</input>
+      <output size="3">10
+</output>
+      <correct size="3">10
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="5" status="RT" exit-code="136" time="479" real-time="487" max-memory-used="117993472" nominal-score="1" score="0" >
+  <program-stats-str>{ utime=384, stime=95, ptime=479, rtime=487, maxvsz=117993472, maxrss=133828608, nvcsw=18, nivcsw=8 }</program-stats-str>
+      <input size="6">20 20
+</input>
+      <output size="0"></output>
+      <stderr size="337">TEST
+PASSED
+==29466== 
+==29466== Process terminating with default action of signal 8 (SIGFPE)
+==29466==  Integer divide by zero at address 0x40906619A
+==29466==    at 0x4006A4: main (000361.c:22)
+/home/judges/compile/scripts/runvg: line 48: 29466 Floating point exceptionvalgrind &#36;{EJUDGE_VG_FLAGS} &quot;&#36;{runfile}&quot; &quot;&#36;@&quot; &lt; input &gt; /dev/null
+</stderr>
+    </test>
+  </tests>
+</testing-report>

@@ -1,0 +1,34 @@
+n, m = (input().split())
+c=int(n)
+a=[]
+while c>0:
+    a.extend(input().split())
+    c-=1
+min0=max(a)
+Gl=a.index(max(a))
+Q=Gl+1
+x=0
+while Q>int(m):
+    Q-=int(m)
+    x+=1
+y=0
+k=1
+c=int(n)
+C=0
+V=int(m)+1
+N=0
+while c>N>0:
+    mi=a.index(max(a[C:V]))
+
+    if   max(a[C:V])==min0:
+        if N==x:
+            if k==1:
+                y=mi-N*int(m)
+                k-=1
+            elif mi<y:
+                y=mi-N*int(m)
+
+    C+=int(m)
+    V+=int(m)
+    N+=1
+print(x,y)

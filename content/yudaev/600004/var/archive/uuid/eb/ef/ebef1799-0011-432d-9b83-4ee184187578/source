@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define UNKNOWN -1
+int main()
+{
+    int i, j, N, time[5000], queue = 0, tickets[5000][3];
+    scanf("%d", &N);
+    for (i = 0; i < N; i++)
+        time[i] = UNKNOWN;
+    for (i = 0; i < N; i++)
+        scanf("%d %d %d", &tickets[i][0], &tickets[i][1], &tickets[i][2]);
+    for (i = 0; i < N; i++)
+    {
+        for (j = 0; j <= 2; j++)
+        {
+            if (((tickets[i][j] + queue) < time[i+j]) || (time[i+j] == UNKNOWN))
+                time[i+j] = tickets[i][j] + queue;
+
+        }
+    queue = time[i];
+    }
+    printf("%d", time[N-1]);
+
+    return 0;
+}

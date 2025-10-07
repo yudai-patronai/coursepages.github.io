@@ -1,0 +1,12 @@
+
+A=[]
+n,m=list(map(int,input().split()))
+for row in range(n): 
+    A.append(list()) 
+    A[row]=list(input().split()) 
+i,j=list(map(int,input().split()))
+
+SwapColumns(A,i,j) 
+
+for row in A:
+    print(' '.join(row))

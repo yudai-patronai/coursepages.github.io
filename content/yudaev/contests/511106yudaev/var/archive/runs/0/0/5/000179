@@ -1,0 +1,18 @@
+def isSymmetric(mass):
+    flag = 0
+    for i in range(len(mass)):
+        for j in range(len(mass)):
+            if mass[i][j] != mass[j][i]:
+                flag += 1
+    if flag > 0:
+        return False
+    else:
+        return True
+n = int(input())
+mass = []
+for i in range(n):
+    mass.append(input().split())
+if isSymmetric(mass):
+    print('YES')
+else:
+    print('NO')

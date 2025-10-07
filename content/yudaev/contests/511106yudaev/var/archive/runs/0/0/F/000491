@@ -1,0 +1,19 @@
+n, m = input().split()
+n, m = int(n), int(m)
+mas = []
+for i in range(n):
+    mas.append([])
+    for j in range(m):
+        mas[i].append(".")
+#print(mas)
+
+for i in range (0, n, 2):
+    for j in range (1, m, 2):
+        mas[i][j] = '*'
+for i in range (1, n, 2):
+    for j in range (0, m, 2):
+        mas[i][j] = '*'
+for row in mas:
+    for elem in row:
+        print(elem, end=' ')
+    print()

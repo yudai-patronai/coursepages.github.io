@@ -1,0 +1,5 @@
+Transpose=a ya otkuda znayu kak eto reshat
+
+m,n = tuple(int(i) for i in input().split())
+a=[[value for value in input().split()] for line in range(m)]
+print('\n'.join([' '.join(i) for i in Transpose(a)]))

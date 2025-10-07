@@ -1,0 +1,17 @@
+A = (input().split())
+A[0] = int(A[0])
+A[1] = int(A[1])
+for i in range(A[0]):
+    if i % 2 == 0:
+        for j in range(A[1]):
+            if j % 2 == 0:
+                print('.', end = ' ')
+            else:
+                print('*', end = ' ')
+    else:
+        for j in range(A[1]):
+            if j % 2 == 0:
+                print('*', end = ' ')
+            else:
+                print('.', end = ' ')
+    print()

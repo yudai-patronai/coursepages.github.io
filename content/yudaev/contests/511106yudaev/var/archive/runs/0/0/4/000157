@@ -1,0 +1,17 @@
+n,m=list(map(int,input().split()))
+C=[]
+A=[]
+for x in range(n):
+    C=list(map(int,input().split()))
+    A+=[C]
+i,j=list(map(int,input().split()))
+def SwapColumns(A,i,j):
+    for e in range(len(A)):
+        for g in range(len(A[0])):
+            if g==i:
+                A[e][g],A[e][j]=A[e][j],A[e][g]
+    return A
+t=[]
+t=SwapColumns(A,i,j)
+for o in range(len(t)):
+    print (' '.join(map(str, t[o])))

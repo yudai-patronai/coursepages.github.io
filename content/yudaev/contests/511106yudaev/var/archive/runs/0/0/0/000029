@@ -1,0 +1,14 @@
+n,m=map(int,input().split())
+max=None
+a=[0]*n
+for i in range(n):
+	a[i]=[0]*m
+for i in range(n):
+	b=list(map(int,input().split()))
+	for j in range(m):
+		a[i][j]=b[j]
+		if max==None or a[i][j]>max:
+			max=a[i][j]
+			stolb=a[i].index(max)
+			strok=i
+print(strok,stolb,end=' ')

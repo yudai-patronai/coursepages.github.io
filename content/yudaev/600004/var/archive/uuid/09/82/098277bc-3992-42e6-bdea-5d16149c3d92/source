@@ -1,0 +1,21 @@
+#include <stdio.h>
+struct str
+{
+	int i1;
+	int i2;
+	int i3;
+};
+int main()
+{
+	struct str a[5000];
+	int n, i, s;
+	scanf("%d", n);
+	for (i = 0; i < n; i++)				//заполнение
+	{
+		scanf("%d %d %d\n", a[i].i1, a[i].i2, a[i].i3);
+	}
+	for (i = n; i > 2; i--)
+	{
+		if ()
+	}
+}

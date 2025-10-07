@@ -1,0 +1,25 @@
+Date: 2016/10/10 07:32:51
+From: ejudge (uid 1)
+Ip: 10.55.160.149
+Command: priv-submit
+Status: ok
+Run-id: 14
+Run-status: CG
+
+Date: 2016/10/10 07:32:56
+From: SYSTEM
+Status: testing completed
+Run-id: 14
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/10 07:32:51.125411
+  Request completion time:           2016/10/10 07:32:56.644564
+  Total testing duration:            5.519
+  Waiting in compile queue duration: 0.867
+  Compilation duration:              0.346
+  Waiting in serve queue duration:   0.580
+  Waiting in run queue duration:     0.506
+  Testing duration:                  2.764
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.456
+

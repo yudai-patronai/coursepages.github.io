@@ -1,0 +1,39 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="173" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>d053621b-0bcf-4440-900a-ac72517576e6</uuid>
+  <compiler_output>000173.c: In function 'main':
+000173.c:8:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = 1; i &lt;= 100; i++) {
+  ^
+000173.c:8:2: note: use option -std=c99 or -std=gnu99 to compile your code
+000173.c:9:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int j = 1; j &lt;= 100; j++) {
+   ^
+000173.c:14:11: error: redefinition of 'i'
+  for (int i = 1; i &lt;= 50; i++) {
+           ^
+000173.c:8:11: note: previous definition of 'i' was here
+  for (int i = 1; i &lt;= 100; i++) {
+           ^
+000173.c:14:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = 1; i &lt;= 50; i++) {
+  ^
+000173.c:15:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int j = 1; j &lt;= 50; j++) {
+   ^
+000173.c:19:11: error: redefinition of 'i'
+  for (int i = 51; i &lt;= 100; i++) {
+           ^
+000173.c:14:11: note: previous definition of 'i' was here
+  for (int i = 1; i &lt;= 50; i++) {
+           ^
+000173.c:19:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = 51; i &lt;= 100; i++) {
+  ^
+000173.c:20:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int j = 51; j &lt;= 100; j++) {
+   ^
+</compiler_output>
+</testing-report>

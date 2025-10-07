@@ -1,0 +1,13 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="314" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>49af2030-598c-4ace-8a22-afc3ec1b1594</uuid>
+  <compiler_output>000314.c:1:20: warning: extra tokens at end of #include directive [enabled by default]
+ #include &lt;stdio.h&gt; long long int min(long long int a, long long int b) { if(a &lt;= b) { return a; } else { return b; } } long long int buyers[6000]; int main() { int i; long long int ai, bi, ci, n; scanf(&quot;%lli&quot;, &amp;n); buyers[0] = 0; for(i = 1; i != n + 3; i++) { buyers[i] = n * 3601; } for(i = 1; i != n + 1; i++) { scanf(&quot;%lli %lli %lli&quot;, &amp;ai, &amp;bi, &amp;ci); buyers[i] = min(buyers[i], buyers[i - 1] + ai); buyers[i + 1] = min(buyers[i + 1], buyers[i - 1] + bi); buyers[i + 2] = min(buyers[i + 2], buyers[i - 1] + ci); } printf(&quot;%lli&quot;, buyers[n]); return 0; }
+                    ^
+/usr/lib/gcc/x86_64-redhat-linux/4.8.3/../../../../lib64/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+</compiler_output>
+</testing-report>

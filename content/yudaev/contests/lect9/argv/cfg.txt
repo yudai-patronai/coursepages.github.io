@@ -1,0 +1,8 @@
+[problem]
+id = 1
+super = "Generic"
+short_name = "arguments"
+long_name = ""
+use_info
+full_score = 25
+standard_checker = "cmp_file"

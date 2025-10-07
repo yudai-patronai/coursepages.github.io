@@ -1,0 +1,25 @@
+Date: 2016/10/26 18:17:20
+From: helenrozh1 (uid 21701)
+Ip: 213.87.133.125
+Command: submit
+Status: ok
+Run-id: 218
+Run-status: CG
+
+Date: 2016/10/26 18:17:24
+From: SYSTEM
+Status: testing completed
+Run-id: 218
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/26 18:17:20.263208
+  Request completion time:           2016/10/26 18:17:24.898990
+  Total testing duration:            4.636
+  Waiting in compile queue duration: 0.159
+  Compilation duration:              0.270
+  Waiting in serve queue duration:   0.819
+  Waiting in run queue duration:     0.219
+  Testing duration:                  2.697
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.472
+

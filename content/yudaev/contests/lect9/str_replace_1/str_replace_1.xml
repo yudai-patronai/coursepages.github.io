@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- $Id$ -->
+<problem
+	package = "ru.fipi.math.2009.demo"
+	id = "str_replace_1">
+	<statement language="ru_RU">
+		<title>Строки - replace</title>
+		<description>
+
+<!--<p>Реализуйте функцию, </p>
+<pre>char* replace_1(const char * str, const char * from, const char * to);</pre>-->
+<p>Напишите программу,</p>
+<p>которая в строке <tt>str</tt> один раз заменяет подстроку <tt>from</tt> на строку <tt>to</tt>,
+</p>
+<p>На вход подаётся исходная строка, на следующей строке фрагмент для замены(from), а на третьей - то, на что заменить(to).</p>
+<p><!--и печатает новую строку.<br/>
+Для новой строки в функции выделяется необходимая память.<br/>
+Исходная строка остается без изменений.<br/>-->
+Если строка <tt>from</tt> пустая, то возвращается копия строки str.
+</p>
+
+<p>Пример:</p>
+<tr><td>Вход</td><td>Выход</td></tr>
+<tr><td>wQWabchelloabc<br/>abc<br/>xy</td><td>wQWxyhelloabc</td></tr>
+<!--
+<pre>char * s = replace_1("wQWabchelloabc", "abc", "xy");
+printf("_%s_\n", s);    // напечатает _wQWxyhelloabc_ 
+</pre>-->
+		</description>
+<notes>Задача классическая. Редакторы: Дербышева Т.Н., Юдаев М.Д.
+</notes>        
+	</statement>
+</problem>
+

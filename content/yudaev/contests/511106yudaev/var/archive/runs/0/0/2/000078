@@ -1,0 +1,20 @@
+n,m=list(map(int, input().split()))
+C=[]
+A=[]
+for x in range(n):
+    A=list(map(int, input().split()))
+    C+=[A]
+    A=[]
+g=0
+j=0
+m=0
+for x in range(len(C)):
+    for y in range(len(C[0])):
+        if C[x][y]>m:
+            g=x
+            j=y
+            m=C[x][y]
+E=[]
+E.append(g)
+E.append(j)
+print(' '.join(map(str, E)))

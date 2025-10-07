@@ -1,0 +1,32 @@
+n_m = input().split()
+n = int(n_m[0])
+m = int(n_m[1])
+A = []
+A1 = []
+A2 = []
+
+for i in range(n):
+    A.append([int(j) for j in input().split()])
+
+i_j = input().split()
+i = int(i_j[0])
+j = int(i_j[1])
+
+def SwapColumns(A, i, j):
+    
+    for k in range(len(A)):
+        A[k].insert(i, A[k][j])
+        A[k].pop(j+1)
+    for k in range(len(A)):
+        #if j == 0
+        A[k].insert(j+1, A[k][i+1])
+        if j == 0:
+            A[k].pop(i)
+        A[k].pop(i+1)
+    return A
+
+SwapColumns(A, i, j)
+for k in range(len(A)):
+    for l in range(m):
+        print (A[k][l],end=' ')
+    print ()

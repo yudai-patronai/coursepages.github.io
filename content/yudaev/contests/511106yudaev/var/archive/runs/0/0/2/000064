@@ -1,0 +1,13 @@
+n=int(input())
+star=[['.' for j in range(n)] for i in range(n)]
+for i in range(n):
+    for j in range(n):
+       star[i][n//2]='*'
+       star[n//2][i]='*'
+       if i==j:
+         star[i][j]='*'  
+       if i==((n-1)-j):  
+             star[i][j]='*'   
+ 
+for row in star:
+        print(' '.join([str(elem) for elem in row]))        

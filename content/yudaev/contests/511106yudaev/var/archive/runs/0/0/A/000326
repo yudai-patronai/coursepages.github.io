@@ -1,0 +1,12 @@
+def SwapColumns(a,i0,j0):
+    for i in range(len(a)):
+        a[i][j0],a[i][i0]=a[i][i0],a[i][j0]
+b=input().split()
+n=int(b[0])
+a=[[]]*n
+for i in range(n):
+    a[i]=input().split()
+b=input().split()
+SwapColumns(a,int(b[0]),int(b[1]))
+for i in range(n):
+    print(' '.join(a[i]))

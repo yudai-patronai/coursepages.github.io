@@ -1,0 +1,31 @@
+n=int(input())
+A=[['.']*n for x in range(n)]
+B=A[(n-1)//2]
+for i in range (len(B)):
+    B[i]='*'
+A[(n-1)//2:((n-1)//2)+1]=[B]
+for i in range(n):
+    B=A[i]
+    B[(n-1)//2:((n-1)//2)+1]='*'
+    A[i:i+1]=[B]
+k=0
+for i in range(n):
+    B=A[i]
+    B[k]='*'
+    A[i:i+1]=[B]
+    k+=1
+k=n-1
+for i in range(n):
+    B=A[i]
+    B[k]='*'
+    A[i:i+1]=[B]
+    k=k-1
+for i in range(n):
+    Q=''
+    B=A[i]
+    for k in range(n):
+        if k!=(n-1):
+            Q=Q+B[k]+' '
+        else:
+            Q=Q+B[k]
+    print(Q)

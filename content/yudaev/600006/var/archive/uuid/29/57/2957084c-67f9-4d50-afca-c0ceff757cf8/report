@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="384" judge-id="8" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>2957084c-67f9-4d50-afca-c0ceff757cf8</uuid>
+  <compiler_output>000384.c: In function 'main':
+000384.c:37:12: error: 't' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+     fprintf(file2, &quot;%lld&quot;, t);
+            ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

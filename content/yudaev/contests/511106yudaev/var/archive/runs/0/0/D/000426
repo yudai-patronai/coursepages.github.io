@@ -1,0 +1,8 @@
+P = int(input()) 
+A = [["." for k in range(P)] for m in range(P)] 
+for m in range(P): 
+    for k in range(P): 
+        if m == k or k == (s//2) or (m+k) == (s-1) or m == (s//2): 
+            A[m][k] = "*" 
+for i in range(P):
+    print(' '.join(A[i])) 

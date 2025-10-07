@@ -1,0 +1,9 @@
+n = int(input())
+l=[['.'] * n for i in range(n)]
+for q in range(n):
+    l[n // 2][q] = '*'
+    l[q][n // 2] = '*'
+    l[q][q] = '*'
+    l[q][n-q-1] = '*'
+for z in l:
+    print(*z)

@@ -1,0 +1,25 @@
+Date: 2016/11/03 20:14:44
+From: Denis10 (uid 20913)
+Ip: 93.175.6.31
+Command: submit
+Status: ok
+Run-id: 264
+Run-status: CG
+
+Date: 2016/11/03 20:14:50
+From: SYSTEM
+Status: testing completed
+Run-id: 264
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/03 20:14:44.689439
+  Request completion time:           2016/11/03 20:14:50.565573
+  Total testing duration:            5.876
+  Waiting in compile queue duration: 0.798
+  Compilation duration:              0.290
+  Waiting in serve queue duration:   0.992
+  Waiting in run queue duration:     0.740
+  Testing duration:                  2.735
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.321
+

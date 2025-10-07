@@ -1,0 +1,22 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="3" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>6d0ff64c-7ffc-4815-b824-cedd18bc7578</uuid>
+  <compiler_output>000003.c:2:26: error: parameter 'argv' has just a forward declaration
+ int main(int argc, char* argv[]; char* envp[])
+                          ^
+000003.c:2:14: error: parameter 'argc' has just a forward declaration
+ int main(int argc, char* argv[]; char* envp[])
+              ^
+000003.c:2:5: warning: first argument of 'main' should be 'int' [-Wmain]
+ int main(int argc, char* argv[]; char* envp[])
+     ^
+000003.c:2:5: warning: 'main' takes only zero or two arguments [-Wmain]
+000003.c: In function 'main':
+000003.c:4:5: error: 'i' undeclared (first use in this function)
+ for(i=0; envp[i];i++)
+     ^
+000003.c:4:5: note: each undeclared identifier is reported only once for each function it appears in
+</compiler_output>
+</testing-report>

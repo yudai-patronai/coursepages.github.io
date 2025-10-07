@@ -1,0 +1,17 @@
+def Transpose(A):
+    B = [['' for i in range(len(A))] for j in range(len(A[0]))]
+    for i in range(len(A)):
+        for j in range(len(A[0])):
+            B[j][i] = A[i][j]
+    return B
+n, m = list(map(int, input().split()))
+massive = [['' for i in range(m)]for j in range(n)]
+for i in range(n):
+    inp = list(map(int, input().split()))
+    for j in range(m):
+        massive[i][j] = inp[j]
+massive = Transpose(massive)
+for i in range(m)
+    for j in range(n):
+        print(massive[i][j],end=' ')
+    print()

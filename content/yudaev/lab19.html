@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Множества и словари в Python</title>
+    <meta charset="utf-8" />
+    <meta content="2020-02-24 09:00" name="date" />
+    <meta content="Множества, словари и задачи" name="summary" />
+    <meta content="published" name="status" />
+
+<style>
+div{
+  width: 600px;
+  margin: auto;
+  border: 0px ;
+}
+</style>
+</head>
+	<body>
+<div>
+    <section id="python">
+        <h1>Множества и словари в Python</h1>
+        <aside id="id1" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#id2">Множества Python</a>
+                    <ul>
+                        <li><a href="#id3">Создание и изменение множества</a></li>
+                        <li><a href="#id4">Математические операции</a>
+                            <ul>
+                                <li><a href="#id5">Проверки</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#cheatsheet">Сводная таблица по множествам (<code>cheatsheet</code>)</a></li>
+                        <li><a href="#id6">Неизменяемые множества</a></li>
+                    </ul>
+                </li>
+                <li><a href="#id7">Словари Python</a>
+                    <ul>
+                        <li><a href="#id8">Создание и изменение словаря</a>
+                            <ul>
+                                <li><a href="#id9">Примечание о числовых ключах</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#dictview">Использование DictView: циклы и множественные операции</a></li>
+                        <li><a href="#ordereddict">Словарь с упорядоченными ключами <code>OrderedDict</code></a></li>
+                    </ul>
+                </li>
+                <li><a href="#id10">Задачи</a>
+                    <ul>
+                        <li><a href="#id11">Студенты</a></li>
+                        <li><a href="#id12">Уникальные числа</a></li>
+                        <li><a href="#id13">Уже встречался!</a></li>
+                        <li><a href="#id14">Голосование</a></li>
+                        <li><a href="#id15">Частотный анализ слов в тексте</a></li>
+                        <li><a href="#id16">Генеалогическое древо</a></li>
+                    </ul>
+                </li>
+                <li><a href="#git-github">Git и GitHub</a>
+                    <ul>
+                        <li><a href="#git">Упражнение 1. Git</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section id="id2">
+            <h2>Множества Python</h2>
+            <p>Множество (<code class="code">set</code>) - встроенная структура данных языка Python, имеющая следующие свойства:</p>
+            <ul>
+                <li>
+                    <dl>
+                        <dt>множество -- это коллекция</dt>
+                        <dd>множество содержит элементы</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>множество неупорядоченно</dt>
+                        <dd>Множество не записывает (не хранит) <em>позиции</em> или <em>порядок добавления</em> его элементов. Таким образом, множество не имеет свойств последовательности (например, массива): у элементов множества нет индексов, невозможно взять срез множества...</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>элементы множества уникальны</dt>
+                        <dd>Множество не может содержать два одинаковых элемента.</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>элементы множества - хешируемые объекты (<code>hashable objects</code>)</dt>
+                        <dd>В Python множество <code class="code">set</code> реализовано с использованием хеш-таблицы. Это приводит к тому, что элементы множества должны быть неизменяемыми объектами. Например, элементом множества может быть строка, число, кортеж <code class="code">tuple</code>, но не может быть список <code class="code">list</code>, другое множество <code class="code">set</code>...</dd>
+                    </dl>
+                </li>
+            </ul>
+            <p>Эти свойства множеств часто используются, чтобы проверять вхождение элементов, удаление дубликатов из последовательностей, а также для математических операций пересечения, объединения, разности...</p>
+            <section id="id3">
+                <h3>Создание и изменение множества</h3>
+                <p>Запустите в терминале Python в интерпретируемом режиме и проработайте примеры ниже.</p>
+                <p>Пустое множество создаётся с помощью функции <code class="code">set</code></p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">&lt;class &#39;set&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">set()</span></pre>
+                <p>Обратите внимание, что размер множества множества можно получить с помощью функции <code class="code">len</code>.</p>
+                <p>Добавим несколько элементов</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 2}</span></pre>
+                <p>Заметьте, что повторное добавление не имеет никакого эффекта на множество.</p>
+                <p>Также, из вывода видно, что литералом множества являются фигурные скобки <code>{}</code>, в которых через запятую указаны элементы. Так, ещё один способ создать <strong>непустое</strong> множество - воспользоваться литералом</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{1, 2}</span></pre>
+                <p>При попытке добавления изменяемого объекта возникнет ошибка</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: &#39;list&#39;</span></pre>
+                <p>Здесь произошла попытка добавить массив в множество <code>B</code>.</p>
+                <p>У операции добавления <code class="code">set.add</code> существует обратная - операция удаления <code class="code">set.remove</code></p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{1, 2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">KeyError</span>: <span class="n">3</span></pre>
+                <p>При попытке удаления элемента, не входящего в множество, возникает ошибка <code class="code">KeyError</code>.</p>
+                <p>Чтобы проверить вхождение элемента в множество использовать оператор <code class="code">in</code></p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{1, 2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="ow">in</span> <span class="n">B</span>
+<span class="go">False</span></pre>
+                <p>Кроме того, существует метод <code class="code">set.discard</code>, который удаляет элемент из множества, только в том случае, если этот элемент присутствовал в нём.</p>
+            </section>
+            <section id="id4">
+                <h3>Математические операции</h3>
+                <p>Множества Python поддерживают привычные математические операции</p>
+                <section id="id5">
+                    <h4>Проверки</h4>
+                    <p>Одинаковые множества</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">==</span> <span class="n">B</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 2, 3}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{1, 2, 3, 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">==</span> <span class="n">B</span>
+<span class="go">False</span></pre>
+                    <p>Проверка на нестрогое подмножество <code class="code">set.issubset</code></p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 2, 3}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{1, 2, 3, 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">True</span></pre>
+                    <p>Проверка на нестрогое надмножество <code class="code">set.issuperset</code></p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 2, 3}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span>
+<span class="go">{1, 2, 3, 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="go">True</span></pre>
+                    <p>Операции получения новых множеств</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="c1"># union - объединение множеств</span>
+<span class="go">{1, 2, 3, 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="c1"># intersection - пересечение</span>
+<span class="go">{1, 2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="c1"># difference - разность множеств</span>
+<span class="go">{4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">{3}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="c1"># symmetric_difference - симметрическая разность</span>
+<span class="go">{3, 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">{3, 4}</span></pre>
+                </section>
+            </section>
+            <section id="cheatsheet">
+                <h3>Сводная таблица по множествам (<code>cheatsheet</code>)</h3>
+                <p>Обозначения</p>
+                <ul>
+                    <li><code>elem</code> - Python-объект</li>
+                    <li><code>A</code> - множество <code class="code">set</code></li>
+                    <li>
+                        <dl>
+                            <dt><code>B, C,..</code></dt>
+                            <dd>
+                                <p>1. В случае использования в <em>методах</em> <code>A.method_name(B, C,..)</code>: <code>B, C,..</code> являются любыми итерируемыми объектами. Методы допускают такие аргументы, например, <code class="code">{-1}.union(range(2)) == {-1, 0, 1}</code> вернёт <code class="code">True</code>.</p>
+                                <p>2. В случае использования c <em>операторами</em>, например, <code>A &gt; B</code> или <code>A &amp; B &amp; C &amp; ...</code>: <code>B, C,..</code> являются множествами. Дело в том, что эти операторы <em>определены</em> для операндов типа <code class="code">set</code> (и также <code class="code">frozenset</code>, о которых речь позже).</p>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Операция</th>
+                            <th>Синтаксис</th>
+                            <th>Тип результата</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вхождение элемента</td>
+                            <td><code>elem in A</code></td>
+                            <td><code>bool</code></td>
+                        </tr>
+                        <tr>
+                            <td>Равенство</td>
+                            <td><code>A == B</code></td>
+                            <td><code>bool</code></td>
+                        </tr>
+                        <tr>
+                            <td>Является нестрогим подмножеством</td>
+                            <td><code>A.issubset(B) или A &lt;= B</code></td>
+                            <td><code>bool</code></td>
+                        </tr>
+                        <tr>
+                            <td>Является строгим подмножеством</td>
+                            <td><code>A &lt; B</code></td>
+                            <td><code>bool</code></td>
+                        </tr>
+                        <tr>
+                            <td>Является нестрогим надмножеством</td>
+                            <td><code>A.issuperset(B) или A &gt;= B</code></td>
+                            <td><code>bool</code></td>
+                        </tr>
+                        <tr>
+                            <td>Явяляется строгим надмножеством</td>
+                            <td><code>A &gt; B</code></td>
+                            <td><code>bool</code></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Объединение множеств</td>
+                            <td><code>A.union(B, C,..)</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>A | B | C | ...</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Пересечение множеств</td>
+                            <td><code>A.intersection(B, C,..)</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>A &amp; B &amp; C &amp; ...</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Разность множеств</td>
+                            <td><code>A.difference(B, C,..)</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>A - B - C - ...</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Симметрическая разность множеств</td>
+                            <td><code>A.symmetric_difference(B, C,..)</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>A ^ B ^ C ^ ...</code></td>
+                            <td><code>set</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Кроме того, у операций, порождающих новые множества, существует <code>inplace</code> варианты. Для методов это те же названия, только с префиксом <code>_update</code>, а для соответствующих операторов добавляется знак равенства <code>=</code>. Ниже показан вариант для операции разности множеств</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 3}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">-=</span> <span class="n">B</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">{1, 3}</span></pre>
+            </section>
+            <section id="id6">
+                <h3>Неизменяемые множества</h3>
+                <p>В Python существует неизменяемая версия множества - <code class="code">frozenset</code>. Этот тип объектов поддерживает все операции обычного множества <code class="code">set</code>, за исключением тех, которые его меняют.</p>
+                <p>Неизменяемые множества являются хешируемыми объектами, поэтому они могут быть элементами множества <code class="code">set</code>. Так можно реализовать, например, множество множеств, где множество <code class="code">set</code> состоит из множеств типа <code class="code">frozenset</code>.</p>
+                <p>Для создания <code class="code">frozenset</code> используется функция <code class="code">frozenset(iterable)</code>, в качестве аргумента принимающая итерирумый объект.</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">FS</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FS</span>
+<span class="go">frozenset({1, 2, 3})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FS</span> <span class="o">&amp;</span> <span class="n">A</span>
+<span class="go">frozenset({1, 2})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">&amp;</span> <span class="n">FS</span>
+<span class="go">{1, 2}</span></pre>
+                <p>В этом примере показано создание <code class="code">frozenset</code> из обычного множества <code class="code">{1, 2, 3}</code>. Обратите внимание на тип возвращаемого объекта для операции пересечения <code class="code">&amp;</code>. Возвращаемый объект имеет тип, соответствующий типу <strong>первого</strong> аргумента. Такое же поведение будет и с другими операциями над множествами.</p>
+            </section>
+        </section>
+        <section id="id7">
+            <h2>Словари Python</h2>
+            <p>Словарь (dictionary) в Python -- это ассоциативный массив, реализовать который вы пробовали на прошлом занятии. Ассоциативный массив это структура данных, содержащая пары вида <code>ключ:значение</code>. Ключи в ассоциативном массиве уникальны.</p>
+            <p>В Python есть встроенный ассоциативный массив - <code class="code">dict</code>. Его реализация основана на хеш-таблицах. Поэтому</p>
+            <ul>
+                <li><code>ключом</code> может быть только хешируемый объект</li>
+                <li><code>значением</code> может быть любой объект</li>
+            </ul>
+            <section id="id8">
+                <h3>Создание и изменение словаря</h3>
+                <p>Пустой словарь можно создать двумя способами:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span>
+<span class="go">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+<span class="go">&lt;class &#39;dict&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+<span class="go">&lt;class &#39;dict&#39;&gt;</span></pre>
+                <p>Добавить элемент в словарь можно с помощью квадратных скобок:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span><span class="p">[</span><span class="s1">&#39;ru&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Russia&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span><span class="p">[</span><span class="s1">&#39;com&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;commercial&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span><span class="p">[</span><span class="s1">&#39;org&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;organizations&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span>
+<span class="go">{&#39;ru&#39;: &#39;Russia&#39;, &#39;com&#39;: &#39;commercial&#39;, &#39;org&#39;: &#39;organizations&#39;}</span></pre>
+                <p>Из этого примера видно, что литералом словаря являются квадратные скобки, в которых через запятую перечислены пары в формате <code class="code">ключ:значение</code>. Например, словарь <code class="code">domains</code> можно было создать так <code class="code">domains = {'ru': 'Russia', 'com': 'commercial', 'org': 'organizations'}</code>.</p>
+                <p>Доступ к элементу осуществляется по ключу:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span><span class="p">[</span><span class="s1">&#39;com&#39;</span><span class="p">]</span>
+<span class="go">&#39;commercial&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span><span class="p">[</span><span class="s1">&#39;de&#39;</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">KeyError</span>: <span class="n">&#39;de&#39;</span></pre>
+                <p>Удалить элемент можно с помощью оператора <code class="code">del</code>. Если ключа в словаре нет, произойдет ошибка <code class="code">KeyError</code></p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span>
+<span class="go">{&#39;ru&#39;: &#39;Russia&#39;, &#39;com&#39;: &#39;commercial&#39;, &#39;org&#39;: &#39;organizations&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">domains</span><span class="p">[</span><span class="s1">&#39;de&#39;</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">KeyError</span>: <span class="n">&#39;de&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">domains</span><span class="p">[</span><span class="s1">&#39;ru&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span>
+<span class="go">{&#39;com&#39;: &#39;commercial&#39;, &#39;org&#39;: &#39;organizations&#39;}</span></pre>
+                <p>Кроме того, для добавления, получения и удаления элементов есть методы <code class="code">dict.setdefault</code>, <code class="code">dict.get</code>, <code class="code">dict.pop</code>, которые задействует дополнительный аргумент на случай, если ключа в словаре нет</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{&#39;a&#39;: 10, &#39;b&#39;: 20}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{&#39;a&#39;: 10, &#39;b&#39;: 20, &#39;c&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{&#39;a&#39;: 10, &#39;b&#39;: 20, &#39;c&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>  <span class="c1"># вернул None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;NoKey&#39;</span><span class="p">)</span>
+<span class="go">&#39;NoKey&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">KeyError</span>: <span class="n">&#39;d&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="go">255</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{&#39;a&#39;: 10, &#39;b&#39;: 20, &#39;c&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span>
+<span class="go">{&#39;b&#39;: 20, &#39;c&#39;: None}</span></pre>
+                <section id="id9">
+                    <h4>Примечание о числовых ключах</h4>
+                    <p>Ключом может являться и число: <code class="code">int</code> или <code class="code">float</code>. Однако при работе со словарями в Python помните, что два ключа разные, если для них верно <code class="code">k1 != k2  # True</code>.</p>
+                    <p>Вот пример:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{0: 10}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{0: 22}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{0: 33}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">0.0</span> <span class="o">!=</span> <span class="mi">0</span>
+<span class="go">False</span></pre>
+                    <p>Поэтому при возможности избегайте в качестве ключей <code class="code">float</code>-объектов.</p>
+                </section>
+            </section>
+            <section id="dictview">
+                <h3>Использование DictView: циклы и множественные операции</h3>
+                <p>Если попробовать пройтись в цикле по словарю, то это будет проход по <code>ключам</code></p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">a</span>
+<span class="go">c</span>
+<span class="go">b</span></pre>
+                <p>Зачастую необходимо пройтись в цикле по <code>ключам</code>, <code>значениям</code> или парам <code>ключ:значение</code>, содержащиеся в словаре. Для этого существуют методы <code class="code">dict.keys()</code>, <code class="code">dict.values()</code>, <code class="code">dict.items()</code>. Они возвращают специальные <code class="code">DictView</code> объекты, которые можно использовать в циклах:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">a</span>
+<span class="go">c</span>
+<span class="go">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">10</span>
+<span class="go">30</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">a 10</span>
+<span class="go">c 30</span>
+<span class="go">b 20</span></pre>
+                <p>Объекты <code class="code">DictView</code>, содержащие только ключи, ведут себя подобно множествам. Кроме того, если <code class="code">DictView</code> объекты для значений или пар содержат <strong>неизменяемые</strong> объекты, тогда они тоже ведут себя подобно множествам. Это означает, что привычные для множеств операции пересечения, вхождения и другие также работают с <code class="code">DictView</code>.</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&#39;a&#39;: 10, &#39;c&#39;: 30, &#39;b&#39;: 20}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dkeys</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;abc&#39;</span> <span class="ow">in</span> <span class="n">dkeys</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;c&#39;</span> <span class="ow">in</span> <span class="n">dkeys</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="n">dkeys</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dkeys</span> <span class="o">&amp;</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">}</span>
+<span class="go">{&#39;b&#39;, &#39;c&#39;}</span></pre>
+            </section>
+            <section id="ordereddict">
+                <h3>Словарь с упорядоченными ключами <code>OrderedDict</code></h3>
+                <p>Если внимательно просмотреть примеры на циклы выше, то видно, что порядок итерирования в циклах совпадает с порядком <em>добавления</em> элементов в словарь.</p>
+                <p>Однако, такое поведение у стандартных словарей <code class="code">dict</code> гарантируется, начиная с версии 3.7 (лабораторные примеры были сделаны из-под версии 3.7.4). Узнать свою версию Python можно, например, из терминала <code>python3 --version</code> или зайдя в интерпретируемый режим (версия будет написана сверху).</p>
+                <p>Если для вашей программы важно упорядочивание элементов, но вы не знаете, какой версии интерпретатор будет исполнять ваш скрипт, то вам нужно воспользоваться упорядоченной версией словарей <code class="code">OrderedDict</code>.</p>
+                <p>Она находится в библиотеке <code class="code">collections</code>.</p>
+                <p>Упорядоченный словарь поддерживает все операции, что и обычный словарь.</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">collections</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">od</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">od</span>
+<span class="go">OrderedDict()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">od</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">od</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">od</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">od</span>
+<span class="go">OrderedDict([(&#39;a&#39;, 10), (&#39;c&#39;, 30), (&#39;b&#39;, 20)])</span></pre>
+            </section>
+        </section>
+        <section id="id10">
+            <h2>Задачи</h2>
+            <p>Задачи отранжированы в порядке сложности.</p>
+            <section id="id11">
+                <h3>Студенты</h3>
+                <p>Вам даны три списка (<code>list</code> или <code>set</code>) студентов.</p>
+                <ol type="1">
+                    <li><code class="code">learners_french</code> - изучающие французский язык</li>
+                    <li><code class="code">pianists</code> - владеющие игрой на фортепиано</li>
+                    <li><code class="code">swimmers</code> - занимающиеся плаванием</li>
+                </ol>
+                <p>Создайте программу, вычисляющую список пловцов-пианистов, не изучающих французский.</p>
+            </section>
+            <section id="id12">
+                <h3>Уникальные числа</h3>
+                <p>Вам даны два списка (<code>list</code>) чисел. Подсчитайте количество уникальных в каждом по отдельности, и количество уникальных среди обоих списков.</p>
+            </section>
+            <section id="id13">
+                <h3>Уже встречался!</h3>
+                <p>Создайте программу, которая считывает поток чисел с клавиатуры (ввели число, нажали <code>Enter</code>, вводят следующее...). При этом при введении нового числа программа должна сообщать, встречалось ли оно раньше.</p>
+            </section>
+            <section id="id14">
+                <h3>Голосование</h3>
+                <p>У каждого первокрусника спросили: "Какой ваш любимый фильм?". Ответы записали. Необходимо вывести рейтинг фильмов с количеством голосов за каждый в порядке убывания.</p>
+            </section>
+            <section id="id15">
+                <h3>Частотный анализ слов в тексте</h3>
+                <p>Напишите программу, подсчитывающую количество каждого слова в тексте. В тексте присутствует пунктуация. Слова с заглавной и строчной буквы не различать. Итоговый список слов и их количества в тексте выводить в порядке убывания по количеству.</p>
+            </section>
+            <section id="id16">
+                <h3>Генеалогическое древо</h3>
+                <p>Заведите словарь <code class="code">d</code>, в котором ключ - имя человека, а значение - список родителей. Напишите функции, которые по имени человека <code class="code">name</code> сообщают о его родственниках.</p>
+                <p>Вот список функций для реализации</p>
+                <ul>
+                    <li><code class="code">parents(d, name)</code> - возвращает список родителей</li>
+                    <li><code class="code">grandparents(d, name)</code> - возвращает список бабушек и дедушек</li>
+                    <li><code class="code">sibling(d, name)</code> - возвращает список родных братьев и сестёр</li>
+                    <li><code class="code">children(d, name)</code> - возвращает список детей</li>
+                    <li><code class="code">grandchildren(d, name)</code> - возвращает список внуков и внучек</li>
+                </ul>
+            </section>
+        </section>
+        <section id="git-github">
+            <h2>Git и GitHub</h2>
+            <p>Система управления версиями (CVS) - один из основных инструментов программиста. Система управления версиями позволяет хранить несколько версий одного и того же документа, при необходимости возвращаться к более ранним версиям, определять, кто и когда сделал то или иное изменение, и многое другое.</p>
+            <p>Git — одна из самых популярных систем контроля версиями (CVS). Автор git — <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D1%80%D0%B2%D0%B0%D0%BB%D1%8C%D0%B4%D1%81,_%D0%9B%D0%B8%D0%BD%D1%83%D1%81">Линус Торвальдс</a>.</p>
+            <p><a href="https://ru.wikipedia.org/wiki/GitHub">GitHub</a> — крупнейший веб-сервис для хостинга IT-проектов и их совместной разработки.</p>
+            <section id="git">
+                <h3>Упражнение 1. Git</h3>
+                <p>Пройдите туториал и продемонстрируйте преподавателю тестовый репозиторий на гитхабе.</p>
+                <p>1. Зарегистрируйтесь на <a href="https://github.com">github.com</a> с некоторым именем пользователя, например <em>Ivanov</em> (тут и далее вместо <em>Ivanov</em> нужно подставлять имя вашего пользователя, а вместо <code class="code">ivanov.ivan@someuniversity.edu</code> вашу настоящую почту).</p>
+                <ol start="2" type="1">
+                    <li>Создаем новый репозиторий <a href="https://github.com/new">https://github.com/new</a> (или значок <code class="code">+</code> в правом верхнем углу):
+                        <ul>
+                            <li>В качестве имени репозитория задаем <code class="code">infa_2020_ivanov</code></li>
+                            <li>Доступ оставляем <em>Public</em></li>
+                            <li>Не забываем поставить галочку <em>"Initialize this repository with a README"</em></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>3. Откройте терминал (консоль) GNU/Linux или командную строку <a href="https://gitforwindows.org/">Git-bash</a> под M$ Windows. Теперь <strong>git clone</strong> — склонируем получившийся репозиторий на свой компьютер и зайдем в папку с репозиторием:</p>
+                <pre data-language="bash">$ git clone https://github.com/Ivanov/infa_2020_ivanov
+Cloning into <span class="s1">&#39;infa_2020_ivanov&#39;</span>...
+remote: Counting objects: <span class="m">3</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+$ ls
+infa_2020_ivanov
+$ <span class="nb">cd</span> infa_2020_ivanov
+$ ls
+README.md</pre>
+                <p>Не забудем сконфигурить гит, представившись ему (это обязательно нужно сделать находясь в папке <code class="code">infa_2020_ivanov</code>):</p>
+                <pre data-language="bash">git config user.name <span class="s2">&quot;Ivanov Ivan&quot;</span>
+git config user.email ivanov.ivan@someuniversity.edu</pre>
+                <p>Почту указываем как при регистрации.</p>
+                <p>4. Теперь у нас локально есть полная и независимая версия нашего репозитория <code class="code">infa_2020_ivanov</code>. Она никак явным образом не связана с версией на серверах github'а, однако в гите существуют инструменты для обмена данными между разными репозиториями. Иными словами, git - это <em>распределенная</em> система управлениями версиями.</p>
+                <ol start="5" type="1">
+                    <li>Команда <strong>git log</strong> возвращает историю нашего репозитория. В данный момент в нашей истории ровно один коммит (коммит - это некоторый набор изменений).</li>
+                </ol>
+                <pre data-language="bash">-&gt; git log
+commit eec733a21cerfb66973991a9357aab735fa40ba4
+Author: Ivanov &lt;ivanov.ivan@someuniversity.edu&gt;
+Date:   Wed Sep <span class="m">16</span> <span class="m">12</span>:06:08 <span class="m">2020</span> +0300
+
+    Initial commit</pre>
+                <p>6. Давайте отредактируем файл <code class="code">README.md</code> и добавим в него что-нибудь. Откроем файл <code class="code">README.md</code> и напишем в нем что-нибудь. После с помощью <strong>git diff</strong> посмотрим на текущие изменения. В "диффе" видно, что была добавлена строчка "it's test project".</p>
+                <pre data-language="bash">-&gt; git diff
+diff --git a/README.md b/README.md
+index 21e60f8..285eafa <span class="m">100644</span>
+--- a/README.md
++++ b/README.md
+@@ -1 +1,3 @@
+-# infa_2020_ivanov
+<span class="se">\ </span>No newline at end of file
++# infa_2020_ivanov
++
++it<span class="se">\&#39;</span>s <span class="nb">test</span> project</pre>
+                <p>7. Команда <strong>git status</strong> показывает текущий статус репозитория. Мы видим, что сейчас мы находимся в ветке <code class="code">master</code> (основная ветка нашего репозитория). Ниже написано, что файл <code class="code">README.md</code> был изменен. Однако он ещё не готов для коммита.</p>
+                <pre data-language="bash">-&gt; git status
+<span class="c1"># On branch master</span>
+<span class="c1"># Changes not staged for commit:</span>
+<span class="c1">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="c1">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="c1">#</span>
+<span class="c1">#    modified:   README.md</span>
+<span class="c1">#</span>
+no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span></pre>
+                <ol start="8" type="1">
+                    <li>Сделаем <strong>git add</strong>, как рекомендует нам команда status.</li>
+                </ol>
+                <pre data-language="bash">-&gt; git add README.md
+-&gt; git status
+<span class="c1"># On branch master</span>
+<span class="c1"># Changes to be committed:</span>
+<span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+<span class="c1">#</span>
+<span class="c1">#    modified:   README.md</span>
+<span class="c1">#</span></pre>
+                <p>Теперь <strong>git status</strong> показывает, что изменения в файле <code class="code">README.md</code> готовы для коммита. Если сейчас снова измененить <code class="code">README.md</code>, то нужно снова обязательно выполнить <strong>git add</strong>.</p>
+                <ol start="9" type="1">
+                    <li><strong>git-commit</strong> — закоммитим наши изменения, то есть внесём "квант" изменений в историю развития проекта:</li>
+                </ol>
+                <pre data-language="bash">$ git commit -m <span class="s2">&quot;Added something to README&quot;</span>
+<span class="o">[</span>master 274f6d5<span class="o">]</span> Added something to README
+ Committer: Ivanov Ivan &lt;ivanov.ivan@someuniversity.edu&gt;
+
+ <span class="m">1</span> file changed, <span class="m">3</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">1</span> deletion<span class="o">(</span>-<span class="o">)</span></pre>
+                <ol start="10" type="1">
+                    <li>Снова посмотрим (<strong>git log</strong>) на историю нашего репозитория:</li>
+                </ol>
+                <pre data-language="bash">$ git log
+commit 8e2642d512b11ae43a97b0b4ac68e802d2626f14
+Author: Ivanov Ivan &lt;ivanov.ivan@someuniversity.edu&gt;
+Date:   Wed Nov <span class="m">9</span> <span class="m">14</span>:47:40 <span class="m">2016</span> +0300
+
+    Added something to README
+
+commit eec733a21cerfb66973998a9327aab735fa40ba4
+Author: Ivanov Ivan &lt;ivanov.ivan@someuniversity.edu&gt;
+Date:   Wed Nov <span class="m">9</span> <span class="m">13</span>:36:38 <span class="m">2016</span> +0300
+
+    Initial commit</pre>
+                <p>Теперь в нашем репозитории два коммита.</p>
+                <ol start="11" type="1">
+                    <li>Давайте сделаем <strong>git push</strong> — отправим ("запушим" на сленге программистов) наши изменения в оригинальный репозиторий на github.com.</li>
+                </ol>
+                <pre data-language="bash">$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: &lt;username&gt;
+Password <span class="k">for</span> <span class="s1">&#39;https://ivanov@github.com&#39;</span>: &lt;password&gt;
+To https://github.com/Ivanov/infa_2020_ivanov
+   eec733a..8e2642d  master -&gt; master</pre>
+                <p>При git push необходимо будет ввести логин и пароль на GitHub (если, конечно, вы не настроили ssh-аутентификацию :-)). Теперь изменения будут доступны для всех.</p>
+                <ol start="12" type="1">
+                    <li>Существует парная команда <strong>git pull</strong> — которая забирает изменения с оригинального репозитория на сервере.</li>
+                </ol>
+                <pre data-language="bash">$ git pull
+Already up-to-date.</pre>
+            </section>
+        </section>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n;
+    int i;
+    int h;
+    int k, m;
+    m = 0; int l = 0;
+    int j = 0;
+    scanf("%d", &n);
+    int* p = (int*) malloc(n * sizeof(int));
+    for (i = 0; i < n; i++)
+        p[i] = 0;
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j <= i; j++)
+        {
+            scanf("%d", &k);
+            if (j == 0)
+                p[j] = p[j] + k;
+            else
+            {
+                if (j == i)
+                    p[j] = p[j - 1] - m + k;
+                else
+                {
+                    if((p[j - 1] - m) > p[j])
+                    {
+                        h = p[j - 1] - m - p[j] + k;
+                        p[j] = p[j - 1] - m + k;
+                        k = h;
+                    }
+                    else
+                        p[j] = p[j] + k;
+                }
+            }
+            m = k;
+        }
+        //for (l = 0; l < j; l++)
+        //printf("%d\n", p[l]);
+    }
+    int max = -1;
+    for (i = 0; i < n; i++)
+    {
+        //printf("%d ", p[i]);
+        if (p[i] > max)
+            max = p[i];
+    }
+    printf("%d", max);
+    free(p);
+    return 0;
+}

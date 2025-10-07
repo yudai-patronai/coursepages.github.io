@@ -1,0 +1,22 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="12" judge-id="2" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>9750ca61-0a75-49b8-ad20-7e59312ec6d2</uuid>
+  <compiler_output>000012.c: In function 'main':
+000012.c:11:9: warning: passing argument 2 of 'freopen' from incompatible pointer type [enabled by default]
+         freopen(&quot;output.txt&quot;, stdout);
+         ^
+In file included from 000012.c:1:0:
+/usr/include/stdio.h:278:14: note: expected 'const char * __restrict__' but argument is of type 'struct _IO_FILE *'
+ extern FILE *freopen (const char *__restrict __filename,
+              ^
+000012.c:11:9: error: too few arguments to function 'freopen'
+         freopen(&quot;output.txt&quot;, stdout);
+         ^
+In file included from 000012.c:1:0:
+/usr/include/stdio.h:278:14: note: declared here
+ extern FILE *freopen (const char *__restrict __filename,
+              ^
+</compiler_output>
+</testing-report>

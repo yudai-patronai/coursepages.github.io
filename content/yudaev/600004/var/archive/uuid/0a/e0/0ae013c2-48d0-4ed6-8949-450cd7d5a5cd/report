@@ -1,0 +1,87 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="103" judge-id="4" status="PT" scoring="KIROV" run-tests="5" contest-id="600004" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="2" score="2" max-score="100" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>0ae013c2-48d0-4ed6-8949-450cd7d5a5cd</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="526" real-time="546" max-memory-used="117993472" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+  <program-stats-str>{ utime=426, stime=100, ptime=526, rtime=546, maxvsz=117993472, maxrss=138924032, nvcsw=19, nivcsw=9 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=303104, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">2 2
+</input>
+      <output size="2">6
+</output>
+      <correct size="2">6
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="WA" time="524" real-time="621" max-memory-used="117993472" nominal-score="1" score="0"  checker-comment="Answers differ: [1]: output: 14, correct: 35" >
+  <program-stats-str>{ utime=429, stime=95, ptime=524, rtime=621, maxvsz=117993472, maxrss=138924032, nvcsw=17, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">3 4
+</input>
+      <output size="3">14
+</output>
+      <correct size="3">35
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="45">Answers differ: [1]: output: 14, correct: 35
+</checker>
+    </test>
+    <test num="3" status="OK" time="527" real-time="536" max-memory-used="117993472" nominal-score="1" score="1"  checker-comment="OK" >
+  <program-stats-str>{ utime=429, stime=98, ptime=527, rtime=536, maxvsz=117993472, maxrss=138919936, nvcsw=17, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">9 1
+</input>
+      <output size="3">10
+</output>
+      <correct size="3">10
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="WA" time="525" real-time="533" max-memory-used="117993472" nominal-score="1" score="0"  checker-comment="Answers differ: [1]: output: 38, correct: 10" >
+  <program-stats-str>{ utime=426, stime=99, ptime=525, rtime=533, maxvsz=117993472, maxrss=138924032, nvcsw=17, nivcsw=9 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=1, maxvsz=307200, maxrss=1310720, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="4">1 9
+</input>
+      <output size="3">38
+</output>
+      <correct size="3">10
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="45">Answers differ: [1]: output: 38, correct: 10
+</checker>
+    </test>
+    <test num="5" status="WA" time="525" real-time="534" max-memory-used="117993472" nominal-score="1" score="0"  checker-comment="Answers differ: [1]: output: 1560, correct: 137846528820" >
+  <program-stats-str>{ utime=425, stime=100, ptime=525, rtime=534, maxvsz=117993472, maxrss=138919936, nvcsw=18, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=0, maxrss=1310720, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="6">20 20
+</input>
+      <output size="5">1560
+</output>
+      <correct size="13">137846528820
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="57">Answers differ: [1]: output: 1560, correct: 137846528820
+</checker>
+    </test>
+  </tests>
+</testing-report>

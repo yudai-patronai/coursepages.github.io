@@ -1,0 +1,8 @@
+def min_of_four(a,b,c,d):
+    minimum = min(min(a, b), min(c, d))
+    return minimum
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+print(min_of_four(a, b, c, d))

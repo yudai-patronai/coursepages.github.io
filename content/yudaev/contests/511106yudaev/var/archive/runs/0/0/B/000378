@@ -1,0 +1,18 @@
+m,n=input().split()
+n=int(n)
+m=int(m)
+i=0
+e=0
+stro=0
+while i<n-1:
+    d=input()
+    n=max(d.split())
+    sto=d.find(str(n))//2
+    n=float(n)
+    if n>e:
+        e=n
+        a=stro
+        b=sto
+    stro=stro+1
+    i=i+1
+print(a, b)

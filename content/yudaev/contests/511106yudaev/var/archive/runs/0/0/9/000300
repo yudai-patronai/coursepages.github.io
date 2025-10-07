@@ -1,0 +1,13 @@
+b=input().split()
+n=int(b[0])
+m=int(b[1])
+i0=0
+j0=0
+maxim=None
+for i in range(n):
+    a=A = list(map(int, input().split()))
+    if maxim==None or max(a)>maxim:
+        j0=a.index(max(a))
+        i0=i
+        maxim=max(a)
+print(i0,j0)

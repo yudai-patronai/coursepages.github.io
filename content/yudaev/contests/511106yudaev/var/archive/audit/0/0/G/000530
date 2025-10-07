@@ -1,0 +1,50 @@
+Date: 2015/10/19 23:51:10
+From: polinache (uid 18603)
+Ip: 93.175.8.74
+Command: submit
+Status: ok
+Run-id: 530
+Run-status: CG
+
+Date: 2015/10/19 23:51:13
+From: SYSTEM
+Status: testing completed
+Run-id: 530
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/10/19 23:51:10.273101
+  Request completion time:           2015/10/19 23:51:13.067355
+  Total testing duration:            2.794
+  Waiting in compile queue duration: 0.956
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.917
+  Waiting in run queue duration:     0.465
+  Testing duration:                  0.303
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.148
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 530
+Run-status: CG
+
+Date: 2015/12/09 20:30:06
+From: SYSTEM
+Status: testing completed
+Run-id: 530
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/12/09 01:52:41.841012
+  Request completion time:           2015/12/09 20:30:07.479149
+  Total testing duration:            67045.638
+  Waiting in compile queue duration: 0.251
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   5.172
+  Waiting in run queue duration:     941.320
+  Testing duration:                  0.291
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66098.601
+

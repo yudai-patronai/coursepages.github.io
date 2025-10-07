@@ -1,0 +1,47 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="52" judge-id="32" status="OK" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="2" score="40" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>54bd513c-1311-40db-9738-f3b8bb681e9e</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="528" real-time="535" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=405, stime=123, ptime=528, rtime=535, maxvsz=117993472, maxrss=135000064, nvcsw=17, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=307200, maxrss=1290240, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="41">LD_LIBRARY_PATH=/home/judges/compile/lib
+</output>
+      <correct size="42">LD_LIBRARY_PATH=/home/judges/compile/lib
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="527" real-time="534" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=409, stime=118, ptime=527, rtime=534, maxvsz=117993472, maxrss=134062080, nvcsw=17, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=1, maxvsz=307200, maxrss=1290240, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</output>
+      <correct size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+  </tests>
+</testing-report>

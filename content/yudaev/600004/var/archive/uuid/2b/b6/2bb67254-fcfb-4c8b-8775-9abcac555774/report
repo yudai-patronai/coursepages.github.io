@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="229" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>2bb67254-fcfb-4c8b-8775-9abcac555774</uuid>
+  <compiler_output>000229.c: In function 'main':
+000229.c:9:2: error: format '%li' expects argument of type 'long int', but argument 2 has type 'unsigned int' [-Werror=format=]
+  printf(&quot;%li&quot;, bin);
+  ^
+000229.c: In function 'fact':
+000229.c:15:2: warning: statement with no effect [-Wunused-value]
+  for (i; i &lt;= n; i++)
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

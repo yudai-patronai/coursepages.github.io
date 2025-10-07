@@ -1,0 +1,23 @@
+inputing = str(input()).split()
+num_lines = int(inputing[0])
+num_columns = int(inputing[1])
+num_mines = int(inputing[2])
+field = [[0 for k in range(num_columns)] for i in range(num_lines)]
+def new_field(_field,num_m):
+    for n in range(num_m):
+        position_mine = str(input()).split()
+        pos_x = posit_x(position_mine)
+        pos_y = posit_y(position_mine)
+        field[pos_x][pos_y] = "*"
+        for l in range(pos_x-1,pos_x+2):
+            for m in range (pos_y-1,pos_y+2):
+                if l >= 0 and l < num_lines and m >= 0 and m < num_columns and _field[l][m] != "*":
+                    _field[l][m] += 1
+    return (((str(_field)[2:-2].replace("[","").replace("]","\n").replace("'","")).replace(" ","")).replace(",",""))
+def posit_x(pos):
+    position_x = int(pos[0]) - 1
+    return position_x
+def posit_y(pos):
+    position_y = int(pos[1])  - 1
+    return position_y
+print(new_field(field,num_mines))

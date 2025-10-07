@@ -1,0 +1,14 @@
+n = int(input())
+m = int(input())
+mas = []
+for i in range(n):
+    mas.append([])
+    for j in range(m):
+        mas[i].append(int(input()))
+max = 0
+for i in mas:
+    for j in i:
+        if j > max:
+            max = j
+            number = [mas.index(i), i.index(j)]
+print(number)

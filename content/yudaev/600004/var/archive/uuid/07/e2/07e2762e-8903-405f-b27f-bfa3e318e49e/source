@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+unsigned long int factorial(const unsigned long int);
+int main(){
+    unsigned long int N, M;
+    scanf("%d %d", &N, &M);
+    printf("%lu\n", factorial(N+M) / (factorial(M) * factorial(N)));
+    return 0;
+}
+unsigned long int factorial(const unsigned long int x){
+    unsigned long int i, p = 1;
+    if (x == 0)
+        return 1;
+    else {
+    for (i = 1; i <= x; i++)
+            p = p * i;
+    }
+    return p;
+}

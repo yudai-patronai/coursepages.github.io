@@ -1,0 +1,20 @@
+#include <stdio.h>
+#define SIZE 22
+
+int main() {
+  long int res = 0, i, j, n, m, a[SIZE][SIZE];
+  scanf("%ld %ld", &n, &m);
+  for(i = 0; i < SIZE; i++) {
+    for (j = 0; j < SIZE; j++)
+      a[i][j] = 0;
+  }
+  for (i = 1; i <= n + 1; i++)
+    for (j = 1; j <= m + 1; j++)
+      if (i == 1 && j == 1)
+        a[i][j] = 1;
+      else
+        a[i][j] = a[i - 1][j] + a[i][j - 1];
+  res = a[n + 1][m + 1];
+  printf("%ld", res);
+  return 0;
+}

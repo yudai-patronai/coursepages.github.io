@@ -1,0 +1,25 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="215" judge-id="15" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>49f2125b-6b39-48c1-8c1c-fa62bb84c74f</uuid>
+  <compiler_output>000215.c: In function 'main':
+000215.c:6:2: error: format '%d' expects argument of type 'int *', but argument 2 has type 'long int *' [-Werror=format=]
+  scanf(&quot;%d&quot;, &amp;n);
+  ^
+000215.c:7:2: error: format '%d' expects argument of type 'int *', but argument 2 has type 'long int *' [-Werror=format=]
+  scanf(&quot;%d %d %d&quot;, &amp;a, &amp;b, &amp;c);
+  ^
+000215.c:7:2: error: format '%d' expects argument of type 'int *', but argument 3 has type 'long int *' [-Werror=format=]
+000215.c:7:2: error: format '%d' expects argument of type 'int *', but argument 4 has type 'long int *' [-Werror=format=]
+000215.c:13:3: error: format '%d' expects argument of type 'int *', but argument 2 has type 'long int *' [-Werror=format=]
+   scanf(&quot;%d %d %d&quot;, &amp;a, &amp;b, &amp;c);
+   ^
+000215.c:13:3: error: format '%d' expects argument of type 'int *', but argument 3 has type 'long int *' [-Werror=format=]
+000215.c:13:3: error: format '%d' expects argument of type 'int *', but argument 4 has type 'long int *' [-Werror=format=]
+000215.c:20:2: error: format '%d' expects argument of type 'int', but argument 2 has type 'long int' [-Werror=format=]
+  printf(&quot;%d&quot;, d[n-1]);
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

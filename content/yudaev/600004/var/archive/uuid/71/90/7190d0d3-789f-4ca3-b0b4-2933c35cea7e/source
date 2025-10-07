@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <math.h>
+
+int ARR[100][100] = {};
+int SUMARR[100][100] = {};
+
+int max(int a, int b)
+{
+
+    if(a > b)
+        return a;
+
+    return b;
+
+}
+
+void Triangle(int size)
+{
+
+    int i = 0, j = 0;
+
+    SUMARR[0][0] = ARR[0][0];
+    SUMARR[1][0] = ARR[0][0] + ARR[1][0];
+    SUMARR[1][1] = ARR[0][0] + ARR[1][1];
+    //printf("(%d,%d) = %d;\n", 1, 0, SUMARR[1][0]);
+    //printf("(%d,%d) = %d;\n", 1, 1, SUMARR[1][1]);
+
+    for(i = 2; i < size; ++i)
+    {
+
+        for(j = 0; j <= i; ++j)
+        {
+
+            if(j == 0)
+                SUMARR[i][j] = ARR[i][j] + SUMARR[i - 1][j];
+            else if(j == i)
+                SUMARR[i][j] = ARR[i][j] + SUMARR[i - 1][j - 1];
+            else
+                SUMARR[i][j] = ARR[i][j] + max(SUMARR[i - 1][j], SUMARR[i - 1][j - 1]);
+
+            //printf("(%d,%d) = %d;\n", i, j, SUMARR[i][j]);
+
+        }
+
+    }
+
+}
+
+int Res(int size)
+{
+
+    int max = SUMARR[size - 1][0];
+    int i = 0;
+    for( ; i < 100; ++i)
+    {
+
+        if(max < SUMARR[size - 1][i])
+            max = SUMARR[size - 1][i];
+
+    }
+
+    return max;
+
+}
+
+int main()
+{
+
+    int size;
+    scanf("%d", &size);
+
+    int i = 0, j = 0, num;
+    for(i = 0; i < size; ++i)
+    {
+
+        for(j = 0; j <= i; ++j)
+        {
+
+            scanf("%d", &num);
+            ARR[i][j] = num;
+
+        }
+
+    }
+
+    Triangle(size);
+    printf("%d", Res(size));
+
+    return 0;
+
+}
+
+

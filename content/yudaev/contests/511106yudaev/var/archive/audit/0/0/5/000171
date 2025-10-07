@@ -1,0 +1,50 @@
+Date: 2015/10/17 02:43:42
+From: mukhamedzarifovakf (uid 18515)
+Ip: 10.55.84.145
+Command: submit
+Status: ok
+Run-id: 171
+Run-status: CG
+
+Date: 2015/10/17 02:43:45
+From: SYSTEM
+Status: testing completed
+Run-id: 171
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/10/17 02:43:42.703729
+  Request completion time:           2015/10/17 02:43:45.077878
+  Total testing duration:            2.374
+  Waiting in compile queue duration: 0.816
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.207
+  Waiting in run queue duration:     0.768
+  Testing duration:                  0.262
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.317
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 171
+Run-status: CG
+
+Date: 2015/12/09 20:30:25
+From: SYSTEM
+Status: testing completed
+Run-id: 171
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:28.212905
+  Request completion time:           2015/12/09 20:30:25.415706
+  Total testing duration:            67077.203
+  Waiting in compile queue duration: 0.124
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   22.993
+  Waiting in run queue duration:     1085.384
+  Testing duration:                  0.250
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   65968.448
+

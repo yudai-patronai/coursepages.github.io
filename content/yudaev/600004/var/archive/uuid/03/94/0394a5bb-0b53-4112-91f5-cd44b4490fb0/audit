@@ -1,0 +1,25 @@
+Date: 2016/11/09 18:25:11
+From: Soshin (uid 21689)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 311
+Run-status: CG
+
+Date: 2016/11/09 18:25:40
+From: SYSTEM
+Status: testing completed
+Run-id: 311
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/09 18:25:11.293438
+  Request completion time:           2016/11/09 18:25:40.256997
+  Total testing duration:            28.964
+  Waiting in compile queue duration: 0.362
+  Compilation duration:              0.343
+  Waiting in serve queue duration:   0.315
+  Waiting in run queue duration:     0.610
+  Testing duration:                  27.266
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.065
+

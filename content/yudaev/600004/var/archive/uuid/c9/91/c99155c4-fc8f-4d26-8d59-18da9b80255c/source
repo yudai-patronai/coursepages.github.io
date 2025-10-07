@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+int main()
+{
+    int N;
+    scanf("%i", &N);
+    int **F = (int **) malloc ((N + 1) * sizeof(int *));
+    int i;
+    for (i = 0; i <= N; i++)
+        F[i] = (int *) malloc ((N + 1) * sizeof(int));
+    F[1][1] = 1;
+    int j;
+    for (i = 2; i <= N; i++)
+    {
+        F[i][1] = 1;
+        F[i][i] = 1;
+        for (j = 2; j < i; j++)
+        {
+            F[i][j] = F[i-1][j-1];
+            if(i - j >= j) F[i][j] += F[i-j][j];
+        }
+    }
+    int rez = 0;
+    for (j = 1; j <= N; j++)
+        rez += F[N][j];
+    printf("%i\n", rez);
+    for (i = 0; i <= N; i++)
+        free(F[i]);
+    free(F);
+    return 0;
+}

@@ -1,0 +1,25 @@
+Date: 2016/10/26 23:59:34
+From: bazalava (uid 21612)
+Ip: 93.175.6.189
+Command: submit
+Status: ok
+Run-id: 224
+Run-status: CG
+
+Date: 2016/10/27 00:00:06
+From: SYSTEM
+Status: testing completed
+Run-id: 224
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/26 23:59:34.311199
+  Request completion time:           2016/10/27 00:00:06.881685
+  Total testing duration:            32.570
+  Waiting in compile queue duration: 0.795
+  Compilation duration:              0.328
+  Waiting in serve queue duration:   0.814
+  Waiting in run queue duration:     0.585
+  Testing duration:                  29.567
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.478
+

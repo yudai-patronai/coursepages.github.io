@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main ( int argc, char* argv[], char* envp[] )
+{
+	int i, p;
+	sscanf ( argv[1], "%d", &p );
+	for ( i = 1; i < p; i++ )
+	{
+		printf ( "%s\n", envp[i] );
+	}
+	return 0; 	
+}

@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    long long int j, k, m, q, s, p[1000];
+    p[1] = 1;
+    p[0] = 1;
+    q = 1;
+    for(m = 1; m <= n; m++) {
+        p[m] = 0;
+        s = 1;
+        for(k = 1; k <= m; k++) {
+            q = (3 * k * k - k) / 2;
+            if(q > m) break;
+            j = m - q;
+            p[m] = p[m] + s * p[j];
+            q = (3 * k * k + k) / 2;
+            if(q > m) break;
+            j = m - q;
+            p[m] = p[m] + s * p[j];
+            s = -s;
+        }
+    }
+    printf("%Ld", p[n]);
+    return 0;
+}

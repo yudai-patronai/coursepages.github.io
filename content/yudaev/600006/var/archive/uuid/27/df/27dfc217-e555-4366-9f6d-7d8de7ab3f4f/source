@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main (int argc, char* argv[]){
+   int sum = 0;
+   int a,i;
+   for (i = 0; i<argc; i++) {
+       sscanf (argv[i+1], "%d", &a);
+       sum = sum + a;
+   }
+   printf ("%d", sum);
+   return sum;
+}

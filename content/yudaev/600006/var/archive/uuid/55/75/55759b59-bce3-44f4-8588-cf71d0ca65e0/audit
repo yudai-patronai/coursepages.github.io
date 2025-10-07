@@ -1,0 +1,25 @@
+Date: 2016/11/03 17:10:21
+From: col16m (uid 21640)
+Ip: 46.249.23.142
+Command: submit
+Status: ok
+Run-id: 371
+Run-status: CG
+
+Date: 2016/11/03 17:10:28
+From: SYSTEM
+Status: testing completed
+Run-id: 371
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/03 17:10:21.625400
+  Request completion time:           2016/11/03 17:10:28.571869
+  Total testing duration:            6.946
+  Waiting in compile queue duration: 0.001
+  Compilation duration:              0.231
+  Waiting in serve queue duration:   0.790
+  Waiting in run queue duration:     0.507
+  Testing duration:                  5.238
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.180
+

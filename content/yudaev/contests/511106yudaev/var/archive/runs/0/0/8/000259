@@ -1,0 +1,9 @@
+b=int(input())
+a=[['.']*b for i in range(b)]
+for i in range(b):
+    a[i][i]='*'
+    a[i][b//2]='*'
+    a[b//2][i]='*'
+    a[b-i-1][i]='*'
+for i in range (b):
+    print(' '.join(a[i]))

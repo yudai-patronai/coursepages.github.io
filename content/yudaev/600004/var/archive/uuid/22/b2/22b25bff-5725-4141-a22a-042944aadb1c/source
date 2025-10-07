@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int p (int n, int k) {
+	if (k == 0) {
+		if (n == 0)
+			return 1;
+		else
+			return 0;
+	}
+	else {
+		if (k <= n)
+			return p(n, k-1) + p(n-k, k);
+		else
+			return p(n,n);
+	}
+}
+
+int main(void) {
+	int n;
+	scanf("%d", &n);
+	printf("%d", p(n,n));
+	return 0;
+}

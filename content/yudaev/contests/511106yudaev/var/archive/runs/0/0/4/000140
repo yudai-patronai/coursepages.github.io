@@ -1,0 +1,15 @@
+s1=input()
+n=int(s1[0])
+m=int(s1[2])
+A = []
+for i in range(n):
+    A.append(list(map(int, input().split())))
+s2=input()
+i1=int(s2[0])
+j1=int(s2[2])
+for i in range(n):
+    A[i][i1],A[i][j1]=A[i][j1], A[i][i1]
+for row in A:
+    for elem in row:
+        print(elem, end = ' ')
+    print()

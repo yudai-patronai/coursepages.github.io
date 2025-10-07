@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int max (int a, int b) {
+	if (a >= b)
+		return a;
+	else
+		return b;
+}
+
+int main(void) {
+	int n, i, j;
+	scanf("%d", &n);
+	int * * p = (int * *) malloc (n * sizeof(int *));
+	for (i = 0; i < n; i++) {
+		p[i] = (int *) malloc ((i+1) * sizeof(int));
+	}
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < i+1; j++) {
+			scanf("%d", &p[i][j]);
+		}
+	}
+	for (i = n-1; i >= 0; i--) {
+		for (j = 0; j < i; j++) {
+			p[i-1][j] += max(p[i][j], p[i][j+1]);
+		}
+	}
+	printf("%d", p[0][0]);
+	free(p);
+	return 0;
+}

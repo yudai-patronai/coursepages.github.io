@@ -1,0 +1,22 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="8" judge-id="6" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>a54f5b06-a9bc-406a-a055-bebaec18d789</uuid>
+  <compiler_output>000008.c: In function 'main':
+000008.c:11:5: error: implicit declaration of function 'malloc' [-Werror=implicit-function-declaration]
+     int** p = (int**)malloc(n * sizeof(int*));
+     ^
+000008.c:11:22: warning: incompatible implicit declaration of built-in function 'malloc' [enabled by default]
+     int** p = (int**)malloc(n * sizeof(int*));
+                      ^
+000008.c:17:16: warning: suggest explicit braces to avoid ambiguous 'else' [-Wparentheses]
+             if (i &gt; 0 || j &gt; 0)
+                ^
+000008.c:28:5: error: implicit declaration of function 'free' [-Werror=implicit-function-declaration]
+     free(p);
+     ^
+000008.c:28:5: warning: incompatible implicit declaration of built-in function 'free' [enabled by default]
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

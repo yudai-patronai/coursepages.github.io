@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int filecopy(const char *oldname, const char *newname);
+
+int main(void)
+{
+	if (filecopy("SourceFile.txt", "TargetFile.txt") == -1)
+		perror("filecopy");
+	return 0;
+}

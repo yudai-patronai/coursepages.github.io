@@ -1,0 +1,7 @@
+def min4(a, f, c, d):
+    return min(a, f, c, d)
+f = int(input())
+f = int(input())
+c = int(input())
+d = int(input())
+print(min4(a, f, c, d))

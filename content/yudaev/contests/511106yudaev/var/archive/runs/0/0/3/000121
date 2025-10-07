@@ -1,0 +1,11 @@
+nums = list(map(int,input().split()))
+A = [[0 for k in range(nums[1])] for m in range(nums[0])]
+for m in range(nums[0]):
+    A[m] = list(map(int,input().split()))
+ij = list(map(int,input().split()))
+i,j = ij[0],ij[1]
+def SwapColumns(A,i,j):
+    for m in range(len(A)):
+        A[m][i],A[m][j] = A[m][j],A[m][i]
+    return (str(A)[2:-2].replace("[","").replace("],","\n").replace("'","").replace(" ","").replace(","," "))
+print(SwapColumns(A,i,j))

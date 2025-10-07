@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+        int infd = open(argv[1], O_RDONLY);
+        int outfd = open(argv[2], O_WRONLY | O_CREAT, 0755);
+        ftruncate(outfd, 0);
+        char buf[4096];
+        size_t sz;
+        while(sz = read(infd, &buf, 4096))
+        {
+                size_t p = 0;
+                while(p < sz)
+                        p += write(outfd, buf + p, sz - p);
+        }
+        close(infd);
+        close(outfd);
+        return 0;
+}

@@ -1,0 +1,50 @@
+Date: 2015/10/17 17:29:24
+From: kedaloem541 (uid 18485)
+Ip: 81.5.110.132
+Command: submit
+Status: ok
+Run-id: 207
+Run-status: CG
+
+Date: 2015/10/17 17:29:27
+From: SYSTEM
+Status: testing completed
+Run-id: 207
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/17 17:29:24.774961
+  Request completion time:           2015/10/17 17:29:27.817955
+  Total testing duration:            3.043
+  Waiting in compile queue duration: 0.789
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.233
+  Waiting in run queue duration:     0.728
+  Testing duration:                  0.567
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.721
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 207
+Run-status: CG
+
+Date: 2015/12/09 20:29:55
+From: SYSTEM
+Status: testing completed
+Run-id: 207
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:29.354408
+  Request completion time:           2015/12/09 20:29:56.047127
+  Total testing duration:            67046.693
+  Waiting in compile queue duration: 0.109
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   14.334
+  Waiting in run queue duration:     848.859
+  Testing duration:                  0.541
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66182.846
+

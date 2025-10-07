@@ -1,0 +1,19 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="148" judge-id="5" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>e2561bdd-fd6c-4621-9132-e0c623b5499d</uuid>
+  <compiler_output>000148.c: In function 'main':
+000148.c:9:2: error: format '%d' expects argument of type 'int *', but argument 2 has type 'long long int *' [-Werror=format=]
+  scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+  ^
+000148.c:9:2: error: format '%d' expects argument of type 'int *', but argument 3 has type 'long long int *' [-Werror=format=]
+000148.c:13:7: warning: suggest explicit braces to avoid ambiguous 'else' [-Wparentheses]
+    if (i || j)
+       ^
+000148.c:22:2: error: format '%ld' expects argument of type 'long int', but argument 2 has type 'long long int' [-Werror=format=]
+  printf(&quot;%ld&quot;, b[n][m]);
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

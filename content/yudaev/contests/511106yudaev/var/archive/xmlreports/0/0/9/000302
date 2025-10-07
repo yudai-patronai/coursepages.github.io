@@ -1,0 +1,118 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="302" judge-id="303" status="PT" scoring="KIROV" run-tests="8" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="3" score="3" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>b47a1667-0c16-4c7a-9e46-425926208b00</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+      <input size="28">3 4
+0 3 2 4
+2 3 5 5
+5 1 2 3
+</input>
+      <output size="4">1 2
+</output>
+      <correct size="4">1 2
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="0" visibility="full" >
+      <input size="7">1 1
+1
+
+</input>
+      <output size="0"></output>
+      <stderr size="131">Traceback (most recent call last):
+  File &quot;./000302&quot;, line 8, in &lt;module&gt;
+    elMax = ma[1][1]
+IndexError: list index out of range
+</stderr>
+    </test>
+    <test num="3" status="OK" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="40">3 5
+1 2 3 4 5
+6 7 8 9 10
+11 12 13 14 15
+</input>
+      <output size="4">2 4
+</output>
+      <correct size="4">2 4
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="37" real-time="39" max-memory-used="307200" nominal-score="1" score="0" >
+      <input size="17">6 1
+1
+2
+3
+2
+1
+2
+
+</input>
+      <output size="0"></output>
+      <stderr size="131">Traceback (most recent call last):
+  File &quot;./000302&quot;, line 8, in &lt;module&gt;
+    elMax = ma[1][1]
+IndexError: list index out of range
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="16">1 6
+1 2 3 3 2 1
+</input>
+      <output size="0"></output>
+      <stderr size="131">Traceback (most recent call last):
+  File &quot;./000302&quot;, line 8, in &lt;module&gt;
+    elMax = ma[1][1]
+IndexError: list index out of range
+</stderr>
+    </test>
+    <test num="6" status="OK" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="34">3 5
+1 4 5 2 7
+3 4 8 0 8
+8 8 8 8 8
+</input>
+      <output size="4">1 2
+</output>
+      <correct size="4">1 2
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="7" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="16">2 2
+-3 -2
+-2 -1
+</input>
+      <output size="0"></output>
+      <stderr size="146">Traceback (most recent call last):
+  File &quot;./000302&quot;, line 15, in &lt;module&gt;
+    print(Imax, Jmax)           
+NameError: name 'Imax' is not defined
+</stderr>
+    </test>
+    <test num="8" status="RT" exit-code="1" time="37" real-time="39" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="52">2 2
+-1000000003 -1000000002
+-1000000002 -1000000001
+</input>
+      <output size="0"></output>
+      <stderr size="146">Traceback (most recent call last):
+  File &quot;./000302&quot;, line 15, in &lt;module&gt;
+    print(Imax, Jmax)           
+NameError: name 'Imax' is not defined
+</stderr>
+    </test>
+  </tests>
+</testing-report>

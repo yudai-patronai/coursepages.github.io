@@ -1,0 +1,92 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="93" judge-id="74" status="OK" scoring="KIROV" run-tests="5" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="5" score="50" max-score="50" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>4a8948ab-7064-4071-a93d-72bdca908506</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="536" real-time="542" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" visibility="full" >
+  <program-stats-str>{ utime=412, stime=124, ptime=536, rtime=542, maxvsz=117993472, maxrss=133832704, nvcsw=13, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=303104, maxrss=1294336, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="21">Usage: stat filename
+</output>
+      <correct size="21">Usage: stat filename
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="515" real-time="522" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;trampampam&lt;
+</args>
+  <program-stats-str>{ utime=409, stime=106, ptime=515, rtime=522, maxvsz=117993472, maxrss=133832704, nvcsw=17, nivcsw=6 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1294336, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="26">Can't open file trampampam</output>
+      <correct size="27">Can't open file trampampam
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="3" status="OK" time="560" real-time="567" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=424, stime=136, ptime=560, rtime=567, maxvsz=117993472, maxrss=134770688, nvcsw=16, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=1, maxvsz=307200, maxrss=1294336, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="12">123456789ab
+</input>
+      <output size="3">12
+</output>
+      <correct size="4">12
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="OK" time="553" real-time="560" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;output.txt&lt;
+</args>
+  <program-stats-str>{ utime=425, stime=128, ptime=553, rtime=560, maxvsz=117993472, maxrss=133832704, nvcsw=18, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1290240, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="2">0
+</output>
+      <correct size="3">0
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="5" status="OK" time="556" real-time="562" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=421, stime=135, ptime=556, rtime=562, maxvsz=117993472, maxrss=134774784, nvcsw=18, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=307200, maxrss=1290240, nvcsw=1, nivcsw=2 }</checker-stats-str>
+      <input too-big="yes" original-size="1048576" />
+      <output size="8">1048576
+</output>
+      <correct size="8">1048576
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+  </tests>
+</testing-report>

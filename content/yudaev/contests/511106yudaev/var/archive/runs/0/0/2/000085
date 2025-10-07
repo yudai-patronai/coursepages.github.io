@@ -1,0 +1,18 @@
+n=int(input())
+A=[]
+
+for i in range(n):
+     row=input().split()
+     for i in range(n):
+        row[i]=int(row[i])
+     A.append(row)
+def Rotate(A):
+    for i in range(n//2):
+      A[i],A[n-i-1]=A[n-i-1],A[i]
+         
+    A=list(zip(*A))   
+    return A
+
+
+for row in Rotate(A):
+   print(' '.join([str(elem) for elem in row]))  

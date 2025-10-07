@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char* argv[], char* envp[])
+{
+	int i, n, p = 0, res = 0, div = 0, k1 = 0, k2 = 0;
+	double ss;
+	freopen("output.txt", "wt", stdout);
+	freopen("input.txt", "rt", stdin);
+	scanf("%d", &n);
+	fclose(stdin);
+	int n1, n2;
+	while (div < n)
+	{
+		k1 = 0;
+		k2 = 0;
+		p++;
+		res += p;
+		n1 = (int) sqrt((double)res);
+		ss = sqrt((double)res);
+		ss -= n1;
+		if (ss == 0)
+			printf("%d_XXXXX_%lf_%d",n1,ss,p);
+		if (ss == 0)
+			n2 = n1;
+		else
+		{
+			if (p & 2 == 0)
+			{
+				n1 = p / 2;
+				n2 = p + 1;
+			}
+			else
+			{
+				n1 = (p + 1) / 2;
+				n2 = p;
+			}
+		}
+		for (i = 1; i <= n1; i++)
+		{
+			if (res % i == 0)
+				k1++;
+		}
+		for (i = 1; i <= n2 + 1; i++)
+		{
+			if (res % i == 0)
+				k2++;
+		}
+		div = k1 * k2;
+	}
+	printf("%d", res);
+	fclose(stdout);
+    return 0;
+}

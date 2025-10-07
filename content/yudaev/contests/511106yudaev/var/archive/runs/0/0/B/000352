@@ -1,0 +1,18 @@
+n = int(input())
+massive = [[] for x in range(n)]
+for i in range(n):
+    for j in range(n):
+        if i == j:
+            massive[i].append('*')
+        elif j == n // 2:
+            massive[i].append('*')
+        elif i == n // 2:
+            massive[i].append('*')
+        elif i + j == n - 1:
+            massive[i].append('*')
+        else:
+            massive[i].append('.')
+for i in range(n):
+    for j in range(n):
+        print(massive[i][j], end = ' ')
+    print('')

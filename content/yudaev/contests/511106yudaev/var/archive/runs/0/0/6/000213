@@ -1,0 +1,15 @@
+M=list(map(int,input().split()))
+stroki=M[0]
+stolbci=M[1]
+B=[0]*stroki
+for i in range(stroki):
+    B[i]=[0]*stolbci
+for i in range(stroki):
+    A=list(map(int,input().split()))
+    for j in range(stolbci):
+        B[i][j]=A[j]
+def Transpose(B):
+    C=list(zip(*B))
+    return C
+for i in range(len(B[0])):
+    print(' '.join(map(str,Transpose(B)[i])))    

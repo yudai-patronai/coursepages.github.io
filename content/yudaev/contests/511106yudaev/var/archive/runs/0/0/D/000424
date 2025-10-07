@@ -1,0 +1,9 @@
+B = input().split()
+maxx = None
+for i in range(int(B[0])):
+    A = list(map(int, input().split()))
+    if maxx == None or max(A) > maxx:
+        maxx = max(A)
+        c = A.index(maxx)
+        k = i
+print(k, c) 

@@ -1,0 +1,25 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="150" judge-id="7" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>35345175-9393-47bd-82eb-173ec850860f</uuid>
+  <compiler_output>000150.c: In function 'main':
+000150.c:9:2: error: format '%d' expects argument of type 'int *', but argument 2 has type 'long long int *' [-Werror=format=]
+  scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+  ^
+000150.c:9:2: error: format '%d' expects argument of type 'int *', but argument 3 has type 'long long int *' [-Werror=format=]
+000150.c:14:5: error: expected ')' before 'if'
+     if ((j &gt; 0) &amp;&amp; (i &gt; 0))
+     ^
+000150.c:25:1: error: expected expression before '}' token
+ }
+ ^
+000150.c:8:16: warning: variable 'b' set but not used [-Wunused-but-set-variable]
+  long long int b[21][21], i, j, n, m;
+                ^
+000150.c:25:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

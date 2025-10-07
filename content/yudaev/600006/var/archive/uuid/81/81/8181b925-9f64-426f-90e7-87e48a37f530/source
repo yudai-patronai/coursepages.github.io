@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main ( int argc, char** argv )
+{
+  if ( argc != 3 )
+    return -1;
+
+  char buf[BUFSIZ];
+  size_t size;
+
+  FILE* source = fopen( argv[1], "rb");
+  FILE* dest   = fopen( argv[2], "wb");
+
+  while ( size = fread ( buf, 1, BUFSIZ, source ) )
+    fwrite ( buf, 1, size, dest );
+
+  fclose ( source );
+  fclose ( dest );
+
+  return 0;
+}

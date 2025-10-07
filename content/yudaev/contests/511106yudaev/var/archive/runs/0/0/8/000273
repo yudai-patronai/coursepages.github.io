@@ -1,0 +1,28 @@
+def RotateA(A):
+    
+    if len(A)%2==0:
+        l=h=len(A)//2
+    else:
+        l=len(A)//2
+        h=l+1
+
+    for i in range(l): 
+        for j in range(h):
+            
+            tmp=A[i][j]
+            A[i][j]=A[-j-1][i]
+            A[-j-1][i]=A[-i-1][-j-1]
+            A[-i-1][-j-1]=A[j][-i-1]
+            A[j][-i-1]=tmp
+
+
+N=int(input())
+A=[]
+for i in range(N):
+    A.append(list(input().split()))
+
+
+RotateA(A)
+
+for row in A:
+    print(' '.join(row))

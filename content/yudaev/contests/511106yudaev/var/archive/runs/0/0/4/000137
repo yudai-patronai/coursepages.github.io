@@ -1,0 +1,22 @@
+
+def Transpose(A):
+    B=[]
+    for j in range(len(A[0])):
+        B.append([' ']*len(A))
+
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            B[j][i]=A[i][j]
+    return B
+
+
+A=[]
+n,m=list(map(int,input().split()))
+for row in range(n):
+    A.append(list())
+    A[row]=list(input().split())
+
+C=Transpose(A)
+
+for row in C: 
+    print(' '.join(row))

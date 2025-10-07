@@ -1,0 +1,25 @@
+Date: 2016/11/09 14:52:47
+From: alexpan98 (uid 21630)
+Ip: 213.87.129.244
+Command: submit
+Status: ok
+Run-id: 294
+Run-status: CG
+
+Date: 2016/11/09 14:53:17
+From: SYSTEM
+Status: testing completed
+Run-id: 294
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/09 14:52:47.268145
+  Request completion time:           2016/11/09 14:53:17.079773
+  Total testing duration:            29.812
+  Waiting in compile queue duration: 0.303
+  Compilation duration:              0.311
+  Waiting in serve queue duration:   0.480
+  Waiting in run queue duration:     0.837
+  Testing duration:                  27.814
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.064
+

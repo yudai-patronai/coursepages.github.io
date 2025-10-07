@@ -1,0 +1,22 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="334" judge-id="6" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>045a4642-c9e9-4d35-9977-42a75b7fef5d</uuid>
+  <compiler_output>000334.c: In function 'main':
+000334.c:13:5: warning: missing braces around initializer [-Wmissing-braces]
+     long int A[120][120] = {0}, N = 0, s = 0, d = 0, i = 0, j = 0, t = 0;
+     ^
+000334.c:13:5: warning: (near initialization for 'A[0]') [-Wmissing-braces]
+000334.c:18:9: error: format '%i' expects argument of type 'int *', but argument 2 has type 'long int *' [-Werror=format=]
+         scanf(&quot;%i&quot;, &amp;s);
+         ^
+000334.c:23:13: error: format '%i' expects argument of type 'int *', but argument 2 has type 'long int *' [-Werror=format=]
+             scanf(&quot;%i&quot;, &amp;s);
+             ^
+000334.c:13:61: warning: unused variable 'j' [-Wunused-variable]
+     long int A[120][120] = {0}, N = 0, s = 0, d = 0, i = 0, j = 0, t = 0;
+                                                             ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main()
+{
+    int i, n, k, c, d1, d2, p, q;
+
+    freopen("input.txt", "rt", stdin);
+    scanf("%d", &n);
+    fclose(stdin);
+
+    k = 1;
+    d1 = d2 = 0;
+    p = 1;
+    while (d1 * d2 <= n)
+    {
+        p = k;
+        q = k + 1;
+        if (k % 2 == 0)
+            p = k / 2;
+        else q /= 2;
+
+        d1 = 0;
+        for (c = 1; c * c < p; c++)
+        {
+            if (p % c == 0)
+                d1 += 2;
+        }
+        if (c * c == p)
+                ++d1;
+
+        d2 = 0;
+        for (c = 1; c * c < q; c++)
+        {
+            if ((q) % c == 0)
+                d2 += 2;
+        }
+        if (c * c == q)
+                ++d2;
+        ++k;
+    }
+    --k;
+
+    freopen("output.txt", "wt", stdout);
+    printf("%d", i);
+    fclose(stdout);
+
+    return 0;
+}

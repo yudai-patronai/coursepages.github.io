@@ -1,0 +1,11 @@
+def Transpose(A):
+    return [[A[j][i] for j in range(len(A))] for i in range(len(A[0]))]
+def Rotate(A):
+    A = Transpose(A)
+    for i in A:
+        q = ' '.join(list(map(str, i)))
+        c = q[::-1]
+        print (c)
+n = int(input())
+arr = [list(input().split()) for i in range(n)]
+Rotate(arr)

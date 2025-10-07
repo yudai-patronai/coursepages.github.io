@@ -1,0 +1,22 @@
+s = list(map(int, input().split()))
+n=s[0]
+m=s[1]
+z=0
+print(m)
+A = []
+for i in range(n):
+    A.append(list(map(int, input().split())))
+P = []
+for i in range(m):
+    P.append([0] * n)
+i=0
+while i<n:
+    j=0
+    while j<m:
+        P[j][i]=A[i][j]
+        j+=1
+    i+=1
+for row in P:
+    for elem in row:
+        print(elem, end = ' ')
+    print()

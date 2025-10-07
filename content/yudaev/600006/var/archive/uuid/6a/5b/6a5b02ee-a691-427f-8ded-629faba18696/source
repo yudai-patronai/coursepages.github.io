@@ -1,0 +1,7 @@
+#include <stdlib.h>
+int main(int argc, char* argv[]){
+	int s = 0, i;
+	for(i = 1; i < argc; i++)
+		s += atoi(argv[i]);
+	return s;
+}

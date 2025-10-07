@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define MAX 3601
+#define COUNT 5001
+
+
+int min(int a, int b, int c) {
+    if(a < b && a < c)
+        return a;
+    if(b < a && b < c)
+        return b;
+    return c;
+}
+
+int main() {
+    int A[COUNT], B[COUNT], C[COUNT], T[COUNT], n, i;
+    scanf("%d", &n);
+    for(i = 1; i <= n; i++) {
+        scanf("%d %d %d", &A[i], &B[i], &C[i]);
+    }
+    T[1] = A[1];
+    if(n >= 2) {
+        T[2] = min(T[1] + A[2], B[1], MAX);
+        if(n >= 3) {
+            T[3] = min(T[2] + A[3], T[1] + B[2], C[3]);
+            for(i = 4; i <= n; i++) {
+                T[i] = min(T[i - 3] + A[i], T[i - 2] + B[i - 1], T[i - 3] + C[i -2]);
+            }
+        }
+    }
+    printf("%d", T[n]);
+    return 0;
+}

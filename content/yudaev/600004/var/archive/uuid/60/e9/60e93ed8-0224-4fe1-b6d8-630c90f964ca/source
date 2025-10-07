@@ -1,0 +1,100 @@
+#include <stdio.h>
+
+int y = 0;
+
+struct tree
+{
+    int a;
+    struct tree* i;
+    struct tree* j;
+    int b;
+};
+
+void push(struct tree** o, int n)
+{
+    int t = 0;
+    struct tree* k;
+    struct tree* s;
+    if ((*o) == NULL)
+    {
+        struct tree* p = (struct tree*)malloc(1 * sizeof(struct tree));
+        p -> a = n;
+        p -> b = 1;
+        p -> i = NULL;
+        p -> j = NULL;
+        *o = p;
+        if (p -> b >= y)
+        y = p -> b;
+    }
+    else
+    {
+        if (n >= (**o).a)
+        {
+            k = (**o).i;
+            t = 1;
+        }
+        else
+        {
+            k = (**o).j;
+            t = 0;
+        }
+
+        s = *o;
+
+        while (k != NULL)
+        {
+            if (n >= k -> a)
+            {
+                s = k;
+                t = 1;
+                k = k -> i;
+            }
+            else
+            {
+                s = k;
+                t = 0;
+                k = k -> j;
+            }
+        }
+        struct tree* p = (struct tree*)malloc(1 * sizeof(struct tree));
+        p -> i = NULL;
+        p -> j = NULL;
+        p -> b = 1 + s -> b;
+        p -> a = n;
+        if (t == 1)
+            s -> i = p;
+        else
+            s -> j = p;
+        if (p -> b >= y)
+        y = p -> b;
+    }
+}
+
+void print (struct tree* p)
+{
+    if (p != NULL)
+    {
+        printf("%d\n", p -> a);
+        print(p -> i);
+        print(p -> j);
+    }
+    else
+    printf("\n");
+
+}
+
+
+int main()
+{
+    struct tree* o = NULL;
+    int n;
+    int i;
+    for (i = 0; i < 8; i++)
+    {
+        scanf("%d", &n);
+        push (&o, n);
+    }
+    print(o);
+    printf("\n%d", y);
+    return 0;
+}

@@ -1,0 +1,96 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="146" judge-id="25" status="PT" scoring="KIROV" run-tests="6" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="30" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>ff02387b-9970-45ca-a8cf-a0f5fddcbaae</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output>000146.c:1:5: warning: 'main' takes only zero or two arguments [-Wmain]
+ int main (int argv)
+     ^
+000146.c:1:5: warning: 'main' takes only zero or two arguments [-Wmain]
+ int main (int argv)
+     ^
+000146.c:1:5: warning: 'main' takes only zero or two arguments [-Wmain]
+ int main (int argv)
+     ^
+</compiler_output>
+  <tests>
+    <test num="1" status="WA" time="474" real-time="482" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;3&lt;
+[  2]: &gt;15&lt;
+[  3]: &gt;9&lt;
+[  4]: &gt;20&lt;
+</args>
+  <program-stats-str>{ utime=375, stime=99, ptime=474, rtime=482, maxvsz=117993472, maxrss=133828608, nvcsw=20, nivcsw=8 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="2" status="WA" time="474" real-time="481" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;12&lt;
+[  2]: &gt;21&lt;
+[  3]: &gt;-11&lt;
+[  4]: &gt;44&lt;
+</args>
+  <program-stats-str>{ utime=376, stime=98, ptime=474, rtime=481, maxvsz=117993472, maxrss=133828608, nvcsw=20, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="473" real-time="757" max-memory-used="117993472" nominal-score="2" score="0" >
+  <program-stats-str>{ utime=383, stime=90, ptime=473, rtime=757, maxvsz=117993472, maxrss=133824512, nvcsw=20, nivcsw=6 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="9" time="475" real-time="482" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;3&lt;
+[  2]: &gt;-56&lt;
+[  3]: &gt;3&lt;
+[  4]: &gt;-786&lt;
+[  5]: &gt;0&lt;
+[  6]: &gt;21&lt;
+[  7]: &gt;1000&lt;
+[  8]: &gt;-185&lt;
+</args>
+  <program-stats-str>{ utime=376, stime=99, ptime=475, rtime=482, maxvsz=117993472, maxrss=133824512, nvcsw=19, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="5" status="WA" time="476" real-time="482" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;2019384756&lt;
+[  2]: &gt;-1234567890&lt;
+[  3]: &gt;-876543210&lt;
+[  4]: &gt;100000000&lt;
+[  5]: &gt;-8273600&lt;
+</args>
+  <program-stats-str>{ utime=382, stime=94, ptime=476, rtime=482, maxvsz=117993472, maxrss=134766592, nvcsw=19, nivcsw=8 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="6" status="WA" time="475" real-time="482" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;123&lt;
+</args>
+  <program-stats-str>{ utime=377, stime=98, ptime=475, rtime=482, maxvsz=117993472, maxrss=133828608, nvcsw=17, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+  </tests>
+</testing-report>

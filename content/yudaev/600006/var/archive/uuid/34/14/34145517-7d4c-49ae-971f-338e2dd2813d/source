@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int n, char **a)
+{
+    
+    FILE*fn = fopen("output.txt", "w");
+    if (n < 2)
+    {
+        //fprintf(fn, "Usage: stat filename");
+        printf("Usage: stat filename");
+        fclose(fn);
+        return 1;
+    }
+    else
+    {
+        FILE*fm = fopen(a[1],"r");
+        if (fm == 0)
+        {
+            //fprintf(fn, "Can't open file");
+            printf("Can't open file");
+            fclose(fn);
+            return 2;
+        }
+        else
+        {
+            //fprintf(fn, "%ld", size);
+            fseek(fm, 0, SEEK_END);
+            long size = ftell(fm);
+            fclose(fm);
+            printf("%ld", size);
+            fclose(fn);
+            return 0;
+        }
+    }
+}

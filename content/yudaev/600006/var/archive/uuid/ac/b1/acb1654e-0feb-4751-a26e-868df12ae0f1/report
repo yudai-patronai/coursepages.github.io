@@ -1,0 +1,35 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="55" judge-id="35" status="PT" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>acb1654e-0feb-4751-a26e-868df12ae0f1</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="2" time="518" real-time="525" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=409, stime=109, ptime=518, rtime=525, maxvsz=117993472, maxrss=134062080, nvcsw=17, nivcsw=6 }</program-stats-str>
+      <input size="0"></input>
+      <output size="41">LD_LIBRARY_PATH=/home/judges/compile/lib
+</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="2" time="533" real-time="541" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=405, stime=128, ptime=533, rtime=541, maxvsz=117993472, maxrss=134057984, nvcsw=18, nivcsw=8 }</program-stats-str>
+      <input size="0"></input>
+      <output size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+  </tests>
+</testing-report>

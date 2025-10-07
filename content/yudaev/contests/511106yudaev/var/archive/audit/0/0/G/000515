@@ -1,0 +1,50 @@
+Date: 2015/10/19 23:44:21
+From: sasha_queen (uid 18604)
+Ip: 93.175.8.74
+Command: submit
+Status: ok
+Run-id: 515
+Run-status: CG
+
+Date: 2015/10/19 23:44:23
+From: SYSTEM
+Status: testing completed
+Run-id: 515
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/19 23:44:21.448157
+  Request completion time:           2015/10/19 23:44:23.482193
+  Total testing duration:            2.034
+  Waiting in compile queue duration: 0.579
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.441
+  Waiting in run queue duration:     0.352
+  Testing duration:                  0.555
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.103
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 515
+Run-status: CG
+
+Date: 2015/12/09 20:30:19
+From: SYSTEM
+Status: testing completed
+Run-id: 515
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:40.972235
+  Request completion time:           2015/12/09 20:30:19.774812
+  Total testing duration:            67058.803
+  Waiting in compile queue duration: 0.068
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   8.807
+  Waiting in run queue duration:     1040.349
+  Testing duration:                  0.622
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66008.953
+

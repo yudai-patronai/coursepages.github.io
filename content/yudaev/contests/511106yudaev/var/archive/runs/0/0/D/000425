@@ -1,0 +1,12 @@
+def maxq(A,i,j):#i Len str, j Len  stlb
+    xm,ym,m=0,0,A[0][0]
+    for x in range(j):
+        for y in range(i):
+            if A[x][y]>m:
+                m=A[x][y]
+                xm,ym=x,y
+    return(xm,ym)          
+
+m,n=tuple(map(int,input().split()))
+A=[[float(y) for y in input().split()] for x in range(m)]
+print(*maxq(A,n,m))

@@ -1,0 +1,50 @@
+Date: 2015/10/19 23:22:14
+From: shibaeva-543 (uid 18598)
+Ip: 93.175.0.32
+Command: submit
+Status: ok
+Run-id: 461
+Run-status: CG
+
+Date: 2015/10/19 23:22:15
+From: SYSTEM
+Status: testing completed
+Run-id: 461
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/19 23:22:14.339382
+  Request completion time:           2015/10/19 23:22:15.446181
+  Total testing duration:            1.107
+  Waiting in compile queue duration: 0.182
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.214
+  Waiting in run queue duration:     0.065
+  Testing duration:                  0.262
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.380
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 461
+Run-status: CG
+
+Date: 2015/12/09 20:30:18
+From: SYSTEM
+Status: testing completed
+Run-id: 461
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:38.568464
+  Request completion time:           2015/12/09 20:30:19.194797
+  Total testing duration:            67060.626
+  Waiting in compile queue duration: 0.834
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   10.319
+  Waiting in run queue duration:     1036.377
+  Testing duration:                  0.316
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66012.776
+

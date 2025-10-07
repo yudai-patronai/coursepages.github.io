@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="0" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>7fd7b1b5-950b-432d-9ac4-cd5894c27315</uuid>
+  <compiler_output>000000.c: In function 'main':
+000000.c:2:9: error: 'argc' undeclared (first use in this function)
+ {return argc-1;
+         ^
+000000.c:2:9: note: each undeclared identifier is reported only once for each function it appears in
+000000.c:3:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

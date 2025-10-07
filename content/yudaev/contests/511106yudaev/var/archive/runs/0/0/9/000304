@@ -1,0 +1,14 @@
+a = [int(x) for x in input().split()]
+n = a[0]
+m = a[1]
+ma = [[int(x) for x in input().split()] for y in range(n)]
+elMax = ma[0][0]
+Imax = 0
+Jmax = 0
+for i in range(n):
+    for j in range(m):
+        if ma[i][j] > elMax:
+            Imax = i
+            Jmax = j
+            elMax = ma[i][j]
+print(Imax, Jmax)

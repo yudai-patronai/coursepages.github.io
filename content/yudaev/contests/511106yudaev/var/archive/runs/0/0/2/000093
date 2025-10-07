@@ -1,0 +1,19 @@
+def arrayInput(n):
+    Arr = [[]]*n
+    for i in range(n):
+        Arr[i] = input().split()
+    return(Arr)
+
+def IsSymmetric(Arr):
+    symmetry = True
+    for i in range(len(Arr)):
+        for j in range(len(Arr[i])):
+            if Arr[i][j] != Arr[j][i]:
+                symmetry = False
+    return(symmetry)
+
+arr = arrayInput(int(input()))
+if IsSymmetric(arr):
+    print('YES')
+else:
+    print('NO')

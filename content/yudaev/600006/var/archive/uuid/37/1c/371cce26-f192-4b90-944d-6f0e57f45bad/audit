@@ -1,0 +1,25 @@
+Date: 2016/11/01 13:47:03
+From: OkolelovVitaly (uid 21858)
+Ip: 213.87.163.124
+Command: submit
+Status: ok
+Run-id: 243
+Run-status: CG
+
+Date: 2016/11/01 13:47:10
+From: SYSTEM
+Status: testing completed
+Run-id: 243
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/01 13:47:03.303746
+  Request completion time:           2016/11/01 13:47:10.171843
+  Total testing duration:            6.868
+  Waiting in compile queue duration: 0.723
+  Compilation duration:              0.236
+  Waiting in serve queue duration:   0.210
+  Waiting in run queue duration:     0.322
+  Testing duration:                  4.887
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.490
+

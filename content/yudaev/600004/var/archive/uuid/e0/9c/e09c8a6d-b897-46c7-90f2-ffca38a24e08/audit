@@ -1,0 +1,25 @@
+Date: 2016/10/10 09:36:34
+From: kperminov-nnov (uid 21498)
+Ip: 109.188.127.187
+Command: submit
+Status: ok
+Run-id: 20
+Run-status: CG
+
+Date: 2016/10/10 09:36:39
+From: SYSTEM
+Status: testing completed
+Run-id: 20
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/10 09:36:34.974320
+  Request completion time:           2016/10/10 09:36:39.850651
+  Total testing duration:            4.876
+  Waiting in compile queue duration: 0.459
+  Compilation duration:              0.255
+  Waiting in serve queue duration:   0.474
+  Waiting in run queue duration:     0.964
+  Testing duration:                  2.699
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.025
+

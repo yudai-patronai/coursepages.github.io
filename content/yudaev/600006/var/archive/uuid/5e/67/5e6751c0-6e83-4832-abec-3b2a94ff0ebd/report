@@ -1,0 +1,11 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="331" judge-id="58" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>5e6751c0-6e83-4832-abec-3b2a94ff0ebd</uuid>
+  <compiler_output>000331.c:1:20: fatal error: stdlip.h: No such file or directory
+ #include &lt;stdlip.h&gt;
+                    ^
+compilation terminated.
+</compiler_output>
+</testing-report>

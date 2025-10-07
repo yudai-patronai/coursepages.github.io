@@ -1,0 +1,9 @@
+A = [int(x) for x in input().split()]
+C = []
+C = [['.' for j in range (A[1])] for i in range (A[0])]
+for i in range(A[0]):
+    for j in range(A[1]):
+        if (j+i) % 2 == 1:
+            C[i][j] = '*'
+for row in C:
+    print(' '.join([str(elem) for elem in row]))

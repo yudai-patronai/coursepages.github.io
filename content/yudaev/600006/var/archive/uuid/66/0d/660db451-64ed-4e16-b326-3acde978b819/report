@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="104" judge-id="5" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>660db451-64ed-4e16-b326-3acde978b819</uuid>
+  <compiler_output>000104.c: In function 'main':
+000104.c:5:23: warning: value computed is not used [-Wunused-value]
+   for(i = 0, i &lt; argc &amp;&amp; argv[i], i++)
+                       ^
+000104.c:5:23: warning: value computed is not used [-Wunused-value]
+000104.c:5:38: error: expected ';' before ')' token
+   for(i = 0, i &lt; argc &amp;&amp; argv[i], i++)
+                                      ^
+000104.c:5:38: error: expected expression before ')' token
+</compiler_output>
+</testing-report>

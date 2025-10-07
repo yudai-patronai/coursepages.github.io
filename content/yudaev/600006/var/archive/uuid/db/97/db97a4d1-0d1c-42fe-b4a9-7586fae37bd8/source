@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main(int n, char** a)
+{
+    if (n != 1)
+        return (n-1);
+    else
+        return 0;
+}

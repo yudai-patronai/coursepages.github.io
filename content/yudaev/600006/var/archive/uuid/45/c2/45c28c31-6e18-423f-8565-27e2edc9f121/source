@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+        int file, len;
+        FILE *retcode;
+        if(argc < 2)
+        {
+                freopen("output.txt", "wt", stdout);
+                printf("Usage: stat filename\n");
+                fclose(stdout);
+                return 1;
+        }
+        retcode = freopen(argv[1], "rt", stdin);
+        if(NULL == retcode)
+        {
+                freopen("output.txt", "wt", stdout);
+                printf("Can't open file %s\n", argv[1]);
+                fclose(stdout);
+                return 2;
+        }
+        fseek(stdin, 0, SEEK_END);
+        len = ftell(stdin);
+        fclose(stdin);
+        freopen("output.txt", "wt", stdout);
+        printf("%d\n", len);
+        fclose(stdout);
+        return 0;
+}

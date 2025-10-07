@@ -1,0 +1,25 @@
+Date: 2016/10/11 12:25:39
+From: Andrey1998 (uid 21823)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 82
+Run-status: CG
+
+Date: 2016/10/11 12:25:44
+From: SYSTEM
+Status: testing completed
+Run-id: 82
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/11 12:25:39.777613
+  Request completion time:           2016/10/11 12:25:44.495335
+  Total testing duration:            4.718
+  Waiting in compile queue duration: 0.637
+  Compilation duration:              0.287
+  Waiting in serve queue duration:   0.192
+  Waiting in run queue duration:     0.806
+  Testing duration:                  2.736
+  Post-processing duration:          0.001
+  Waiting in serve queue duration:   0.059
+

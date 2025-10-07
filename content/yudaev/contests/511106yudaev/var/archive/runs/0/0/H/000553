@@ -1,0 +1,20 @@
+n, m = list(map(int,input().split()))
+l = [[None] * m for a in range(n)]
+count1 = 1
+count2 = 1
+for i in range(n):
+    for j in range(m):
+        if count1 % 2 == 1:
+            if count2 % 2 == 1:
+                l[i][j] = '.'
+            else:
+                l[i][j] = '*'
+        else:
+            if count2 % 2 == 1:
+                l[i][j] = '*'
+            else:
+                l[i][j] = '.'
+        count2 += 1
+    count1 += 1
+for z in l:
+    print(*z)

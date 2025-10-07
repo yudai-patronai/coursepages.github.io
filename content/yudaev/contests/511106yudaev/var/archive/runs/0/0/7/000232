@@ -1,0 +1,11 @@
+n=int(input())
+A=[list(map(int, input().split())) for k in range(n)]
+def Rotate(A):
+    n=len(A)
+
+    for u in range(n//2):
+        for t in range(u,n-u-1):
+            A[-u-1][t], A[t][u], A[u][-t-1], A[-t-1][-u-1] = A[-t-1][-u-1], A[u][-t-1],  A[t][u], A[-u-1][t]
+Rotate(A)
+for row in A:
+    print(' '.join([str(elem) for elem in row]))

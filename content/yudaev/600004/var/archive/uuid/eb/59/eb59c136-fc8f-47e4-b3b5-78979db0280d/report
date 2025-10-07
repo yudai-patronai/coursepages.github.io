@@ -1,0 +1,32 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="177" judge-id="5" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>eb59c136-fc8f-47e4-b3b5-78979db0280d</uuid>
+  <compiler_output>000177.c:3:1: error: expected identifier or '(' before '-' token
+ -std=c99
+ ^
+000177.c: In function 'main':
+000177.c:9:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = 1; i &lt;= 90; i++) {
+  ^
+000177.c:9:2: note: use option -std=c99 or -std=gnu99 to compile your code
+000177.c:10:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int j = 1; j &lt;= 90; j++) {
+   ^
+000177.c:11:4: error: 'mas' undeclared (first use in this function)
+    mas[i][j] = 0;
+    ^
+000177.c:11:4: note: each undeclared identifier is reported only once for each function it appears in
+000177.c:15:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int ii = 1; ii &lt;= 90; ii++) {
+  ^
+000177.c:16:3: error: 'for' loop initial declarations are only allowed in C99 mode
+   for (int jj = 1; jj &lt;= 90; jj++) {
+   ^
+000177.c: In function 'nat':
+000177.c:32:6: error: 'mas' undeclared (first use in this function)
+  if (mas[m][n] != 0) {
+      ^
+</compiler_output>
+</testing-report>

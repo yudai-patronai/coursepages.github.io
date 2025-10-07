@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="303" judge-id="30" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>cdb6f4d0-715b-4b18-95a2-e234879c32e7</uuid>
+  <compiler_output>000303.c: In function 'main':
+000303.c:5:9: error: implicit declaration of function 'atoi' [-Werror=implicit-function-declaration]
+         s+= atoi(argv[i]));
+         ^
+000303.c:5:26: error: expected ';' before ')' token
+         s+= atoi(argv[i]));
+                          ^
+000303.c:5:26: error: expected statement before ')' token
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

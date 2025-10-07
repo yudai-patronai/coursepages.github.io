@@ -1,0 +1,84 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="124" judge-id="3" status="PT" scoring="KIROV" run-tests="5" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="2" score="4" max-score="50" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>cd1f2bdc-373e-4b5a-9d76-5ca9fa0e9d88</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="507" real-time="514" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" visibility="full" >
+  <program-stats-str>{ utime=415, stime=92, ptime=507, rtime=514, maxvsz=117993472, maxrss=133656576, nvcsw=17, nivcsw=10 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="21">Usage: stat filename
+</output>
+      <correct size="21">Usage: stat filename
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="517" real-time="523" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;trampampam&lt;
+</args>
+  <program-stats-str>{ utime=419, stime=98, ptime=517, rtime=523, maxvsz=117993472, maxrss=133705728, nvcsw=20, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=0, maxrss=1314816, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="26">Can't open file trampampam</output>
+      <correct size="27">Can't open file trampampam
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="523" real-time="527" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=425, stime=98, ptime=523, rtime=527, maxvsz=117993472, maxrss=133816320, nvcsw=14, nivcsw=7 }</program-stats-str>
+      <input size="12">123456789ab
+</input>
+      <output size="2">12</output>
+      <stderr size="233">TEST
+PASSED
+==9569== 8,192 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==9569==    at 0x4A06409: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9569==    by 0x400823: main (000124.c:24)
+==9569== 
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="522" real-time="528" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;output.txt&lt;
+</args>
+  <program-stats-str>{ utime=431, stime=91, ptime=522, rtime=528, maxvsz=117993472, maxrss=133812224, nvcsw=17, nivcsw=6 }</program-stats-str>
+      <input size="0"></input>
+      <output size="1">0</output>
+      <stderr size="233">TEST
+PASSED
+==9577== 8,192 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==9577==    at 0x4A06409: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9577==    by 0x400823: main (000124.c:24)
+==9577== 
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="527" real-time="534" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=434, stime=93, ptime=527, rtime=534, maxvsz=117993472, maxrss=133824512, nvcsw=16, nivcsw=7 }</program-stats-str>
+      <input too-big="yes" original-size="1048576" />
+      <output size="7">1048576</output>
+      <stderr size="233">TEST
+PASSED
+==9586== 8,192 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==9586==    at 0x4A06409: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9586==    by 0x400823: main (000124.c:24)
+==9586== 
+</stderr>
+    </test>
+  </tests>
+</testing-report>

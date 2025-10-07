@@ -1,0 +1,28 @@
+#include <stdio.h>
+#define MAXN 5001
+
+int min(int a, int b) {
+    if (a<b) return a;
+    return b;
+}
+
+int main () {
+    int i, n;
+    int a[MAXN], b[MAXN], c[MAXN];
+    int d[MAXN];
+    
+    scanf("%d", &n);
+    for (i = 1; i<=n; i++) 
+        scanf("%d %d %d", &a[i], &b[i], &c[i]);
+    
+    d[0] = 0;
+    d[1] = a[1];
+    d[2] = min(b[1], a[1]+a[2]);
+    
+    for (i = 3; i<=n; i++) 
+        d[i] = min(   d[i-1]+a[i] ,  min( d[i-2]+b[i-1], d[i-3] + c[i-2] )       );
+    
+    printf("%d", d[n]);    
+    return 0;    
+}
+

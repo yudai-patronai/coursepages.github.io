@@ -1,0 +1,49 @@
+<html>
+	<head>
+	On server:
+	</head>
+<br/>
+	<code>
+	mkdir my_project.git<br/>
+	cd my_project.git<br/>
+	git --bare init<br/>
+	</code>
+<br/>
+	<head>
+	On client:
+	</head>
+<br/>
+	<code>
+	mkdir my_project<br/>
+	cd my_project<br/>
+	touch .gitignore<br/>
+	git init<br/>
+	git add .<br/>
+	git commit -m "Initial commit"<br/>
+	git remote add origin username@url:/path/to/my_project.git<br/>
+	git push origin master<br/>
+	</code>
+<br/>
+Когда репозиторий уже создан, и надо получить его копию в другом месте  - используется 
+<br/>
+<code>
+git clone username@url:path_to_git_dir <br/>
+</code>
+<br/>
+Для добавления новых файлов и папок:
+<br/>
+<code>
+git add new_files <br/>
+git commit -m "....." <br/>
+git push [origin master] <br/>
+</code>
+Для удаления:
+<br/>
+<code>
+git rm files <br/>
+git commit -m "...." <br/>
+git push [origin master] <br/>
+</code>
+<br/>
+<a href="https://git-scm.com/book/ru/v2">git tutorial</a>
+</html>

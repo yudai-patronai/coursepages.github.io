@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main()
+{
+    char c;
+    int a;
+    float  sum=0; 
+    float  mn = 0.5;
+    scanf("%c", &c);
+    while (scanf("%c", &c) == 1)
+    {
+        if(c == ' ')
+            scanf("%c", &c);
+        if(c == '(')
+        {
+            mn = mn / 2;
+        }
+        if(c == ')')
+        {
+            mn = mn * 2;
+        }
+        if ((c != ' ') && (c != ')') && (c != '(')) {
+            ungetc (c, stdin);
+            scanf("%d", &a);
+            sum = sum + mn * a;
+        }
+    }
+    printf("%f", sum);
+
+    return 0;
+}

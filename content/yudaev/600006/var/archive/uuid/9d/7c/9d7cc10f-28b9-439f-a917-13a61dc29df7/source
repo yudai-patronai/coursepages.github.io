@@ -1,0 +1,43 @@
+#include<stdio.h>
+int dvn(int a)
+{
+  if(1==a)
+    return 1;
+  if(2==a)
+    return 2;
+  int k=2, i;
+  for(i=2; i<a/2 + 1; i++)
+  {
+    if(a/i*i==a)
+      k++;
+  }
+  return k;
+}
+
+int main()
+{
+  int n, i=0, k=0, l=0;
+  freopen("input.txt", "rt", stdin);
+  freopen("output.txt", "wt", stdout);
+  scanf("%d", &n);
+  if(n>200)
+    i=100;
+  while(k*l<=n)
+  {
+    i++;
+    if(i % 2==0)
+    {
+      k=dvn(i/2);
+      l=dvn(i+1);
+    }
+    else
+    {
+      k=dvn((i+1)/2);
+      l=dvn(i);
+    }
+  }
+  printf("%d", i*(i+1)/2);
+  fclose(stdin);
+  fclose(stdout);
+  return 0;
+}

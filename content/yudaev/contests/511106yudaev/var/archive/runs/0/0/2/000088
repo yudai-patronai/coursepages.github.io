@@ -1,0 +1,11 @@
+def arrayOutput(Arr):
+    for j in range(len(Arr)):
+        print(' '.join(map(str, Arr[j])))
+
+n = int(input())
+arr = [['.' for i in range(n)] for j in range(n)]
+for i in range(n):
+    for j in range(n):
+        if i == j or j == n//2 or i == n//2 or i == n-j-1:
+            arr[i][j] = '*'
+arrayOutput(arr)

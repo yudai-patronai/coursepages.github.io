@@ -1,0 +1,16 @@
+L = input().split()
+n = (int(L[0]))
+m = int(L[1])
+maxn = None
+maxi = -1
+maxj = -1
+M = [['' for i in range(int(L[1]))] for j in range(int(L[0]))]
+for i in range(int(L[0])):
+    inp = input().split()
+    for j in range(int(L[1])):
+        M[i][j] = int(inp[j])
+        if maxn == None or M[i][j] > maxn:
+            maxn = M[i][j]
+            maxi = i
+            maxj = j
+print(maxi, maxj)

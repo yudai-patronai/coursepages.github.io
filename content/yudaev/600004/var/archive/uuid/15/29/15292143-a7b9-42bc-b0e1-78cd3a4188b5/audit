@@ -1,0 +1,25 @@
+Date: 2016/11/04 05:58:28
+From: birukov.leha (uid 21650)
+Ip: 37.144.19.118
+Command: submit
+Status: ok
+Run-id: 274
+Run-status: CG
+
+Date: 2016/11/04 05:58:33
+From: SYSTEM
+Status: testing completed
+Run-id: 274
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/04 05:58:28.954869
+  Request completion time:           2016/11/04 05:58:33.308177
+  Total testing duration:            4.353
+  Waiting in compile queue duration: 0.013
+  Compilation duration:              0.270
+  Waiting in serve queue duration:   0.765
+  Waiting in run queue duration:     0.348
+  Testing duration:                  2.670
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.288
+

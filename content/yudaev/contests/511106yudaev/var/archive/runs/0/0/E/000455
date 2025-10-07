@@ -1,0 +1,17 @@
+def SwapColumns(A, i, j):
+    sub = []
+    for q in A:
+        sub.append(q[i])
+    for q in range(len (A)):
+        A[q][i] = A[q][j]
+    for q in range(len(A)):
+        A[q][j] = sub[q]
+    return A
+a = list(map(int, input().split()))
+a = a[0]
+arr = [list (input().split()) for i in range(a)]
+b = list(map(int, input().split()))
+c, d = b[0], b[1]
+array = SwapColumns(arr, c, d)
+for i in array:
+    print (' '.join(i))

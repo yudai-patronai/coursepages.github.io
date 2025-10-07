@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main()
+{
+	int i, n, b, k, j, t;
+	freopen("input.txt", "rt", stdin);
+	scanf("%d", &n);
+	fclose(stdin);
+	for (i = 1; i <= n; i++)
+	{
+		b = i * (i + 1) / 2;
+		k = 1; 
+		for (j = 2; j * j <= b; j++)
+		if (b % j == 0)
+		k++;
+		for (t = t + 1; t <= b/2; t++)
+		if (b %j == 0)
+		k++;
+		if (k > n)
+		{
+			freopen("output.txt", "rt", stdout);
+			printf("%d", b);
+			fclose(stdout);
+			break;
+		}
+	}
+	return 0;
+}

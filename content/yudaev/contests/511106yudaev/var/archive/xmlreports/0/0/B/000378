@@ -1,0 +1,115 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="378" judge-id="379" status="PT" scoring="KIROV" run-tests="8" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="0" score="0" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>00714f25-e086-47f5-bd2b-1f3588a291fa</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="0" visibility="full" >
+      <input size="28">3 4
+0 3 2 4
+2 3 5 5
+5 1 2 3
+</input>
+      <output size="0"></output>
+      <stderr size="123">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 11, in &lt;module&gt;
+    d=input()
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" visibility="full" >
+      <input size="7">1 1
+1
+
+</input>
+      <output size="0"></output>
+      <stderr size="126">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 21, in &lt;module&gt;
+    print(a, b)
+NameError: name 'a' is not defined
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="40">3 5
+1 2 3 4 5
+6 7 8 9 10
+11 12 13 14 15
+</input>
+      <output size="0"></output>
+      <stderr size="123">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 11, in &lt;module&gt;
+    d=input()
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="38" real-time="39" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="17">6 1
+1
+2
+3
+2
+1
+2
+
+</input>
+      <output size="0"></output>
+      <stderr size="126">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 21, in &lt;module&gt;
+    print(a, b)
+NameError: name 'a' is not defined
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="16">1 6
+1 2 3 3 2 1
+</input>
+      <output size="0"></output>
+      <stderr size="123">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 11, in &lt;module&gt;
+    d=input()
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="6" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="34">3 5
+1 4 5 2 7
+3 4 8 0 8
+8 8 8 8 8
+</input>
+      <output size="0"></output>
+      <stderr size="123">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 11, in &lt;module&gt;
+    d=input()
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="7" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="16">2 2
+-3 -2
+-2 -1
+</input>
+      <output size="0"></output>
+      <stderr size="126">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 21, in &lt;module&gt;
+    print(a, b)
+NameError: name 'a' is not defined
+</stderr>
+    </test>
+    <test num="8" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="52">2 2
+-1000000003 -1000000002
+-1000000002 -1000000001
+</input>
+      <output size="0"></output>
+      <stderr size="126">Traceback (most recent call last):
+  File &quot;./000378&quot;, line 21, in &lt;module&gt;
+    print(a, b)
+NameError: name 'a' is not defined
+</stderr>
+    </test>
+  </tests>
+</testing-report>

@@ -1,0 +1,17 @@
+A=[]
+n,m=list(map(int,input().split()))
+for i in range(n):
+#    A.append(list(map(float,input().split())))
+    A.append(input().split()) 
+
+my_max=A[0][0]
+max_row=0
+max_col=0
+for row in range(len(A)):
+    for column in range(len(A[i])):
+        if A[row][column]>my_max:
+            my_max=A[row][column]
+            max_row=row
+            max_col=column
+
+print(str(max_row),str(max_col),sep=' ')

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NumPy: матрицы и операции над ними</title>
+    <meta charset="utf-8" />
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <meta content="2021-02-08 09:00" name="date" />
+    <meta content="Библиотека NumPy" name="summary" />
+    <meta content="published" name="status" />
+</head>
+<style>
+    div{
+      width: 600px;
+      margin: auto;
+      border: 0px ;
+      
+    }
+    body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="numpy">
+        <h1><code>NumPy</code>: матрицы и операции над ними</h1>
+        <aside id="contents" class="topic contents">
+            <h1>Contents</h1>
+            <ul>
+                <li><a href="#id1"><code>NumPy</code>: матрицы и операции над ними</a></li>
+                <li><a href="#id3">1. Создание матриц</a></li>
+                <li><a href="#id4">2. Индексирование</a></li>
+                <li><a href="#id5">3. Векторы, вектор-строки и вектор-столбцы</a></li>
+                <li><a href="#datatypes">4. Datatypes</a></li>
+                <li><a href="#id6">5. Математические операции</a></li>
+                <li><a href="#id7">6. Умножение матриц и столбцов</a></li>
+                <li><a href="#id8">7. Объединение массивов</a>
+                    <ul>
+                        <li><a href="#id9">Задания: (Блок 1)</a>
+                            <ul>
+                                <li><a href="#id10">Задание 1:</a></li>
+                                <li><a href="#id11">Задание 2:</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#id12">8. Транспонирование матриц</a></li>
+                <li><a href="#id13">9. Определитель матрицы</a></li>
+                <li><a href="#id14">10. Ранг матрицы</a></li>
+                <li><a href="#id15">11. Системы линейных уравнений</a></li>
+                <li><a href="#id16">12. Обращение матриц</a></li>
+                <li><a href="#id17">13. Собственные числа и собственные вектора матрицы</a></li>
+                <li><a href="#id18">14. Расстояния между векторами</a>
+                    <ul>
+                        <li><a href="#p">p-норма</a></li>
+                        <li><a href="#ell-1">
+                                <span class="math">\(\ell_{1}\)</span>
+                             норма</a></li>
+                        <li><a href="#ell-2">
+                                <span class="math">\(\ell_{2}\)</span>
+                             норма</a></li>
+                    </ul>
+                </li>
+                <li><a href="#id19">15. Расстояния между векторами</a></li>
+                <li><a href="#id20">16. Скалярное произведение и угол между векторами</a></li>
+                <li><a href="#id21">17. Комплексные числа в питоне</a>
+                    <ul>
+                        <li><a href="#id22">Задания: (Блок 2)</a>
+                            <ul>
+                                <li><a href="#id23">Задание 3:</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section id="id1">
+            <h2><code>NumPy</code>: матрицы и операции над ними</h2>
+            <p>Ссылка на <a href="http://judge2.vdi.mipt.ru/yudaev/rt2021/2Numpy.ipynb" download>jupyter notebook</a></p>
+            <p>В этом ноутбуке из сторонних библиотек нам понадобится только <code>NumPy</code>. Для удобства импортируем ее под более коротким именем:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span></pre>
+        </section>
+        <section id="id3">
+            <h2>1. Создание матриц</h2>
+            <p>Приведем несколько способов создания матриц в <code>NumPy</code>.</p>
+            <p>Самый простой способ — с помощью функции <strong>numpy.array(list, dtype=None, ...)</strong>.</p>
+            <p>В качестве первого аргумента ей надо передать итерируемый объект, элементами которого являются другие итерируемые объекты одинаковой длины и содержащие данные одинакового типа.</p>
+            <p>Второй аргумент является опциональным и определяет тип данных матрицы. Его можно не задавать, тогда тип данных будет определен из типа элементов первого аргумента. При задании этого параметра будет произведена попытка приведения типов.</p>
+            <p>Например, матрицу из списка списков целых чисел можно создать следующим образом:</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="c1"># Создаем одномерный массив</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>            <span class="c1"># Prints &quot;&lt;class &#39;numpy.ndarray&#39;&gt;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>            <span class="c1"># Prints &quot;(3,)&quot; - кортеж с размерностями</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># Prints &quot;1 2 3&quot;</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>                  <span class="c1"># Изменяем значение элемента массива</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                  <span class="c1"># Prints &quot;[5, 2, 3]&quot;</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>    <span class="c1"># Создаем двухмерный массив</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                     <span class="c1"># Prints &quot;(2, 3)&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># Prints &quot;1 2 4&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#Cоздает вектор с эелементами от 1 до 4</span></pre>
+            <pre>&lt;class 'numpy.ndarray'&gt;
+(3,)
+1 2 3
+[5 2 3]
+(2, 3)
+1 2 4
+[1 2 3 4]</pre>
+            <pre data-language="python"><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">matrix</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[1 2 3]
+ [2 5 6]
+ [6 7 4]]</pre>
+            <p>Второй способ создания — с помощью встроенных функций <strong>numpy.eye(N, M=None, ...)</strong>, <strong>numpy.zeros(shape, ...)</strong>, <strong>numpy.ones(shape, ...)</strong>.</p>
+            <p>Первая функция создает единичную матрицу размера
+                <span class="math">\(N \times M\)</span>
+            ; если
+                <span class="math">\(M\)</span>
+             не задан, то
+                <span class="math">\(M = N\)</span>
+            .</p>
+            <p>Вторая и третья функции создают матрицы, состоящие целиком из нулей или единиц соответственно. В качестве первого аргумента необходимо задать размерность массива — кортеж целых чисел. В двумерном случае это набор из двух чисел: количество строк и столбцов матрицы.</p>
+            <p><strong>Примеры:</strong></p>
+            <pre data-language="python"><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Единичная матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></pre>
+            <pre>Единичная матрица:
+ [[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1.]]</pre>
+            <pre data-language="python"><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица, состоящая из одних единиц:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></pre>
+            <pre>Матрица, состоящая из одних единиц:
+ [[1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]]</pre>
+            <pre data-language="python"><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># Создает матрицу (1, 2) заполненую заданным значением</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>               <span class="c1"># Prints &quot;[[ 7.  7.]</span>
+                       <span class="c1">#          [ 7.  7.]]&quot;</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># Создает еденичную матрицу (2, 2) заполненую случаными числами (0, 1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                     <span class="c1"># Might print &quot;[[ 0.91940167  0.08143941]</span>
+                             <span class="c1">#               [ 0.68744134  0.87236687]]&quot;</span></pre>
+            <pre>[[7 7]
+ [7 7]]
+[[0.25744383 0.48056466]
+ [0.13767881 0.40578168]]</pre>
+            <p><strong>Обратите внимание: размерность массива задается не двумя аргументами функции, а одним — кортежем!</strong></p>
+            <p>Вот так — <strong>np.ones(7, 5)</strong> — создать массив не получится, так как функции в качестве параметра <code>shape</code> передается <code>7</code>, а не кортеж <code>(7, 5)</code>.</p>
+            <p>И, наконец, третий способ — с помощью функции <strong>numpy.arange([start, ]stop, [step, ], ...)</strong>, которая создает одномерный массив последовательных чисел из промежутка <strong>[start, stop)</strong> с заданным шагом <strong>step</strong>, и <em>метода</em> <strong>array.reshape(shape)</strong>.</p>
+            <p>Параметр <strong>shape</strong>, как и в предыдущем примере, задает размерность матрицы (кортеж чисел). Логика работы метода ясна из следующего примера:</p>
+            <pre data-language="python"><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вектор-столбец:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></pre>
+            <pre>Вектор-столбец:
+ [ 0  2  4  6  8 10 12 14 16 18 20 22]</pre>
+            <pre data-language="python"><span class="n">d</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[ 0  2  4  6]
+ [ 8 10 12 14]
+ [16 18 20 22]]</pre>
+            <p>Более подробно о том, как создавать массивы в <code>NumPy</code>, см. <a href="http://docs.scipy.org/doc/numpy-1.10.1/user/basics.creation.html">документацию</a>.</p>
+        </section>
+        <section id="id4">
+            <h2>2. Индексирование</h2>
+            <p>Для получения элементов матрицы можно использовать несколько способов. Рассмотрим самые простые из них.</p>
+            <p>Для удобства напомним, как выглядит матрица <strong>d</strong>:</p>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[ 0  2  4  6]
+ [ 8 10 12 14]
+ [16 18 20 22]]</pre>
+            <p>Элемент на пересечении строки <strong>i</strong> и столбца <strong>j</strong> можно получить с помощью выражения <strong>array[i, j]</strong>.</p>
+            <p><strong>Обратите внимание:</strong> строки и столбцы нумеруются с нуля!</p>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Второй элемент третьей строки матрицы:&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span></pre>
+            <pre>Второй элемент третьей строки матрицы: 18</pre>
+            <p>Из матрицы можно получать целые строки или столбцы с помощью выражений <strong>array[i, :]</strong> или <strong>array[:, j]</strong> соответственно:</p>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вторая строка матрицы d:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Четвертый столбец матрицы d:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span></pre>
+            <pre>Вторая строка матрицы d:
+ [ 8 10 12 14]
+Четвертый столбец матрицы d:
+ [ 6 14 22]</pre>
+            <p>Еще один способ получения элементов — с помощью выражения <strong>array[list1, list2]</strong>, где <strong>list1</strong>, <strong>list2</strong> — некоторые списки целых чисел. При такой адресации одновременно просматриваются оба списка и возвращаются элементы матрицы с соответствующими координатами. Следующий пример более понятно объясняет механизм работы такого индексирования:</p>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Элементы матрицы d с координатами (1, 2) и (0, 3):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span></pre>
+            <pre>Элементы матрицы d с координатами (1, 2) и (0, 3):
+ [12  6]</pre>
+            <pre data-language="python"><span class="c1"># Slicing</span>
+
+<span class="c1"># Создадим матрицу (3, 4)</span>
+<span class="c1"># [[ 1  2  3  4]</span>
+<span class="c1">#  [ 5  6  7  8]</span>
+<span class="c1">#  [ 9 10 11 12]]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+
+<span class="c1"># Используя слайсинг, созадим матрицу b из элементов матрицы а</span>
+<span class="c1"># будем использовать 0 и 1 строку, а так же 1 и 2 столебц</span>
+<span class="c1"># [[2 3]</span>
+<span class="c1">#  [6 7]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># ОБРАТИТЕ ВНИМАНИЕ НА ИЗМЕНЕНИЕ ИСХОДОЙ МАТРИЦЫ</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1"># Prints &quot;2&quot;</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">77</span>     <span class="c1"># b[0, 0] is the same piece of data as a[0, 1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1"># Prints &quot;77&quot;</span></pre>
+            <pre>[[2 3]
+ [6 7]]
+2
+77</pre>
+            <pre data-language="python"><span class="c1"># Integer array indexing</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Пример Integer array indexing</span>
+<span class="c1"># В результате получится массив размерности (3,)</span>
+<span class="c1"># Обратите внимание, что до запятой идут индексы строк, после - столбцов</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>  <span class="c1"># Prints &quot;[1 4 5]&quot;</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># По-другому пример можно записать так</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>  <span class="c1"># Prints &quot;[1 4 5]&quot;</span></pre>
+            <pre>[[1 2]
+ [3 4]
+ [5 6]]
+
+[1 4 5]
+
+[1 4 5]</pre>
+            <p>Примеры использования слайсинга:</p>
+            <pre data-language="python"><span class="c1"># Создадим новый маассив, из которого будем выбирать эллементы</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># prints &quot;array([[ 1,  2,  3],</span>
+          <span class="c1">#                [ 4,  5,  6],</span>
+          <span class="c1">#                [ 7,  8,  9],</span>
+          <span class="c1">#                [10, 11, 12]])&quot;</span>
+
+<span class="c1"># Создадим массив индексов</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Выберем из каждой строки элемент с индексом из b (индекс столбца берется из b)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">b</span><span class="p">])</span>  <span class="c1"># Prints &quot;[ 1  6  7 11]&quot;</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Добавим к этим элементам 10</span>
+<span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">b</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># prints &quot;array([[11,  2,  3],</span>
+          <span class="c1">#                [ 4,  5, 16],</span>
+          <span class="c1">#                [17,  8,  9],</span>
+          <span class="c1">#                [10, 21, 12]])</span></pre>
+            <pre>[[ 1  2  3]
+ [ 4  5  6]
+ [ 7  8  9]
+ [10 11 12]]
+[ 1  6  7 11]
+
+[[11  2  3]
+ [ 4  5 16]
+ [17  8  9]
+ [10 21 12]]</pre>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="n">bool_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Найдем эллементы матрицы a, которые больше 2</span>
+                     <span class="c1"># В результате получим матрицу b, такой же размерности, как и a</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bool_idx</span><span class="p">)</span>      <span class="c1"># Prints &quot;[[False False]</span>
+<span class="nb">print</span><span class="p">()</span>              <span class="c1">#          [ True  True]</span>
+                     <span class="c1">#          [ True  True]]&quot;</span>
+
+<span class="c1"># Воспользуемся полученным массивом для создания нового массива, ранга 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">bool_idx</span><span class="p">])</span>  <span class="c1"># Prints &quot;[3 4 5 6]&quot;</span>
+
+<span class="c1"># Аналогично</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">])</span>     <span class="c1"># Prints &quot;[3 4 5 6]&quot;</span></pre>
+            <pre>[[False False]
+ [ True  True]
+ [ True  True]]
+
+[3 4 5 6]
+[3 4 5 6]</pre>
+            <pre data-language="python"><span class="c1">#Помните, что вы можете пользоваться сразу несколькими типами индексирования</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+
+<span class="n">row_r1</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">row_r2</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row_r1</span><span class="p">,</span> <span class="n">row_r1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Prints &quot;[5 6 7 8] (4,)&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row_r2</span><span class="p">,</span> <span class="n">row_r2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Prints &quot;[[5 6 7 8]] (1, 4)&quot;</span></pre>
+            <pre>[5 6 7 8] (4,)
+[[5 6 7 8]] (1, 4)</pre>
+            <p>Более подробно о различных способах индексирования в массивах см. <a href="http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html">документацию</a>.</p>
+        </section>
+        <section id="id5">
+            <h2>3. Векторы, вектор-строки и вектор-столбцы</h2>
+            <p>Следующие два способа задания массива кажутся одинаковыми:</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span></pre>
+            <p>Однако, на самом деле, это задание одномерного массива (то есть <em>вектора</em>) и двумерного массива:</p>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вектор:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Его размерность:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Двумерный массив:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Его размерность:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></pre>
+            <pre>Вектор:
+ [1 2 3]
+Его размерность:
+ (3,)
+Двумерный массив:
+ [[1]
+ [2]
+ [3]]
+Его размерность:
+ (3, 1)</pre>
+            <p><strong>Обратите внимание:</strong> <em>вектор</em> (одномерный массив) и <em>вектор-столбец</em> или <em>вектор-строка</em> (двумерные массивы) являются различными объектами в <code>NumPy</code>, хотя математически задают один и тот же объект. В случае одномерного массива кортеж <strong>shape</strong> состоит из одного числа и имеет вид <strong>(n,)</strong>, где <strong>n</strong> — длина вектора. В случае двумерных векторов в <strong>shape</strong> присутствует еще одна размерность, равная единице.</p>
+            <p>В большинстве случаев неважно, какое представление использовать, потому что часто срабатывает приведение типов. Но некоторые операции не работают для одномерных массивов. Например, транспонирование (о нем пойдет речь ниже):</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">T</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вектор не изменился:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Его размерность также не изменилась:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Транспонированный двумерный массив:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Его размерность изменилась:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></pre>
+            <pre>Вектор не изменился:
+ [1 2 3]
+Его размерность также не изменилась:
+ (3,)
+Транспонированный двумерный массив:
+ [[1 2 3]]
+Его размерность изменилась:
+ (1, 3)</pre>
+        </section>
+        <section id="datatypes">
+            <h2>4. Datatypes</h2>
+            <p>Все элементы в массиве numpy принадлежат одному типу. В этом плане массивы ближе к C, чем к привычным вам листам питона. Numpy имеет множество встренных типов, подходящих для решения большинства задач.</p>
+            <pre data-language="python"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>   <span class="c1"># Автоматический выбор типа</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>         <span class="c1"># Prints &quot;int64&quot;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>   <span class="c1"># Автоматический выбор типа</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>             <span class="c1"># Prints &quot;float64&quot;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>   <span class="c1"># Принудительное выставление типа</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>                         <span class="c1"># Prints &quot;int64&quot;</span></pre>
+            <pre>int32
+float64
+int64</pre>
+        </section>
+        <section id="id6">
+            <h2>5. Математические операции</h2>
+            <p>К массивам (матрицам) можно применять известные вам математические операции. Следут понимать, что при этом у элементов должны быть схожие размерности. Поведение в случае не совпадения размерностей хорошо описанно в документации numpy.</p>
+            <pre data-language="python"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span></pre>
+            <pre data-language="python"><span class="c1"># Сложение происходит поэлеметно</span>
+
+<span class="c1"># [[ 6.0  8.0]</span>
+<span class="c1">#  [10.0 12.0]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;С числом&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C массивом другой размерности&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">arr</span><span class="p">)</span></pre>
+            <pre>[[ 6.  8.]
+ [10. 12.]]
+
+[[ 6.  8.]
+ [10. 12.]]
+С числом
+[[2. 3.]
+ [4. 5.]]
+C массивом другой размерности
+[[2. 4.]
+ [4. 6.]]</pre>
+            <pre data-language="python"><span class="c1"># Вычитание</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span></pre>
+            <pre>[[-4. -4.]
+ [-4. -4.]]
+[[-4. -4.]
+ [-4. -4.]]</pre>
+            <pre data-language="python"><span class="c1"># Деление</span>
+<span class="c1"># [[ 0.2         0.33333333]</span>
+<span class="c1">#  [ 0.42857143  0.5       ]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span></pre>
+            <pre>[[0.2        0.33333333]
+ [0.42857143 0.5       ]]
+[[0.2        0.33333333]
+ [0.42857143 0.5       ]]</pre>
+            <pre data-language="python"><span class="c1"># Другие функции</span>
+<span class="c1"># [[ 1.          1.41421356]</span>
+<span class="c1">#  [ 1.73205081  2.        ]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></pre>
+            <pre>[[1.         1.41421356]
+ [1.73205081 2.        ]]</pre>
+        </section>
+        <section id="id7">
+            <h2>6. Умножение матриц и столбцов</h2>
+            <p><strong>Напоминание теории.</strong> Операция <strong>умножения</strong> определена для двух матриц, таких что число столбцов первой равно числу строк второй.</p>
+            <p>Пусть матрицы
+                <span class="math">\(A\)</span>
+             и
+                <span class="math">\(B\)</span>
+             таковы, что
+                <span class="math">\(A \in \mathbb{R}^{n \times k}\)</span>
+             и
+                <span class="math">\(B \in \mathbb{R}^{k \times m}\)</span>
+            . <strong>Произведением</strong> матриц
+                <span class="math">\(A\)</span>
+             и
+                <span class="math">\(B\)</span>
+             называется матрица
+                <span class="math">\(C\)</span>
+            , такая что
+                <span class="math">\(c_{ij} = \sum_{r=1}^{k} a_{ir}b_{rj}\)</span>
+            , где
+                <span class="math">\(c_{ij}\)</span>
+             — элемент матрицы
+                <span class="math">\(C\)</span>
+            , стоящий на пересечении строки с номером
+                <span class="math">\(i\)</span>
+             и столбца с номером
+                <span class="math">\(j\)</span>
+            .</p>
+            <p>В <code>NumPy</code> произведение матриц вычисляется с помощью функции <strong>numpy.dot(a, b, ...)</strong> или с помощью <em>метода</em> <strong>array1.dot(array2)</strong>, где <strong>array1</strong> и <strong>array2</strong> — перемножаемые матрицы.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица B:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Результат умножения функцией:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Результат умножения методом:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span></pre>
+            <pre>Матрица A:
+ [[1 0]
+ [0 1]]
+Матрица B:
+ [[4 1]
+ [2 2]]
+Результат умножения функцией:
+ [[4 1]
+ [2 2]]
+Результат умножения методом:
+ [[4 1]
+ [2 2]]</pre>
+            <p>Матрицы в <code>NumPy</code> можно умножать и на векторы:</p>
+            <pre data-language="python"><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вектор:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Результат умножения:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[4 1]
+ [2 2]]
+Вектор:
+ [1 2]
+Результат умножения:
+ [6 6]</pre>
+            <p><strong>Обратите внимание:</strong> операция <strong>*</strong> производит над матрицами покоординатное умножение, а не матричное!</p>
+            <pre data-language="python"><span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица B:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Результат покоординатного умножения через операцию умножения:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></pre>
+            <pre>Матрица A:
+ [[1 0]
+ [0 1]]
+Матрица B:
+ [[4 1]
+ [2 2]]
+Результат покоординатного умножения через операцию умножения:
+ [[4 0]
+ [0 2]]</pre>
+            <p>Более подробно о матричном умножении в <code>NumPy</code> см. <a href="http://docs.scipy.org/doc/numpy-1.10.0/reference/routines.linalg.html#matrix-and-vector-products">документацию</a>.</p>
+        </section>
+        <section id="id8">
+            <h2>7. Объединение массивов</h2>
+            <p>Массивы можно Объединенять. Есть горизонтальное и вертикальное объединение.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)))</span></pre>
+            <pre>[[4. 0.]
+ [1. 4.]]
+[[9. 7.]
+ [2. 6.]]
+
+[[4. 0.]
+ [1. 4.]
+ [9. 7.]
+ [2. 6.]]
+
+[[4. 0. 9. 7.]
+ [1. 4. 2. 6.]]</pre>
+            <p>Массивы можно переформировать при помощи метода, который задает новый многомерный массив. Следуя следующему примеру, мы переформатируем одномерный массив из десяти элементов во двумерный массив, состоящий из пяти строк и двух столбцов:</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Превратим в матрицу</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Вернем обратно</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+<span class="c1"># Другой вариант</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="c1"># Превратим в марицу (9, 1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="c1"># Превратим в марицу (1, 9)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span></pre>
+            <pre>[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]
+
+[[0. 1.]
+ [2. 3.]
+ [4. 5.]
+ [6. 7.]
+ [8. 9.]]
+
+[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]
+[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]
+[[0.]
+ [1.]
+ [2.]
+ [3.]
+ [4.]
+ [5.]
+ [6.]
+ [7.]
+ [8.]
+ [9.]]
+[[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]]</pre>
+            <section id="id9">
+                <h3>Задания: (Блок 1)</h3>
+                <section id="id10">
+                    <h4>Задание 1:</h4>
+                    <p>Решите без использования циклов средставми NumPy (каждый пункт решается в 1-2 строчки)</p>
+                    <ol type="1">
+                        <li>Создайте вектор с элементами от 12 до 42</li>
+                        <li>Создайте вектор из нулей длины 12, но его пятый елемент должен быть равен 1</li>
+                        <li>Создайте матрицу (3, 3), заполненую от 0 до 8</li>
+                        <li>Найдите все положительные числа в np.array([1,2,0,0,4,0])</li>
+                        <li>Умножьте матрицу размерности (5, 3) на (3, 2)</li>
+                        <li>Создайте матрицу (10, 10) так, чтобы на границе были 0, а внтури 1</li>
+                        <li>Создайте рандомный вектор и отсортируйте его</li>
+                        <li>Каков эквивалент функции enumerate для numpy массивов?</li>
+                        <li>*Создайте рандомный вектор и выполните нормализацию столбцов (из каждого столбца вычесть среднее этого столбца, поделить на sd этого столбца)</li>
+                        <li>*Для заданного числа найдите ближайший к нему элемент в векторе</li>
+                        <li>*Найдите N наибольших значений в векторе</li>
+                    </ol>
+                    <pre data-language="python"><span class="c1"># ваш код здесь</span></pre>
+                </section>
+                <section id="id11">
+                    <h4>Задание 2:</h4>
+                    <pre class="line_block"><strong>Напишите полностью векторизованный вариант</strong>
+Дан трёхмерный массив, содержащий изображение, размера (height, width, numChannels), а также вектор длины numChannels. Сложить каналы изображения с указанными весами, и вернуть результат в виде матрицы размера (height, width). Считать реальное изображение можно при помощи функции <code>scipy.misc.imread</code> (если изображение не в формате png, установите пакет pillow: <code>conda install pillow</code>). Преобразуйте цветное изображение в оттенки серого, использовав коэффициенты np.array([0.299, 0.587, 0.114]).</pre>
+                    <pre data-language="python"><span class="c1"># ваш код здесь</span></pre>
+                </section>
+            </section>
+        </section>
+        <section id="id12">
+            <h2>8. Транспонирование матриц</h2>
+            <p><strong>Напоминание теории.</strong> <strong>Транспонированной матрицей</strong>
+                <span class="math">\(A^{T}\)</span>
+             называется матрица, полученная из исходной матрицы
+                <span class="math">\(A\)</span>
+             заменой строк на столбцы. Формально: элементы матрицы
+                <span class="math">\(A^{T}\)</span>
+             определяются как
+                <span class="math">\(a^{T}_{ij} = a_{ji}\)</span>
+            , где
+                <span class="math">\(a^{T}_{ij}\)</span>
+             — элемент матрицы
+                <span class="math">\(A^{T}\)</span>
+            , стоящий на пересечении строки с номером
+                <span class="math">\(i\)</span>
+             и столбца с номером
+                <span class="math">\(j\)</span>
+            .</p>
+            <p>В <code>NumPy</code> транспонированная матрица вычисляется с помощью функции <strong>numpy.transpose()</strong> или с помощью <em>метода</em> <strong>array.T</strong>, где <strong>array</strong> — нужный двумерный массив.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Транспонирование функцией:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Транспонирование методом:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="n">c</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[1 2]
+ [3 4]]
+Транспонирование функцией:
+ [[1 3]
+ [2 4]]
+Транспонирование методом:
+ [[1 3]
+ [2 4]]</pre>
+            <p>См. более подробно о <a href="http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.transpose.html">numpy.transpose()</a> и <a href="http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.ndarray.T.html">array.T</a> в <code>NumPy</code>.</p>
+            <p>В следующих разделах активно используется модуль <strong>numpy.linalg</strong>, реализующий некоторые приложения линейной алгебры. Более подробно о функциях, описанных ниже, и различных других функциях этого модуля можно посмотреть в его <a href="http://docs.scipy.org/doc/numpy-1.10.0/reference/routines.linalg.html#linear-algebra-numpy-linalg">документации</a>.</p>
+        </section>
+        <section id="id13">
+            <h2>9. Определитель матрицы</h2>
+            <p><strong>Напоминание теории.</strong> Для квадратных матриц существует понятие <strong>определителя</strong>.</p>
+            <p>Пусть
+                <span class="math">\(A\)</span>
+             — квадратная матрица. <strong>Определителем</strong> (или <strong>детерминантом</strong>) матрицы
+                <span class="math">\(A \in \mathbb{R}^{n \times n}\)</span>
+             назовем число</p>
+            <div class="math">\(\det A = \sum_{\alpha_{1}, \alpha_{2}, \dots, \alpha_{n}} (-1)^{N(\alpha_{1}, \alpha_{2}, \dots, \alpha_{n})} \cdot a_{\alpha_{1} 1} \cdot \cdot \cdot a_{\alpha_{n} n},\)</div>
+            <p>где
+                <span class="math">\(\alpha_{1}, \alpha_{2}, \dots, \alpha_{n}\)</span>
+             — перестановка чисел от
+                <span class="math">\(1\)</span>
+             до
+                <span class="math">\(n\)</span>
+            ,
+                <span class="math">\(N(\alpha_{1}, \alpha_{2}, \dots, \alpha_{n})\)</span>
+             — число инверсий в перестановке, суммирование ведется по всем возможным перестановкам длины
+                <span class="math">\(n\)</span>
+            .</p>
+            <p><em>Не стоит расстраиваться, если это определение понятно не до конца — в дальнейшем в таком виде оно не понадобится.</em></p>
+            <p>Например, для матрицы размера
+                <span class="math">\(2 \times 2\)</span>
+             получается:</p>
+            <div class="math">\(\det \left( \begin{array}{cc} a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22}  \end{array} \right) = a_{11} a_{22} - a_{12} a_{21}\)</div>
+            <p>Вычисление определителя матрицы по определению требует порядка
+                <span class="math">\(n!\)</span>
+             операций, поэтому разработаны методы, которые позволяют вычислять его быстро и эффективно.</p>
+            <p>В <code>NumPy</code> определитель матрицы вычисляется с помощью функции <strong>numpy.linalg.det(a)</strong>, где <strong>a</strong> — исходная матрица.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Определитель:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">det</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[1. 2. 1.]
+ [1. 1. 4.]
+ [2. 3. 6.]]
+Определитель:
+ -1.0</pre>
+            <p>Рассмотрим одно интересное свойство определителя. Пусть у нас есть параллелограмм с углами в точках
+                <span class="math">\((0, 0), (c,d), (a+c, b+d), (a, b)\)</span>
+             (углы даны в порядке обхода по часовой стрелке). Тогда площадь этого параллелограмма можно вычислить как модуль определителя матрицы
+                <span class="math">\(\left( \begin{array}{cc} a &amp; c \\ b &amp; d \end{array} \right)\)</span>
+            . Похожим образом можно выразить и объем параллелепипеда через определитель матрицы размера
+                <span class="math">\(3 \times 3\)</span>
+            .</p>
+        </section>
+        <section id="id14">
+            <h2>10. Ранг матрицы</h2>
+            <p><strong>Напоминание теории.</strong> <strong>Рангом матрицы</strong>
+                <span class="math">\(A\)</span>
+             называется максимальное число линейно независимых строк (столбцов) этой матрицы.</p>
+            <p>В <code>NumPy</code> ранг матрицы вычисляется с помощью функции <strong>numpy.linalg.matrix_rank(M, tol=None)</strong>, где <strong>M</strong> — матрица, <strong>tol</strong> — параметр, отвечающий за некоторую точность вычисления. В простом случае можно его не задавать, и функция сама определит подходящее значение этого параметра.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Ранг матрицы:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></pre>
+            <pre>Матрица:
+ [[1 2 3]
+ [1 1 1]
+ [2 2 2]]
+Ранг матрицы: 2</pre>
+            <p>С помощью вычисления ранга матрицы можно проверять линейную независимость системы векторов.</p>
+            <p>Допустим, у нас есть несколько векторов. Составим из них матрицу, где наши векторы будут являться строками. Понятно, что векторы линейно независимы тогда и только тогда, когда ранг полученной матрицы совпадает с числом векторов. Приведем пример:</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></pre>
+            <pre>True</pre>
+        </section>
+        <section id="id15">
+            <h2>11. Системы линейных уравнений</h2>
+            <p><strong>Напоминание теории.</strong> <strong>Системой линейных алгебраических уравнений</strong> называется система вида
+                <span class="math">\(Ax = b\)</span>
+            , где
+                <span class="math">\(A \in \mathbb{R}^{n \times m}, x \in \mathbb{R}^{m \times 1}, b \in \mathbb{R}^{n \times 1}\)</span>
+            . В случае квадратной невырожденной матрицы
+                <span class="math">\(A\)</span>
+             решение системы единственно.</p>
+            <p>В <code>NumPy</code> решение такой системы можно найти с помощью функции <strong>numpy.linalg.solve(a, b)</strong>, где первый аргумент — матрица
+                <span class="math">\(A\)</span>
+            , второй — столбец
+                <span class="math">\(b\)</span>
+            .</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вектор b:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Решение системы:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></pre>
+            <pre>Матрица A:
+ [[3 1]
+ [1 2]]
+Вектор b:
+ [9 8]
+Решение системы:
+ [2. 3.]</pre>
+            <p>Убедимся, что вектор <strong>x</strong> действительно является решением системы:</p>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></pre>
+            <pre>[9. 8.]</pre>
+            <p>Бывают случаи, когда решение системы не существует. Но хотелось бы все равно “решить” такую систему. Логичным кажется искать такой вектор
+                <span class="math">\(x\)</span>
+            , который минимизирует выражение
+                <span class="math">\(\left\Vert Ax - b\right\Vert^{2}\)</span>
+             — так мы приблизим выражение
+                <span class="math">\(Ax\)</span>
+             к
+                <span class="math">\(b\)</span>
+            .</p>
+            <p>В <code>NumPy</code> такое псевдорешение можно искать с помощью функции <strong>numpy.linalg.lstsq(a, b, ...)</strong>, где первые два аргумента такие же, как и для функции <strong>numpy.linalg.solve()</strong>. Помимо решения функция возвращает еще три значения, которые нам сейчас не понадобятся.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">])</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Вектор b:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Псевдорешение системы:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></pre>
+            <pre>Матрица A:
+ [[0 1]
+ [1 1]
+ [2 1]
+ [3 1]]
+Вектор b:
+ [-1.   0.2  0.9  2.1]
+Псевдорешение системы:
+ [ 1.   -0.95]</pre>
+        </section>
+        <section id="id16">
+            <h2>12. Обращение матриц</h2>
+            <p><strong>Напоминание теории.</strong> Для квадратных невырожденных матриц определено понятие <strong>обратной</strong> матрицы.</p>
+            <p>Пусть
+                <span class="math">\(A\)</span>
+             — квадратная невырожденная матрица. Матрица
+                <span class="math">\(A^{-1}\)</span>
+             называется <strong>обратной матрицей</strong> к
+                <span class="math">\(A\)</span>
+            , если</p>
+            <div class="math">\(AA^{-1} = A^{-1}A = I,\)</div>
+            <p>где
+                <span class="math">\(I\)</span>
+             — единичная матрица.</p>
+            <p>В <code>NumPy</code> обратные матрицы вычисляются с помощью функции <strong>numpy.linalg.inv(a)</strong>, где <strong>a</strong> — исходная матрица.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Обратная матрица к A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Произведение A на обратную должна быть единичной:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">))</span></pre>
+            <pre>Матрица A:
+ [[1. 2. 1.]
+ [1. 1. 4.]
+ [2. 3. 6.]]
+Обратная матрица к A:
+ [[ 6.  9. -7.]
+ [-2. -4.  3.]
+ [-1. -1.  1.]]
+Произведение A на обратную должна быть единичной:
+ [[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]</pre>
+        </section>
+        <section id="id17">
+            <h2>13. Собственные числа и собственные вектора матрицы</h2>
+            <p><strong>Напоминание теории.</strong> Для квадратных матриц определены понятия <strong>собственного вектора</strong> и <strong>собственного числа</strong>.</p>
+            <p>Пусть
+                <span class="math">\(A\)</span>
+             — квадратная матрица и
+                <span class="math">\(A \in \mathbb{R}^{n \times n}\)</span>
+            . <strong>Собственным вектором</strong> матрицы
+                <span class="math">\(A\)</span>
+             называется такой ненулевой вектор
+                <span class="math">\(x \in \mathbb{R}^{n}\)</span>
+            , что для некоторого
+                <span class="math">\(\lambda \in \mathbb{R}\)</span>
+             выполняется равенство
+                <span class="math">\(Ax = \lambda x\)</span>
+            . При этом
+                <span class="math">\(\lambda\)</span>
+             называется <strong>собственным числом</strong> матрицы
+                <span class="math">\(A\)</span>
+            . Собственные числа и собственные векторы матрицы играют важную роль в теории линейной алгебры и ее практических приложениях.</p>
+            <p>В <code>NumPy</code> собственные числа и собственные векторы матрицы вычисляются с помощью функции <strong>numpy.linalg.eig(a)</strong>, где <strong>a</strong> — исходная матрица. В качестве результата эта функция выдает одномерный массив <strong>w</strong> собственных чисел и двумерный массив <strong>v</strong>, в котором по столбцам записаны собственные вектора, так что вектор <strong>v[:, i]</strong> соотвествует собственному числу <strong>w[i]</strong>.</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Матрица A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Собственные числа:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Собственные векторы:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></pre>
+            <pre>Матрица A:
+ [[-1 -6]
+ [ 2  6]]
+Собственные числа:
+ [2. 3.]
+Собственные векторы:
+ [[-0.89442719  0.83205029]
+ [ 0.4472136  -0.5547002 ]]</pre>
+            <p><strong>Обратите внимание:</strong> у вещественной матрицы собственные значения или собственные векторы могут быть комплексными.</p>
+        </section>
+        <section id="id18">
+            <h2>14. Расстояния между векторами</h2>
+            <p>Вспомним некоторые нормы, которые можно ввести в пространстве
+                <span class="math">\(\mathbb{R}^{n}\)</span>
+            , и рассмотрим, с помощью каких библиотек и функций их можно вычислять в <code>NumPy</code>.</p>
+            <section id="p">
+                <h3>p-норма</h3>
+                <p>p-норма (норма Гёльдера) для вектора
+                    <span class="math">\(x = (x_{1}, \dots, x_{n}) \in \mathbb{R}^{n}\)</span>
+                 вычисляется по формуле:</p>
+                <div class="math">\(\left\Vert x \right\Vert_{p} = \left( \sum_{i=1}^n \left| x_{i} \right|^{p} \right)^{1 / p},~p \geq 1.\)</div>
+                <p>В частных случаях при: *
+                    <span class="math">\(p = 1\)</span>
+                 получаем
+                    <span class="math">\(\ell_{1}\)</span>
+                 норму *
+                    <span class="math">\(p = 2\)</span>
+                 получаем
+                    <span class="math">\(\ell_{2}\)</span>
+                 норму</p>
+                <p>Далее нам понабится модуль <code>numpy.linalg</code>, реализующий некоторые приложения линейной алгебры. Для вычисления различных норм мы используем функцию <strong>numpy.linalg.norm(x, ord=None, ...)</strong>, где <strong>x</strong> — исходный вектор, <strong>ord</strong> — параметр, определяющий норму (мы рассмотрим два варианта его значений — 1 и 2). Импортируем эту функцию:</p>
+                <pre data-language="python"><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span></pre>
+            </section>
+            <section id="ell-1">
+                <h3>
+                    <span class="math">\(\ell_{1}\)</span>
+                 норма</h3>
+                <p>
+                    <span class="math">\(\ell_{1}\)</span>
+                 норма (также известная как <a href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B8%D1%85_%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D0%BE%D0%B2">манхэттенское расстояние</a>) для вектора
+                    <span class="math">\(x = (x_{1}, \dots, x_{n}) \in \mathbb{R}^{n}\)</span>
+                 вычисляется по формуле:</p>
+                <div class="math">\(\left\Vert x \right\Vert_{1} = \sum_{i=1}^n \left| x_{i} \right|.\)</div>
+                <p>Ей в функции <strong>numpy.linalg.norm(x, ord=None, ...)</strong> соответствует параметр <strong>ord=1</strong>.</p>
+                <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Вектор a:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span></pre>
+                <pre>Вектор a: [ 1  2 -3]</pre>
+                <pre data-language="python"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;L1 норма вектора a:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span></pre>
+                <pre>L1 норма вектора a:
+ 6.0</pre>
+            </section>
+            <section id="ell-2">
+                <h3>
+                    <span class="math">\(\ell_{2}\)</span>
+                 норма</h3>
+                <p>
+                    <span class="math">\(\ell_{2}\)</span>
+                 норма (также известная как евклидова норма) для вектора
+                    <span class="math">\(x = (x_{1}, \dots, x_{n}) \in \mathbb{R}^{n}\)</span>
+                 вычисляется по формуле:</p>
+                <div class="math">\(\left\Vert x \right\Vert_{2} = \sqrt{\sum_{i=1}^n \left( x_{i} \right)^2}.\)</div>
+                <p>Ей в функции <strong>numpy.linalg.norm(x, ord=None, ...)</strong> соответствует параметр <strong>ord=2</strong>.</p>
+                <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;L2 норма вектора a:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span></pre>
+                <pre>L2 норма вектора a:
+ 3.7416573867739413</pre>
+                <p>Более подробно о том, какие еще нормы (в том числе матричные) можно вычислить, см. <a href="http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.norm.html">документацию</a>.</p>
+            </section>
+        </section>
+        <section id="id19">
+            <h2>15. Расстояния между векторами</h2>
+            <p>Для двух векторов
+                <span class="math">\(x = (x_{1}, \dots, x_{n}) \in \mathbb{R}^{n}\)</span>
+             и
+                <span class="math">\(y = (y_{1}, \dots, y_{n}) \in \mathbb{R}^{n}\)</span>
+                <span class="math">\(\ell_{1}\)</span>
+             и
+                <span class="math">\(\ell_{2}\)</span>
+             раccтояния вычисляются по следующим формулам соответственно:</p>
+            <div class="math">\(\rho_{1}\left( x, y \right) = \left\Vert x - y \right\Vert_{1} = \sum_{i=1}^n \left| x_{i} - y_{i} \right|\)</div>
+            <div class="math">\(\rho_{2}\left( x, y \right) = \left\Vert x - y \right\Vert_{2} =
+\sqrt{\sum_{i=1}^n \left( x_{i} - y_{i} \right)^2}.\)</div>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Вектор a:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Вектор b:&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></pre>
+            <pre>Вектор a: [ 1  2 -3]
+Вектор b: [-4  3  8]</pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;L1 расстояние между векторами a и b:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;L2 расстояние между векторами a и b:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span></pre>
+            <pre>L1 расстояние между векторами a и b:
+ 17.0
+L2 расстояние между векторами a и b:
+ 12.12435565298214</pre>
+        </section>
+        <section id="id20">
+            <h2>16. Скалярное произведение и угол между векторами</h2>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Вектор a:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Вектор b:&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></pre>
+            <pre>Вектор a: [ 0  5 -1]
+Вектор b: [-4  9  3]</pre>
+            <p>Скалярное произведение в пространстве
+                <span class="math">\(\mathbb{R}^{n}\)</span>
+             для двух векторов
+                <span class="math">\(x = (x_{1}, \dots, x_{n})\)</span>
+             и
+                <span class="math">\(y = (y_{1}, \dots, y_{n})\)</span>
+             определяется как:</p>
+            <div class="math">\(\langle x, y \rangle = \sum_{i=1}^n x_{i} y_{i}.\)</div>
+            <p>Длиной вектора
+                <span class="math">\(x = (x_{1}, \dots, x_{n}) \in \mathbb{R}^{n}\)</span>
+             называется квадратный корень из скалярного произведения, то есть длина равна евклидовой норме вектора:</p>
+            <div class="math">\(\left| x \right| = \sqrt{\langle x, x \rangle} = \sqrt{\sum_{i=1}^n x_{i}^2} =  \left\Vert x \right\Vert_{2}.\)</div>
+            <p>Теперь, когда мы знаем расстояние между двумя ненулевыми векторами и их длины, мы можем вычислить угол между ними через скалярное произведение:</p>
+            <div class="math">\(\langle x, y \rangle = \left| x \right| | y | \cos(\alpha)
+\implies \cos(\alpha) = \frac{\langle x, y \rangle}{\left| x \right| | y |},\)</div>
+            <p>где
+                <span class="math">\(\alpha \in [0, \pi]\)</span>
+             — угол между векторами
+                <span class="math">\(x\)</span>
+             и
+                <span class="math">\(y\)</span>
+            .</p>
+            <pre data-language="python"><span class="n">cos_angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Косинус угла между a и b:&#39;</span><span class="p">,</span> <span class="n">cos_angle</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Сам угол:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">cos_angle</span><span class="p">))</span></pre>
+            <pre>Косинус угла между a и b: 0.8000362836474323
+Сам угол: 0.6434406336093618</pre>
+        </section>
+        <section id="id21">
+            <h2>17. Комплексные числа в питоне</h2>
+            <p><strong>Напоминание теории.</strong> <strong>Комплексными числами</strong> называются числа вида
+                <span class="math">\(x + iy\)</span>
+            , где
+                <span class="math">\(x\)</span>
+             и
+                <span class="math">\(y\)</span>
+             — вещественные числа, а
+                <span class="math">\(i\)</span>
+             — мнимая единица (величина, для которой выполняется равенство
+                <span class="math">\(i^{2} = -1\)</span>
+            ). Множество всех комплексных чисел обозначается буквой
+                <span class="math">\(\mathbb{C}\)</span>
+             (подробнее про комплексные числа см. <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%BD%D0%BE%D0%B5_%D1%87%D0%B8%D1%81%D0%BB%D0%BE">википедию</a>).</p>
+            <p>В питоне комплескные числа можно задать следующим образом (<strong>j</strong> обозначает мнимую единицу):</p>
+            <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Комплексное число a:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Комплексное число b:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></pre>
+            <pre>Комплексное число a:
+ (3+2j)
+Комплексное число b:
+ 1j</pre>
+            <p>С комплексными числами в питоне можно производить базовые арифметические операции так же, как и с вещественными числами:</p>
+            <pre data-language="python"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">5</span><span class="n">j</span><span class="p">)</span></pre>
+            <pre data-language="python"><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Комплексное число c:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Комплексное число d:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span></pre>
+            <pre>Комплексное число c:
+ (5+12j)
+Комплексное число d:
+ (0.0487804878048781+0.5609756097560976j)</pre>
+            <section id="id22">
+                <h3>Задания: (Блок 2)</h3>
+                <section id="id23">
+                    <h4>Задание 3:</h4>
+                    <p>Рассмотрим сложную математическую функцию на отрезке [1, 15]:</p>
+                    <p>f(x) = sin(x / 5) * exp(x / 10) + 5 * exp(-x / 2)</p>
+                    <figure>
+                        <img alt="images/lab14/func.png" src="http://judge2.vdi.mipt.ru/yudaev/lab14/func.png" />
+                    </figure>
+                    <p>Она может описывать, например, зависимость оценок, которые выставляют определенному сорту вина эксперты, в зависимости от возраста этого вина. Мы хотим приблизить сложную зависимость с помощью функции из определенного семейства. В этом задании мы будем приближать указанную функцию с помощью многочленов.</p>
+                    <p>Как известно, многочлен степени
+                        <span class="math">\(n\)</span>
+                     (то есть
+                        <span class="math">\(w_0\)</span>
+                     +
+                        <span class="math">\(w_1 x\)</span>
+                     +
+                        <span class="math">\(w_2 x^2\)</span>
+                     +
+                        <span class="math">\(\ldots\)</span>
+                     +
+                        <span class="math">\(w_n x^n\)</span>
+                    ) однозначно определяется любыми n + 1 различными точками, через которые он проходит. Это значит, что его коэффициенты
+                        <span class="math">\(w_0\)</span>
+                    , …
+                        <span class="math">\(w_n\)</span>
+                     можно определить из следующей системы линейных уравнений:</p>
+                    <figure>
+                        <img alt="images/lab14/eqs.png" src="http://judge2.vdi.mipt.ru/yudaev/lab14/eqs.png" />
+                    </figure>
+                    <p>где через
+                        <span class="math">\(x_1, ..., x_n, x_{n+1}\)</span>
+                     обозначены точки, через которые проходит многочлен, а через
+                        <span class="math">\(f(x_1), ..., f(x_n), f(x_{n+1})\)</span>
+                     — значения, которые он должен принимать в этих точках.</p>
+                    <p>Воспользуемся описанным свойством, и будем находить приближение функции многочленом, решая систему линейных уравнений.</p>
+                    <ol type="1">
+                        <li>Сформируйте систему линейных уравнений (то есть задайте матрицу коэффициентов A и свободный вектор b) для многочлена первой степени, который должен совпадать с функцией f в точках 1 и 15. Решите данную систему с помощью функции scipy.linalg.solve. Нарисуйте функцию f и полученный многочлен. Хорошо ли он приближает исходную функцию?</li>
+                        <li>Повторите те же шаги для многочлена второй степени, который совпадает с функцией f в точках 1, 8 и 15. Улучшилось ли качество аппроксимации?</li>
+                        <li>Повторите те же шаги для многочлена третьей степени, который совпадает с функцией f в точках 1, 4, 10 и 15. Хорошо ли он аппроксимирует функцию? Коэффициенты данного многочлена (четыре числа в следующем порядке: w_0, w_1, w_2, w_3) являются ответом на задачу. Округлять коэффициенты не обязательно, но при желании можете произвести округление до второго знака (т.е. до числа вида 0.42)</li>
+                    </ol>
+                </section>
+            </section>
+        </section>
+    </section>
+</body>
+</div>
+</html>

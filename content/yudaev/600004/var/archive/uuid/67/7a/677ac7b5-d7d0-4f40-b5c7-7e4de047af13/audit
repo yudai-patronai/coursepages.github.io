@@ -1,0 +1,25 @@
+Date: 2016/11/01 23:56:21
+From: Akuma (uid 21908)
+Ip: 93.175.6.58
+Command: submit
+Status: ok
+Run-id: 258
+Run-status: CG
+
+Date: 2016/11/01 23:56:50
+From: SYSTEM
+Status: testing completed
+Run-id: 258
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/01 23:56:21.464552
+  Request completion time:           2016/11/01 23:56:50.767765
+  Total testing duration:            29.303
+  Waiting in compile queue duration: 0.599
+  Compilation duration:              0.318
+  Waiting in serve queue duration:   0.116
+  Waiting in run queue duration:     0.413
+  Testing duration:                  27.180
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.675
+

@@ -1,0 +1,9 @@
+def distance (x1, y1, x2, y2):
+    sub = (x2 - x1) ** 2
+    semi = (y2 - y1) ** 2
+    return ((sub + semi) ** 0.5)
+one = float(input())
+two = float(input())
+three = float(input())
+four = float(input())
+print (distance(one, two, three, four))

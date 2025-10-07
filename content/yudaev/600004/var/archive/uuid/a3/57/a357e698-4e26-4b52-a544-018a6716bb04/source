@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int solve(int num, int limit) {
+
+    int ans = 0;
+    int i = 0;
+
+    if(limit > num)
+        limit = num;
+    if(num == 1 && limit == 1)
+        return 1;
+    if(num == 0)
+        return 1;
+
+    for(i = 1; i <= limit; ++i)
+        ans += solve(num-i, i);
+
+    return ans;
+
+}
+
+int main() {
+
+    int num = 0;
+    scanf("%d", &num);
+    printf("%d\n", solve(num, num));
+
+    return 0;
+
+}

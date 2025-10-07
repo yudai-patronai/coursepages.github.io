@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int res[100][100];
+int P(int n, int k) // к-во способов разбить N на слагаемые, не первыш. K
+{
+    if (n>=0&&k>=0&&res[n][k]>0) return res[n][k];
+    if (n < 0) return 0;
+    if (n <= 1 || k == 1) return 1;
+    res[n][k] = P(n, k-1) + P(n-k, k);
+    return res[n][k];
+}
+
+int main()
+{
+    int n;
+    int i, j;
+    scanf("%d", &n);
+    for ( i = 0; i<n; i++)
+    {
+        for (j = 0; j<n; j++)
+        {
+            res[i][j]=-1;
+        }
+    }
+    printf("%d",P(n,n));
+    return 0;
+}
+
+

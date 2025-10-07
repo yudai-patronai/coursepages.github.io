@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+unsigned long long int fact(int n)
+{
+	unsigned long long int ans = 1;
+	int i;
+	for (i = 1; i<n + 1; i++)
+	{
+		ans = ans*i;
+	}
+	return ans;
+}
+int main()
+{
+	int N, M;
+	unsigned long long int K;
+	scanf("%d%d", &N, &M);
+	K = fact(N + M) / (fact(N)*fact(M));
+	printf("%u", K);
+	return 0;
+}

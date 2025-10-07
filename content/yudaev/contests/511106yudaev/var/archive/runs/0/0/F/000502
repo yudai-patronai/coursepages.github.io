@@ -1,0 +1,8 @@
+n = int(input())
+S = [['.' for i in range(n)] for j in range(n)]
+for i in range(n):
+    for j in range(n):
+        if i == j or i+j == n-1 or i == n//2 or j == n//2:
+            S[i][j] = '*'
+        print(S[i][j], end=' ')
+    print()

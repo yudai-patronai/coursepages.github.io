@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Объектно-ориентированное программирование</title>
+    <meta charset="utf-8" />
+    <meta content="2015-11-04 15:46" name="date" />
+    <meta content="true" name="lecture_pdf" />
+    <meta content="https://youtu.be/EdUoSo9Dhzk" name="lecture_link" />
+    <meta content="draft" name="status" />
+</head>
+<style>
+    div{
+      width: 600px;
+      margin: auto;
+      border: 0px ;
+      
+    }
+    body{background-color: #ccc;}
+</style>
+
+<div>
+<body>
+    <section id="id1">
+        <h1>Объектно-ориентированное программирование</h1>
+        <aside id="id2" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#id3">Основные понятия</a></li>
+                <li><a href="#id4">Поля и методы</a></li>
+                <li><a href="#id5">Стандартные методы</a></li>
+                <li><a href="#id6">Переопределение стандартных операций</a></li>
+                <li><a href="#type-isinstance">Функции type и isinstance</a></li>
+                <li><a href="#id7">Упражнения</a></li>
+            </ul>
+        </aside>
+        <section id="id3">
+            <h2>Основные понятия</h2>
+            <p>При процедурном программировании программа разбивается на части в соответствии с алгоритмом: каждая функция является составной частью алгоритма. При объектно-ориентированном программировании программа строится как совокупность взаимодействующих объектов. С точки зрения объектно-ориентированного подхода, объект - это нечто, обладающее значением (состоянием), типом (поведением) и индивидуальностью. Когда программист выделяет объекты в предметной области, он обычно абстрагируется от большинства их свойств, концентрируясь на существенных для задачи свойствах. Над объектами можно производить операции (посылая им сообщения). В языке Python все данные представлены в виде объектов. Взаимодействие объектов заключается в вызове методов одних объектов другими. Иногда говорят, что объекты посылают друг другу сообщения. Сообщения -это запросы к объекту выполнить некоторые действия. (Сообщения, методы, операции, функции-члены являются синонимами).</p>
+            <p>Каждый объект хранит свое состояние (для этого у него есть атрибуты) и имеет определенный набор методов (функций, обеспечивающих доступ к значениям атрибутов и производящих манипуляции с ними). Методы определяют поведение объекта. Объекты класса имеют общее поведение. Объекты описываются не индивидуально, а с помощью классов. Класс - объект, являющийся шаблоном объекта. Объект, созданный на основе некоторого класса, называется экземпляром класса. Все объекты определенных пользователем классов являются экземплярами класса. Тем не менее, объекты даже с одним и тем же состоянием могут быть разными объектами. Говорят, что они имеют разную индивидуальность.</p>
+            <p>В языке Python для определения класса используется оператор class:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">имя_класса</span><span class="p">(</span><span class="n">класс1</span><span class="p">,</span> <span class="n">класс2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+<span class="c1"># определения методов</span></pre>
+            <p>Класс определяет тип объекта, то есть его возможные состояния и набор операций.</p>
+            <p>Определим простейший класс:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Пример самого простейшего класса</span>
+<span class="k">class</span> <span class="nc">MyFirstClass</span><span class="p">:</span>
+    <span class="k">pass</span></pre>
+            <p>Теперь мы можем создать несколько обьектов этого класса:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">MyFirstClass</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">MyFirstClass</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># у экземпляра a появился атрибут val, равный 1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># а у экземпляра b - атрибут val, равный 2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">val1</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># у экземпляра a появился атрибут val1, равный 10</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">val2</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># а у экземпляра b - атрибут val2, равный 20</span></pre>
+            <p>Далее, добавим к нашему классу метод:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">MyFirstClass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">doSmth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># self - обязательный аргумент, содержащий в себе экземпляр</span>
+        <span class="c1"># класса, передающийся при вызове метода,</span>
+        <span class="c1"># поэтому этот аргумент должен присутствовать</span>
+        <span class="c1"># во всех методах класса.</span>
+        <span class="k">return</span> <span class="s1">&#39;hello world&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">MyFirstClass</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">doSmth</span><span class="p">()</span>
+<span class="s1">&#39;hello world&#39;</span></pre>
+            <p>Перепишем класс немного иначе:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">MySecondClass</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span> <span class="c1"># Все экземпляры этого класса будут иметь атрибут msg,</span>
+        <span class="c1"># равный &quot;Hello&quot;</span>
+        <span class="c1"># Но впоследствии мы его можем изменить</span>
+    <span class="k">def</span> <span class="nf">doSmth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">MySecondClass</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">doSmth</span><span class="p">()</span>
+<span class="s1">&#39;Hello&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">MySecondClass</span><span class="o">.</span><span class="n">doSmth</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="s1">&#39;Hello&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Good by&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">doSmth</span><span class="p">()</span>
+<span class="s1">&#39;Good by&#39;</span></pre>
+            <p>Использование классов дает нам прежде преимущества абстрактного подхода в программировании:</p>
+            <dl>
+                <dt>Наследование</dt>
+                <dd>Можно создавать специализированные классы на основе базовых. Это позволяет нам избегать написания повторного кода. На практике часто возникает ситуация, когда в предметной области выделены очень близкие, но вместе с тем неодинаковые классы. Одним из способов сокращения описания классов за счет использования их сходства является выстраивание классов в иерархию. В корне этой иерархии стоит базовый класс, от которого нижележащие классы иерархии наследуют свои атрибуты, уточняя и расширяя поведение вышележащего класса. Обычно принципом построения классификации является отношение "IS-A" ("ЕСТЬ"). Например, класс Окружность в программе - графическом редакторе может быть унаследован от класса Геометрическая Фигура. При этом Окружность будет являться подклассом (или субклассом) для класса Геометрическая Фигура, а Геометрическая Фигура - надклассом (или суперклассом) для класса Окружность. В языке Python во главе иерархии ("новых") классов стоит класс object. Для ориентации в иерархии существуют некоторые встроенные функции, которые будут рассмотрены ниже. Функция issubclass(x, y) может сказать, является ли класс x подклассом класса y:</dd>
+            </dl>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span> <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="nb">object</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="nb">object</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="nb">str</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="c1"># класс является подклассом самого себя</span>
+<span class="kc">True</span></pre>
+            <p>В основе построения классификации всегда стоит принцип, играющий наиболее важную роль в анализируемой и моделируемой системе. Следует заметить, что одним из "перегибов" при использовании ОО методологии является искусственное выстраивание иерархии классов. Например, не стоит наследовать класс Машина от класса Колесо (внимательные заметят, что здесь отношение другое: колесо является частью машины). Класс называется абстрактным, если он предназначен только для наследования. Экземпляры абстрактного класса обычно не имеют большого смысла. Классы с рабочими экземплярами называются конкретными.</p>
+            <dl>
+                <dt>Множественное наследование</dt>
+                <dd>В языке Python можно наследовать класс от нескольких классов. Такая ситуация называется множественным наследованием (multiple inheritance). Класс, получаемый при множественном наследовании, объединяет поведение своих надклассов, комбинируя стоящие за ними абстракции. Использовать множественное наследование следует очень осторожно, а необходимость в нем возникает реже одиночного.</dd>
+                <dt>Полиморфизм</dt>
+                <dd>В компилируемых языках программирования полиморфизм достигается за счёт создания виртуальных методов, которые в отличие от невиртуальных можно перегрузить в потомке. В Python все методы являются виртуальными, что является естественным следствием разрешения доступа на этапе исполнения. (Следует отметить, что создание невиртуальных методов в компилируемых языках связано с меньшими накладными расходами на их поддержку и вызов).</dd>
+            </dl>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isParOrPChild</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span> <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;parent&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">who</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="s1">&#39;child&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Parent</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">who</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">isParOrPChild</span><span class="p">()</span>
+<span class="p">(</span><span class="s1">&#39;parent&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Child</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">who</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">isParOrPChild</span><span class="p">()</span>
+<span class="p">(</span><span class="s1">&#39;child&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></pre>
+            <p>Явно указав имя класса, можно обратиться к методу родителя (как впрочем и любого другого объекта).</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">Parent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></pre>
+            <p>В общем случае для получения класса-предка применяется функция super.</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Child</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></pre>
+            <dl>
+                <dt>Инкапсуляция</dt>
+                <dd>Можно скрыть ненужные внутренние подробности работы объекта от окружающего мира. Это второй основной принцип абстракции. Он основан на использовании атрибутов внутри класса. Атрибуты могут иметь различные состояния в промежутках между вызовами методов класса, вследствие чего сам объект данного класса также получает различные состояния — state. Подчеркивание (" _ ") в начале имени атрибута указывает на то, что он не входит в общедоступный интерфейс. Обычно применяется одиночное подчеркивание, которое в языке не играет особой роли, но как бы говорит программисту: "этот метод только для внутреннего использования". Двойное подчеркивание работает как указание на то, что атрибут - приватный. При этом атрибут все же доступен, но уже под другим именем, что и иллюстрируется нижe:</dd>
+            </dl>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">X</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">inix</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;_X__x&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;_x&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">]</span></pre>
+            <dl>
+                <dt>Композиция</dt>
+                <dd>Объект может быть составным и включать в себя другие объекты.</dd>
+            </dl>
+            <p>Объектно-ориентированный подход в программировании подразумевает следующий алгоритм действий:</p>
+            <ul>
+                <li>Описывается проблема с помощью обычного языка с использованием понятий, действий, прилагательных.</li>
+                <li>На основе понятий формулируются классы.</li>
+                <li>На основе действий проектируются методы.</li>
+                <li>Реализуются методы и атрибуты.</li>
+            </ul>
+        </section>
+        <section id="id4">
+            <h2>Поля и методы</h2>
+            <p>Таким образом, объекты классов представляют собой новые типы данный, объединяющие несколько атрибутов (полей). Атрибуты могут быть произвольными типами данных: числами, строками, списками, множествами, словарями, другими классами. Обращение к атрибуту какого-либо объекта осуществляется при помощи dot-нотации: имя_класса.имя_атрибута.</p>
+            <p>Помимо полей у классов бывают методы: функции, которые можно применять к экземплярам класса. Например, у списков есть метод sort. Вызов метода также осуществляется при помощи dot-нотации, например: A.sort().</p>
+            <p>Можно рассматривать методы, как функции, у которых первым параметром является экземпляр класса (self). Методы так и объявляются: как функции внутри описания класса, первым параметром которой является экземпляр класса. Вот пример объявления класса Person и метода print, выводящего информацию о полях name и score:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span></pre>
+            <p>Теперь вызов метода print для объекта класса Person реализоывается следующим образом:</p>
+            <pre data-language="python"><span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">print</span><span class="p">()</span></pre>
+            <p>При этом не нужно задавать первый параметр self: в качестве этого параметра автоматически будет передан объект, для которого был вызван метод.</p>
+            <p>Методы могут принимать дополнительные параметры, как и обычные функции. Эти параметры описываются после параметра self:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span></pre>
+        </section>
+        <section id="id5">
+            <h2>Стандартные методы</h2>
+            <p>Наш метод print предполагает, что у объекта есть поля name и score, иначе он завершится с ошибкой. Хочется быть уверенным, что у любого объекта класса Person есть эти поля. Для этого проще всего создать эти поля при создании объекта, т.е. при вызове функции Person. Для этого можно использовать конструктор: метод, который автоматически вызывается при создании объекта. Конструктором является метод с именем __init__:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span></pre>
+            <p>При создании объекта функцией Person будет автоматически вызван конструктор __init__ (явно вызывать его не нужно), который полю name объекта, для которого он вызван, присвоит пустую строку, а полю score присвоит значение 0.</p>
+            <p>Удобно будет, если конструктор сможет создавать объект, инициализируя поля объекта некоторыми параметрами, используя передаваемые ему значения, а не значения по умолчанию. Для этого конструктору можно передавать параметры:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">score</span></pre>
+            <p>В данном случае мы используем одинаковые имена (name, score) для обозначения передаваемых параметров и полей класса. Это сделано для удобства — имена могут и различаться.</p>
+            <p>Теперь мы сможем создавать новый объект с заданными полями так: Person('Иванов', 5).</p>
+            <p>Но поскольку конструктор теперь обязательно принимает два дополнительных параметра мы лишились возможности вызывать конструктор без параметров, что также бывает удобно. Можно вернуть эту особенность, если установить для параметров, передаваемых конструктору, значения по умолчанию:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">score</span></pre>
+            <p>Теперь мы можем вызывать конструктор как с параметрами (Person('Иванов', 5)), так и без параметров (Person()), в последнем случае параметрам будут переданы значения “по умолчанию”, указанные в описании конструктора. Также существует метод, вызываемый при унчитожении обьекта - деструктор (__del__):</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">score</span>
+
+    <span class="k">def</span> <span class="nf">__del</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s2">&quot;Object </span><span class="si">%s</span><span class="s2"> has been destoyed&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></pre>
+            <p>Есть и другие стандартные методы, которые можно определить в описании класса.</p>
+            <p>Метод __repr__ должен возвращать текстовую строку, содержащую код (на языке Python), создающую объект, равный данному. Естественно, метод __repr__ должен содержать вызов конструктора, которому передаются в качестве параметров все строки исходного объекта, то есть он должен возвращать строку вида "Person('Иванов', 5)"</p>
+            <p>Пример метода __repr__ (для экономии места опустим описание конструктора __init__):</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Person(&#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;&#39;, &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span></pre>
+            <p>Таким образом, метод __repr__ возвращает строку с описанием объекта, которое может быть воспринято итерпретатором языка Питон.</p>
+            <p>Метод __str__ возвращает строку, являющуюся описанием объекта в том виде, в котором его удобно будет воспринимать человеку. Здесь не нужно выводить имя конструктора, можно, например, просто вернуть строку с содержимым всех полей:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span></pre>
+            <p>Метод __str__ будет вызываться, когда вызывается функция str от данного объекта, например, str(Vasya). То есть создавая метод __str__ вы даете указание Питону, как преобразовывать данный объект к типу str.</p>
+            <p>Поскольку функция print использует именно функцию str для вывода объекта на экран, то определение метода __str__ позволит выводить объекты на экран удобным способом: при помощи print.</p>
+        </section>
+        <section id="id6">
+            <h2>Переопределение стандартных операций</h2>
+            <p>Рассмотрим класс Vector, используемый для представления радиус-векторов на координатной плоскости, и определим в нем поля-координаты: x и y. Также очень хотелось бы определить для векторов операцию +, чтобы их можно было складывать столь же удобно, как и числа или строки. Например, чтобы можно было записать так:</p>
+            <pre data-language="python"><span class="n">A</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span></pre>
+            <p>Для этого необходимо перегрузить операцию +: определить функцию, которая будет использоваться, если операция + будет вызвана для объекта класса Vector. Для этого нужно определить метод __add__ класса Vector, у которого два параметра: неявная ссылка self на экземпляр класса, для которого она будет вызвана (это левый операнд операции +) и явная ссылка other на правый операнд:</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span></pre>
+            <p>Теперь при вызове оператора A + B Питон вызовет метод A.__add__(B), то есть вызовет указанный метод, где self = A, other = B.</p>
+            <p>Аналогично можно определить и оставшиеся операции. Полезной для переопределения является операция &lt;. Она должна возвращать логическое значение True, если левый операнд меньше правого или False в противном случае (также в том случае, если объекты равны). Для переопределения этого операнда нужно определить метод __lt__ (less than):</p>
+            <pre data-language="python"><span class="k">class</span> <span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span></pre>
+            <p>В этом примере оператор вернет True, если у левого операнда поле x меньше, чем у правого операнда, а также если поля x у них равны, а поле y меньше у левого операнда.</p>
+            <p>После определения оператора &lt;, появляется возможность упорядочивать объекты, используя этот оператор. Теперь можно сортировать списки объектов при помощи метода sort() или функции sorted, при этом будет использоваться именно определенный оператор сравнения &lt;.</p>
+        </section>
+        <section id="type-isinstance">
+            <h2>Функции type и isinstance</h2>
+            <p>Полезно, чтобы конструктор __init__ мог воспринимать параметры различных типов. Например, удобно инициализировать вектор не только двумя числами, но и строкой, в которой через пробел записаны два числа (такая строка может быть считана со стандартного ввода), списком или кортежем. То есть передаваемые конструктору аргументы могут быть разного типа (int, float, str, list, tuple). Конструктор должен выполнять различные действия для параметров различного типа, для этого нужно уметь проверять принадлежность объекту какому-либо классу.</p>
+            <p>Эту задачу можно решить при помощи функций type и isinstance. Функция type возвращает класс, к которому принадлежит объект. Например:</p>
+            <pre data-language="python"><span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a -  целое число&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a - строка&#39;</span><span class="p">)</span></pre>
+            <p>Для этого можно использовать функцию isinstance, у которой два параметра: объект и класс. Функция возращает True, если объект принадлежит классу или False в противном случае. Пример:</p>
+            <pre data-language="python"><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a -  целое число&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a - строка&#39;</span><span class="p">)</span></pre>
+            <p>Список возможных перегружаемых операторов</p>
+            <p>Следующая таблица взята из книги Саммерфильда (стр. 283 и далее).</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Использование</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">Операторы сравнения</td>
+                    </tr>
+                    <tr>
+                        <td>__lt__(self, other)</td>
+                        <td>x &lt; y</td>
+                    </tr>
+                    <tr>
+                        <td>__le__(self, other)</td>
+                        <td>x &lt;= y</td>
+                    </tr>
+                    <tr>
+                        <td>__eq__(self, other)</td>
+                        <td>x == y</td>
+                    </tr>
+                    <tr>
+                        <td>__ne__(self, other)</td>
+                        <td>x != y</td>
+                    </tr>
+                    <tr>
+                        <td>__gt__(self, other)</td>
+                        <td>x &gt; y</td>
+                    </tr>
+                    <tr>
+                        <td>__ge__(self, other)</td>
+                        <td>x &gt;= y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Арифметические операторы</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Сложение</td>
+                    </tr>
+                    <tr>
+                        <td>__add__(self, other)</td>
+                        <td>x + y</td>
+                    </tr>
+                    <tr>
+                        <td>__radd__(self, other)</td>
+                        <td>y + x</td>
+                    </tr>
+                    <tr>
+                        <td>__iadd__(self, other)</td>
+                        <td>x += y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Вычитание</td>
+                    </tr>
+                    <tr>
+                        <td>__sub__(self, other)</td>
+                        <td>x - y</td>
+                    </tr>
+                    <tr>
+                        <td>__rsub__(self, other)</td>
+                        <td>y - x</td>
+                    </tr>
+                    <tr>
+                        <td>__isub__(self, other)</td>
+                        <td>x -= y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Умножение</td>
+                    </tr>
+                    <tr>
+                        <td>__mul__(self, other)</td>
+                        <td><code>x * y</code></td>
+                    </tr>
+                    <tr>
+                        <td>__rmul__(self, other)</td>
+                        <td><code>y * x</code></td>
+                    </tr>
+                    <tr>
+                        <td>__imul__(self, other)</td>
+                        <td><code>x *= y</code></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Деление</td>
+                    </tr>
+                    <tr>
+                        <td>__truediv__(self, other)</td>
+                        <td>x / y</td>
+                    </tr>
+                    <tr>
+                        <td>__rtruediv__(self, other)</td>
+                        <td>y / x</td>
+                    </tr>
+                    <tr>
+                        <td>__itruediv__(self, other)</td>
+                        <td>x /= y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Целочисленное деление</td>
+                    </tr>
+                    <tr>
+                        <td>__floordiv__(self, other)</td>
+                        <td>x // y</td>
+                    </tr>
+                    <tr>
+                        <td>__rfloordiv__(self, other)</td>
+                        <td>y // x</td>
+                    </tr>
+                    <tr>
+                        <td>__ifloordiv__(self, other)</td>
+                        <td>x //= y</td>
+                    </tr>
+                    <tr>
+                        <td>__divmod__(self, other)</td>
+                        <td>divmod(x, y)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Остаток</td>
+                    </tr>
+                    <tr>
+                        <td>__mod__(self, other)</td>
+                        <td>x % y</td>
+                    </tr>
+                    <tr>
+                        <td>__rmod__(self, other)</td>
+                        <td>y % x</td>
+                    </tr>
+                    <tr>
+                        <td>__imod__(self, other)</td>
+                        <td>x %= y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Возведение в степень</td>
+                    </tr>
+                    <tr>
+                        <td>__pow__(self, other)</td>
+                        <td><code>x ** y</code></td>
+                    </tr>
+                    <tr>
+                        <td>__rpow__(self, other)</td>
+                        <td><code>y ** x</code></td>
+                    </tr>
+                    <tr>
+                        <td>__ipow__(self, other)</td>
+                        <td><code>x **= y</code></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Отрицание, модуль</td>
+                    </tr>
+                    <tr>
+                        <td>__pos__(self)</td>
+                        <td>+x</td>
+                    </tr>
+                    <tr>
+                        <td>__neg__(self)</td>
+                        <td>-x</td>
+                    </tr>
+                    <tr>
+                        <td>__abs__(self)</td>
+                        <td>abs(x)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Преобразование к стандартным типам</td>
+                    </tr>
+                    <tr>
+                        <td>__int__(self)</td>
+                        <td>int(x)</td>
+                    </tr>
+                    <tr>
+                        <td>__float__(self)</td>
+                        <td>float(x)</td>
+                    </tr>
+                    <tr>
+                        <td>__str__(self)</td>
+                        <td>str(x)</td>
+                    </tr>
+                    <tr>
+                        <td>__round__(self, digits = 0)</td>
+                        <td>round(x, digits)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="id7">
+            <h2>Упражнения</h2>
+            <p><a href="http://judge2.vdi.mipt.ru/cgi-bin/new-register?contest_id=192110">Контест</a></p>
+        </section>
+    </section>
+</body>
+</div>
+</html>

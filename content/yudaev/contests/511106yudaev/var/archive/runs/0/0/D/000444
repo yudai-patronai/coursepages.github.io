@@ -1,0 +1,5 @@
+Transpose=lambda A: [[A[j][i] for j in range(len(A))] for i in range(len(A[0]))]
+
+m,n = tuple(int(i) for i in input().split())
+B=[[value for value in input().split()] for line in range(m)]
+print('\n'.join([' '.join(i) for i in Transpose(B)]))

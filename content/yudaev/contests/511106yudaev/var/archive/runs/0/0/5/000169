@@ -1,0 +1,19 @@
+n,m=list(map(int,input().split()))
+A=[]
+C=[]
+for x in range(n):
+    C=list(map(int,input().split()))
+    A+=[C]
+    C=[]
+def Transpose(A):
+    B=[]
+    H=[]
+    for i in range(len(A[0])):
+        for j in range(len(A)):
+            B.append(A[j][i])
+        H+=[B]
+        B=[]
+    return H
+t=Transpose(A)
+for o in range(len(t)):
+    print (' '.join(map(str, t[o])))

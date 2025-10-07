@@ -1,0 +1,15 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="259" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>86fe65a3-19c1-4776-bbe0-251706f5f2e1</uuid>
+  <compiler_output>000259.c: In function 'main':
+000259.c:4:4: error: 'm' is used uninitialized in this function [-Werror=uninitialized]
+   k=m+1;
+    ^
+000259.c:5:3: error: 'n' is used uninitialized in this function [-Werror=uninitialized]
+   for (i = 2; i &lt;= n; i++) {
+   ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

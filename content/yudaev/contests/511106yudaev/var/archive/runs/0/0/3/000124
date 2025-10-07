@@ -1,0 +1,2 @@
+nums = list(map(int,input().split()))
+print(str([[("*"*((k%2-m%2)*(k%2-m%2))+"."*(((k%2-1)*(k%2-1) - m%2)*((k%2-1)*(k%2-1) - m%2))) for k in range(nums[1])] for m in range(nums[0])])[2:-2].replace("[","").replace("],","\n").replace("'","").replace(" ","").replace(","," "))

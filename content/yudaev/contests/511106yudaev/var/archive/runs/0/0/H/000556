@@ -1,0 +1,18 @@
+n = int(input())
+l = [[None] for a in range(n)]
+for s in range(len(l)):
+    l[s] = list(map(int, input().split()))
+
+
+def IsSymmetric(A):
+    for i in range(len(A)):
+        for j in range (len(A)):
+            if A[i][j] != A[j][i]:
+                return False
+    return True
+
+
+if IsSymmetric(l):
+    print('YES')
+else:
+    print('NO')

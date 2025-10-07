@@ -1,0 +1,50 @@
+Date: 2015/10/19 23:36:49
+From: agamestra (uid 18486)
+Ip: 93.175.8.25
+Command: submit
+Status: ok
+Run-id: 494
+Run-status: CG
+
+Date: 2015/10/19 23:36:51
+From: SYSTEM
+Status: testing completed
+Run-id: 494
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/19 23:36:49.557190
+  Request completion time:           2015/10/19 23:36:51.607829
+  Total testing duration:            2.051
+  Waiting in compile queue duration: 0.296
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.743
+  Waiting in run queue duration:     0.075
+  Testing duration:                  0.304
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.628
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 494
+Run-status: CG
+
+Date: 2015/12/09 20:29:59
+From: SYSTEM
+Status: testing completed
+Run-id: 494
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:39.725042
+  Request completion time:           2015/12/09 20:29:59.647079
+  Total testing duration:            67039.922
+  Waiting in compile queue duration: 1.233
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   3.822
+  Waiting in run queue duration:     880.987
+  Testing duration:                  0.291
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66153.584
+

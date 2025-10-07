@@ -1,0 +1,15 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="54" judge-id="34" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>91fa2ac7-8ad3-489e-a633-091e2d6ad7dd</uuid>
+  <compiler_output>000054.c: In function 'main':
+000054.c:5:28: error: expected expression before '%' token
+     sscanf(argv[1], &quot;%d&quot; , % a);
+                            ^
+000054.c:6:9: error: 'i' undeclared (first use in this function)
+     for(i = 0 ; i &lt; a ; i ++)
+         ^
+000054.c:6:9: note: each undeclared identifier is reported only once for each function it appears in
+</compiler_output>
+</testing-report>

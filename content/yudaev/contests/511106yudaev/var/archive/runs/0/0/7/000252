@@ -1,0 +1,9 @@
+n = int(input())
+A = []
+for i in range(n):
+    A.append([int(j) for j in input().split()])
+
+for i in range(n,0,-1):
+    for j in range(n):
+        print (A[j][i],end=' ')
+    print ()

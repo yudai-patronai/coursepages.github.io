@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<problem
+   package = "ru.ejudge.sample_contest"
+   id = "V"
+   type = "standard">
+  <statement language="ru_RU">
+    <title>Задача V: eval</title>
+    <description>
+<p>
+Вычислите арифметическое выражение, данное на входе при помощи стандартной функции eval()
+</p>
+    </description>
+  </statement>
+  <examples>
+    <example>
+      <input>1+2</input>
+      <output>3</output>
+    </example>
+  </examples>
+</problem>

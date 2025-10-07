@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="258" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>906aae74-28ea-44f3-81a4-0987e86d79b9</uuid>
+  <compiler_output>000258.c: In function 'main':
+000258.c:44:11: error: 'i' is used uninitialized in this function [-Werror=uninitialized]
+     printf(&quot;%d&quot;, i);
+           ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

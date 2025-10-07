@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="151" judge-id="30" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>ba7ca833-a53a-432b-bd82-5aa68f587793</uuid>
+  <compiler_output>000151.c: In function 'main':
+000151.c:3:6: error: 'for' loop initial declarations are only allowed in C99 mode
+      for (int i = 1; i &lt; argc; i++)
+      ^
+000151.c:3:6: note: use option -std=c99 or -std=gnu99 to compile your code
+000151.c:4:11: error: implicit declaration of function 'atoi' [-Werror=implicit-function-declaration]
+           ans += atoi (argv[i]);
+           ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

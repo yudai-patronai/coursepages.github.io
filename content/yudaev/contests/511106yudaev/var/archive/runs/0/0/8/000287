@@ -1,0 +1,18 @@
+A=input().split()
+m=int(A[0])
+n=int(A[1])
+A=[]
+B=[]
+for i in range(m):
+    A.append(list(map(int,input().split())))
+B=list(zip(*A))
+C=[]
+for r in range(len(B)):
+    Q=''
+    C=B[r]
+    for e in range(m):
+        if e!=(m-1):
+            Q=Q+str(C[e])+' '
+        else:
+            Q=Q+str(C[e])
+    print(Q)

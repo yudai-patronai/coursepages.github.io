@@ -1,0 +1,25 @@
+Date: 2016/10/26 11:57:22
+From: kuskov_ars (uid 21862)
+Ip: 10.55.122.56
+Command: submit
+Status: ok
+Run-id: 195
+Run-status: CG
+
+Date: 2016/10/26 11:57:52
+From: SYSTEM
+Status: testing completed
+Run-id: 195
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/26 11:57:22.403774
+  Request completion time:           2016/10/26 11:57:52.441858
+  Total testing duration:            30.038
+  Waiting in compile queue duration: 0.922
+  Compilation duration:              0.314
+  Waiting in serve queue duration:   0.788
+  Waiting in run queue duration:     0.426
+  Testing duration:                  27.306
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.279
+

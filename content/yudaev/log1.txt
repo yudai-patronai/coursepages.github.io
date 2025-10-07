@@ -1,0 +1,20 @@
+2017-01-11T11:23:32Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_a397e7ab-2e7c-4705-85cf-4f8f5fd00e3f -> /home/judges/compile/var/compile/600101/status/dir/a397e7ab-2e7c-4705-85cf-4f8f5fd00e3f
+2017-01-11T11:23:32Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T11:34:59Z:info:scan_dir: found 'G71C7C632S0433A5253' (priority 0)
+2017-01-11T11:34:59Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C632S0433A5253 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C632S0433A5253
+2017-01-11T11:34:59Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C632S0433A5253
+task_Start: execv(3): /home/judges/compile/scripts/python3 000163.py 000163 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000163.txt 2>&1
+2017-01-11T11:34:59Z:info:Compilation sucessful
+2017-01-11T11:34:59Z:info:Copy: /home/judges/compile/var/work/compile/log_000163.txt -> /home/judges/compile/var/compile/101701/report/55c15860-7141-4364-ab70-f285808f49f3.txt
+2017-01-11T11:34:59Z:info:writing file /home/judges/compile/var/compile/101701/status/in/29572_localhost.localdomain_55c15860-7141-4364-ab70-f285808f49f3
+2017-01-11T11:34:59Z:info:Move: /home/judges/compile/var/compile/101701/status/in/29572_localhost.localdomain_55c15860-7141-4364-ab70-f285808f49f3 -> /home/judges/compile/var/compile/101701/status/dir/55c15860-7141-4364-ab70-f285808f49f3
+2017-01-11T11:34:59Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T11:36:42Z:info:scan_dir: found 'G71C7C669MP4IA1537NK' (priority 0)
+2017-01-11T11:36:42Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C669MP4IA1537NK -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C669MP4IA1537NK
+2017-01-11T11:36:42Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C669MP4IA1537NK
+task_Start: execv(3): /home/judges/compile/scripts/gcc 007924.c 007924 0</dev/null 1>>/home/judges/compile/var/work/compile/log_007924.txt 2>&1
+2017-01-11T11:36:42Z:info:Compilation sucessful
+2017-01-11T11:36:42Z:info:Copy: /home/judges/compile/var/work/compile/log_007924.txt -> /home/judges/compile/var/compile/600101/report/a5738546-7cbb-44be-8ea1-dfa80e7b5a56.txt
+2017-01-11T11:36:42Z:info:writing file /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_a5738546-7cbb-44be-8ea1-dfa80e7b5a56
+2017-01-11T11:36:42Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_a5738546-7cbb-44be-8ea1-dfa80e7b5a56 -> /home/judges/compile/var/compile/600101/status/dir/a5738546-7cbb-44be-8ea1-dfa80e7b5a56
+2017-01-11T11:36:42Z:info:clear_directory: /home/judges/compile/var/work/compile cleared

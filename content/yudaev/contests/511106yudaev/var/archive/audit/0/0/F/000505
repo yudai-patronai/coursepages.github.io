@@ -1,0 +1,50 @@
+Date: 2015/10/19 23:40:04
+From: agamestra (uid 18486)
+Ip: 93.175.8.25
+Command: submit
+Status: ok
+Run-id: 505
+Run-status: CG
+
+Date: 2015/10/19 23:40:07
+From: SYSTEM
+Status: testing completed
+Run-id: 505
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/19 23:40:04.661179
+  Request completion time:           2015/10/19 23:40:07.696369
+  Total testing duration:            3.035
+  Waiting in compile queue duration: 0.268
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.754
+  Waiting in run queue duration:     0.227
+  Testing duration:                  1.280
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.501
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 505
+Run-status: CG
+
+Date: 2015/12/09 20:30:26
+From: SYSTEM
+Status: testing completed
+Run-id: 505
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:40.043108
+  Request completion time:           2015/12/09 20:30:27.008803
+  Total testing duration:            67066.966
+  Waiting in compile queue duration: 0.958
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   10.489
+  Waiting in run queue duration:     1092.581
+  Testing duration:                  1.138
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   65961.797
+

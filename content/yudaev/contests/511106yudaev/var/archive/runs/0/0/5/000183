@@ -1,0 +1,21 @@
+def IsSymetric(A):
+    a = 0
+    N = 0
+    for i in range(len(A)):
+        for j in range(a, len(A[i])):
+            if A[i][j] != A[j][i]:
+                N += 1
+    return(N)
+
+N = int(input())
+A = []
+for i in range(N):
+    row = input().split()
+    for i in range(len(row)):
+        row[i] = int(row[i])
+    A.append(row)
+B = IsSymetric(A)
+if B > 0:
+    print('NO')
+else:
+    print('YES')

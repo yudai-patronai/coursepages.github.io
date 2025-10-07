@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int sb(int k1,int n)
+{
+    int i,l=0;
+	if (k1 == 1)
+        return 1;
+	for (i = 0; i <= n/k1;i++)
+        l=l+sb(k1-1,n-k1*i);
+	return l;
+
+}
+int main()
+{
+	int n,l;
+	scanf("%d", &n);
+	l=sb(n,n);
+	printf("%d", l);
+	return 0;
+	}

@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[], char* envp[])
+{
+    int i, k;
+    sscanf(argv[1], "%d", &k);
+    for(i = 0; i < k; i++)
+    {
+        printf("%s\n", envp[i]);
+    }
+    return 0;
+}

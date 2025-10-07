@@ -1,0 +1,111 @@
+3
+eucharis
+fittonia
+tagetes
+---
+7	
+setegat tagetes
+8
+ainottif fittonia
+sirahcue eucharis
+====
+10
+baca
+bacca
+eucharis
+fittonia
+malum
+multa
+pomum
+popula
+popum
+tagetes
+----
+4
+acab baca
+5
+accab bacca
+atlum multa
+mulam malum
+mumop pomum
+mupop popum
+6
+alupop popula
+7
+setegat tagetes
+8
+ainottif fittonia
+sirahcue eucharis
+====
+1
+eucharis
+----
+8
+sirahcue eucharis
+====
+15
+baca
+bacca
+corymbosa
+eucharis
+fittonia
+lunulata
+malum
+minima
+multa
+pomum
+popula
+popum
+tagetes
+vershaffeliti
+agava
+----
+4
+acab baca
+5
+accab bacca
+atlum multa
+avaga agava
+mulam malum
+mumop pomum
+mupop popum
+6
+alupop popula
+aminim minima
+7
+setegat tagetes
+8
+ainottif fittonia
+atalunul lunulata
+sirahcue eucharis
+9
+asobmyroc corymbosa
+13
+itileffahsrev vershaffeliti
+====
+3
+z
+m
+a
+----
+1
+a a
+m m
+z z
+====
+1
+abcdeabcdeabcde
+----
+15
+edcbaedcbaedcba abcdeabcdeabcde
+====
+3
+qaz
+wsx
+edc
+----
+3
+cde edc
+xsw wsx
+zaq qaz
+====

@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="209" judge-id="9" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>f199b075-a492-4326-83b3-c182515566c7</uuid>
+  <compiler_output>000209.c: In function 'min2':
+000209.c:10:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+000209.c: In function 'main':
+000209.c:50:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

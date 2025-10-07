@@ -1,0 +1,50 @@
+Date: 2015/10/16 01:44:35
+From: guskov (uid 18608)
+Ip: 93.175.0.106
+Command: submit
+Status: ok
+Run-id: 69
+Run-status: CG
+
+Date: 2015/10/16 01:44:37
+From: SYSTEM
+Status: testing completed
+Run-id: 69
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/16 01:44:35.465673
+  Request completion time:           2015/10/16 01:44:37.491290
+  Total testing duration:            2.026
+  Waiting in compile queue duration: 0.784
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.232
+  Waiting in run queue duration:     0.591
+  Testing duration:                  0.309
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.105
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 69
+Run-status: CG
+
+Date: 2015/12/09 20:30:27
+From: SYSTEM
+Status: testing completed
+Run-id: 69
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:25.271430
+  Request completion time:           2015/12/09 20:30:27.199687
+  Total testing duration:            67081.928
+  Waiting in compile queue duration: 0.683
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   25.560
+  Waiting in run queue duration:     1094.668
+  Testing duration:                  0.315
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   65960.697
+

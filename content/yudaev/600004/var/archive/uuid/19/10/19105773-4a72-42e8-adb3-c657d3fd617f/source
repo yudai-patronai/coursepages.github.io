@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int nat(int m, int n);
+int main() {
+	int x;
+	scanf("%i", &x);
+	
+	printf("%i", nat(x, x));
+}
+int nat(int m, int n) {
+	if (n == 0) {
+		if (m == 0) return 1;
+		else return 0;
+	}
+	int d = 0;
+	if (n <= m) {
+		d = nat(m, n - 1) + nat(m - n, n);
+	}
+	else d = nat(m, m);
+	return d;
+}

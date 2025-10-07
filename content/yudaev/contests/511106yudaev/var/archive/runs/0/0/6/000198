@@ -1,0 +1,7 @@
+x1=int(input())
+y1=int(input())
+x2=int(input())
+y2=int(input())
+def distance(a,b,c,d):
+    return(((a-c)**2+(b-d)**2)**0.5)
+print(distance(x1,y1,x2,y2))

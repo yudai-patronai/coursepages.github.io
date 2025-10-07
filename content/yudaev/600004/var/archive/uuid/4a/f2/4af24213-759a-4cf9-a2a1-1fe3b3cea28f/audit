@@ -1,0 +1,25 @@
+Date: 2016/10/24 18:39:38
+From: RuslanRN (uid 22405)
+Ip: 176.59.35.51
+Command: submit
+Status: ok
+Run-id: 176
+Run-status: CG
+
+Date: 2016/10/24 18:40:06
+From: SYSTEM
+Status: testing completed
+Run-id: 176
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/24 18:39:38.793079
+  Request completion time:           2016/10/24 18:40:06.248946
+  Total testing duration:            27.456
+  Waiting in compile queue duration: 0.449
+  Compilation duration:              0.479
+  Waiting in serve queue duration:   0.217
+  Waiting in run queue duration:     0.321
+  Testing duration:                  25.944
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.043
+

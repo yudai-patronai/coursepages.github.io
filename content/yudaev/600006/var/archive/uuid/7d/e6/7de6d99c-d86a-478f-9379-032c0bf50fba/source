@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(int argc, char* ar[]){
+    int i,a,sum=0;
+    for(i=0; i<argc; i++){
+        sscanf(ar[i], "%d", &a);
+        sum=sum+a;
+    }
+    return sum;
+}

@@ -1,0 +1,13 @@
+//#include <stdio.h>
+#include <stdlib.h>
+
+int main ( int argc, char** argv )
+{
+  int res = 0, i;
+  for ( i = 2; i <= argc; ++i )
+  {
+    res += atoi ( argv[i-1] );
+  }
+  //printf ( "%d\n", res );
+  return res;
+}

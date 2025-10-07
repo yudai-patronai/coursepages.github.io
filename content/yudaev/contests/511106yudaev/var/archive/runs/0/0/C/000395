@@ -1,0 +1,43 @@
+def mines(mass, k):
+    n = len(mass)
+    m = len(mass[0])
+    for i in range(k):
+        x, y = input().split()
+        x, y = int(x), int(y)
+        mass[x][y] = '*'
+    for i in range(1, n - 1):
+        for j in range(1, m - 1):
+            flag = 0
+
+            if mass[i -1][j - 1] == '*':
+                flag += 1
+            if mass[i - 1][j] == '*':
+                flag += 1
+            if mass[i - 1][j + 1] == '*':
+                flag += 1
+            if mass[i][j - 1] == '*':
+                flag += 1
+            if mass[i][j + 1] == '*':
+                flag += 1
+            if mass[i + 1][j - 1] == '*':
+                flag += 1
+            if mass[i + 1][j] == '*':
+                flag += 1
+            if mass[i + 1][j + 1] == '*':
+                flag += 1
+            if mass[i][j] == '*':
+                continue
+            else:
+                mass[i][j] = flag
+    return mass
+
+n, m, k = input().split()
+n, m, k = int(n), int(m), int(k)
+mass = []
+for i in range(n+2):
+    mass.append([0] * (m + 2))
+mass = mines(mass, k)
+for  i  in range(1, n + 1):
+    for j in range(1, m + 1):
+        print(mass[i][j], end = ' ')
+    print()

@@ -1,0 +1,9 @@
+num_lines_and_coloumns = int(input())
+num_lines_and_coloumns -= 1
+A = [[0 for i in range(num_lines_and_coloumns+1)] for k in range(num_lines_and_coloumns+1)]
+for m in range(num_lines_and_coloumns+1):
+    A[m] = list(map(int,input().split()))
+def Rotate(A):
+    A = [[A[num_lines_and_coloumns - q][p] for q in range(num_lines_and_coloumns+1)] for p in range(num_lines_and_coloumns+1)]
+    return (str(A)[2:-2].replace("[","").replace("],","\n").replace("'","").replace(" ","").replace(","," "))
+print(Rotate(A))

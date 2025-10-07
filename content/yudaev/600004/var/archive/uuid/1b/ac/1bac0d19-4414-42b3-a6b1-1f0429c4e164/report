@@ -1,0 +1,82 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="295" judge-id="1" status="PT" scoring="KIROV" run-tests="5" contest-id="600004" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="0" score="0" max-score="100" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>1bac0d19-4414-42b3-a6b1-1f0429c4e164</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="512" real-time="520" max-memory-used="117993472" nominal-score="1" score="0" visibility="full" >
+  <program-stats-str>{ utime=422, stime=90, ptime=512, rtime=520, maxvsz=117993472, maxrss=138919936, nvcsw=17, nivcsw=8 }</program-stats-str>
+      <input size="4">2 2
+</input>
+      <output size="2">6
+</output>
+      <stderr size="233">TEST
+PASSED
+==15948== 36 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==15948==    at 0x4A08121: calloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15948==    by 0x4006CB: main (000295.c:6)
+==15948== 
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="518" real-time="526" max-memory-used="117993472" nominal-score="1" score="0" >
+  <program-stats-str>{ utime=434, stime=84, ptime=518, rtime=526, maxvsz=117993472, maxrss=138924032, nvcsw=17, nivcsw=6 }</program-stats-str>
+      <input size="4">3 4
+</input>
+      <output size="3">35
+</output>
+      <stderr size="233">TEST
+PASSED
+==15959== 80 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==15959==    at 0x4A08121: calloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15959==    by 0x4006CB: main (000295.c:6)
+==15959== 
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="516" real-time="524" max-memory-used="117993472" nominal-score="1" score="0" >
+  <program-stats-str>{ utime=428, stime=88, ptime=516, rtime=524, maxvsz=117993472, maxrss=138919936, nvcsw=17, nivcsw=7 }</program-stats-str>
+      <input size="4">9 1
+</input>
+      <output size="3">10
+</output>
+      <stderr size="233">TEST
+PASSED
+==15969== 80 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==15969==    at 0x4A08121: calloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15969==    by 0x4006CB: main (000295.c:6)
+==15969== 
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="513" real-time="521" max-memory-used="117993472" nominal-score="1" score="0" >
+  <program-stats-str>{ utime=424, stime=89, ptime=513, rtime=521, maxvsz=117993472, maxrss=138919936, nvcsw=17, nivcsw=7 }</program-stats-str>
+      <input size="4">1 9
+</input>
+      <output size="3">10
+</output>
+      <stderr size="233">TEST
+PASSED
+==15978== 80 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==15978==    at 0x4A08121: calloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15978==    by 0x4006CB: main (000295.c:6)
+==15978== 
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="519" real-time="527" max-memory-used="117993472" nominal-score="1" score="0" >
+  <program-stats-str>{ utime=433, stime=86, ptime=519, rtime=527, maxvsz=117993472, maxrss=140865536, nvcsw=17, nivcsw=8 }</program-stats-str>
+      <input size="6">20 20
+</input>
+      <output size="10">407575348
+</output>
+      <stderr size="236">TEST
+PASSED
+==15989== 1,764 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==15989==    at 0x4A08121: calloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15989==    by 0x4006CB: main (000295.c:6)
+==15989== 
+</stderr>
+    </test>
+  </tests>
+</testing-report>

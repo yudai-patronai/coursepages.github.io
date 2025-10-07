@@ -1,0 +1,19 @@
+s1=input()
+n=int(s1[0])
+m=int(s1[2])
+A = []
+for i in range(n):
+    A.append(['.'] * m)
+for i in range(n):
+    for j in range(m):
+        if (i%2) ==0:
+            if (j%2)!=0:
+                A[i][j]='*'
+        elif (i%2)!=0:
+            if (j%2)==0:
+                A[i][j]='*'
+
+for row in A:
+    for elem in row:
+        print(elem, end = ' ')
+    print()

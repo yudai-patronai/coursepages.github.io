@@ -1,0 +1,50 @@
+Date: 2015/10/13 19:45:01
+From: vaace (uid 18613)
+Ip: 93.175.8.54
+Command: submit
+Status: ok
+Run-id: 3
+Run-status: CG
+
+Date: 2015/10/13 19:45:03
+From: SYSTEM
+Status: testing completed
+Run-id: 3
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/13 19:45:01.378499
+  Request completion time:           2015/10/13 19:45:03.445814
+  Total testing duration:            2.067
+  Waiting in compile queue duration: 0.480
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.572
+  Waiting in run queue duration:     0.504
+  Testing duration:                  0.215
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.291
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 3
+Run-status: CG
+
+Date: 2015/12/09 20:29:58
+From: SYSTEM
+Status: testing completed
+Run-id: 3
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:23.238620
+  Request completion time:           2015/12/09 20:29:58.794305
+  Total testing duration:            67055.556
+  Waiting in compile queue duration: 0.476
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   20.883
+  Waiting in run queue duration:     873.006
+  Testing duration:                  0.211
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66160.977
+

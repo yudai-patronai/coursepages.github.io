@@ -1,0 +1,45 @@
+int max(int a, int b)
+{
+    if(a > b)
+        return a;
+    return b;
+}
+#include <stdio.h>
+int main()
+{
+    int N = 0, M = 0;
+    scanf("%d", &N);
+    long long sum[102][102];
+    int trg[102][102];
+    int i = 0, j = 0;
+    for (i = 1; i <= N; ++i)
+    {
+        for (j = 1; j <= i; ++j)
+            scanf("%d", &trg[i][j]);
+    }
+    sum[0][0] = 0;
+    sum[1][1] = trg[1][1];
+    for(i = 2; i <= N; ++i)
+    {
+        for(j = 1; j <= i; ++j)
+        {
+            if(j == 1)
+                sum[i][j] = sum[i - 1][j] + trg[i][j];
+            else
+            {
+                if(j == i)
+                    sum[i][j] = sum[i - 1][j - 1] + trg[i][j];
+                else
+                    sum[i][j] = max(sum[i - 1][j - 1] + trg[i][j], sum[i - 1][j] + trg[i][j]);
+            }
+        }
+    }
+    int res = 0;
+    for(i = 1; i <= N; ++i)
+    {
+        if (max(res, sum[N][i]) != res)
+            res = sum[N][i];
+    }
+    printf("%d", res);
+    return 0;
+}

@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <math.h>
+
+#define SIZE 21
+unsigned long long int FAC[21][21] = {};
+
+#define max(a, b) (a) >= (b) ? (a) : (b)
+
+unsigned long long int Pascal(int line, int num)
+{
+
+    int i = 0, j = 0;
+
+    for(i = 0; i < line + 1; ++i)
+    {
+
+        for(j = 0; j < num + 1; ++j)
+        {
+
+            if(i == 0 || j == 0)
+                FAC[i][j] = 1;
+            else
+                FAC[i][j] += (FAC[i - 1][j] + FAC[i][j - 1]);
+
+            //printf("%lld ", FAC[i][j]);
+
+        }
+
+        //printf("\n");
+
+    }
+
+    return FAC[line][num];
+
+}
+
+int main()
+{
+
+    int width, height;
+    scanf("%d%d", &width, &height);
+
+    printf("%lld", Pascal(width, height));
+
+    return 0;
+
+}
+

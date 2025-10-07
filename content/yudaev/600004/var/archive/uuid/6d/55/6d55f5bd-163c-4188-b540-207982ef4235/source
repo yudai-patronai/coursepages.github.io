@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main(){
+    int N, M, i, k = 0, ans;
+    scanf("%d %d", &N, &M);
+    ans = N + 1;
+    for (i = 0; i != M; i++) {
+        ans += k;
+        k = (N - i) * (N - i + 1) / 2;
+    }
+    printf("%d\n", ans);
+    return 0;
+}

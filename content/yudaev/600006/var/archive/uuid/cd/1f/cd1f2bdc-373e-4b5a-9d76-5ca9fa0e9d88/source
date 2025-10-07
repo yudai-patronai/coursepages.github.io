@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main ( int argc, char** argv )
+{
+  FILE *targ, *plog = fopen ( "output.txt", "w" );
+  //plog = stdout; //!!!
+  if ( argc != 2 )
+  {
+    fprintf ( plog, "Usage: stat filename\n" );
+    fclose ( plog );
+    return 1;
+  }
+
+  if ( !( targ = fopen ( argv[1], "r" ) ) )
+  {
+    fprintf ( plog, "Can't open file %s", argv[1] );
+    fclose ( plog );
+    return 2;
+  }
+
+  size_t stat = 0;
+  char *buf = (char*) malloc ( BUFSIZ );
+  while ( !feof ( targ ) )
+    stat += fread ( buf, 1, BUFSIZ, targ );
+  fclose ( targ );
+
+  fprintf ( plog, "%lu", stat );
+  fclose ( plog );
+  return 0;
+}

@@ -1,0 +1,23 @@
+n=int(input())
+A=[]
+
+for i in range(n):
+     row=input().split()
+     for i in range(n):
+        row[i]=int(row[i])
+     A.append(row)
+
+
+def IsSymmetric(A):
+    AT=[]
+    AT=list(zip(*A))
+    A=list(zip(*AT))
+    if A==AT:
+      return True
+    else:
+      return False 
+
+if IsSymmetric(A)==True:
+   print('YES')
+else:
+   print('NO')

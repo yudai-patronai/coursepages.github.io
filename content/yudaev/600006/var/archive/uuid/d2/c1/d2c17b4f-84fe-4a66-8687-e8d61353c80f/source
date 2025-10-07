@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main(int argc, const char** argv)
+{
+	FILE* out = fopen("output.txt", "w");
+
+	if (argc < 2)
+	{
+		fprintf(out, "Usage: stat filename\n");
+		fclose(out);
+		return 1;
+	}
+
+	FILE* in;
+	if ((in = fopen(argv[1], "r")) == NULL)
+	{
+		fprintf(out, "Can't open file\n");
+		fclose(out);
+		return 2;
+	}
+
+	int count = 0;
+
+	while (fgetc(in) != EOF)
+		count++;
+
+	fprintf(out, "%d\n", count);
+	fclose(in);
+	fclose(out);
+	return 0;
+}

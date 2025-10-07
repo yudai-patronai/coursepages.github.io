@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="10" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>77b4f856-2849-478c-bda9-03b483083b29</uuid>
+  <compiler_output>000010.c: In function 'main':
+000010.c:28:9: error: format '%d' expects argument of type 'int', but argument 2 has type '__off_t' [-Werror=format=]
+         printf(&quot;%d\n&quot;, forensics.st_size);
+         ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

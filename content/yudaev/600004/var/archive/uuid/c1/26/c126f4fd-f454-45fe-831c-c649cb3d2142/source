@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+unsigned long long int fact(int n)
+{
+	unsigned long long int ans = 1;
+	int i;
+	for (i = 1; i<n + 1; i++)
+	{
+		ans = ans*i;
+	}
+	return ans;
+}
+int ways(int N, int M)
+{
+	if (N < 11 && M < 11)
+	{
+		int K;
+		K = fact(N + M) / (fact(N)*fact(M));
+		return K;
+	}
+	else
+	{
+		if (N*M == 0)
+		{
+			return 1;
+		}
+		else return ways(N - 1, M) + ways(N, M - 1);
+	}
+}
+int main()
+{
+	int N, M;
+	scanf("%d%d", &N, &M);
+	printf("%d", ways(N, M));
+	return 0;
+}

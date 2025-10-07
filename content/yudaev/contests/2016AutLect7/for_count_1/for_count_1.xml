@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- $Id$ -->
+<problem
+	package = "ru.fipi.math.2009.demo"
+	id = "for_count_1">
+	<statement language="ru_RU">
+		<title>Сколько 1 в бинарной записи числа</title>
+		<description>
+<p>Найти, сколько единиц содержит бинарная запись числа.</p>
+<p><b>Входные данные</b></p>
+<p>Целое неотрицательное число K.</p>
+<p><b>Выходные данные</b></p>
+<p>Сколько единиц содержит бинарная запись числа.</p>
+<p><b>Примеры</b></p>
+<table>
+<tr>
+<td><p align="left">Вход</p></td><td><p align="right">Выход</p></td></tr>
+<tr>
+	<td><p align="left"><pre>5</pre></p>
+	</td><td><p align="right">2</p>
+	</td>
+</tr>
+</table>
+
+		</description>
+	</statement>
+</problem>
+

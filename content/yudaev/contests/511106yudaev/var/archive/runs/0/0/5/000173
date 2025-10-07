@@ -1,0 +1,18 @@
+n, m = input().split()
+n, m = int(n), int(m)
+mass = []
+for i in range(n):
+    mass.append(['.'] * m)
+for i in range(n):
+    if i % 2 == 0:
+        for j in range(m):
+            if j % 2 == 0:
+                mass[i][j] = '*'
+    else:
+        for j in range(m):
+            if j % 2 != 0:
+                mass[i][j] = '*'
+for i in range(n):
+    for j in range(m):
+        print(mass[i][j], end = ' ')
+    print()

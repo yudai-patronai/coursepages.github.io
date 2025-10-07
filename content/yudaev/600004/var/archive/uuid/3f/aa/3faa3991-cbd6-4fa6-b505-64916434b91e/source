@@ -1,0 +1,34 @@
+#include <stdio.h>
+#define max(a, b) (a) > (b) ? (a) : (b)
+
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	long int q, w, e, r, a[100][100], b[100][100];
+	int i, j;
+	scanf("%ld", &q);
+	a[0][0] = q;
+	b[0][0] = q;
+	for(i = 1; i < n; i++)
+		for(j = 0; j < i+1; j++)
+		{
+			scanf("%ld", &a[i - j][j]);
+			if(i - j == 0)
+				b[i-j][j] = b[i-j][j-1] + a[i-j][j]; else
+				if(j == 0)
+					b[i-j][j] = b[i-j-1][j] + a[i-j][j]; else
+					{
+						w = b[i-j-1][j];
+						e = b[i-j][j-1];
+						r = max(w, e);
+						b[i-j][j] = a[i-j][j] + r;
+					}
+		}
+	q = b[n-1][0];
+	for(i = 1; i < n; i++)
+		if(b[n-i-1][i] > q)
+			q = b[n-i-1][i];
+	printf("%ld", q);		
+return 0;
+}

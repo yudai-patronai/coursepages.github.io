@@ -1,0 +1,82 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="341" judge-id="68" status="PT" scoring="KIROV" run-tests="5" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="4" score="8" max-score="60" time-limit-ms="2000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>dc22d7a8-97d8-4ddf-9d92-28ffd34b0208</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="540" real-time="547" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" visibility="full" >
+  <program-stats-str>{ utime=440, stime=100, ptime=540, rtime=547, maxvsz=117993472, maxrss=134696960, nvcsw=16, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="2">5
+</input>
+      <output size="3">28
+</output>
+      <correct size="3">28
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="538" real-time="546" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <program-stats-str>{ utime=440, stime=98, ptime=538, rtime=546, maxvsz=117993472, maxrss=134074368, nvcsw=17, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="2">1
+</input>
+      <output size="2">3
+</output>
+      <correct size="2">3
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="3" status="OK" time="541" real-time="564" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <program-stats-str>{ utime=440, stime=101, ptime=541, rtime=564, maxvsz=117993472, maxrss=135024640, nvcsw=17, nivcsw=10 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=303104, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="3">10
+</input>
+      <output size="4">120
+</output>
+      <correct size="4">120
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="OK" time="606" real-time="614" max-memory-used="18554325811200" nominal-score="2" score="2"  checker-comment="OK" >
+  <program-stats-str>{ utime=500, stime=106, ptime=606, rtime=614, maxvsz=18554325811200, maxrss=135024640, nvcsw=16, nivcsw=9 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1318912, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="3">50
+</input>
+      <output size="6">25200
+</output>
+      <correct size="6">25200
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="5" status="TL" time="3016" real-time="3029" max-memory-used="117993472" nominal-score="2" score="0" >
+  <program-stats-str>{ utime=2918, stime=98, ptime=3016, rtime=3029, maxvsz=117993472, maxrss=133849088, nvcsw=16, nivcsw=10 }</program-stats-str>
+      <input size="4">500
+</input>
+      <output size="0"></output>
+      <stderr size="145">TEST
+PASSED
+/home/judges/compile/scripts/runvg: line 48:   365 Killed                  valgrind &#36;{EJUDGE_VG_FLAGS} &quot;&#36;{runfile}&quot; &quot;&#36;@&quot; &gt; /dev/null
+</stderr>
+    </test>
+  </tests>
+</testing-report>

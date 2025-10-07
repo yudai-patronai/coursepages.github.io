@@ -1,0 +1,33 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="87" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>fffbef65-690e-4b42-8248-a80b0c34c3f6</uuid>
+  <compiler_output>000087.c:12:5: error: conflicting types for 'min'
+ int min(int a, int b)
+     ^
+000087.c:3:5: note: previous definition of 'min' was here
+ int min(int a, int b, int c)
+     ^
+000087.c: In function 'main':
+000087.c:23:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = 1; i &lt;= n; i++)
+  ^
+000087.c:23:2: note: use option -std=c99 or -std=gnu99 to compile your code
+000087.c:30:11: error: redefinition of 'i'
+  for (int i = n; i &gt;= 1; i--)
+           ^
+000087.c:23:11: note: previous definition of 'i' was here
+  for (int i = 1; i &lt;= n; i++)
+           ^
+000087.c:30:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (int i = n; i &gt;= 1; i--)
+  ^
+000087.c:34:4: error: too many arguments to function 'min'
+    curSum[i] = min(curSum[i + 1] + a[i], curSum[i + 2] + b[i], curSum[i + 3] + c[i]);
+    ^
+000087.c:12:5: note: declared here
+ int min(int a, int b)
+     ^
+</compiler_output>
+</testing-report>

@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int mas[102][102];
+unsigned int nat(int m, int n);
+
+int main() {
+	int x, y;
+	int i = 1, j = 1;
+	for (i = 1; i <= 30; i++) {
+		for (j = 1; j <= 30; j++) {
+			mas[i][j] = 0;
+		}
+	}
+
+	int ii = 1, jj = 1;
+	for (ii = 1; ii <= 30; ii++) {
+		for (jj = 1; jj <= 30; jj++) {
+			mas[ii][jj] = nat(ii, jj);
+		}
+	}
+
+	scanf("%i %i", &x, &y);
+
+	printf("%d\n", nat(x, y));
+
+	return 0;
+}
+unsigned int nat(int m, int n) {
+	if (n == 0 && m == 0) return 0;
+	if (n == 0 || m == 0) return 1;
+	if (n == 1 || m == 1) {
+		return m + n;
+	}
+	if (mas[m][n] != 0) {
+		return mas[m][n];
+	}
+	return nat(m, n - 1) + nat(m - 1, n);
+}

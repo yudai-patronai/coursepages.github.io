@@ -1,0 +1,14 @@
+a = [int(x) for x in input().split()]
+n = a[0]
+m = a[1]
+massive = [[] for y in range(n)]
+for i in range(n):
+    for j in range(m):
+        if (i + j) % 2 == 1:
+            massive[i].append('*')
+        else:
+            massive[i].append('.')
+for i in range(n):
+    for j in range(m):
+        print(massive[i][j], end = ' ')
+    print('')

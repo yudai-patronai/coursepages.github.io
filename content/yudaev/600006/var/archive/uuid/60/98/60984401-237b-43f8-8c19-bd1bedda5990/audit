@@ -1,0 +1,25 @@
+Date: 2016/11/01 11:58:23
+From: keleborn (uid 21605)
+Ip: 10.55.192.215
+Command: submit
+Status: ok
+Run-id: 176
+Run-status: CG
+
+Date: 2016/11/01 11:58:28
+From: SYSTEM
+Status: testing completed
+Run-id: 176
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/01 11:58:23.450675
+  Request completion time:           2016/11/01 11:58:28.015186
+  Total testing duration:            4.565
+  Waiting in compile queue duration: 0.726
+  Compilation duration:              0.259
+  Waiting in serve queue duration:   0.055
+  Waiting in run queue duration:     0.255
+  Testing duration:                  3.086
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.181
+

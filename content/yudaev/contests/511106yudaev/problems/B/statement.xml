@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <problem
+       package = "ru.ejudge.sample_contest"
+       id = "B"
+       type = "standard">
+      <statement language="ru_RU">
+        <title> Длина отрезка </title>
+        <description><p>Даны четыре действительных числа: x1, y1, x2, y2. Напишите функцию distance(x1, y1, x2, y2), вычисляющую расстояние между точкой (x1,y1) и (x2,y2). Считайте четыре действительных числа и выведите результат работы этой функции.</p>
+        </description>
+      </statement>
+      <examples>
+        <example>
+          <input>0
+0
+1
+1
+</input>
+          <output>1.4142135623730951
+</output>
+        </example>
+      </examples>
+    </problem>

@@ -1,0 +1,16 @@
+x1=int(input())
+y1=int(input())
+x2=int(input())
+y2=int(input())
+
+def distance(x1, y1, x2, y2):
+    if x1*x2 >= 0:
+         deltaX = abs(x1-x2)
+    elif x1*x2<0:
+         deltaX = abs(x1)+abs(x2)
+    if y1*y2 >= 0:
+         deltaY = abs(y1-y2)
+    elif y1*y2 < 0:
+         deltaY = abs(y1)+abs(y2) 
+    return (deltaX**2+deltaY**2)**(0.5)
+print(distance(x1,y1,x2,y2))        

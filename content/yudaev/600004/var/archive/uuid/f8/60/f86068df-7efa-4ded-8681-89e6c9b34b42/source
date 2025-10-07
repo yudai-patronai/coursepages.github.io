@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+int f(int n)
+{
+	return (n*(n + 1)) / 2;
+}
+int find(int n)
+{
+	int i = 0;
+	while (f(i) + i < n)
+	{
+		i++;
+	}
+	return i;
+}
+int main()
+{
+	int max, *p, n, m, k = 0, i, j;
+	scanf("%d", &n);
+	m = f(n);
+	p = (int*)malloc(m*sizeof(int));
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < i + 1; j++)
+		{
+			scanf("%d", &p[f(i) + j]);
+		}
+	}
+	max = 0;
+	while (k < m)
+	{
+		max = max + p[k];
+		if (k + find(k) + 2 < f(n))
+		{
+			if (p[k + find(k) + 2] > p[k + find(k) + 1])
+			{
+				k = k + find(k) + 2;
+			}
+			else
+			{
+				k = k + find(k) + 1;
+			}
+		}
+		else
+		{
+			k = k + find(k) + 1;
+		}
+	}
+	printf("%d", max);
+	free(p);
+	return 0;
+}

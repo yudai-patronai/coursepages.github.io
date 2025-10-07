@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cистемы счисления</title>
+    <meta charset="utf-8" />
+    <meta content="2020-09-28 09:00" name="date" />
+    <meta content="Системы счисления." name="summary" />
+    <meta content="draft" name="status" />
+</head>
+<style>
+div{
+  width: 600px;
+  margin: auto;
+  border: 0px ;
+  
+}
+body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="c">
+        <h1>Cистемы счисления</h1>
+        <aside id="id1" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#id2">Теория к занятию</a>
+                    <ul>
+                        <li><a href="#id8">Синтаксис по обработке строк</a></li>
+                    </ul>
+                </li>
+                <li><a href="#o3">Контест №3</a></li>
+            </ul>
+        </aside>
+        <section id="id2">
+            <h2>Теория к занятию</h2>
+            <p><a href="https://foxford.ru/wiki/informatika/analiz-tsifr-chisla">Анализ цифр числа</a>.</p>
+            <p><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0_%D0%93%D0%BE%D1%80%D0%BD%D0%B5%D1%80%D0%B0">Схема Горнера</a>.</p>
+            <p><a href="https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%B3%D0%B0-%D0%BF%D0%BE%D0%B7%D0%B8%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Нега-позиционная система счисления</a>.</p>
+            <p><a href="https://ru.wikipedia.org/wiki/%D0%A6%D0%B8%D1%84%D1%80%D1%8B_%D0%BC%D0%B0%D0%B9%D1%8F">Система счисления майя</a>.</p>
+            <p><a href="https://ru.wikipedia.org/wiki/%D0%A8%D0%B5%D1%81%D1%82%D0%B8%D0%B4%D0%B5%D1%81%D1%8F%D1%82%D0%B5%D1%80%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Вавилонская система счисления</a>.</p>
+            <section id="id8">
+                <h3>Синтаксис по обработке строк</h3>
+                <p>Сравнение равенства строк происходит посимвольно:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;aaa&#39;</span> <span class="o">==</span> <span class="s1">&#39;aaa&#39;</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;aab&#39;</span> <span class="o">==</span> <span class="s1">&#39;aaa&#39;</span>
+<span class="go">False</span></pre>
+                <p>Проверка, что символ является десятичной цифрой:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;0&#39;</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="s1">&#39;9&#39;</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;0&#39;</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="s1">&#39;9&#39;</span>
+<span class="go">True</span></pre>
+                <p>Итерирование по символам строки в прямом порядке:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abcd&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">a</span>
+<span class="go">b</span>
+<span class="go">c</span>
+<span class="go">d</span></pre>
+                <p>Итерирование по символам строки в обратном порядке:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abcd&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">d</span>
+<span class="go">c</span>
+<span class="go">b</span>
+<span class="go">a</span></pre>
+                <p>Разбиение строки по подстроке:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;912:adc:majw:d&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">912</span>
+<span class="go">adc</span>
+<span class="go">majw</span>
+<span class="go">d</span></pre>
+                <p>В данном примере разбиение происходит по символу <code class="code">:</code> и строка разделяется на 4 части. По умолчанию строковый метод <code class="code">str.split()</code> разбивает строку по символам пустого пространства (пробелы, табуляция).</p>
+            </section>
+        </section>
+        <section id="o3">
+            <h2>Контест №3</h2>
+            <p><a href="https://cs.mipt.ru:44367/cgi-bin/new-register?contest_id=60103">Участвовать в контесте</a>.</p>
+        </section>
+    </section>
+</body>
+</div>
+</html>

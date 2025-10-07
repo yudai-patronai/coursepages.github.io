@@ -1,0 +1,25 @@
+Date: 2016/10/18 18:58:46
+From: highoc (uid 21772)
+Ip: 10.55.192.9
+Command: submit
+Status: ok
+Run-id: 141
+Run-status: CG
+
+Date: 2016/10/18 18:58:51
+From: SYSTEM
+Status: testing completed
+Run-id: 141
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/18 18:58:46.144324
+  Request completion time:           2016/10/18 18:58:51.807734
+  Total testing duration:            5.663
+  Waiting in compile queue duration: 0.862
+  Compilation duration:              0.278
+  Waiting in serve queue duration:   0.674
+  Waiting in run queue duration:     0.998
+  Testing duration:                  2.811
+  Post-processing duration:          0.001
+  Waiting in serve queue duration:   0.041
+

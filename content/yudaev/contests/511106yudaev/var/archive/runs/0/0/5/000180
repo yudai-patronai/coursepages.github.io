@@ -1,0 +1,20 @@
+n, m, k=map(int,(input().split()))
+koordinat_min=[list(map(int,(input().split()))) for u in range(k)]
+pole=[[0*f for f in range(m)]for t in range(n)]
+for o in range(len(koordinat_min)):
+    pole[koordinat_min[o][0]-1][koordinat_min[o][1]-1]='*'
+miny=0
+for x in range(n):
+    for y in range(m):
+        for x1 in range(max(0,x-1),min(n,x+2)):
+            for y1 in range(max(0,y-1),min(m,y+2)):
+                if x1!=x or y1!=y:
+                    if pole[x1][y1]=='*':
+                        miny+=1
+        if pole[x][y]!='*':
+            pole[x][y]=miny
+        miny=0
+
+
+for row in pole:
+    print(' '.join([str(elem) for elem in row]))

@@ -1,0 +1,14 @@
+def arrayOutput(Arr):
+    for j in range(len(Arr)):
+        print(' '.join(map(str, Arr[j])))
+
+n = int(input())
+m = int(input())
+arr = [['.' for j in range(m)] for i in range(n)]
+for i in range(n):
+    for j in range(m):
+        if i%2 == 0 and j%2 == 1:
+            arr[i][j] = '*'
+        elif i%2 == 1 and j%2 == 0:
+            arr[i][j] = '*'
+arrayOutput(arr)

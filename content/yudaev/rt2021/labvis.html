@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пострение графиков</title>
+    <meta charset="utf-8" />
+    <meta content="2020-09-01 09:00" name="date" />
+    <meta content="Использование Jupyter notebook, matplotlib pyplot для построения графиков функций." name="summary" />
+    <meta content="published" name="status" />
+    <meta content="https://youtu.be/us7y0UhTq0s" name="lecture_link" />
+</head>
+<style>
+    div{
+      width: 600px;
+      margin: auto;
+      border: 0px ;
+      
+    }
+    body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="id1">
+        <h1>Пострение графиков</h1>
+        <aside id="id2" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#python">Генерация случайных чисел в Python</a></li>
+                <li><a href="#id3">Построение графиков и диаграмм</a></li>
+                <li><a href="#eval">Функция eval()</a></li>
+                <li><a href="#id6">Упражнение 1. Гистограммы</a></li>
+                <li><a href="#id7">Упражнение 2. Метод Монте-Карло.</a>
+                    <ul>
+                        <li><a href="#o2">Упражнение №2</a></li>
+                        <li><a href="#o3">Упражнение №3</a></li>
+                        <li><a href="#o4">Упражнение №4</a></li>
+                        <li><a href="#id8">Отображение погрешностей</a></li>
+                        <li><a href="#o5">Упражнение №5</a></li>
+                        <li><a href="#o6">Упражнение №6 *</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section id="python">
+<p><a href="http://judge2.vdi.mipt.ru/yudaev/rt2021/vis.ipynb" download>Ссылка на jupyter-notebook</a></p>
+            <h2>Генерация случайных чисел в Python</h2>
+            <p>Генерация случайных чисел - очень важный, с прикладной точки зрения, инструмент. Она используется в криптографии, при численном интегрировании - Метод Монте-Карло, для семплирования выборок в машинном обучении, вероятностных алгоритмах, имитационном моделировании (одно из самых известных тут распределение Пуассона) и многом-многом другом.</p>
+            <p>В набор стандартных библиотек Python включен модуль random, который предназначен для генерации случайных чисел из различных распределений, примитивного семплирования, перемешки данных и т.д.</p>
+            <p>Давайте рассмотрим основные функции этого модуля:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Функция библиотеки math</th>
+                        <th>Математическая функция</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2"><code class="code">random.seed([X], version=2)</code></td>
+                        <td>Инициализация генератора случайных чисел. Если X не указан, используется системное время.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.getstate()</code></td>
+                        <td>Возвращает внутреннее состояние генератора.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.setstate(state)</code></td>
+                        <td>Устанавливает внутреннее состояние генератора. Параметр state должен быть получен функцией getstate().</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.randrange(start, stop, step)</code></td>
+                        <td>Возвращает случайно выбранное число из последовательности.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.randint(A, B)</code></td>
+                        <td>Случайное целое число N, A ≤ N ≤ B.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.choice(sequence)</code></td>
+                        <td>Случайный элемент непустой последовательности.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.shuffle(sequence, [rand])</code></td>
+                        <td>Перемешивает последовательность (изменяется сама последовательность). Поэтому функция не работает для неизменяемых объектов.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.sample(population, k)</code></td>
+                        <td>Список длиной k из последовательности population.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.random()</code></td>
+                        <td>Случайное число от 0 до 1.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.uniform(A, B)</code></td>
+                        <td>Случайное число с плавающей точкой, A ≤ N ≤ B (или B ≤ N ≤ A).</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code class="code">random.gauss(mu, sigma)</code></td>
+                        <td>Распределение Гаусса.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="id3">
+            <h2>Построение графиков и диаграмм</h2>
+            <p>matplotlib - набор дополнительных модулей (библиотек) языка Python. Предоставляет средства для построения самых разнообразных 2D графиков и диаграмм данных. Отличается простотой использования — для построения весьма сложных и красочно оформленных диаграмм достаточно нескольких строк кода. При этом качество получаемых изображений более чем достаточно для их публикования. Также позволяет сохранять результаты в различных форматах, например Postscript, и, соответственно, вставлять изображения в документы TeX. Предоставляет API для встраивания своих графических объектов в приложения пользователя.</p>
+            <p>Пример построения графика функции:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_1.png" />
+            <p>На одном рисунке можно построить несколько графиков функций:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_2.png" />
+            <p>Также довольно просто на график добавить служебную информацию и отобразить сетку:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f_1(x)=\sin(x),\ f_2(x)=\cos(x),\ f_3(x)=-x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_3.png" />
+            <p>Или используя <code class="code">legend()</code>, где можно указать место расположения подписей к кривым на графике в параметре <code class="code">loc</code>. Подписи могут быть явно переданы <code class="code">legend((line1, line2, line3), ('label1', 'label2', 'label3'))</code> или могут быть переданы в аргумет <code class="code">label</code>, как в примере ниже. Чтобы сохранить график нужно воспользоваться <code class="code">savefig(figure_name)</code>, где figure_name явлется строкой назания файла с указанием расширения. Для текстовых полей можно изменять шрифт (<code class="code">fontsize</code>), для большей читаемости графика, а его размер указывается с помощью <code class="code">figure(figsize=(10, 5))</code>.</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f_1(x)=\sin(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f_2(x)=\cos(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f_3(x)=-x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figure_with_legend.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_with_legend.png" />
+            <p>Текстовые поля в matplotlib могут содержать разметку <a href="https://ru.wikibooks.org/wiki/Математические_формулы_в_LaTeX">LaTeX</a>, заключенную в знаки $. Буква r перед кавычками говорит python, что символ "\" следует оставить как есть и не интерпретировать как начало спецсимвола (например, перевода строки - "\n").</p>
+            <p>Работа с matplotlib основана на использовании графических окон и осей (оси позволяют задать некоторую графическую область). Все построения применяются к текущим осям. Это позволяет изображать несколько графиков в одном графическом окне. По умолчанию создаётся одно графическое окно figure(1) и одна графическая область subplot(111) в этом окне. Команда subplot позволяет разбить графическое окно на несколько областей. Она имеет три параметра: <code class="code">nr</code>, <code class="code">nc</code>, <code class="code">np</code>. Параметры <code class="code">nr</code> и <code class="code">nc</code> определяют количество строк и столбцов на которые разбивается графическая область, параметр <code class="code">np</code> определяет номер текущей области (<code class="code">np</code> принимает значения от 1 до <code class="code">nr*nc</code>). Если <code class="code">nr*nc&lt;10</code>, то передавать параметры <code class="code">nr</code>, <code class="code">nc</code>, <code class="code">np</code> можно без использования запятой. Например, допустимы формы subplot(2,2,1) и subplot(221).</p>
+            <pre data-language="python"> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+ <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+ <span class="c1">#subplot 1</span>
+ <span class="n">sp</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sin(x)$&#39;</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+ <span class="c1">#subplot 2</span>
+ <span class="n">sp</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\cos(x)$&#39;</span><span class="p">)</span>
+
+ <span class="c1">#subplot 3</span>
+ <span class="n">sp</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x^2$&#39;</span><span class="p">)</span>
+
+ <span class="c1">#subplot 4</span>
+ <span class="n">sp</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+ <span class="n">sp</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+ <span class="n">sp</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+
+ <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="75%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_4.png" />
+            <p>График может быть построен в полярной системе координат, для этого при создании subplot необходимо указать параметр <code class="code">polar=True</code>:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">phi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_5.png" />
+            <p>Или может быть задан в параметрической форме (для этого не требуется никаких дополнительных действий, поскольку два массива, которые передаются в функцию plot воспринимаются просто как списки координат точек, из которых состоит график):</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_6.png" />
+            <p>График функции двух переменных может быть построен, например, так:</p>
+            <pre data-language="python"><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes3d</span><span class="o">.</span><span class="n">Axes3D</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">())</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_7.png" />
+            <p>Добавление текста на график: Команду text() можно использовать для добавления текста в произвольном месте (по умолчанию координаты задаются в координатах активных осей), а команды <code class="code">xlabel()</code>, <code class="code">ylabel()</code> и <code class="code">title()</code> служат соответственно для подписи оси абсцисс, оси ординат и всего графика. Для более полной информации смотрите <a href="http://matplotlib.org/users/text_intro.html">«Text introduction»</a> раздел на оф. сайте.</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="c1"># the histogram of the data</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Smarts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of IQ&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mf">.030</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu=100,\ \sigma=15$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">.033</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\varphi_{\mu,\sigma^2}(x) = \frac</span><span class="si">{1}</span><span class="s1">{\sigma\sqrt{2\pi}} \,e^{ -\frac{(x- \mu)^2}{2\sigma^2}} = \frac</span><span class="si">{1}</span><span class="s1">{\sigma} \varphi\left(\frac{x - \mu}{\sigma}\right),\quad x\in\mathbb</span><span class="si">{R}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_8.png" />
+            <p><code class="code">plot()</code> — универсальная команда и в неё можно передавать произвольное количество аргументов. Например, для того, чтобы отобразить <code class="code">y</code> в зависимости от <code class="code">x</code>, можно выполнить команду:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_9.png" />
+            <p>Каждую последовательность можно отобразить своим типом точек:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># равномерно распределённые значения от 0 до 5, с шагом 0.2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># красные чёрточки, синие квадраты и зелёные треугольники</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;g^&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_10.png" />
+            <p>Также в matplotlib существует возможность строить круговые диаграммы:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Plot 3&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Group 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Group 5&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_11.png" />
+            <p>И аналогичным образом столбчатые диаграммы:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">objects</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+<span class="n">y_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">objects</span><span class="p">))</span>
+<span class="n">performance</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">performance</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">objects</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bar title&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_12.png" />
+            <p>Цветовые карты используются, если нужно указать в какие цвета должны окрашиваться участки трёхмерной поверхности в зависимости от значения Z в этой области. Цветовую карту можно задать самому, а можно воспользоваться готовой. Рассмотрим использование цветовой карты на примере графика функции <code class="code">z(x,y)=sin(x)*sin(y)/(x*y)</code>.</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="k">def</span> <span class="nf">makeData</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">xgrid</span><span class="p">,</span> <span class="n">ygrid</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">zgrid</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xgrid</span><span class="p">)</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ygrid</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">xgrid</span><span class="o">*</span><span class="n">ygrid</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xgrid</span><span class="p">,</span> <span class="n">ygrid</span><span class="p">,</span> <span class="n">zgrid</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">makeData</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+            <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_13.png" />
+            <p>Альтернативой к использованию <code class="code">mpl_toolkits.mplot3d</code> является библиотека <code class="code">plotly</code>, которая позволяет интерактивно взаимодействовать с графиком, поворачивая его или увеличивая некоторую область в пространсте.</p>
+        </section>
+        <section id="eval">
+            <h2>Функция eval()</h2>
+            <p>В Python есть встроенная функция <code class="code">eval()</code>, которая выполняет строку с кодом и возвращает результат выполнения:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;2 + 3*len(&#39;hello&#39;)&quot;</span><span class="p">)</span>
+<span class="mi">17</span>
+<span class="o">&gt;&gt;&gt;</span></pre>
+            <p>Это очень мощная, но и очень опасная инструкция, особенно если строки, которые вы передаёте в <code class="code">eval</code>, получены не из доверенного источника. Если строкой, которую мы решим скормить <code class="code">eval()</code>, окажется <code class="code">"os.system('rm -rf /')"</code>, то интерпретатор честно запустит процесс удаления всех данных с компьютера.</p>
+        </section>
+        <section id="id6">
+            <h2>Упражнение 1. Гистограммы</h2>
+            <p>Нарисовать при помощи 'matplotlib' 4 гистограммы стандартного нормального распределения (mu=0, sigma=1) с N=[100, 1000, 10000, 100000] и убедиться, что чем больше данных, тем больше распределение похоже на "Мексиканскую шляпу". Картинки доджны быть нарисованны вместе. Используйте subplot для этого.</p>
+        </section>
+        <section id="id7">
+            <h2>Упражнение 2. Метод Монте-Карло.</h2>
+            <p>В данном задании вам предлагается посчитать интеграл методом Монте-Карло на заданном отрезке.</p>
+            <p>Функция: f(x) = -x**2 + 4, при -2&lt;=x&lt;=2, 0 во всех остальных случаях</p>
+            <p>Интервал: [-3, 3]</p>
+            <p>Метод Монте-Карло заключается в следующем: 1. Мы берем N случайных точек из области интегрирования, распределенных по равномерному закону и вычисляем значение интегрируемой функции в этих точках. 2. Утверждается, что:</p>
+            <img width="30%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/int.png" />
+            <p>Где [a, b] - область интегрирования, f(x) интегрируемая функция, u_i - рандомная точка из [a, b], всего таких точек N.</p>
+            <section id="o2">
+                <h3>Упражнение №2</h3>
+                <p>Постройте график функции</p>
+                <p>y(x) = x*x - x - 6</p>
+                <p>и по графику найдите найдите корни уравнения y(x) = 0. (Не нужно применять численных методов — просто приблизьте график к корням функции настолько, чтобы было удобно их найти.)</p>
+            </section>
+            <section id="o3">
+                <h3>Упражнение №3</h3>
+                <p>Постройте график функции</p>
+                <img src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/task3.png" />
+            </section>
+            <section id="o4">
+                <h3>Упражнение №4</h3>
+                <p>Используя функцию <code class="code">eval()</code> постройте график функции, введённой с клавиатуры. Чтобы считать данные с клавиатуры, используйте функцию <code class="code">input()</code>. Попробуйте включить эффект «рисование от руки» посредством вызова <code class="code">plt.xkcd()</code>. Посольку эта функция применяет некоторый набор настроек, избавиться от которых впоследствие не так просто, удобнее использовать ее как "контекстный менеджер" - это позволяет применить настройки временно, только к определенному блоку кода. Для этого используется ключевое слово with:</p>
+                <pre data-language="python"><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="mi">70</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;В комментариях&#39;</span><span class="p">,</span> <span class="s1">&#39;В Ираке&#39;</span><span class="p">,</span> <span class="s1">&#39;В Сирии&#39;</span><span class="p">,</span> <span class="s1">&#39;В Афганистане&#39;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Где ведутся самые ожесточенные бои&#39;</span><span class="p">)</span></pre>
+                <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_15.png" />
+            </section>
+            <section id="id8">
+                <h3>Отображение погрешностей</h3>
+                <p>С помощью метода <code class="code">plt.errorbar</code> можно рисовать точки с погрешностями измерений, как для лабораторных работ. Погрешности по осям абсцисс и ординат задаются в параметрах (соответственно) <code class="code">xerr</code> и <code class="code">yerr</code>.</p>
+                <pre data-language="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.49</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.253</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+                <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_14.png" />
+                <p>Альтернативой для <code class="code">plt.errorbar</code> может слудить <code class="code">plt.fill_between</code>, который заполняет область графика между кривыми, чтобы регулировать прозрачность используется аргумент <code class="code">alpha</code>. Это число из отрезка [0, 1], на которое домножоается интенсивность цвета заполнения между кривыми.</p>
+                <pre data-language="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f = x^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.7</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figure_fill_between.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></pre>
+                <img width="50%" src="http://judge2.vdi.mipt.ru/yudaev/rt2021/images/labv/figure_14.png" />
+                <p>В уже использованном модуле <code class="code">numpy</code> есть метод <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html">polyfit</a>, позволяющий приближать данные методом наименьших квадратов. Он возвращает погрешности и коэффициенты полученного многочлена.</p>
+                <pre data-language="python"><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.42</span><span class="p">,</span> <span class="mf">1.76</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.24</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span>
+<span class="n">array</span><span class="p">([</span><span class="mf">0.28517032</span><span class="p">,</span> <span class="mf">0.80720757</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">0.00063242</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00221348</span><span class="p">],</span>
+   <span class="p">[</span><span class="o">-</span><span class="mf">0.00221348</span><span class="p">,</span> <span class="mf">0.00959173</span><span class="p">]])</span></pre>
+                <p>Многочлен задается формулой p(x) = p[0] * x**deg + ... + p[deg]</p>
+                <p>Для того, чтобы не выписывать каждый раз руками эту формулу для разных степеней, есть функция <code class="code">poly1d</code>, которая возвращает функцию полинома, описанного точками p. Возвращенная функция может принимать на вход не только число, но и список значений, в таком случае, будет вычислено значение функции в каждой точке списка и возвращен список результатов.</p>
+                <pre data-language="python"><span class="n">p_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">p_f</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">p_f</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span></pre>
+            </section>
+            <section id="o5">
+                <h3>Упражнение №5</h3>
+                <p>Приблизить данные из приведённого примера с погрешностями или свои собственные (из лабораторного практикума по общей физике) многочленами первой и второй степени. Начертить точки с погрешностями и полученные аппроксимационные кривые на одном графике.</p>
+            </section>
+            <section id="o6">
+                <h3>Упражнение №6 *</h3>
+                <p>Постройте график функции <a href="https://ru.wikipedia.org/wiki/%D0%A4%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F_%D0%92%D0%B5%D0%B9%D0%B5%D1%80%D1%88%D1%82%D1%80%D0%B0%D1%81%D1%81%D0%B0">Вейерштрасса</a></p>
+            </section>
+        </section>
+    </section>
+</body>
+</div>
+</html>

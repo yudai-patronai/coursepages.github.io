@@ -1,0 +1,27 @@
+#include <stdio.h>
+#define unknown -1
+#define N 5000
+
+int main() {
+	int best[N];
+	int t[3] = {0, 0, 0};
+	int i, j, n;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++) {
+		best[i] = unknown;
+	}
+	scanf("%d %d %d", &t[0], &t[1], &t[2]);
+	for (i = 0; i < 3 && i < n; i++) {
+		best[i] = t[i];
+	}
+	for (i = 1; i < n; i++) {
+		scanf("%d %d %d", &t[0], &t[1], &t[2]);
+		for (j = 0; j < 3; j++) {
+			if (i + j < n && (best[i + j] == unknown || t[j] + best[i - 1] < best[i + j])) {
+				best[i + j] = t[j] + best[i - 1];
+			}
+		}
+	}
+	printf("%d", best[n-1]);
+	return 0;
+}

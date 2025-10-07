@@ -1,0 +1,25 @@
+Date: 2016/11/01 12:27:44
+From: teadrunkage (uid 21570)
+Ip: 93.175.16.116
+Command: submit
+Status: ok
+Run-id: 206
+Run-status: CG
+
+Date: 2016/11/01 12:27:46
+From: SYSTEM
+Status: testing completed
+Run-id: 206
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/01 12:27:44.408459
+  Request completion time:           2016/11/01 12:27:46.783663
+  Total testing duration:            2.375
+  Waiting in compile queue duration: 0.712
+  Compilation duration:              0.228
+  Waiting in serve queue duration:   0.124
+  Waiting in run queue duration:     0.145
+  Testing duration:                  1.048
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.117
+

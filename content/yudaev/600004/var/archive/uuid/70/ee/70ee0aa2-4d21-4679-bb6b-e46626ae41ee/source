@@ -1,0 +1,27 @@
+// ways.cpp: определяет точку входа для консольного приложения.
+//
+
+#include <stdio.h>
+
+int main()
+{
+	long long int b[21][21];
+	int i, j, n, m;
+	scanf("%d %d", &n, &m);
+	b[0][0] = 1;
+	for (i = 0; i <= n; i++)
+		for (j = 0; j <= m; j++)
+			if ((i > 0) || (j > 0))
+				if ((j > 0) && (i > 0))
+					b[i][j] = b[i - 1][j] + b[i][j - 1];
+				else
+					if (i)
+						b[i][j] = b[i - 1][j];
+					else
+						b[i][j] = b[i][j - 1];
+
+	printf("%ld", b[n][m]);
+
+    return 0;
+}
+

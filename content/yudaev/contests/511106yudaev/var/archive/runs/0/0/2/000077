@@ -1,0 +1,8 @@
+def distance(x1,y1,x2,y2):
+    a=((x1-x2)**2+(y1-y2)**2)**0.5
+    return a
+a1=float(input())
+a2=float(input())
+b1=float(input())
+b2=float(input())
+print(distance(a1,a2,b1,b2))

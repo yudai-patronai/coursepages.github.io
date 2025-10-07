@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+  int k,n,m,i;
+  k=m+1;
+  for (i = 2; i <= n; i++) {
+    k = k*(m+i)/i;
+  }
+  printf("%d",k);
+  return 0;
+}

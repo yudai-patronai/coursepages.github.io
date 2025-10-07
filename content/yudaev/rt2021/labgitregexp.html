@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регулярные выражения и git</title>
+    <meta charset="utf-8" />
+    <meta content="2016-04-15" name="date" />
+    <meta content="Видеозапись не удалась" name="lecture_comment" />
+    <meta content="draft" name="status" />
+</head>
+<style>
+div{
+  width: 600px;
+  margin: auto;
+  border: 0px ;
+  
+}
+body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="git">
+        <h1>Регулярные выражения и git</h1>
+        <aside id="id1" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#git-github">Git и GitHub</a>
+                    <ul>
+                        <li><a href="#id3">Упражнение 1. Git</a></li>
+                    </ul>
+                </li>
+                <li><a href="#id4">Введение Git</a></li>
+                <li><a href="#id5">Схема работы с git</a></li>
+                <li><a href="#id6">Основные команды git</a></li>
+                <li><a href="#id7">Ветки git</a></li>
+                <li><a href="#id8">Сопоставление с образцом</a></li>
+                <li><a href="#id9">Где используются регулярные выражения?</a></li>
+                <li><a href="#python">Регулярные выражение в Python</a>
+                    <ul>
+                        <li><a href="#re">Модуль re</a></li>
+                        <li><a href="#id18">Синтаксис регулярных выражений</a>
+                            <ul>
+                                <li><a href="#id19">Базовый синтаксис</a></li>
+                                <li><a href="#o1">Упражнение №1</a></li>
+                                <li><a href="#id23">Больше специальных символов</a></li>
+                                <li><a href="#o2">Упражнение №2</a></li>
+                                <li><a href="#o3">Упражнение №3</a></li>
+                                <li><a href="#o4">Упражнение №4</a></li>
+                                <li><a href="#id30">Группы</a></li>
+                                <li><a href="#o5">Упражнение №5</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#id35">Стоит ли пользоваться регулярными выражениями?</a></li>
+            </ul>
+        </aside>
+        <section id="git-github">
+            <h2>Git и GitHub</h2>
+            <p>Система управления версиями (CVS) - один из основных инструментов программиста. Система управления версиями позволяет хранить несколько версий одного и того же документа, при необходимости возвращаться к более ранним версиям, определять, кто и когда сделал то или иное изменение, и многое другое.</p>
+            <p>Git — одна из самых популярных систем контроля версиями (CVS). Автор git — <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D1%80%D0%B2%D0%B0%D0%BB%D1%8C%D0%B4%D1%81,_%D0%9B%D0%B8%D0%BD%D1%83%D1%81">Линус Торвальдс</a>.</p>
+            <p><a href="https://ru.wikipedia.org/wiki/GitHub">GitHub</a> — крупнейший веб-сервис для хостинга IT-проектов и их совместной разработки.</p>
+            <section id="id3">
+                <h3>Упражнение 1. Git</h3>
+                <p>Пройдите туториал и продемонстрируйте преподавателю тестовый репозиторий на гитхабе.</p>
+                <p>1. Зарегистрируйтесь на <a href="https://github.com">github.com</a> с некоторым именем пользователя, например <em>Ivanov</em> (тут и далее вместо <em>Ivanov</em> нужно подставлять имя вашего пользователя, а вместо <code class="code">ivanov.ivan@someuniversity.edu</code> вашу настоящую почту).</p>
+                <ol start="2" type="1">
+                    <li>Создаем новый репозиторий <a href="https://github.com/new">https://github.com/new</a> (или значок <code class="code">+</code> в правом верхнем углу):
+                        <ul>
+                            <li>В качестве имени репозитория задаем <code class="code">infa_2020_ivanov</code></li>
+                            <li>Доступ оставляем <em>Public</em></li>
+                            <li>Не забываем поставить галочку <em>"Initialize this repository with a README"</em></li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>3. Откройте терминал (консоль) GNU/Linux или командную строку <a href="https://gitforwindows.org/">Git-bash</a> под M$ Windows. Теперь <strong>git clone</strong> — склонируем получившийся репозиторий на свой компьютер и зайдем в папку с репозиторием:</p>
+                <pre data-language="bash">$ git clone https://github.com/Ivanov/infa_2020_ivanov
+Cloning into <span class="s1">&#39;infa_2020_ivanov&#39;</span>...
+remote: Counting objects: <span class="m">3</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+$ ls
+infa_2020_ivanov
+$ <span class="nb">cd</span> infa_2020_ivanov
+$ ls
+README.md</pre>
+                <p>Не забудем сконфигурить гит, представившись ему (это обязательно нужно сделать находясь в папке <code class="code">infa_2020_ivanov</code>):</p>
+                <pre data-language="bash">git config user.name <span class="s2">&quot;Ivanov Ivan&quot;</span>
+git config user.email ivanov.ivan@someuniversity.edu</pre>
+                <p>Почту указываем как при регистрации.</p>
+                <p>4. Теперь у нас локально есть полная и независимая версия нашего репозитория <code class="code">infa_2020_ivanov</code>. Она никак явным образом не связана с версией на серверах github'а, однако в гите существуют инструменты для обмена данными между разными репозиториями. Иными словами, git - это <em>распределенная</em> система управлениями версиями.</p>
+            </section>
+        </section>
+        <section id="id4">
+            <h2>Введение Git</h2>
+            <p><strong>Git</strong> — распределённая система контроля версий: система, записывающая изменения в файл или набор файлов в течение времени и позволяющая вернуться позже к определённой версии. Для контроля версий файлов в этой книге в качестве примера будет использоваться исходный код программного обеспечения, хотя на самом деле вы можете использовать контроль версий практически для любых типов файлов.</p>
+            <p>Если вы графический или web-дизайнер и хотите сохранить каждую версию изображения или макета (скорее всего, захотите), система контроля версий (далее СКВ) — как раз то, что нужно. Она позволяет вернуть файлы к состоянию, в котором они были до изменений, вернуть проект к исходному состоянию, увидеть изменения, увидеть, кто последний менял что-то и вызвал проблему, кто поставил задачу и когда и многое другое. Использование СКВ также значит в целом, что, если вы сломали что-то или потеряли файлы, вы спокойно можете всё исправить. В дополнение ко всему вы получите всё это без каких-либо дополнительных усилий.</p>
+        </section>
+        <section id="id5">
+            <h2>Схема работы с git</h2>
+        <svg style="zoom:0.7" height="631.0390625" version="1.1" width="331.4296875" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; left: -0.5px; top: -0.5px;" viewBox="0 0 331.4296875 631.0390625" preserveAspectRatio="xMidYMid meet"><desc style="">Created with Raphaël 2.3.0</desc><defs style=""><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style=""></path><marker id="raphael-marker-endblock33-objz59qu" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style=""><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style=""></use></marker><marker id="raphael-marker-endblock33-objq3ve1" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style=""><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style=""></use></marker><marker id="raphael-marker-endblock33-obj418xl" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style=""><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style=""></use></marker><marker id="raphael-marker-endblock33-obj2mune" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style=""><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style=""></use></marker><marker id="raphael-marker-endblock33-obj71q0x" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style=""><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style=""></use></marker><marker id="raphael-marker-endblock33-obj439wq" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style=""><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style=""></use></marker></defs><rect x="0" y="0" width="292.796875" height="36" rx="20" ry="20" fill="#ffffff" stroke="#000000" style="" stroke-width="3" class="flowchart" id="A" transform="matrix(1,0,0,1,10.6953,22.8047)"></rect><text x="10" y="18" text-anchor="start" stroke="none" fill="#000000" style=" text-anchor: start;" id="At" class="flowchartt" transform="matrix(1,0,0,1,10.6953,22.8047)" stroke-width="1"><tspan dy="5" style="">Создание или клонирование репозитория</tspan></text><rect x="0" y="0" width="251.765625" height="36" rx="0" ry="0" fill="#ffffff" stroke="#000000" style="" stroke-width="3" class="flowchart" id="B" transform="matrix(1,0,0,1,31.2109,131.6094)"></rect><text x="10" y="18" text-anchor="start" stroke="none" fill="#000000" style=" text-anchor: start;" id="Bt" class="flowchartt" transform="matrix(1,0,0,1,31.2109,131.6094)" stroke-width="1"><tspan dy="5" style="">Создание, редактирование файлов</tspan></text><rect x="0" y="0" width="216.875" height="69.609375" rx="0" ry="0" fill="#ffffff" stroke="#000000" style="" stroke-width="3" class="flowchart" id="C" transform="matrix(1,0,0,1,48.6563,223.6094)"></rect><text x="10" y="34.8046875" text-anchor="start" stroke="none" fill="#000000" style=" text-anchor: start;" id="Ct" class="flowchartt" transform="matrix(1,0,0,1,48.6563,223.6094)" stroke-width="1"><tspan dy="-11.796875" style="">Загрузка изменений других</tspan><tspan dy="16.8" x="10" style="">пользователей из удалённого
+</tspan><tspan dy="16.8" x="10" style="">репозитория (pull)</tspan></text><rect x="0" y="0" width="249.984375" height="52.8125" rx="0" ry="0" fill="#ffffff" stroke="#000000" style="" stroke-width="3" class="flowchart" id="D" transform="matrix(1,0,0,1,32.1016,357.6172)"></rect><text x="10" y="26.40625" text-anchor="start" stroke="none" fill="#000000" style=" text-anchor: start;" id="Dt" class="flowchartt" transform="matrix(1,0,0,1,32.1016,357.6172)" stroke-width="1"><tspan dy="-3.40625" style="">Подготовка изменений к фиксации
+</tspan><tspan dy="16.8" x="10" style="">новой версии репозитория (stage)</tspan></text><rect x="0" y="0" width="302.1875" height="36" rx="0" ry="0" fill="#ffffff" stroke="#000000" style="" stroke-width="3" class="flowchart" id="E" transform="matrix(1,0,0,1,6,483.2344)"></rect><text x="10" y="18" text-anchor="start" stroke="none" fill="#000000" style=" text-anchor: start;" id="Et" class="flowchartt" transform="matrix(1,0,0,1,6,483.2344)" stroke-width="1"><tspan dy="5" style="">Фиксация изменений репозитория (commit)</tspan></text><rect x="0" y="0" width="292.671875" height="36" rx="0" ry="0" fill="#ffffff" stroke="#000000" style="" stroke-width="3" class="flowchart" id="F" transform="matrix(1,0,0,1,10.7578,592.0391)"></rect><text x="10" y="18" text-anchor="start" stroke="none" fill="#000000" style=" text-anchor: start;" id="Ft" class="flowchartt" transform="matrix(1,0,0,1,10.7578,592.0391)" stroke-width="1"><tspan dy="5" style="">Загрузка изменений в репозиторий (push)</tspan></text><path fill="none" stroke="#000000" d="M157.09375,58.8046875C157.09375,58.8046875,157.09375,111.23699628561735,157.09375,127.11005851563823" stroke-width="3" marker-end="url(#raphael-marker-endblock33-objz59qu)" style=""></path><path fill="none" stroke="#000000" d="M157.09375,167.609375C157.09375,167.609375,157.09375,205.81014585494995,157.09375,219.10953531763516" stroke-width="3" marker-end="url(#raphael-marker-endblock33-objq3ve1)" style=""></path><path fill="none" stroke="#000000" d="M157.09375,293.21875C157.09375,293.21875,157.09375,338.48307161591947,157.09375,353.1144099507528" stroke-width="3" marker-end="url(#raphael-marker-endblock33-obj418xl)" style=""></path><path fill="none" stroke="#000000" d="M157.09375,410.4296875C157.09375,410.4296875,157.09375,462.86199628561735,157.09375,478.73505851563823" stroke-width="3" marker-end="url(#raphael-marker-endblock33-obj2mune)" style=""></path><path fill="none" stroke="#000000" d="M157.09375,519.234375C157.09375,519.234375,157.09375,571.6666837856174,157.09375,587.5397460156382" stroke-width="3" marker-end="url(#raphael-marker-endblock33-obj71q0x)" style=""></path><path fill="none" stroke="#000000" d="M303.4296875,610.0390625C303.4296875,610.0390625,328.4296875,600.0390625,328.4296875,600.0390625C328.4296875,600.0390625,328.4296875,96.609375,328.4296875,96.609375C328.4296875,96.609375,157.09375,96.609375,157.09375,96.609375C157.09375,96.609375,157.09375,117.65244674682617,157.09375,127.10538913309574" stroke-width="3" marker-end="url(#raphael-marker-endblock33-obj439wq)" style=""></path></svg></section>
+        <section id="id6">
+            <h2>Основные команды git</h2>
+            <p>Создание пустого git репозитория в папке <code class="code">&lt;dir&gt;</code>. Если <code class="code">&lt;dir&gt;</code> не задана — пустой репозиторий инициализируется в текущей папке (<code class="code">&lt;dir&gt; = .</code>). Все базы данных для работы <code class="code">git</code> создаются в «скрытой» папке <code class="code">&lt;dir&gt;/.git</code>. Такой репозиторий хранит локальную историю версий рабочей директории.</p>
+            <pre data-language="bash">$ git init &lt;dir&gt;</pre>
+            <p>Создание простого пустого git репозитория в папке <code class="code">&lt;dir&gt;</code>. Если <code class="code">&lt;dir&gt;</code> не задана — пустой репозиторий инициализируется в текущей папке (<code class="code">&lt;dir&gt; = .</code>). При таком варианте создания репозитория, папка <code class="code">&lt;dir&gt;</code> содержит исключительно историю версий. Такой вариант создания репозитория необходимо использовать для совместного использования созданного репозитория. <strong>Репозиторий не содержит «рабочей» версии, позволяющей работать с проектом непосредственного в рабочей папке.</strong></p>
+            <pre data-language="bash">$ git init --bare &lt;dir&gt;</pre>
+            <p>Сам по себе git работает полностью локально, без выхода в Интернет. При этом вокруг git появилась целая экосистема сервисов: облачные хранилища репозиториев (с поддержкой git-команд прямо в браузере), системы автоматической сборки (проекта, документации к нему и т.д.), автоматического поиска уязвимостей в коде (например, <a href="https://snyk.io/">Snik.io</a>) и многие другие. Поскольку git работает полностью локально, работа с ним обычно строится следующим образом: сначала код выгружается из какого-либо облачного хранилища, затем локально (на компьютере) делаются изменения, делается коммит этих изменений (о нем ниже, пока "коммит" стоит понимать как "сохранение") и в отправляется обратно в облачное хранилище. Выгрузить репозиторий с облака можно командой <code class="code">git clone</code>. Она создаёт копию git репозитория <code class="code">&lt;rep&gt;</code> в папке <code class="code">&lt;dir&gt;</code> и автоматически настраивать git так, чтобы он был в курсе, откуда был скачан репозиторий. Если имя папки <code class="code">&lt;dir&gt;</code> не задано — имя папки выбирается автоматически на основании <code class="code">&lt;rep&gt;</code>.</p>
+            <pre data-language="bash">$ git clone &lt;rep&gt; &lt;dir&gt;</pre>
+            <p><strong>Примеры использования:</strong></p>
+            <blockquote>
+                <p>Клонирование локального репозитория:</p>
+                <pre data-language="bash">$ git clone /path/to/repository/directory</pre>
+                <p>Клонирование удалённого интернет репозитория:</p>
+                <pre data-language="bash">$ git clone https://github.com/path/to/repository</pre>
+                <p>Клонирование удалённого репозитория по протоколу <code class="code">ssh</code> (не будет просить пароль и соединение будет более безопасным):</p>
+                <pre data-language="bash">$ git clone ssh://&lt;username&gt;@&lt;address&gt;/path/to/repository/directory</pre>
+            </blockquote>
+            <p>Почти во всех облачных хранилищах (далее будем их иногда называть "удаленное хранилище", remote) есть разделение прав доступа, и у вас не всегда получится отправить свои изменения в чужой репозиторий. Проблема решается так: вы создаете полную копию кода в своем аккаунте (такой репозиторий называется fork), делаете в нем изменения и потом предлагаете свои изменения оригинальному владельцу.</p>
+            <p>Есть возможность получить только содержимое папки <code class="code">.git</code> (обычно используется на серверных машинах):</p>
+            <pre data-language="bash">$ git clone --bare &lt;rep&gt;</pre>
+            <p><strong>Настройка git</strong></p>
+            <p>После создания (клонирования) репозитория, необходимо настроить информацию, о том, кто будет работать с ним работать. Для этого необходимо сообщить информацию об имени и почте пользователя. Данная информацию может быть сохранена локально — сохраняется только для данного репозитория и глобальной — информация сохраняется для текущего пользователя ОС (Windows, Linux, OS) и её не надо будет заново вводить для последующих репозиториев.</p>
+            <pre data-language="bash">$ git config --global user.name<span class="o">=</span><span class="s2">&quot;Тут имя&quot;</span>
+$ git config --global user.email<span class="o">=</span><span class="s2">&quot;Почта&quot;</span></pre>
+            <p>или</p>
+            <pre data-language="bash">$ git config --local user.name<span class="o">=</span><span class="s2">&quot;Тут имя&quot;</span>
+$ git config --local user.email<span class="o">=</span><span class="s2">&quot;Почта&quot;</span></pre>
+            <p><strong>Работа с репозиторием</strong></p>
+            <p>Отметить изменения в файле <code class="code">&lt;filename&gt;</code> — изменения, сделанные в файле, подготавливаются для их фиксации как отдельной версии в репозитории.</p>
+            <pre data-language="bash">$ git add &lt;filename&gt;</pre>
+            <p>Отметить изменения во всех доступных файлах репозитория:</p>
+            <pre data-language="bash">$ git add *</pre>
+            <p>Отменить действие команды <code class="code">add</code> для <code class="code">&lt;filename&gt;</code></p>
+            <pre data-language="bash">$ git reset -- &lt;filename&gt;</pre>
+            <p>Зафиксировать все подготовленные, с использованием <code class="code">git add</code>, изменения</p>
+            <pre data-language="bash">$ git commit -m <span class="s2">&quot;commit message&quot;</span></pre>
+            <p>Посмотреть текущее состояние репозитория</p>
+            <pre data-language="bash">$ git status</pre>
+            <p>Откатить все изменения, сделанные после фиксации (<code class="code">commit</code>)</p>
+            <pre data-language="bash">$ git checkout -- .</pre>
+            <p>Коммит - это "снимок" вашего кода в данный момент времени. Когда вы сделали коммит, вы сможете вернуться к нему в любой момент - и получить свой проект в том состоянии, в котором вы сделали этот коммит.</p>
+            <p><strong>Взаимодействие с внешним репозиторием</strong></p>
+            <p>Загрузить из внешнего репозитория все изменения. <strong>Возможно потребуется разрешение конфликтов, если файл был изменён различными пользователями</strong></p>
+            <pre data-language="bash">$ git pull</pre>
+            <p>Выгрузить, зафиксированные на вашем компьютере, версии (коммиты) в удалённом репозиторий. При этом git должен знать, откуда вы скачиваете изменения. Если Вы не выполнили операцию <code class="code">pull</code>, системы выдаст соответствующую ошибку.</p>
+            <pre data-language="bash">$ git push</pre>
+        </section>
+        <section id="id7">
+            <h2>Ветки git</h2>
+            <p>Под капотом git выстраивает связи между коммитами: когда вы делаете новый коммит, он по факту становится после старого. Это образует граф. Например, если были коммиты A и B в порядке: A -&gt; B, то после очередного коммита состояние станет таким: A -&gt; B -&gt; C. При этом можно в любой момент вернуться на коммит B, "отпочковаться" (т.е. решить от нее пойти в другом направлении, а не в C) и делать новые изменения. Этот процесс называется ветвлением.</p>
+            <p>Git позволяет создавать ветки и проводить разработку проекта в них. При этом получится писать код независимо от других пользователей. Обычно при этом код из ветки перетекает в <code class="code">master</code> (сейчас много где переименован в <code class="code">main</code>), но считается хорошим тоном это делать только после тщательной проверки и доработки всех изменений внутри отдельно созданной ветки.</p>
+            <p>Чтобы создать ветку <code class="code">&lt;branch_name&gt;</code> необходимо выполнить команду.</p>
+            <pre data-language="bash">$ git branch &lt;branch_name&gt;</pre>
+            <p>В случае, если <code class="code">&lt;branch_name&gt;</code> не задан, будет выведен список существующих веток. <strong>Создав новую ветку, вы остаётесь в старой.</strong></p>
+            <p>Переключение на ветку <code class="code">&lt;branch_name&gt;</code> осуществляется по команде</p>
+            <pre data-language="bash">$ git checkout &lt;branch_name&gt;</pre>
+            <p>Создать и сразу переключиться на новую ветку <code class="code">&lt;branch_name&gt;</code> можно по команде</p>
+            <pre data-language="bash">$ git checkout -b &lt;branch_name&gt;</pre>
+            <p>Для того, чтобы объединить ветки (например, присоединить <code class="code">&lt;branch_name&gt;</code> в главную ветку <code class="code">master</code>). Необходимо переключиться на основную ветку (<code class="code">master</code>), и присоединить к ней (<code class="code">merge</code>) другую ветку (<code class="code">&lt;branch_name&gt;</code>). В примере ниже, создаётся отдельная ветка <code class="code">hotfix_123</code>. После решения проблемы фиксируются все изменения в данной ветке, после чего происходит присоединение ветки с hotfix-ом в основную ветку (<code class="code">master</code>)</p>
+            <pre data-language="bash">$ git checkout -b hotfix_123
+...
+$ git add *
+$ git commimt -m <span class="s2">&quot;HOTFIX for #ISSUE-123&quot;</span>
+$ git checkout master
+$ git merge hotfix</pre>
+            <p><strong>.gitignore</strong></p>
+            <p>Для того, чтобы быстро зафиксировать все сделанные изменения, удобно использовать команду <code class="code">add *</code>, но такая команда может поместить в репозиторий те файлы, изменение которых Вы не хотите отслеживать (например, служебные файлы питона <code class="code">.pyc</code>). Информацию о таковых удобно поместить в файл <code class="code">.gitignore</code> (<strong>имя файла начинается с точки</strong>), тогда <code class="code">add *</code> не будет «подхватывать» новые файлы из заданных папок (с заданным именем, расширением, пр.).</p>
+        </section>
+        <section id="id8">
+            <h2>Сопоставление с образцом</h2>
+            <p>Очень часто при обработке текстовых данных возникает задача о сопоставлении строки с образцом. Самый простой пример — проверка корректности вводимых пользователем данных. Допустим, у нас имеются следующие требования к паролю, используемому в системе:</p>
+            <ul>
+                <li>пароль должен иметь длину не меньше 6 символов, но не больше 15;</li>
+                <li>пароль может содержать как строчные, так и прописные буквы, а также цифры;</li>
+                <li>пароль должен начинаться с заглавной буквы, а заканчиваться строчной буквой.</li>
+            </ul>
+            <p>В принципе, можно написать функцию, которая будет проверять, соответствует ли строка предъявляемым требованиям:</p>
+            <pre data-language="python"><span class="k">def</span> <span class="nf">check_password</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="mi">6</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;a&#39;</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s1">&#39;z&#39;</span> <span class="ow">or</span> <span class="s1">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s1">&#39;Z&#39;</span> <span class="ow">or</span> <span class="s1">&#39;0&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s1">&#39;9&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></pre>
+            <p>А можно пойти другим путём и воспользоваться специально предназначенным для этого инструментом — регулярными выражениями:</p>
+            <pre data-language="python"><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">check_password_with_regexp</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[A-Z]</span><span class="si">{1}</span><span class="s1">[a-zA-Z0-9]{4,13}[a-z]</span><span class="si">{1}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span></pre>
+            <p>Как видно из примера, вид функции <code class="code">check_password</code> сильно изменился. Мы не будем на данном этапе пытаться разобраться в том, как именно работает новая версия функции, а лишь отметим одно важное отличие: первая версия функции <strong>выполняла ряд проверок</strong>, пытаясь найти символ, <strong>не соответствующий</strong> предъявляемым требованиям, вторая же версия функции вместо этого выясняет, <strong>соответствует</strong> ли переданная строка заранее заданному <strong>образцу</strong>. Именно в этом и заключается основное предназначение регулярных выражений — они позволяют описать, как <strong>должна</strong> выглядеть строка, если она удовлетворяет определённым критериям.</p>
+        </section>
+        <section id="id9">
+            <h2>Где используются регулярные выражения?</h2>
+            <p>Регулярные выражения получили весьма широкое распространение благодаря тому, что являются достаточно мощным инструментом работы с текстовыми данными. Так, их поддержка есть в большинстве языков программирования (Python, Ruby, Perl, Java и т.д.), они используются во многих утилитах командой строки UNIX-подобных операционных систем (grep, sed, awk и т.д.). Помимо этого поддержку регулярных выражений можно встретить во многих текстовых редакторах (Vim, Emacs, Sublime Text, Notepad++ и т.д.), поскольку этот механизм позволяет достаточно просто выполнять замены символов в тексте.</p>
+        </section>
+        <section id="python">
+            <h2>Регулярные выражение в Python</h2>
+            <section id="re">
+                <h3>Модуль re</h3>
+                <p>Модуль <a href="https://docs.python.org/3/library/re.html">re</a> (<strong>R</strong>egular <strong>E</strong>xpressions) стандартной библиотеки языка Python предоставляет набор функций и классов для работы с регулярными выражениями. Вот список наиболее часто используемых из них:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Функция</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://docs.python.org/3/library/re.html#re.match">re.match</a></td>
+                            <td>Ищет соответствие заданному шаблону в начале строки</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://docs.python.org/3/library/re.html#re.search">re.search</a></td>
+                            <td>Ищет соответствие заданному шаблону в произвольном месте строки и возвращает первое найденное совпадение</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://docs.python.org/3/library/re.html#re.findall">re.findall</a></td>
+                            <td>Находит и возвращает список всех непересекающихся подстрок исходной строки, соответствующих шаблону</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://docs.python.org/3/library/re.html#re.split">re.split</a></td>
+                            <td>Разбивает строку на набор подстрок с использованием шаблона для поиска разделителей</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://docs.python.org/3/library/re.html#re.sub">re.sub</a></td>
+                            <td>Заменяет подстроку, соответствующую шаблону, указанным значением</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://docs.python.org/3/library/re.html#re.compile">re.compile</a></td>
+                            <td>«Компилирует» регулярное выражение для дальнейшего использования</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Теперь рассмотрим несколько примеров работы с регулярными выражениями. Пока что мы не знаем синтаксиса, используемого для описания регулярных выражений, поэтому рассмотрим самый простой случай: когда в качестве регулярного выражения выступает непосредственно искомая строка.</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;с самого начала у меня была какая-то тактика, и я её придерживался&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;с самого&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 8), match=&#39;с самого&#39;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;была&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;была&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(23, 27), match=&#39;была&#39;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;и&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">[&#39;и&#39;, &#39;и&#39;, &#39;и&#39;, &#39;и&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">[&#39;с&#39;, &#39;самого&#39;, &#39;начала&#39;, &#39;у&#39;, &#39;меня&#39;, &#39;была&#39;, &#39;какая-то&#39;, &#39;тактика,&#39;, &#39;и&#39;, &#39;я&#39;, &#39;её&#39;, &#39;придерживался&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">[&#39;с самого начала у меня была какая-то тактика&#39;, &#39; и я её придерживался&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;придерживался&#39;</span><span class="p">,</span> <span class="s1">&#39;использовал&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">&#39;с самого начала у меня была какая-то тактика, и я её использовал&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">regexp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;с самого&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">regexp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 8), match=&#39;с самого&#39;&gt;</span></pre>
+                <p>Как видно из примера, функции <code class="code">re.match</code> и <code class="code">re.search</code> возвращают в случает совпадения экземпляр класса <a href="https://docs.python.org/3/library/re.html#match-objects">SRE_Match</a> или <code class="code">None</code>, если совпадение не найдено, в то время как функции <code class="code">re.findall</code>, <code class="code">re.split</code> возвращают список, состоящий из строк, функция <code class="code">re.sub</code> возвращает строку, получающуюся после выполнения замены.</p>
+            </section>
+            <section id="id18">
+                <h3>Синтаксис регулярных выражений</h3>
+                <section id="id19">
+                    <h4>Базовый синтаксис</h4>
+                    <p>В предыдущих примерах мы использовали искомую строку в качестве регулярного выражения. Теперь настало время познакомиться более подробно с синтаксисом описания регулярных выражений.</p>
+                    <p>Помимо непосредственно искомых символов регулярное выражение может содержать специальные символы, которые позволяют задать <strong>шаблон</strong>. Вот краткий список основных из них:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Специальные символы</th>
+                                <th>Описание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>.</td>
+                                <td>Любой символ, кроме символа новой строки</td>
+                            </tr>
+                            <tr>
+                                <td>^</td>
+                                <td>Начало строки</td>
+                            </tr>
+                            <tr>
+                                <td>$</td>
+                                <td>Конец строки</td>
+                            </tr>
+                            <tr>
+                                <td>?</td>
+                                <td>0 или 1 соответствие шаблона слева</td>
+                            </tr>
+                            <tr>
+                                <td>*</td>
+                                <td>0 или больше соответствий шаблона слева</td>
+                            </tr>
+                            <tr>
+                                <td>+</td>
+                                <td>1 или более соответствий шаблона слева</td>
+                            </tr>
+                            <tr>
+                                <td>{m}</td>
+                                <td>Ровно m соответствий шаблона слева</td>
+                            </tr>
+                            <tr>
+                                <td>{m,n}</td>
+                                <td>Не меньше m, но и не больше n соответствий шаблона слева</td>
+                            </tr>
+                            <tr>
+                                <td>\</td>
+                                <td>Экранирование служебных символов</td>
+                            </tr>
+                            <tr>
+                                <td>[abc]</td>
+                                <td>Любой из символов a, b, c</td>
+                            </tr>
+                            <tr>
+                                <td>[^abc]</td>
+                                <td>Любой символ, кроме a, b, c</td>
+                            </tr>
+                            <tr>
+                                <td>[0-5]</td>
+                                <td>Любой из символов 0, 1, 2, 3, 4, 5</td>
+                            </tr>
+                            <tr>
+                                <td>[a-d]</td>
+                                <td>Любой из символов a, b, c, d</td>
+                            </tr>
+                            <tr>
+                                <td>a|b</td>
+                                <td>a или b</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Примеры использования:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 1), match=&#39;a&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 1), match=&#39;b&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 1), match=&#39;.&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 2), match=&#39;a&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^a&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^a$&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a$&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^.a.$&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 3), match=&#39;bab&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a?&#39;</span><span class="p">,</span> <span class="s1">&#39;bbb&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 0), match=&#39;&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a?&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 0), match=&#39;&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a+&#39;</span><span class="p">,</span> <span class="s1">&#39;bab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 2), match=&#39;a&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a+&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 4), match=&#39;aaa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a*&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 0), match=&#39;&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ba*b&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 5), match=&#39;baaab&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ba+b&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 5), match=&#39;baaab&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ba?b&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a</span><span class="si">{2}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 3), match=&#39;aa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 4), match=&#39;aaa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 2), match=&#39;a&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a{1,2}&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 3), match=&#39;aa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a{1,3}&#39;</span><span class="p">,</span> <span class="s1">&#39;baaab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 4), match=&#39;aaa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\*&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 1), match=&#39;*&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[abc]&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;0123ccaabb275&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(4, 5), match=&#39;c&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[abc]?&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;0123ccaabb275&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 0), match=&#39;&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[abc]+&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;0123ccaabb275&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(4, 10), match=&#39;ccaabb&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[0-9]</span><span class="si">{4}</span><span class="s1">[abc]+[0-9]</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;0123ccaabb275&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 13), match=&#39;0123ccaabb275&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[0-9]</span><span class="si">{4}</span><span class="s1">[^0-9]+[0-9]</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;0123ccaabb275&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 13), match=&#39;0123ccaabb275&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;a|b&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;ccadd&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(2, 3), match=&#39;a&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;a|b&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;ccbdd&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(2, 3), match=&#39;b&#39;&gt;</span></pre>
+                </section>
+                <section id="o1">
+                    <h4>Упражнение №1</h4>
+                    <p>Сделайте форк <a href="https://github.com/mipt-cs-on-python3/regexp">репозитория</a>, в котором содержатся заготовки программ для работы.</p>
+                    <p>В файл <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_match.py">simple_match.py</a> впишите требуемые регулярные выражения <code class="code">REGEXP_1</code>, <code class="code">REGEXP_2</code> и т.д., после чего запустите на выполнение тесты из файла <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_match_test.py">simple_match_test.py</a>. Добейтесь прохождения всех тестов.</p>
+                    <p>Обратите внимание, что в файле указано ожидаемое поведение программы для конкретного набора строк, а не чёткая формулировка задания наподобие «напишите регулярное выражение, соответствующее строке, состоящей только из прописных букв». Это сделано сознательно: дело в том, что при помощи регулярных выражений обычно решают некую вполне конкретную задачу, а не какую-то абстрактную общую задачу. И поэтому во многих задачах из этой работы возможно более одного правильного решения. Например, строка <code class="code">ABabAB</code> соответствует как регулярному выражению <code class="code">[ABab]+</code>, так и выражению <code class="code">^A.*B$</code>, да и ещё достаточно большому количеству других выражений.</p>
+                </section>
+                <section id="id23">
+                    <h4>Больше специальных символов</h4>
+                    <p>Теперь перейдём к рассмотрению более сложных специальных символов, поддержка которых присутствует в библиотеке <a href="https://docs.python.org/3/library/re.html">re</a>. Эти символы нужны как для написания сложных, так и для сокращения длинных регулярных выражений. Неполный список специальных символов приведён в таблице ниже:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Специальный символ</th>
+                                <th>Описание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>\A</td>
+                                <td>Начало строки; эквивалент ^</td>
+                            </tr>
+                            <tr>
+                                <td>\b</td>
+                                <td>Начало слова</td>
+                            </tr>
+                            <tr>
+                                <td>\B</td>
+                                <td><strong>Не</strong> начало слова</td>
+                            </tr>
+                            <tr>
+                                <td>\d</td>
+                                <td>Цифра; расширенный вариант [0-9]</td>
+                            </tr>
+                            <tr>
+                                <td>\D</td>
+                                <td><strong>Не</strong> цифра; «отрицание» \d</td>
+                            </tr>
+                            <tr>
+                                <td>\s</td>
+                                <td>Пробельный символ; расширенный вариант [ \t\n\r\f\v]</td>
+                            </tr>
+                            <tr>
+                                <td>\S</td>
+                                <td><strong>Не</strong> пробельный символ; «отрицание» \s</td>
+                            </tr>
+                            <tr>
+                                <td>\w</td>
+                                <td>«Буква» в слове расширенный вариант [a-zA-Z0-9_]</td>
+                            </tr>
+                            <tr>
+                                <td>\W</td>
+                                <td><strong>Не</strong> «буква»; «отрицание» \w</td>
+                            </tr>
+                            <tr>
+                                <td>\Z</td>
+                                <td>Конец строки; эквивалент $</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Ниже приведено несколько примеров использования этих специальных символов:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\Aab&#39;</span><span class="p">,</span> <span class="s1">&#39;abcd&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 2), match=&#39;ab&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\Aab&#39;</span><span class="p">,</span> <span class="s1">&#39;dabcd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;abbba bbb ccc&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(6, 9), match=&#39;bbb&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\Bbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;abbba bbb ccc&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 4), match=&#39;bbb&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;ab123cd&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(2, 5), match=&#39;123&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\D+&#39;</span><span class="p">,</span> <span class="s1">&#39;ab123cd&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 2), match=&#39;ab&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;aa bb cc dd&#39;</span><span class="p">)</span>
+<span class="go">&#39;aa_bb_cc_dd&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\S+&#39;</span><span class="p">,</span> <span class="s1">&#39;aa bb cc dd&#39;</span><span class="p">)</span>
+<span class="go">[&#39;aa&#39;, &#39;bb&#39;, &#39;cc&#39;, &#39;dd&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="s1">&#39;ab123cd&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 7), match=&#39;ab123cd&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\W+&#39;</span><span class="p">,</span> <span class="s1">&#39;ab123cd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="s1">&#39;ab123cd  aaa&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 7), match=&#39;ab123cd&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\W+&#39;</span><span class="p">,</span> <span class="s1">&#39;ab123cd  aaa&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(7, 9), match=&#39;  &#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;aa\Z&#39;</span><span class="p">,</span> <span class="s1">&#39;bbaa&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(2, 4), match=&#39;aa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;aa\Z&#39;</span><span class="p">,</span> <span class="s1">&#39;bbaab&#39;</span><span class="p">)</span></pre>
+                </section>
+                <section id="o2">
+                    <h4>Упражнение №2</h4>
+                    <p>В файл <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_search.py">simple_search.py</a> впишите требуемые регулярные выражения <code class="code">REGEXP_1</code>, <code class="code">REGEXP_2</code> и т.д., после чего запустите на выполнение тесты из файла <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_search_test.py">simple_search_test.py</a>. Добейтесь прохождения всех тестов.</p>
+                </section>
+                <section id="o3">
+                    <h4>Упражнение №3</h4>
+                    <p>В файл <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_findall.py">simple_findall.py</a> впишите требуемые регулярные выражения <code class="code">REGEXP_1</code>, <code class="code">REGEXP_2</code> и т.д., после чего запустите на выполнение тесты из файла <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_findall_test.py">simple_findall_test.py</a>. Добейтесь прохождения всех тестов.</p>
+                </section>
+                <section id="o4">
+                    <h4>Упражнение №4</h4>
+                    <p>В файл <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_sub.py">simple_sub.py</a> впишите требуемые регулярные выражения и строки замены <code class="code">REGEXP_1</code> / <code class="code">REGEXP_1_REPL</code>, <code class="code">REGEXP_2</code> / <code class="code">REGEXP_2_REPL</code> и т.д., после чего запустите на выполнение тесты из файла <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/simple_sub_test.py">simple_sub_test.py</a>. Добейтесь прохождения всех тестов.</p>
+                </section>
+                <section id="id30">
+                    <h4>Группы</h4>
+                    <p>Зачастую бывает необходимо, чтобы специальный символ (<code class="code">+</code>, <code class="code">*</code> и т.д.) применялся не к одному символу слева, а определённой <strong>группе</strong> символов. Для этого нужно заключить интересующую часть шаблона в круглые скобки <code class="code">(…)</code>:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(ab)</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;ab ab ababab ab ab&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(6, 12), match=&#39;ababab&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(ab)</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;ab ab abab ab ab&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span></pre>
+                    <p>В некоторых случаях при обработке строковых данных при помощи регулярных выражений возникает необходимость выделить определённую часть подстроки, соответствующей шаблону. Например, рассмотрим следующую задачу: извлечь из строки <code class="code">'какой-то текст, &lt;b&gt;текст жирным шрифтом&lt;/b&gt;, и снова какой-то текст'</code> подстроку, заключённую внутри <em>тега</em> <code class="code">&lt;b&gt;..&lt;/b&gt;</code>. Для этого также удобно использовать группы:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;какой-то текст, &lt;b&gt;текст жирным шрифтом&lt;/b&gt;, и снова какой-то текст&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;b&gt;([\w\s]+)&lt;/b&gt;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(16, 43), match=&#39;&lt;b&gt;текст жирным шрифтом&lt;/b&gt;&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;текст жирным шрифтом&#39;</span></pre>
+                    <p>Обратите внимание, что всему шаблону соответствует подстрока <code class="code">'&lt;b&gt;текст жирным шрифтом&lt;/b&gt;'</code>, в то время как в группу попадает только нужная нам строка <code class="code">'текст жирным шрифтом'</code>.</p>
+                    <p>Группы нумеруются в том порядке, в котором они перечислены в шаблоне:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(a|b)(c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+<span class="go">(&#39;a&#39;, &#39;c&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(a|b)(c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;a&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(a|b)(c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&#39;c&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(a|b)(c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;bd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+<span class="go">(&#39;b&#39;, &#39;d&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(a|b)(c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;bd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(a|b)(c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;bd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&#39;d&#39;</span></pre>
+                    <p>Группы можно использовать внутри выражения, например, для поиска повторяющихся букв:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(a|b|c)\1&#39;</span><span class="p">,</span> <span class="s1">&#39;aabc&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(0, 2), match=&#39;aa&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(a|b|c)\1&#39;</span><span class="p">,</span> <span class="s1">&#39;abbc&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(1, 3), match=&#39;bb&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(a|b|c)\1&#39;</span><span class="p">,</span> <span class="s1">&#39;abcc&#39;</span><span class="p">)</span>
+<span class="go">&lt;_sre.SRE_Match object; span=(2, 4), match=&#39;cc&#39;&gt;</span></pre>
+                    <p>Группы можно использовать внутри строки замены в функции <a href="https://docs.python.org/3/library/re.html#re.sub">re.sub</a>:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;(a|b|c)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;*\1*&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="go">&#39;*a*&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;(a|b|c)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;*\1*&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="go">&#39;*a**b**c*&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;(a|b|c)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;*\1*&#39;</span><span class="p">,</span> <span class="s1">&#39;axbxc&#39;</span><span class="p">)</span>
+<span class="go">&#39;*a*x*b*x*c*&#39;</span></pre>
+                    <p>Если групп в выражении достаточно много, их можно именовать при помощи конструкции <code class="code">(?P&lt;имя&gt;)</code>, а затем обращаться к ним при помощи <code class="code">(?P=имя)</code> внутри выражения, при помощи <code class="code">\g&lt;имя&gt;</code> внутри строки замены или непосредственно по имени при работе с объектом <a href="https://docs.python.org/3/library/re.html#match-objects">SRE_match</a>:</p>
+                    <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(?P&lt;group1&gt;a|b)(?P&lt;group2&gt;c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+<span class="go">(&#39;a&#39;, &#39;c&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(?P&lt;group1&gt;a|b)(?P&lt;group2&gt;c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s1">&#39;group1&#39;</span><span class="p">)</span>
+<span class="go">&#39;a&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(?P&lt;group1&gt;a|b)(?P&lt;group2&gt;c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s1">&#39;group2&#39;</span><span class="p">)</span>
+<span class="go">&#39;c&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(?P&lt;group1&gt;a|b)(?P&lt;group2&gt;c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;a&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;(?P&lt;group1&gt;a|b)(?P&lt;group2&gt;c|d)&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&#39;c&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;(?P&lt;group1&gt;a|b)(?P&lt;group2&gt;c|d)&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;!\1!*\g&lt;group2&gt;*&#39;</span><span class="p">,</span> <span class="s1">&#39;xxacxx&#39;</span><span class="p">)</span>
+<span class="go">&#39;xx!a!*c*xx&#39;</span></pre>
+                </section>
+                <section id="o5">
+                    <h4>Упражнение №5</h4>
+                    <p>В файл <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/advanced_sub.py">advanced_sub.py</a> впишите требуемые регулярные выражения и строки замены <code class="code">REGEXP_1</code> / <code class="code">REGEXP_1_REPL</code>, <code class="code">REGEXP_2</code> / <code class="code">REGEXP_2_REPL</code> и т.д., после чего запустите на выполнение тесты из файла <a href="https://github.com/mipt-cs-on-python3/regexp/blob/master/advanced_sub_test.py">advanced_sub_test.py</a>. Добейтесь прохождения всех тестов.</p>
+                </section>
+            </section>
+        </section>
+        <section id="id35">
+            <h2>Стоит ли пользоваться регулярными выражениями?</h2>
+            <p>Регулярные выражения, как и любой другой инструмент, стоит использовать там, где они действительно уместны. Во многих случаях использование альтернативного подхода может существенно упростить процесс решения задачи, а также сделать текст программы более понятным. В качестве примера плохого регулярного выражения можно привести <a href="http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html">вот этот модуль</a> для языка Perl, который проверяет корректность введённого адреса электронной почты. Мало того, что это выражение огромно, так ещё и потребуется не один час, чтоб разобраться, как именно оно устроено.</p>
+            <p>В остальных случаях, особенно когда регулярное выражение получается понятным и лаконичным, его использование оказывается более предпочтительным. Однако не стоит забывать о том, что зачастую на написание корректно работающего регулярного выражения может потребоваться больше времени, чем на решение задачи альтернативным способом.</p>
+            <img align="center" src="{filename}/images/lab25/boromir_regexp.jpg" />
+        </section>
+    </section>
+</body>
+</div>
+</html>

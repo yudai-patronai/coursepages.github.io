@@ -1,0 +1,25 @@
+Date: 2016/10/10 11:25:40
+From: juicefruit (uid 21167)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 55
+Run-status: CG
+
+Date: 2016/10/10 11:25:45
+From: SYSTEM
+Status: testing completed
+Run-id: 55
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/10 11:25:40.395975
+  Request completion time:           2016/10/10 11:25:45.056427
+  Total testing duration:            4.660
+  Waiting in compile queue duration: 0.437
+  Compilation duration:              0.308
+  Waiting in serve queue duration:   0.273
+  Waiting in run queue duration:     0.144
+  Testing duration:                  2.772
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.726
+

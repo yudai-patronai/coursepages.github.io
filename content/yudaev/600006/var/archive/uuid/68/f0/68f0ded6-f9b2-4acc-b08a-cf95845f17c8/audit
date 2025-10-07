@@ -1,0 +1,25 @@
+Date: 2016/10/31 09:10:25
+From: FSergeev (uid 20296)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 22
+Run-status: CG
+
+Date: 2016/10/31 09:10:30
+From: SYSTEM
+Status: testing completed
+Run-id: 22
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/31 09:10:25.537926
+  Request completion time:           2016/10/31 09:10:30.590696
+  Total testing duration:            5.053
+  Waiting in compile queue duration: 0.865
+  Compilation duration:              0.199
+  Waiting in serve queue duration:   0.069
+  Waiting in run queue duration:     0.850
+  Testing duration:                  3.005
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.065
+

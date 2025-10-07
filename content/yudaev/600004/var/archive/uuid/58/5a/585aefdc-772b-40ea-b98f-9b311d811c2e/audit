@@ -1,0 +1,25 @@
+Date: 2016/10/31 21:42:59
+From: t61203 (uid 21339)
+Ip: 10.55.137.167
+Command: submit
+Status: ok
+Run-id: 234
+Run-status: CG
+
+Date: 2016/10/31 21:43:31
+From: SYSTEM
+Status: testing completed
+Run-id: 234
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/31 21:42:59.734295
+  Request completion time:           2016/10/31 21:43:31.723739
+  Total testing duration:            31.989
+  Waiting in compile queue duration: 0.731
+  Compilation duration:              0.337
+  Waiting in serve queue duration:   0.672
+  Waiting in run queue duration:     0.712
+  Testing duration:                  29.014
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.520
+

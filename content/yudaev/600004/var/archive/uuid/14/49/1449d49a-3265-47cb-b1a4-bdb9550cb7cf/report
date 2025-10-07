@@ -1,0 +1,11 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="0" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>1449d49a-3265-47cb-b1a4-bdb9550cb7cf</uuid>
+  <compiler_output>000000.c: In function 'main':
+000000.c:24:9: error: expected declaration or statement at end of input
+         return 0;
+         ^
+</compiler_output>
+</testing-report>

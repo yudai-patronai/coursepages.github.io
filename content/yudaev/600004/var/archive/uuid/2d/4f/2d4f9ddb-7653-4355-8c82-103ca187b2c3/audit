@@ -1,0 +1,25 @@
+Date: 2016/10/20 01:00:54
+From: vvaxenov (uid 20367)
+Ip: 93.175.7.241
+Command: submit
+Status: ok
+Run-id: 155
+Run-status: CG
+
+Date: 2016/10/20 01:00:59
+From: SYSTEM
+Status: testing completed
+Run-id: 155
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/20 01:00:54.751877
+  Request completion time:           2016/10/20 01:00:59.542134
+  Total testing duration:            4.790
+  Waiting in compile queue duration: 0.658
+  Compilation duration:              0.274
+  Waiting in serve queue duration:   0.189
+  Waiting in run queue duration:     0.132
+  Testing duration:                  2.667
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.870
+

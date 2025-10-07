@@ -1,0 +1,20 @@
+A=list(map(int,input().split())) 
+stroki=A[0] 
+stolbci=A[1] 
+B=[0]*stroki 
+for i in range(stroki): 
+    B[i]=[0]*stolbci 
+for i in range(stroki): 
+    A=input().split() 
+for j in range(stolbci): 
+    A[j]=int(A[j]) 
+    B[i][j]=A[j] 
+Koef=list(map(int,input().split())) 
+i=Koef[0] 
+j=Koef[1] 
+def Swapcolumns(B,i,j): 
+    for m in range (len(B)): 
+        B[m][i],B[m][j]=B[m][j],B[m][i] 
+for m in range(len(B)): 
+    print(' '.join(map(str,B[m]))) 
+Swapcolumns(B,i,j)

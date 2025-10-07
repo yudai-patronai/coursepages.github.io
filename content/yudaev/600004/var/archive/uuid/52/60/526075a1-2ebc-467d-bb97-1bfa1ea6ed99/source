@@ -1,0 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+unsigned int fact(int);
+int main() {
+	unsigned int bin;
+	int N, M;
+	scanf("%d %d", &N, &M);
+	bin = fact(N + M) / (fact(N) * fact(M));
+	printf("%u", bin);
+	return 0;
+}
+unsigned int fact(int n) {
+	unsigned int k = 1;
+	int i = 2;
+	for (i; i <= n; i++)
+		k *= i;
+	return k;
+}

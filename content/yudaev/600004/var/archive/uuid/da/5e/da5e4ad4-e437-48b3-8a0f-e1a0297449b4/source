@@ -1,0 +1,35 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+	int N = 0, M = 0, i, j;
+	scanf("%i %i", &N, &M);
+	int *arr = calloc((N+1)*(M+1), sizeof(int));
+
+	for (i = 0; i <= N; i++)
+	{
+		for (j = 0; j <= M; j++)
+		{
+			if ((i == 0)&&(j == 0))
+			{
+				*(arr) = 1;
+			}
+			else if (i == 0)
+			{
+				*(arr + (M + 1)*i + j) += *(arr + (M + 1)*i + j - 1);
+			}
+			else if (j == 0)
+			{
+				*(arr + (M + 1)*i + j) += *(arr + (M + 1)*(i - 1) + j);
+			}
+			else
+			{
+				*(arr + (M + 1)*i + j) += *(arr + (M + 1)*i + j - 1) + *(arr + (M + 1)*(i - 1) + j);
+			}
+		}
+	}
+	printf("%i ", arr[(M+1)*(N+1)-1]);
+        free(arr);
+	return 0;
+}

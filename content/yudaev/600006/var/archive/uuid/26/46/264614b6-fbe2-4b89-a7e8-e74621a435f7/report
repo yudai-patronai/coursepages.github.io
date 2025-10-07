@@ -1,0 +1,10 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="110" judge-id="3" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>264614b6-fbe2-4b89-a7e8-e74621a435f7</uuid>
+  <compiler_output>000110.c:3:6: error: expected identifier or '(' before 'int'
+ int (int n, char** a)
+      ^
+</compiler_output>
+</testing-report>

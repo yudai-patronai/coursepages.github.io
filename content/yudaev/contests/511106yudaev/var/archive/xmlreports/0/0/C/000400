@@ -1,0 +1,108 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="400" judge-id="401" status="PT" scoring="KIROV" run-tests="6" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="1" score="1" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>25af1e80-6abe-4a15-b24a-7d5696051526</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="WA" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="0"  checker-comment="Different number of lines: out = 1, corr = 5" visibility="full" >
+      <input size="2">5
+</input>
+      <output size="11">* . * . * 
+</output>
+      <correct size="50">* . * . *
+. * * * .
+* * * * *
+. * * * .
+* . * . *
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="45">Different number of lines: out = 1, corr = 5
+</checker>
+    </test>
+    <test num="2" status="WA" time="36" real-time="37" max-memory-used="307200" nominal-score="1" score="0"  checker-comment="Different number of lines: out = 1, corr = 7" visibility="full" >
+      <input size="2">7
+</input>
+      <output size="15">* . . * . . * 
+</output>
+      <correct size="98">* . . * . . *
+. * . * . * .
+. . * * * . .
+* * * * * * *
+. . * * * . .
+. * . * . * .
+* . . * . . *
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="45">Different number of lines: out = 1, corr = 7
+</checker>
+    </test>
+    <test num="3" status="WA" time="37" real-time="39" max-memory-used="307200" nominal-score="1" score="0"  checker-comment="Different number of lines: out = 1, corr = 9" >
+      <input size="2">9
+</input>
+      <output size="19">* . . . * . . . * 
+</output>
+      <correct size="162">* . . . * . . . *
+. * . . * . . * .
+. . * . * . * . .
+. . . * * * . . .
+* * * * * * * * *
+. . . * * * . . .
+. . * . * . * . .
+. * . . * . . * .
+* . . . * . . . *
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="45">Different number of lines: out = 1, corr = 9
+</checker>
+    </test>
+    <test num="4" status="WA" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0"  checker-comment="Different number of lines: out = 1, corr = 11" >
+      <input size="3">11
+</input>
+      <output size="23">* . . . . * . . . . * 
+</output>
+      <correct size="242">* . . . . * . . . . *
+. * . . . * . . . * .
+. . * . . * . . * . .
+. . . * . * . * . . .
+. . . . * * * . . . .
+* * * * * * * * * * *
+. . . . * * * . . . .
+. . . * . * . * . . .
+. . * . . * . . * . .
+. * . . . * . . . * .
+* . . . . * . . . . *
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="46">Different number of lines: out = 1, corr = 11
+</checker>
+    </test>
+    <test num="5" status="WA" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="0"  checker-comment="Different number of lines: out = 1, corr = 3" >
+      <input size="2">3
+</input>
+      <output size="7">* * * 
+</output>
+      <correct size="18">* * *
+* * *
+* * *
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="45">Different number of lines: out = 1, corr = 3
+</checker>
+    </test>
+    <test num="6" status="OK" time="36" real-time="37" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="2">1
+</input>
+      <output size="3">* 
+</output>
+      <correct size="2">*
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+  </tests>
+</testing-report>

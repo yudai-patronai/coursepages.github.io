@@ -1,0 +1,7 @@
+int main (int argv)
+{
+     if (argv != 0)
+        return argv;
+     else
+        return 0;
+}

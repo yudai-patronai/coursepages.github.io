@@ -1,0 +1,50 @@
+Date: 2015/10/19 22:48:18
+From: zadubrovsky (uid 18637)
+Ip: 93.175.8.27
+Command: submit
+Status: ok
+Run-id: 432
+Run-status: CG
+
+Date: 2015/10/19 22:48:19
+From: SYSTEM
+Status: testing completed
+Run-id: 432
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/19 22:48:18.079747
+  Request completion time:           2015/10/19 22:48:19.860418
+  Total testing duration:            1.781
+  Waiting in compile queue duration: 0.934
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.435
+  Waiting in run queue duration:     0.003
+  Testing duration:                  0.263
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.141
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 432
+Run-status: CG
+
+Date: 2015/12/09 20:29:56
+From: SYSTEM
+Status: testing completed
+Run-id: 432
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:37.650992
+  Request completion time:           2015/12/09 20:29:56.604245
+  Total testing duration:            67038.953
+  Waiting in compile queue duration: 0.641
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   5.623
+  Waiting in run queue duration:     854.357
+  Testing duration:                  0.255
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66178.075
+

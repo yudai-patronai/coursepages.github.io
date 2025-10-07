@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int n, char **a)
+{
+    FILE*fm = fopen(a[1],"r");
+    //printf("%s", a[1]);
+    fseek(fm, 0, SEEK_END);
+    long size = ftell(fm);
+    printf("%ld", size);
+    return 0;
+}

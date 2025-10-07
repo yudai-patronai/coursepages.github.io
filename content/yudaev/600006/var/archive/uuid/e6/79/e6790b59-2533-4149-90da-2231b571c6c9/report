@@ -1,0 +1,63 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="11" judge-id="1" status="PT" scoring="KIROV" run-tests="4" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="50" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>e6790b59-2533-4149-90da-2231b571c6c9</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="WA" time="489" real-time="495" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Different number of lines: output: 0, correct: 1" visibility="full" >
+  <program-stats-str>{ utime=389, stime=100, ptime=489, rtime=495, maxvsz=117993472, maxrss=134774784, nvcsw=15, nivcsw=6 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=1, maxvsz=307200, maxrss=1208320, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <correct size="21">Usage: stat filename
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="49">Different number of lines: output: 0, correct: 1
+</checker>
+    </test>
+    <test num="2" status="WA" time="494" real-time="500" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Different number of lines: output: 0, correct: 1" >
+  <args>[  1]: &gt;trampampam&lt;
+</args>
+  <program-stats-str>{ utime=404, stime=90, ptime=494, rtime=500, maxvsz=117993472, maxrss=133824512, nvcsw=18, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=307200, maxrss=1208320, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <correct size="27">Can't open file trampampam
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="49">Different number of lines: output: 0, correct: 1
+</checker>
+    </test>
+    <test num="3" status="RT" exit-code="66" time="503" real-time="510" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=405, stime=98, ptime=503, rtime=510, maxvsz=117993472, maxrss=133828608, nvcsw=17, nivcsw=6 }</program-stats-str>
+      <input size="12">123456789ab
+</input>
+      <output size="0"></output>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="66" time="502" real-time="521" max-memory-used="18554325737472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;output.txt&lt;
+</args>
+  <program-stats-str>{ utime=403, stime=99, ptime=502, rtime=521, maxvsz=18554325737472, maxrss=133828608, nvcsw=18, nivcsw=8 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+  </tests>
+</testing-report>

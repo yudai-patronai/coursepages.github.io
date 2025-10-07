@@ -1,0 +1,11 @@
+#include <stdlib.h>
+
+int main(int argc, char** argv, char** envp) {
+
+    int n=atoi(argv[1]), i;
+    for(i = 0; i < n; i++)
+    {
+        printf("%s\n", envp[i]);
+    }
+    return 0;
+}

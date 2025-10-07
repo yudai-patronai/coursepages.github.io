@@ -1,0 +1,84 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="17" judge-id="1" status="PT" scoring="KIROV" run-tests="6" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="60" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>477b008b-33c6-491c-b2af-2bf057c87fd3</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output>000017.c: In function 'main':
+000017.c:13:9: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+         while(sz = read(infd, &amp;buf, 4096))
+         ^
+000017.c: In function 'main':
+000017.c:13:9: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+         while(sz = read(infd, &amp;buf, 4096))
+         ^
+000017.c: In function 'main':
+000017.c:13:9: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+         while(sz = read(infd, &amp;buf, 4096))
+         ^
+</compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="66" time="491" real-time="498" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;in.src&lt;
+[  2]: &gt;out.dst&lt;
+</args>
+  <program-stats-str>{ utime=385, stime=106, ptime=491, rtime=498, maxvsz=117993472, maxrss=138924032, nvcsw=17, nivcsw=8 }</program-stats-str>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="66" time="490" real-time="512" max-memory-used="17454814081024" nominal-score="2" score="0" >
+  <args>[  1]: &gt;in.src&lt;
+[  2]: &gt;out.dst&lt;
+</args>
+  <program-stats-str>{ utime=385, stime=105, ptime=490, rtime=512, maxvsz=17454814081024, maxrss=138919936, nvcsw=18, nivcsw=8 }</program-stats-str>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="66" time="490" real-time="496" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;in.src&lt;
+[  2]: &gt;out.dst&lt;
+</args>
+  <program-stats-str>{ utime=383, stime=107, ptime=490, rtime=496, maxvsz=117993472, maxrss=138924032, nvcsw=16, nivcsw=7 }</program-stats-str>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="66" time="489" real-time="496" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;in.src&lt;
+[  2]: &gt;out.dst&lt;
+</args>
+  <program-stats-str>{ utime=386, stime=103, ptime=489, rtime=496, maxvsz=117993472, maxrss=138919936, nvcsw=17, nivcsw=8 }</program-stats-str>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="66" time="493" real-time="503" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;in.src&lt;
+[  2]: &gt;out.dst&lt;
+</args>
+  <program-stats-str>{ utime=381, stime=112, ptime=493, rtime=503, maxvsz=117993472, maxrss=138924032, nvcsw=14, nivcsw=7 }</program-stats-str>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="6" status="RT" exit-code="66" time="492" real-time="513" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;in.src&lt;
+[  2]: &gt;out.dst&lt;
+</args>
+  <program-stats-str>{ utime=388, stime=104, ptime=492, rtime=513, maxvsz=117993472, maxrss=138919936, nvcsw=18, nivcsw=9 }</program-stats-str>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+  </tests>
+</testing-report>

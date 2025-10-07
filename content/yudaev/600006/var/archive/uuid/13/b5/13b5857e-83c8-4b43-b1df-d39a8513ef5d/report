@@ -1,0 +1,70 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="13" judge-id="3" status="PT" scoring="KIROV" run-tests="4" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="1" score="0" max-score="50" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>13b5857e-83c8-4b43-b1df-d39a8513ef5d</uuid>
+  <comment>Test set {1 } is scored as 0
+</comment>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="499" real-time="505" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" visibility="full" >
+  <program-stats-str>{ utime=405, stime=94, ptime=499, rtime=505, maxvsz=117993472, maxrss=134184960, nvcsw=16, nivcsw=6 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=307200, maxrss=1208320, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="21">Usage: stat filename
+</output>
+      <correct size="21">Usage: stat filename
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="WA" time="508" real-time="515" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Line 1 differs: output: ?Can't open file  trampampam? correct: ?Can't open file trampampam?" >
+  <args>[  1]: &gt;trampampam&lt;
+</args>
+  <program-stats-str>{ utime=406, stime=102, ptime=508, rtime=515, maxvsz=117993472, maxrss=134184960, nvcsw=16, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1204224, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="28">Can't open file  trampampam
+</output>
+      <correct size="27">Can't open file trampampam
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="92">Line 1 differs: output:
+&gt;Can't open file  trampampam&lt;
+correct:
+&gt;Can't open file trampampam&lt;
+</checker>
+    </test>
+    <test num="3" status="RT" exit-code="66" time="518" real-time="530" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=418, stime=100, ptime=518, rtime=530, maxvsz=117993472, maxrss=134184960, nvcsw=16, nivcsw=8 }</program-stats-str>
+      <input size="12">123456789ab
+</input>
+      <output size="0"></output>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="66" time="515" real-time="522" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;output.txt&lt;
+</args>
+  <program-stats-str>{ utime=421, stime=94, ptime=515, rtime=522, maxvsz=117993472, maxrss=134180864, nvcsw=17, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="31">TEST
+PASSED
+Security violation
+</stderr>
+    </test>
+  </tests>
+</testing-report>

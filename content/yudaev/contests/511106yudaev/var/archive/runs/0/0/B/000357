@@ -1,0 +1,7 @@
+A = []
+A = [0] * 4
+for i in range(len(A)):
+     A[i] = int(input())
+
+d=min(min(A[0], A[1]), min(A[2], A[3]))
+print(d)

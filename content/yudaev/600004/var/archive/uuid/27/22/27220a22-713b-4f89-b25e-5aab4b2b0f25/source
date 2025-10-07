@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+
+int min2(int x, int y)
+{
+    if(x > y)
+        return y;
+    return x;
+}
+
+int min3(int x, int y, int z)
+{
+    int k;
+    k = min2(x, y);
+    return min2(k, z);
+}
+
+int main()
+{
+    int M, N;
+    scanf("%d %d", &N, &M);
+    int arr[32][32];
+    int i, j;
+    for(i = 0; i <= N; i++)
+    {
+        arr[i][0] = 1;
+    }
+    for(i = 0; i <= M; i++)
+    {
+        arr[0][i] = 1;
+    }
+    for(i = 1; i <= N; i++)
+    {
+        for(j = 1; j <= M; j++)
+        {
+            arr[i][j] = arr[i - 1][j] + arr[i][j - 1];
+        }
+    }
+   /* for(i = 0; i <= N; i++)
+    {
+        for(j = 0; j <= M; j++)
+        {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }*/
+    printf("%d\n", arr[N][M]);
+    return 0;
+}

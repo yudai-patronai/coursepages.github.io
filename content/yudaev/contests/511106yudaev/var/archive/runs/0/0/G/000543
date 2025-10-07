@@ -1,0 +1,25 @@
+def arrayInput(n):
+    Arr = [[]]*n
+    for i in range(n):
+        Arr[i] = input().split()
+    return(Arr)
+
+def arrayOutput(Arr):
+    for i in range(len(Arr)):
+        for j in range(len(Arr[i])):
+            print(Arr[i][j], end=' ')
+        print('\n')    
+
+def transpose(arr):
+    k = len(arr)
+    l = len(arr[0])
+    result = [[0  for i in range(k)] for j in range(l)]
+    for i in range(l):
+        for j in range(k):
+            result[i][j] = arr[j][i]
+    return result
+        
+nums = input().split()
+Arr = arrayInput(int(nums[0]))
+transArr = transpose(Arr)            
+arrayOutput(transArr)        

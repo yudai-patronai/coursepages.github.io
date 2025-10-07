@@ -1,0 +1,16 @@
+nm = input().split()
+n = int(nm[0])
+m = int(nm[1])
+maxn = None
+maxi = -1
+maxj = -1
+massive = [['' for i in range(m)] for j in range(n)]
+for i in range(n):
+    inp = input().split()
+    for j in range(m):
+        massive[i][j] = int(inp[j])
+        if maxn == None or massive[i][j] > maxn:
+            maxn = massive[i][j]
+            maxi = i
+            maxj = j
+print(maxi, maxj)

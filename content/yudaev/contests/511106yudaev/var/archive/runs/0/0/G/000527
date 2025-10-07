@@ -1,0 +1,22 @@
+def Rotate(mass):
+    n = len(mass)
+    mass1 = []
+    for i in range(n):
+        mass1.append([0] * n)
+    for j in range(n - 1, -1, -1):
+        for i in range(n):
+            mass1[j][n - i - 1] = mass[i][j]
+    for i in range(n):
+        for j in range(n):
+            mass[i][j] = mass1[i][j]
+def print_by_elements(mass):
+    for i in range(len(mass)):
+        for j in range(len(mass[0])):
+            print(mass[i][j], end = ' ')
+        print()
+n = int(input())
+mass = []
+for i in range(n):
+    mass.append(input().split())
+Rotate(mass)
+print_by_elements(mass)

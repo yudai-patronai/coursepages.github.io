@@ -1,0 +1,41 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="124" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>8b57848b-6079-4f9c-8f2e-9a161fd42e98</uuid>
+  <compiler_output>000124.c: In function 'main':
+000124.c:12:38: error: expected declaration specifiers or '...' before '[' token
+     int A[5001], B[5001], C[5001], t([5001];
+                                      ^
+000124.c:13:5: error: expected declaration specifiers or '...' before 'for'
+     for(int i = 1; i &lt;= N; ++i)
+     ^
+000124.c:15:5: error: unknown type name 't'
+     t[0] = 0;
+     ^
+000124.c:16:5: error: unknown type name 't'
+     t[1] = A[1];
+     ^
+000124.c:17:5: error: expected declaration specifiers or '...' before 'for'
+     for(int i = 2; i &lt;= N; ++i)
+     ^
+000124.c:27:1: error: expected declaration specifiers or '...' before '}' token
+ }
+ ^
+000124.c:27:1: error: expected ';', ',' or ')' before '}' token
+000124.c:27:1: error: expected declaration or statement at end of input
+000124.c:12:27: warning: unused variable 'C' [-Wunused-variable]
+     int A[5001], B[5001], C[5001], t([5001];
+                           ^
+000124.c:12:18: warning: unused variable 'B' [-Wunused-variable]
+     int A[5001], B[5001], C[5001], t([5001];
+                  ^
+000124.c:12:9: warning: unused variable 'A' [-Wunused-variable]
+     int A[5001], B[5001], C[5001], t([5001];
+         ^
+000124.c:27:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

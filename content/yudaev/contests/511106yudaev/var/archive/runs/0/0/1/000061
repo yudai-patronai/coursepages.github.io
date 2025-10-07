@@ -1,0 +1,4 @@
+def min4(a,b,c,d):
+    A=[a]+[b]+[c]+[d]
+    return min(A)
+print(min4(int(input()),int(input()),int(input()),int(input())))

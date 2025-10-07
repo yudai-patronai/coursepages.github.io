@@ -1,0 +1,72 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="108" judge-id="109" status="PT" scoring="KIROV" run-tests="6" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="0" score="0" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>84639a5c-b82f-41b2-9ae9-44ed87efd74c</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="0" visibility="full" >
+      <input size="2">5
+</input>
+      <output size="0"></output>
+      <stderr size="132">Traceback (most recent call last):
+  File &quot;./000108&quot;, line 5, in &lt;module&gt;
+    y1 = float(input())
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" visibility="full" >
+      <input size="2">7
+</input>
+      <output size="0"></output>
+      <stderr size="132">Traceback (most recent call last):
+  File &quot;./000108&quot;, line 5, in &lt;module&gt;
+    y1 = float(input())
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="36" real-time="37" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="2">9
+</input>
+      <output size="0"></output>
+      <stderr size="132">Traceback (most recent call last):
+  File &quot;./000108&quot;, line 5, in &lt;module&gt;
+    y1 = float(input())
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="3">11
+</input>
+      <output size="0"></output>
+      <stderr size="132">Traceback (most recent call last):
+  File &quot;./000108&quot;, line 5, in &lt;module&gt;
+    y1 = float(input())
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="2">3
+</input>
+      <output size="0"></output>
+      <stderr size="132">Traceback (most recent call last):
+  File &quot;./000108&quot;, line 5, in &lt;module&gt;
+    y1 = float(input())
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+    <test num="6" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="2">1
+</input>
+      <output size="0"></output>
+      <stderr size="132">Traceback (most recent call last):
+  File &quot;./000108&quot;, line 5, in &lt;module&gt;
+    y1 = float(input())
+EOFError: EOF when reading a line
+</stderr>
+    </test>
+  </tests>
+</testing-report>

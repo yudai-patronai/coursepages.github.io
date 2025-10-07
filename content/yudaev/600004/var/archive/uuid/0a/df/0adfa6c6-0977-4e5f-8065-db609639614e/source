@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int max(int a, int b)
+{
+    if (a > b)
+        return a;
+    return b;
+}
+
+int main()
+{
+    int N;
+    int F[100][100];
+    scanf("%i", &N);
+    return N;
+    int i;
+    int j;
+    for (i = 0; i < 100; i++)
+        for (j = 0; j < 100; j++)
+            F[i][j] = 0;
+    for (i = 0; i < N; i++)
+        for (j = 0; j <= i; j++)
+            scanf("%i", &F[i][j]);
+    for (i = N - 2; i >= 0; i--)
+        for (j = 0; j <= i; j++)
+            F[i][j] = F[i][j] + max(F[i+1][j], F[i+1][j+1]);
+    printf("%i\n", F[0][0]);
+    return 0;
+}

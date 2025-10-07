@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <math.h>
+
+int DivNum(int num)
+{
+
+    int res = 1;
+    int i = 0;
+    for(i = 1; i < num; ++i)
+    {
+
+        if(num % i == 0)
+            res++;
+
+    }
+
+    return res;
+
+}
+
+int main()
+{
+
+    if(freopen("input.txt", "r", stdin) == NULL)
+        return 1;
+    if(freopen("output.txt", "w", stdout) == NULL)
+        return 2;
+
+    int div_num;
+    scanf("%d", &div_num);
+
+    int i = 1;
+
+    for(i = 1; ; i++)
+    {
+
+        //printf("%d %d %d \n", i, i * (i + 1) / 2, DivNum(i * (i + 1) / 2));
+
+        int DIV_NUM = DivNum(i / 2) * DivNum(i + 1);
+        if(i % 2 == 1)
+            DIV_NUM = DivNum(i) * DivNum((i + 1) / 2);
+
+        if(DIV_NUM > div_num)
+        {
+
+            printf("%d", i * (i + 1) / 2);
+            break;
+
+        }
+
+    }
+
+    fclose(stdin);
+    fclose(stdout);
+    return 0;
+
+}

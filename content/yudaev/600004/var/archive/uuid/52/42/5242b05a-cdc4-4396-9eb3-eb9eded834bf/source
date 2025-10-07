@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+
+int main() {
+    int n, m;
+    long int a[24][24];
+
+    scanf("%d %d", &n, &m);
+
+    int i, j;
+
+    for(i = 0; i <= n; i++)
+        a[0][i] = 1;
+
+    for(j = 0; j <= m; j++)
+        a[j][0] = 1;
+    
+    for(i = 1; i <= n; i++)
+        for(j = 1; j <= m; j++)
+            a[j][i] = a[j][i-1] + a[j-1][i];
+    
+    /*for(i = 0; i <= n; i++)
+    {
+        for(j = 0; j <= m; j++)
+            printf("%d ", a[j][i]);
+        printf("\n");
+    }*/
+        
+    
+    printf("%ld", a[m][n]);
+    
+    return 0;
+}

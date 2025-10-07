@@ -1,0 +1,47 @@
+#include<stdio.h>
+int min2(int a, int b)
+{
+    if (a < b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+int min3(int a, int b, int c)
+{
+    int k = min2(a, b);
+    return min2(k, c);
+}
+
+int main()
+{
+    int n, i, j;
+    int A[5001], B[5001], C[5001], t[5001];
+    A[0] = B[0] = C[0] = 3600;
+    t[0] = 0;
+    scanf("%d", &n);
+    for (i = n; i >= 1; i--)
+    {
+        scanf("%d %d %d", &A[i], &B[i], &C[i]);
+    }
+    for (i = 1; i <= n; i++)
+    {
+        if (i == 1)
+        {
+            t[1] = A[1];
+        }
+        if (i == 2)
+        {
+            t[2] = min2(B[2], A[2] + t[1]);
+        }
+        if (i > 2)
+        {
+            t[i] = min3(C[i] + t[i - 3], B[i] + t[i - 2], A[i] + t[i-1]);
+        }
+    }
+    printf("%d", t[n]);
+    return 0;
+}

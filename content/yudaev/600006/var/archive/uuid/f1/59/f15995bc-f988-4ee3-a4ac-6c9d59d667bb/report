@@ -1,0 +1,13 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="388" judge-id="3" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>f15995bc-f988-4ee3-a4ac-6c9d59d667bb</uuid>
+  <compiler_output>000388.c: In function 'main':
+000388.c:8:9: error: implicit declaration of function 'printf' [-Werror=implicit-function-declaration]
+         printf(&quot;%s\n&quot;, envp[i]);
+         ^
+000388.c:8:9: warning: incompatible implicit declaration of built-in function 'printf' [enabled by default]
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

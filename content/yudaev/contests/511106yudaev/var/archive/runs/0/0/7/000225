@@ -1,0 +1,5 @@
+x_min = int(input())
+for i in range(3):
+    x = int(input())
+    x_min = min(x_min,x)
+print(x_min)

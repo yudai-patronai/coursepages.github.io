@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int found(int n)
+{
+    int s = 1;
+    int t = 0;
+    int i = 1;
+    int j, k, r;
+    k = 0;
+    while (k <= n)
+    {
+        r = s;
+        k = 0;
+        t = s;
+        for (j = 1; j < t; j++)
+        {
+            if (r % j == 0)
+            {
+                t = t / j;
+                if (r / j != j)
+                    k = k + 2;
+                else
+                    k = k + 1;
+            }
+        }
+        i++;
+        s = s + i;
+    }
+    return s - i;
+}

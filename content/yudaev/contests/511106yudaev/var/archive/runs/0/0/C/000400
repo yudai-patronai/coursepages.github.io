@@ -1,0 +1,17 @@
+n = int(input())
+M = []
+for i in range(n):
+    M.append(['.'] * n)
+for i in range(n):
+    M[i][i] = '*'
+for i in range(n):
+    M[i][n - i - 1] = '*'
+for i in range(n):
+    M[n//2][i] = '*'
+for i in range(n):
+    M[i][n//2] = '*'
+for i in range(n):
+    A = str()
+for j in range(n):
+    A += M[i][j] + ' '
+print(A)

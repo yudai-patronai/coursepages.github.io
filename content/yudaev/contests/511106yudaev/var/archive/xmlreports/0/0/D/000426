@@ -1,0 +1,73 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="426" judge-id="427" status="PT" scoring="KIROV" run-tests="6" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="1" score="1" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>b9a4c265-2b75-44cb-8cfe-f2805cc1e79b</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="0" visibility="full" >
+      <input size="2">5
+</input>
+      <output size="0"></output>
+      <stderr size="173">Traceback (most recent call last):
+  File &quot;./000426&quot;, line 8, in &lt;module&gt;
+    if m == k or k == (s//2) or (m+k) == (s-1) or m == (s//2): 
+NameError: name 's' is not defined
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" visibility="full" >
+      <input size="2">7
+</input>
+      <output size="0"></output>
+      <stderr size="173">Traceback (most recent call last):
+  File &quot;./000426&quot;, line 8, in &lt;module&gt;
+    if m == k or k == (s//2) or (m+k) == (s-1) or m == (s//2): 
+NameError: name 's' is not defined
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="2">9
+</input>
+      <output size="0"></output>
+      <stderr size="173">Traceback (most recent call last):
+  File &quot;./000426&quot;, line 8, in &lt;module&gt;
+    if m == k or k == (s//2) or (m+k) == (s-1) or m == (s//2): 
+NameError: name 's' is not defined
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="3">11
+</input>
+      <output size="0"></output>
+      <stderr size="173">Traceback (most recent call last):
+  File &quot;./000426&quot;, line 8, in &lt;module&gt;
+    if m == k or k == (s//2) or (m+k) == (s-1) or m == (s//2): 
+NameError: name 's' is not defined
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="2">3
+</input>
+      <output size="0"></output>
+      <stderr size="173">Traceback (most recent call last):
+  File &quot;./000426&quot;, line 8, in &lt;module&gt;
+    if m == k or k == (s//2) or (m+k) == (s-1) or m == (s//2): 
+NameError: name 's' is not defined
+</stderr>
+    </test>
+    <test num="6" status="OK" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="2">1
+</input>
+      <output size="2">*
+</output>
+      <correct size="2">*
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+  </tests>
+</testing-report>

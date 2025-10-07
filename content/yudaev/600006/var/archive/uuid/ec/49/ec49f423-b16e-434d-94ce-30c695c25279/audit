@@ -1,0 +1,25 @@
+Date: 2016/11/01 11:08:08
+From: tanysha.ushakova (uid 21615)
+Ip: 10.55.192.201
+Command: submit
+Status: ok
+Run-id: 140
+Run-status: CG
+
+Date: 2016/11/01 11:08:13
+From: SYSTEM
+Status: testing completed
+Run-id: 140
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/01 11:08:08.947216
+  Request completion time:           2016/11/01 11:08:13.251766
+  Total testing duration:            4.305
+  Waiting in compile queue duration: 0.527
+  Compilation duration:              0.196
+  Waiting in serve queue duration:   0.342
+  Waiting in run queue duration:     0.169
+  Testing duration:                  2.940
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.131
+

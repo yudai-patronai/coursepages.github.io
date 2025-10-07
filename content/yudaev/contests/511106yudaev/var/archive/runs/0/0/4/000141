@@ -1,0 +1,19 @@
+s1=input()
+n=int(s1[0])
+m=int(s1[2])
+A = []
+for i in range(n):
+    A.append(list(map(int, input().split())))
+s2=input()
+i=int(s2[0])
+j=int(s2[2])
+
+def SwapColumns(A,i,j):
+    for i1 in range(n):
+        A[i1][i],A[i1][j]=A[i1][j], A[i1][i]
+    return A
+SwapColumns(A,i,j)
+for row in A:
+    for elem in row:
+        print(elem, end = ' ')
+    print()

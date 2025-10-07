@@ -1,0 +1,25 @@
+Date: 2016/10/26 17:38:58
+From: tectoner1 (uid 21700)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 201
+Run-status: CG
+
+Date: 2016/10/26 17:39:03
+From: SYSTEM
+Status: testing completed
+Run-id: 201
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/26 17:38:58.683382
+  Request completion time:           2016/10/26 17:39:03.592738
+  Total testing duration:            4.909
+  Waiting in compile queue duration: 0.523
+  Compilation duration:              0.270
+  Waiting in serve queue duration:   0.227
+  Waiting in run queue duration:     0.851
+  Testing duration:                  2.694
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.344
+

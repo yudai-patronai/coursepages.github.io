@@ -1,0 +1,8 @@
+s = int(input()) 
+A = [["." for k in range(s)] for m in range(s)] 
+for m in range(s): 
+    for k in range(s): 
+        if (m + k) % 2 = 0:
+            A[m][k] = "*" 
+for i in range(s):
+    print(' '.join(A[i]))

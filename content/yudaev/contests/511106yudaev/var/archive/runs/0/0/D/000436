@@ -1,0 +1,12 @@
+s = int(input()) 
+A = [[0 for k in range(s)] for i in range(s)] 
+for m in range(s): 
+    A[m] = list(map(int,input().split())) 
+def isSymmetric(A): 
+    B = A[:] 
+    A = [[A[k][i] for k in range(s)] for i in range(s)] 
+    return A == B 
+if (isSymmetric(A)): 
+    print("YES") 
+else: 
+    print("NO")

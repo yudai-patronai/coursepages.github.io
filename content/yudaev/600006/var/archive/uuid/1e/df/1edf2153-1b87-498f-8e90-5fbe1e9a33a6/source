@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[])
+{
+
+//        #define argc 3
+//        char* arr[3] = {"", "input.txt", "output.txt"};
+//        #define argv arr
+
+    if(argc < 3)
+    {
+
+        printf("Usage: stat filename");
+        return 1;
+
+    }
+
+    FILE* input = fopen(argv[1], "r");
+
+    if(!input)
+    {
+
+        printf("Can't open file %s", argv[1]);
+        return 2;
+
+    }
+
+    FILE* output = fopen(argv[2], "w");
+
+    if(!output)
+    {
+
+        printf("Can't open file %s", argv[2]);
+        return 3;
+
+    }
+
+
+    fseek(input, 0, SEEK_END);
+    long int f_size = ftell(input);
+
+    void* buffer = calloc(f_size, 1);
+    if(!buffer)
+        return 99;
+
+    rewind(input);
+
+    fread(buffer, 1, f_size, input);
+    fwrite(buffer, 1, f_size, output);
+
+    free(buffer);
+    buffer = NULL;
+
+    fclose(input);
+    fclose(output);
+
+    input = NULL;
+    output = NULL;
+    return 0;
+
+}
+

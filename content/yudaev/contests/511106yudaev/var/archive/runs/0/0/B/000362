@@ -1,0 +1,5 @@
+def min4(a, b, c, d):
+    return min(min(a,b),min(c,d))
+
+m,n,p,q=tuple(int(input()) for I in range(4))
+print(min4(m,n,p,q))

@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+
+int divstotal(int num) {
+
+    int i;
+    int ans = 0;
+    int sqrtnum = round(sqrt(num));
+    for(i = 1; i <= sqrtnum; ++i)
+        ans += 2*(!(num % i));
+    if(sqrtnum*sqrtnum == num)
+        --ans;
+
+    return ans;
+
+}
+
+int main() {
+
+    //freopen("input.txt", "rt", stdin);
+    //freopen("output.txt", "wt", stdout);
+
+    int divs;
+    scanf("%d", &divs);
+    int i,j;
+    int num1, num2;
+    for(i = 1; ; ++i) {
+
+        num1 = i;
+        num2 = i+1;
+
+        (num1 % 2) ? (num2 >>= 1) : (num1 >>= 1);
+
+        if(divstotal(num1)*divstotal(num2) > divs) {
+
+            printf("%d\n", num1*num2);
+            return 0;
+
+        }
+
+    }
+
+    return 0;
+
+}

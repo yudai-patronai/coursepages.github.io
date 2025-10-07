@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(int argc, char* argv[], char* envp[]) {
+        FILE *file1, *file2;
+        file1 = fopen(argv[1], "r");
+        file2 = fopen(argv[2], "w");
+        char p = 8;
+
+        while (fscanf(file1, "%c", &p) != EOF) {
+                fprintf(file2, "%c", p);
+        }
+        fclose(file1);
+        fclose(file2);
+        return 0;
+}

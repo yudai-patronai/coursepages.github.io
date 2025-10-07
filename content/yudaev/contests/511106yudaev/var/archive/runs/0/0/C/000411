@@ -1,0 +1,13 @@
+n,m=input().split()
+n,m=int(n),int(m)
+Mass= []
+for i in range(n):
+    Mass.append(input().split())
+def Transpose(Mass):
+    C=list(zip(*Mass))
+    return C
+Mass=Transpose(Mass)
+for i in range(m):
+    for j in range(n):
+        print(Mass[i][j],end=' ')
+    print()    

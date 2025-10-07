@@ -1,0 +1,25 @@
+Date: 2016/11/09 16:42:39
+From: gorkov.anatoliy (uid 21688)
+Ip: 93.175.19.164
+Command: submit
+Status: ok
+Run-id: 300
+Run-status: CG
+
+Date: 2016/11/09 16:43:09
+From: SYSTEM
+Status: testing completed
+Run-id: 300
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/09 16:42:39.984011
+  Request completion time:           2016/11/09 16:43:09.881402
+  Total testing duration:            29.897
+  Waiting in compile queue duration: 0.283
+  Compilation duration:              0.278
+  Waiting in serve queue duration:   0.369
+  Waiting in run queue duration:     0.619
+  Testing duration:                  28.090
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.255
+

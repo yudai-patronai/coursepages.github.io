@@ -1,0 +1,82 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="337" judge-id="338" status="PT" scoring="KIROV" run-tests="7" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="0" score="0" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>d3f6af98-1d09-4dbb-b2ad-f4ded3484d27</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="37" real-time="39" max-memory-used="307200" nominal-score="1" score="0" visibility="full" >
+      <input size="4">3 4
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '3 4'
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" visibility="full" >
+      <input size="4">6 8
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '6 8'
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">8 3
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '8 3'
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="36" real-time="37" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">7 5
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '7 5'
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">1 6
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '1 6'
+</stderr>
+    </test>
+    <test num="6" status="RT" exit-code="1" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">8 1
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '8 1'
+</stderr>
+    </test>
+    <test num="7" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">1 1
+</input>
+      <output size="0"></output>
+      <stderr size="153">Traceback (most recent call last):
+  File &quot;./000337&quot;, line 4, in &lt;module&gt;
+    n = int(input())
+ValueError: invalid literal for int() with base 10: '1 1'
+</stderr>
+    </test>
+  </tests>
+</testing-report>

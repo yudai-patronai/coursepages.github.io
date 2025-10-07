@@ -1,0 +1,24 @@
+n, m = input().split()
+n, m = int(n), int(m)
+A = []
+for i in range(n):
+        A.append([int(x) for x in input().split()])
+
+def Transpose(A):
+    n = len(A[0])
+    m = len(A)
+    B = []
+    for i in range(n):
+        B.append([])
+        for j in range(m):
+            B[i].append('.')
+    #print (B)
+    for i in range (n):
+        for j in range(m):
+            s = i
+            t = j
+            B[i][j] = A[t][s]
+    print(B)
+    return(B)
+
+Transpose(A)

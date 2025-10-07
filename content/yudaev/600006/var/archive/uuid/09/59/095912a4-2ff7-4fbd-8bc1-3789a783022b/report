@@ -1,0 +1,53 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="323" judge-id="50" status="PT" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>095912a4-2ff7-4fbd-8bc1-3789a783022b</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="WA" time="494" real-time="501" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Line 1 differs: output: ?PATH=/usr/local/bin:/usr/bin:/bin? correct: ?LD_LIBRARY_PATH=/home/judges/compile/lib?" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=398, stime=96, ptime=494, rtime=501, maxvsz=117993472, maxrss=134176768, nvcsw=18, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=1, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="34">PATH=/usr/local/bin:/usr/bin:/bin
+</output>
+      <correct size="42">LD_LIBRARY_PATH=/home/judges/compile/lib
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="112">Line 1 differs: output:
+&gt;PATH=/usr/local/bin:/usr/bin:/bin&lt;
+correct:
+&gt;LD_LIBRARY_PATH=/home/judges/compile/lib&lt;
+</checker>
+    </test>
+    <test num="2" status="WA" time="494" real-time="502" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Line 1 differs: output: ?ASAN_SYMBOLIZER_PATH=/bin/llvm-symbolizer? correct: ?LD_LIBRARY_PATH=/home/judges/compile/lib?" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=403, stime=91, ptime=494, rtime=502, maxvsz=117993472, maxrss=134180864, nvcsw=17, nivcsw=9 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="64">ASAN_SYMBOLIZER_PATH=/bin/llvm-symbolizer
+host.localdomain_5234
+</output>
+      <correct size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="120">Line 1 differs: output:
+&gt;ASAN_SYMBOLIZER_PATH=/bin/llvm-symbolizer&lt;
+correct:
+&gt;LD_LIBRARY_PATH=/home/judges/compile/lib&lt;
+</checker>
+    </test>
+  </tests>
+</testing-report>

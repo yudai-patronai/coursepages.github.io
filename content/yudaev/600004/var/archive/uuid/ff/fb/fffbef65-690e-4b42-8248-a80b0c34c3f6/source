@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int min(int a, int b, int c)
+{
+	if (a < b && a < c)
+		return a;
+	if (b < a && b < c)
+		return b;
+	return c;
+}
+
+int min(int a, int b)
+{
+	if (a < b)
+		return a;
+	return b;
+}
+
+int main()
+{
+	int n;
+	int a[5001], b[5001], c[5001];
+	for (int i = 1; i <= n; i++)
+	{
+	    scanf("%d%d%d", &a[i], &b[i], &c[i]);
+	}
+	int curSum[5002];
+	curSum[0] = 0;
+	curSum[n + 1] = 0;
+	for (int i = n; i >= 1; i--)
+	{
+		if (i < n - 1)
+		{
+			curSum[i] = min(curSum[i + 1] + a[i], curSum[i + 2] + b[i], curSum[i + 3] + c[i]);
+		}
+		else if (i < n)
+		{
+			curSum[i] = min(curSum[i + 1] + a[i], curSum[i + 2] + b[i]);
+		}
+		else
+			curSum[i] = a[i];
+	}
+    printf("%d", curSum[1]);
+	return 0;
+}

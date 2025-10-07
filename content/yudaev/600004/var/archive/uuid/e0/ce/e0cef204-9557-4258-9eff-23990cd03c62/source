@@ -1,0 +1,2 @@
+#include <stdio.h> 
+long long int min(long long int a, long long int b) { if(a <= b) { return a; } else { return b; } } long long int buyers[6000]; int main() { int i; long long int ai, bi, ci, n; scanf("%lli", &n); buyers[0] = 0; for(i = 1; i != n + 3; i++) { buyers[i] = n * 3601; } for(i = 1; i != n + 1; i++) { scanf("%lli %lli %lli", &ai, &bi, &ci); buyers[i] = min(buyers[i], buyers[i - 1] + ai); buyers[i + 1] = min(buyers[i + 1], buyers[i - 1] + bi); buyers[i + 2] = min(buyers[i + 2], buyers[i - 1] + ci); } printf("%lli", buyers[n]); return 0; }

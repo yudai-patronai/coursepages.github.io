@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с файлами и аргументы командной строки</title>
+    <meta charset="utf-8" />
+    <meta content="2020-09-14 19:00" name="date" />
+    <meta content="Работа с файлами" name="summary" />
+    <meta content="published" name="status" />
+</head>
+<style>
+div{
+  width: 600px;
+  margin: auto;
+  border: 0px ;
+  
+}
+body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="id1">
+        <h1>Работа с файлами и аргументы командной строки</h1>
+    <style>
+.contents li{
+  list-style:none;
+  padding:0px 0px 0px 2em;
+  margin:0px;
+}
+</style>
+        <aside id="contents" class="topic contents">
+            <h1>Contents</h1>
+            <ul>
+                <li><a href="#id2">Обработка аргументов командной строки. Запуск программы с аргументами</a>
+                    <ul>
+                        <li><a href="#argparse">Примеры без использования argparse</a></li>
+                    </ul>
+                </li>
+                <li><a href="#id3">Работа с файловой системой</a>
+                    <ul>
+                        <li><a href="#id4">Все папки директории</a></li>
+                        <li><a href="#id5">Текущая папка</a></li>
+                        <li><a href="#id6">Проверка существования файла или папки и определение, является ли имя файлом или папкой</a></li>
+                        <li><a href="#id7">Рекурсивный обход папок</a></li>
+                        <li><a href="#id8">Копирование файлов</a></li>
+                    </ul>
+                </li>
+                <li><a href="#id10">Распространенные форматы текстовых данных</a>
+                    <ul>
+                        <li><a href="#csv">csv</a></li>
+                        <li><a href="#json">JSON</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section id="id2">
+            <h2>Обработка аргументов командной строки. Запуск программы с аргументами</h2>
+            <p>Параметры запуска, задаваемые через командную строку, чаще всего используют консольные программы, хотя программы с графическим интерфейсом тоже не брезгуют этой возможностью. Наверняка в жизни каждого программиста была ситуация, когда приходилось разбирать параметры командной строки, как правило, это не самая интересная часть программы, но без нее не обойтись. Эта статья посвящена тому, как Python облегчает жизнь программистам при решении этой задачи благодаря своей стандартной библиотеке argparse.</p>
+            <section id="argparse">
+                <h3>Примеры без использования argparse</h3>
+                <p>Путь для начала у нас есть простейший скрипт на Python. Для определенности назовем скрипт coolprogram.py, это будет классический Hello World, над которым мы будем работать</p>
+                <pre data-language="python"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Привет, мир!&quot;</span><span class="p">)</span></pre>
+                <p>Мы завершили эту сложнейшую программу и отдали ее заказчику, он доволен, но просит добавить в нее возможность указывать имя того, кого приветствуем, причем этот параметр может быть не обязательным. Т.е. программа может использоваться двумя путями:</p>
+                <pre data-language="bash">$ python coolprogram.py</pre>
+                <p>или</p>
+                <pre data-language="bash">$ python coolprogram.py Вася</pre>
+                <p>Мы можем воспользоваться переменной argv из модуля sys. sys.argv содержит список параметров, переданных программе через командную строку, причем нулевой элемент списка - это имя нашего скрипта. Т.е. если у нас есть следующий скрипт с именем params.py:</p>
+                <pre data-language="python"><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">param</span><span class="p">)</span></pre>
+                <p>и мы запускаем его с помощью команды</p>
+                <pre data-language="python"><span class="n">python</span> <span class="n">params</span><span class="o">.</span><span class="n">py</span></pre>
+                <p>то в консоль будет выведена единственная строка:</p>
+                <pre data-language="python"><span class="n">params</span><span class="o">.</span><span class="n">py</span></pre>
+                <p>Если же мы добавим несколько параметров,</p>
+                <pre data-language="bash">python params.py param1 param2 param3</pre>
+                <p>то эти параметры мы увидим в списке sys.argv, начиная с первого элемента:</p>
+                <pre data-language="python"><span class="n">params</span><span class="o">.</span><span class="n">py</span>
+<span class="n">param1</span>
+<span class="n">param2</span>
+<span class="n">param3</span></pre>
+                <p>Здесь можно обратить внимание на то, что ссылка на интерпретатор Python в список этих параметров не входит, хотя он также присутствует в строке вызова нашего скрипта.</p>
+                <p>Вернемся к нашей задаче. Погрузившись в код на неделю, мы могли бы выдать заказчику следующий скрипт:</p>
+                <pre data-language="python"><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Привет, </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Привет, мир!&quot;</span><span class="p">)</span></pre>
+                <p>Теперь, если программа вызывается с помощью команды</p>
+                <pre data-language="bash">python coolprogram.py</pre>
+                <p>то результат будет прежний</p>
+                <pre data-language="bash">Привет, мир!</pre>
+                <p>а если мы добавим параметр:</p>
+                <pre data-language="bash">python coolprogram.py Вася</pre>
+                <p>то программа поприветствует некоего Васю:</p>
+                <pre data-language="bash">Привет, Вася!</pre>
+                <p>Пока все легко и никаких проблем не возникает. Теперь предположим, что требования заказчика вновь изменились, и на этот раз он хочет, чтобы имя приветствуемого человека передавалось после именованного параметра --name или -n, причем нужно следить, что в командной строке передано только одно имя. С этого момента у нас начнется вермишель из конструкций if.</p>
+                <pre data-language="python"><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Привет, мир!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Ошибка. Слишком мало параметров.&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Ошибка. Слишком много параметров.&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">param_name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">param_value</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">param_name</span> <span class="o">==</span> <span class="s2">&quot;--name&quot;</span> <span class="ow">or</span>
+                <span class="n">param_name</span> <span class="o">==</span> <span class="s2">&quot;-n&quot;</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Привет, </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span> <span class="p">(</span><span class="n">param_value</span><span class="p">)</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Ошибка. Неизвестный параметр &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span> <span class="p">(</span><span class="n">param_name</span><span class="p">)</span> <span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span></pre>
+                <p>Здесь мы проверяем ситуацию, что мы вообще не передали ни одного параметра, потом проверяем, что дополнительных параметров у нас ровно два, что они называются именно --name или -n, и, если нас все устраивает, выводим приветствие.</p>
+                <p>Как видите, код превратился в тихий ужас. Изменить логику работы в нем в дальнейшем будет очень сложно, а при увеличении количества параметров нужно будет срочно применять объектно-ориентированные меры по отделению логики работы программы от разбора командной строки. Разбор командной строки мы могли бы выделить в отдельный класс (или классы), но мы этого здесь делать не будем, поскольку все уже сделано в стандартной библиотеке Python, которая называется argparse.</p>
+                <p>Но перед тем, как перейти к библиотеке argparse, еще немного остановимся на sys. Модуль sys обеспечивает доступ к некоторым переменным и функциям, взаимодействующим с интерпретатором python. Самыми полезными являются:</p>
+                <blockquote>
+                    <ul>
+                        <li>sys.argv - список аргументов командной строки, передаваемых сценарию Python. sys.argv[0] является именем скрипта (пустой строкой в интерактивной оболочке).</li>
+                        <li>sys.exit([arg]) - выход из Python. Функция exit принимает необязательный аргумент, обычно целое число, которое дает статус выхода. Ноль считается как успешное завершение. Обязательно проверьте, имеет ли ваша операционная система какие-либо особые значения для своих статусов выхода, чтобы вы могли следить за ними в своем собственном приложении. Обратите внимание на то, что когда вы вызываете exit, это вызовет исключение SystemExit, которое позволяет функциям очистки работать в конечных пунктах блоков try / except.</li>
+                        <li>sys.stdin - стандартный поток ввода.</li>
+                        <li>sys.stdout - стандартный поток вывода.</li>
+                        <li>sys.stderr - стандартный поток ошибок. Stdin, stdout и stderr сопоставляются с файловыми объектами, которые соответствуют стандартным входам, выходам и потокам ошибок интерпретатора соответственно. Функция stdin используется для всех входов, используемых интерпретатором (за исключением скриптов), тогда как stdout используется для выходов операторов print. Эти потоки вывода можно переопределить, например для перенаправления логов вывода в графический интерфейс или в файл.</li>
+                        <li>sys.__stdin__, sys.__stdout__, sys.__stderr__ - исходные значения потоков ввода, вывода и ошибок.</li>
+                    </ul>
+                </blockquote>
+                <p>Для открытия файлов в python используется функция <code class="python"><span class="nb">open</span></code>:</p>
+                <pre data-language="python3"><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/path/for/your/file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span></pre>
+                <pre class="line_block">Она возвращает поток - интерфейс взаимодействия с содержимым файла.
+Функция <code class="python"><span class="nb">open</span></code> принимает первым аргументом полное имя файла (с путём, абсолютным или относительным), вторым - режим, в котором мы откроем файл</pre>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Режим</th>
+                            <th>Обозначение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code class="code">'r'</code></td>
+                            <td>открытие на чтение (является значением по умолчанию).</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">'w'</code></td>
+                            <td>открытие на запись, содержимое файла удаляется, если файла не существует, создается новый.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">'x'</code></td>
+                            <td>открытие на запись, если файла не существует, иначе исключение.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">'a'</code></td>
+                            <td>открытие на дозапись, информация добавляется в конец файла.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">'b'</code></td>
+                            <td>открытие в двоичном режиме.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">'t'</code></td>
+                            <td>открытие в текстовом режиме (является значением по умолчанию).</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">'+'</code></td>
+                            <td>открытие на чтение и запись</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="line_block">По умолчанию файл открывается в режиме <em>rt</em> - для чтения в текстовом формате.
+Стоит заметить, что файл можно открыть в двух разных форматах: текстовом и бинарном (двоичном). Файлы, открытые в текстовом формате (по умолчанию, или явно добавляя “t” к аргументу режима), обрабатываются Python-ом и возвращаются как строки. При открытии файла в бинарном формате никакой обработки содержимого не производится, содержимое возвращается побайтово.</pre>
+                <p>Таким образом, если мы хотим открыть файл в двоичном формате для записи, надо использовать режим “wb”, если мы хотим дописать содержимое в конец файла в текстовом формате, то - “a” или “at”, “r+b” - открыть двоичный файл на чтение и запись.</p>
+                <p>Обычно, файлы, в которых содержится текст, например, файлы <code class="code">txt</code>, код вашей программы, файлы формата <code class="code">csv</code>, открываются в текстовом формате, а файлы, которые нельзя проинтерпретировать как текст - в бинарном (например, картинки, музыку). Иногда файлы с текстом открывают в бинарном режиме, для более явного управления всеми спецсимволами (например табуляция ↹).</p>
+                <p>При открытии файла в текстовом режиме, также можно указать подходящую кодировку. Например, если в вашем файле содержится текст на русском в utf8, откройте его в этой кодировке:</p>
+                <pre data-language="python3"><span class="n">russian_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;russian.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span></pre>
+                <p>Как только файл был открыт и у вас появился файловый объект, вы можете получить следующую информацию о нем:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Атрибут</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>file.closed</td>
+                            <td>Возвращает True если файл был закрыт.</td>
+                        </tr>
+                        <tr>
+                            <td>file.mode</td>
+                            <td>Возвращает режим доступа, с которым был открыт файл.</td>
+                        </tr>
+                        <tr>
+                            <td>file.name</td>
+                            <td>Возвращает имя файла.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>У получаемого объекта есть несколько полезных методов, рассмотрим их.</p>
+                <ul>
+                    <li>метод <code class="python"><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> позволяет прочитать следующие <code class="python"><span class="n">n</span></code> символов файла. Замечу, что можно представить, что в нашем объекте файла есть указатель на текущую читаемую позицию. При открытии файла, она ставится в самое начало. По мере чтения, этот указатель сдвигается. Таким образом, если выполнять <code class="python"><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> несколько раз подряд, мы будем получать не первые <code class="python"><span class="n">n</span></code> символов, а каждый раз новые, <code class="python"><span class="n">n</span></code> символов.
+                        <p>Если <code class="code">n</code> явно не указать, то считается весь файл целиком (указатель окажется в самом конце файла). Для использования метода read, файл должен быть открыт в режиме для чтения <strong>Примечание:</strong> чтобы узнать текущее положение указателя внутри файла, можно воспользоваться методом <code class="python"><span class="n">tell</span><span class="p">()</span></code>, а чтобы установить указатель в нужное положение <code class="python"><span class="n">pos</span></code>, используется метод <code class="python"><span class="n">seek</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span></code></p>
+                        <pre data-language="python"><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;russian.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="c1">#открыли файл, file.tell() == 0,</span>
+                                                 <span class="c1">#т.е указатель стоит в самом начале</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>                               <span class="c1">#считали весь файл</span></pre>
+                    </li>
+                    <li>если файл был открыт в режиме для записи, можно воспользоваться методом python:<code class="code">write(buffer)</code> - записывает содержимое буфера в файл. Работа указателя при записи аналогична - он указывает на текущее обрабатываемое место.
+                        <p><strong>Примечание:</strong> при записи содержимого в файл, не гарантируется, что все запишется в файл здесь и сейчас, сразу после выполнения команды. Записываемая информация буферизуется (накапливается) и записывается при накоплении некоторого критического количества. Двоичные файлы буферизуются кусками фиксированного размера. Этот размер определяется эвристикой, пытающейся определить размер блока устройства, на котором находится файл, в случае неудачи использует io.DEFAULT_BUFFER_SIZE. Для многих систем буфер равен 4096 или 8192 байт. Содержимое принудительно записывется в файл при его закрытии. Также для принудительной записи в файл можно воспользоваться методом flush() - он просто записывает содержимое текущего буффера в файл здесь и сейчас.</p>
+                    </li>
+                </ul>
+                <p>Следует сказать, что открытый в любом режиме файл после его использования <strong>нужно обязательно закрывать</strong>. Делается это методом close(). Посе его выполнения работа с файлом будет корректно завершена, но с нашим объектом файла работать уже тоже будет нельзя - при необходимости повторной работы с файлом нужно снова его открывать при помощи open.</p>
+                <pre data-language="python3"><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_data.txt&quot;</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1">#дальше работаем с text, если надо</span></pre>
+                <p>Но вдруг в процессе выполнения нашей программы произройдет критическая ошибка и программа завершит свое выполнение, а мы, например, записывали в файл какую-то информацию? Верно, вполне возможно, что последняя добавленная информация в файл так и не запишется. Чтобы избежать такой ситуации, ну и чтобы просто не забывать вовремя вызывать close() используется конструкция with:</p>
+                <pre data-language="python3"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;text.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>  <span class="c1">#в out теперь находится ссылка на наш объект файла, как если</span>
+                                    <span class="c1">#бы было просто out = open(&quot;text.txt&quot;, &quot;w&quot;)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;А я запишу все эти строки в влюбом случае</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#записываем 100 одинаковых строчек</span>
+    <span class="k">raise</span> <span class="ne">Exception</span>                 <span class="c1">#принудительно &quot;вызываем&quot; ошибку.</span>
+                                    <span class="c1">#Об Exceptionах будет дальше в следующих семинарах</span>
+<span class="c1">#в файле все равно будут все 100 нужные строки</span></pre>
+                <pre class="line_block">Конструкция with используется для того, чтобы гаранировать, что критические действия будут выполнены в любом случае, ее можно использовать и в некоторых других случаях, но в контексте открытия файлов она используется чаще всего.
+<strong>Я рекомендую по возможности всегда открывать файлы, не зависимо от режима, с конструкцией with!</strong></pre>
+                <p>Через конструкцию with можно открывать сразу несколько файлов:</p>
+                <pre data-language="python3"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;input.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">input</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c1">#скопировали содержимое input в output</span></pre>
+                <ul>
+                    <li>Чтобы считать из файла целую строку, используется метод readline(max_len). Если указать параметр max_len, то будут считаны максимум max_len символов</li>
+                </ul>
+                <pre data-language="python3"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;text.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span> <span class="c1">#считали и вывели первую строку файла</span></pre>
+                <p>На самом деле у нашего объекта файла есть итератор, поэтому перебирать строки внутри файла можно с его помощью:</p>
+                <pre data-language="python3"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;text.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></pre>
+                <p>Такой способ чтения наиболее удобен для построчного чтения</p>
+                <pre class="line_block"><strong>Упражнение 1:</strong> создайте произвольный текстовый файл с несколькими строками произвольного текста. Выведите в консоль строки файла, удалив лишние пробелы в начале и конце строк, если они есть
+<strong>Упражнение 2:</strong> запишите в новый файл содержимое списка строк (каждую строку с новой строки) без использования цикла</pre>
+                <pre data-language="python3"><span class="k">def</span> <span class="nf">write_array</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;записывает строки из array в файл file_name&quot;&quot;&quot;</span>
+    <span class="c1">#ваш код здесь</span>
+    <span class="k">pass</span></pre>
+            </section>
+        </section>
+        <section id="id3">
+            <h2>Работа с файловой системой</h2>
+            <p>Взаимодействие с файлами не ограничивается только самими файлами, нам часто приходится работать и с папками. Главными героями этого раздела будут библиотеки os и os.path. Они связаны с операционной системой компьютера и позволяют взаимодейстовать с файловой системой.</p>
+            <section id="id4">
+                <h3>Все папки директории</h3>
+                <p><strong>os.listdir(dir)</strong> перечисялет файлы и папки в указанной директории dir. Если вызвать эту функцию без аргументов, она вернет файлы и папки текущей рабочей директории.</p>
+            </section>
+            <section id="id5">
+                <h3>Текущая папка</h3>
+                <p>Относительные пути строятся относительно текущей папки. Чтобы получить абсолютный путь файла из относительного, используется функция <strong>os.path.abspath(file_path)</strong>. Чтобы узнать, какая папка является текущей, можно вызвать функцию <strong>os.getcwd()</strong>. Для смены текущей папки используется <strong>os.chdir(new_dir)</strong>.</p>
+            </section>
+            <section id="id6">
+                <h3>Проверка существования файла или папки и определение, является ли имя файлом или папкой</h3>
+                <p><strong>os.path.exists(file_name)</strong> проверяет, существует ли указанный файл (или директория) file_name.</p>
+                <p>Чтобы проверить, является ли данное имя name файлом или папкой, можно воспользоваться функциями <strong>os.isdir(name)</strong> или <strong>os.isfile(name)</strong>, которые возвращают True или False.</p>
+            </section>
+            <section id="id7">
+                <h3>Рекурсивный обход папок</h3>
+                <p>Одной из самых интересных и мощных функций является функция os.walk(dir) - она позволяет рекурсивно пройтись по всем папкам, подпапкам, их подпапкам и так далее. На самом деле она возвращает генератор (последовательность элементов). Каждый элемент представляеьт собой кортеж из 3х элементов. Первый элемнт - строковое представление директории текущей директории, которую просматривает функция. Вторым элементом - список всех подпапок данной директории, а третьим - список всех файлов этой директории.</p>
+                <pre data-language="python3"><span class="k">for</span> <span class="n">current_dir</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">):</span> <span class="c1">#передаем в качестве аргумента текущую директорию</span>
+                                              <span class="c1">#(&quot;.&quot; - означает именно ее)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>           <span class="c1">#выведем, что получается</span></pre>
+            </section>
+            <section id="id8">
+                <h3>Копирование файлов</h3>
+                <p>Копировать файлы можно при помощи функции copy из модуля shutil</p>
+                <pre data-language="python3"><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s2">&quot;input.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;output.txt&quot;</span><span class="p">)</span></pre>
+                <p>Копировать папки можно с помощью <code class="code">copytree</code> из того же модуля:</p>
+                <pre data-language="python3"><span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;test/test2&quot;</span><span class="p">)</span> <span class="c1">#Скопирует папку test внутрь неё самой же в подпапку test2</span></pre>
+                <p>Многие другие функции для работы с файлами и папками вы сможете найти в модулях os и shutil. Теперь вы знаете, где искать нужный функционал ;)</p>
+                <p><strong>Упражнение 3</strong>: Вам дана в <a href="../extra/lab3/main.zip">архиве</a> файловая структура, состоящая из директорий и файлов.</p>
+                <p>Вам необходимо распаковать этот архив (средствами языка python), и затем найти в данной в файловой структуре все директории, в которых есть хотя бы один файл с расширением “.py”.</p>
+                <p>Ответом на данную задачу будет являться файл со списком таких директорий, <strong>отсортированных в лексикографическом порядке.</strong></p>
+            </section>
+        </section>
+        <section id="id10">
+            <h2>Распространенные форматы текстовых данных</h2>
+            <section id="csv">
+                <h3>csv</h3>
+                <p>csv является табличным форматом. В нем содержатся значения разделенные запятой (<strong>C</strong>omma-<strong>S</strong>eparated <strong>V</strong>alues). Например,</p>
+                <pre data-language="python3"><span class="n">first</span> <span class="n">name</span><span class="p">,</span><span class="n">last</span> <span class="n">name</span><span class="p">,</span><span class="n">module1</span><span class="p">,</span><span class="n">module2</span><span class="p">,</span><span class="n">module3</span>
+<span class="n">Nikolay</span><span class="p">,</span><span class="n">Neznaev</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span>
+<span class="n">Stepan</span><span class="p">,</span><span class="n">Sharyashiy</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">99.5</span><span class="p">,</span><span class="mi">100</span></pre>
+                <p>Для работы с csv файлами можно воспользоваться библиотекой csv:</p>
+                <pre data-language="python3"><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;example.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="c1">#На основе открытого файла получаем объект из библиотеки csv</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>            <span class="c1">#Каждая строка - список значений</span></pre>
+                <pre class="line_block">В csv.reader параметром delimeter можно передать разделитель значений, таким образом разделяющим символом в файле csv может быть не только запятая.
+Для изолирования некоторых значений можно пользоваться двойными кавычками. Библиотека csv учитывает различные мелочи, такие как строки с содержащимися в ней запятыми и переносами строки, различные разделители, поэтому ее использование целесообразнее splitа по разделителю.
+Для записи значений в csv формате используется csv.writer:</pre>
+                <pre data-language="python3"><span class="kn">import</span> <span class="nn">csv</span>
+<span class="n">students</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;Greg&quot;</span><span class="p">,</span> <span class="s2">&quot;Lebovskiy&quot;</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&quot;Good job, Greg!&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;Nick&quot;</span><span class="p">,</span> <span class="s2">&quot;Shalopaev&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="s2">&quot;Shalopaev, you should study better!&quot;</span><span class="p">]</span>
+            <span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;example.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>            <span class="c1">#На основе открытого файла получаем объект из библиотеки csv</span>
+    <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>         <span class="c1">#Записываем строку</span>
+    <span class="c1">#Вместо цикла выше мы могли сразу записать все через writer.writerows(students)</span></pre>
+            </section>
+            <section id="json">
+                <h3>JSON</h3>
+                <pre class="line_block">JSON (JavaScript Object Notation) - простой формат обмена данными, удобный для чтения и написания как человеком, так и компьютером. Впервые он был придуман и использован в JavaScript для хранения структур и классов, но быстро обео свою популярность и вышел за пределы своего родителя.
+JSON основан на двух структурах данных: * Коллекция пар ключ/значение. В разных языках, эта концепция реализована как объект, запись, структура, словарь, хэш, именованный список или ассоциативный массив. * Упорядоченный список значений. В большинстве языков это реализовано как массив, вектор, список или последовательность.</pre>
+                <p>Это универсальные структуры данных. Почти все современные языки программирования поддерживают их в какой-либо форме. Логично предположить, что формат данных, независимый от языка программирования, должен быть основан на этих структурах.</p>
+                <p>Объекты в формате SJON хранятся как словари в Python, но с некоторыми деталями: во первых, ключом в json-объекте может быть только строка, значения True и False пишутся с маленькой буквы, значению None соответствует значение null, строки хранятся только внутри двойных кавычек.</p>
+                <p>Для удобной работы с json файлами в языке python можно использовать библиотеку json</p>
+                <p>Например:</p>
+                <pre data-language="python3"><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">student1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;full_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Greg Martin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scores&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">94</span><span class="p">],</span>
+    <span class="s2">&quot;certificate&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Great job, Greg!&quot;</span>
+<span class="p">}</span>
+
+<span class="n">student2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;full_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;John Price&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scores&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s2">&quot;certificate&quot;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Guns aren&#39;t gonna help you here, captain!&quot;</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">student1</span><span class="p">,</span> <span class="n">student2</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="c1">#Делаем отступы в 4 пробела, сортируем ключи в алфавитном порядке</span></pre>
+                <pre class="line_block">Для получения строкового представления объекта в формате json можно использовать json.dumps(data, **parrams) с различными вспомогательными настройками (пробелы, сортировка и др.)
+Для записи в файл можно воспользоваться json.dump(data, file_obj, **params):</pre>
+                <pre data-language="python3"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></pre>
+                <p>Для получения объекта python на основе его срокового представления можно воспользоваться функцией json.loads или json.load для считывания из файла:</p>
+                <pre data-language="python3"><span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#получение строкового представления json</span>
+<span class="n">data_again</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>                     <span class="c1">#получаем объект python</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">data_again</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;scores&quot;</span><span class="p">]))</span>                   <span class="c1">#убедимся в кореектном считывании:</span>
+                                                      <span class="c1">#посчитаем сумму баллов у первого студента</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+   <span class="n">data_from_file</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>                   <span class="c1">#считаем объект из файла</span>
+   <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">data_from_file</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;scores&quot;</span><span class="p">]))</span>            <span class="c1">#аналогично посчитаем сумму баллов</span></pre>
+                <p>При записи-считывнии объектов из формата json кортежи превращаются в списки # Исключения <em>(материал ниже взят с сайта https://pythonworld.ru/tipy-dannyx-v-python/isklyucheniya-v-python-konstrukciya-try-except-dlya-obrabotki-isklyuchenij.html )</em></p>
+                <p>Исключения (exceptions) - ещё один тип данных в python. Исключения необходимы для того, чтобы сообщать программисту об ошибках.</p>
+                <p>Самый простейший пример исключения - деление на ноль:</p>
+                <pre data-language="python3"><span class="mi">100</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span>
+    <span class="mi">100</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span></pre>
+                <p>Разберём это сообщение подробнее: интерпретатор нам сообщает о том, что он поймал исключение и напечатал информацию (Traceback (most recent call last)).</p>
+                <p>Далее имя файла (File ""). Имя пустое, потому что мы находимся в интерактивном режиме, строка в файле (line 1);</p>
+                <p>Выражение, в котором произошла ошибка (100 / 0).</p>
+                <p>Название исключения (ZeroDivisionError) и краткое описание исключения (division by zero).</p>
+                <p>Разумеется, возможны и другие исключения:</p>
+                <pre data-language="python3"><span class="mi">2</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span>
+    <span class="mi">2</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="ow">and</span> <span class="s1">&#39;str&#39;</span>
+
+<span class="nb">int</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span>
+    <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;qwerty&#39;</span><span class="p">)</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;qwerty&#39;</span></pre>
+                <p>В этих двух примерах генерируются исключения TypeError и ValueError соответственно. Подсказки дают нам полную информацию о том, где порождено исключение, и с чем оно связано.</p>
+                <p>Рассмотрим иерархию встроенных в python исключений, хотя иногда вам могут встретиться и другие, так как программисты могут создавать собственные исключения. Данный список актуален для python 3.3, в более ранних версиях есть незначительные изменения.</p>
+                <ul>
+                    <li>BaseException - базовое исключение, от которого берут начало все остальные.
+                        <ul>
+                            <li>SystemExit - исключение, порождаемое функцией sys.exit при выходе из программы.</li>
+                            <li>KeyboardInterrupt - порождается при прерывании программы пользователем (обычно сочетанием клавиш Ctrl+C).</li>
+                            <li>GeneratorExit - порождается при вызове метода close объекта generator.</li>
+                            <li>Exception - а вот тут уже заканчиваются полностью системные исключения (которые лучше не трогать) и начинаются обыкновенные, с которыми можно работать.
+                                <ul>
+                                    <li>StopIteration - порождается встроенной функцией next, если в итераторе больше нет элементов.</li>
+                                    <li>ArithmeticError - арифметическая ошибка.
+                                        <ul>
+                                            <li>FloatingPointError - порождается при неудачном выполнении операции с плавающей запятой. На практике встречается нечасто.</li>
+                                            <li>OverflowError - возникает, когда результат арифметической операции слишком велик для представления. Не появляется при обычной работе с целыми числами (так как python поддерживает длинные числа), но может возникать в некоторых других случаях.</li>
+                                            <li>ZeroDivisionError - деление на ноль.</li>
+                                        </ul>
+                                    </li>
+                                    <li>AssertionError - выражение в функции assert ложно.</li>
+                                    <li>AttributeError - объект не имеет данного атрибута (значения или метода).</li>
+                                    <li>BufferError - операция, связанная с буфером, не может быть выполнена.</li>
+                                    <li>EOFError - функция наткнулась на конец файла и не смогла прочитать то, что хотела.</li>
+                                    <li>ImportError - не удалось импортирование модуля или его атрибута.</li>
+                                    <li>LookupError - некорректный индекс или ключ.
+                                        <ul>
+                                            <li>IndexError - индекс не входит в диапазон элементов.</li>
+                                            <li>KeyError - несуществующий ключ (в словаре, множестве или другом объекте).</li>
+                                        </ul>
+                                    </li>
+                                    <li>MemoryError - недостаточно памяти.</li>
+                                    <li>NameError - не найдено переменной с таким именем.
+                                        <ul>
+                                            <li>UnboundLocalError - сделана ссылка на локальную переменную в функции, но переменная не определена ранее.</li>
+                                        </ul>
+                                    </li>
+                                    <li>OSError - ошибка, связанная с системой.
+                                        <ul>
+                                            <li>BlockingIOError</li>
+                                            <li>ChildProcessError - неудача при операции с дочерним процессом.</li>
+                                            <li>ConnectionError - базовый класс для исключений, связанных с подключениями.
+                                                <ul>
+                                                    <li>BrokenPipeError</li>
+                                                    <li>ConnectionAbortedError</li>
+                                                    <li>ConnectionRefusedError</li>
+                                                    <li>ConnectionResetError</li>
+                                                </ul>
+                                            </li>
+                                            <li>FileExistsError - попытка создания файла или директории, которая уже существует.</li>
+                                            <li>FileNotFoundError - файл или директория не существует.</li>
+                                            <li>InterruptedError - системный вызов прерван входящим сигналом.</li>
+                                            <li>IsADirectoryError - ожидался файл, но это директория.</li>
+                                            <li>NotADirectoryError - ожидалась директория, но это файл.</li>
+                                            <li>PermissionError - не хватает прав доступа.</li>
+                                            <li>ProcessLookupError - указанного процесса не существует.</li>
+                                            <li>TimeoutError - закончилось время ожидания.</li>
+                                        </ul>
+                                    </li>
+                                    <li>ReferenceError - попытка доступа к атрибуту со слабой ссылкой.</li>
+                                    <li>RuntimeError - возникает, когда исключение не попадает ни под одну из других категорий.</li>
+                                    <li>NotImplementedError - возникает, когда абстрактные методы класса требуют переопределения в дочерних классах.</li>
+                                    <li>SyntaxError - синтаксическая ошибка.
+                                        <ul>
+                                            <li>IndentationError - неправильные отступы.
+                                                <ul>
+                                                    <li>TabError - смешивание в отступах табуляции и пробелов.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>SystemError - внутренняя ошибка.</li>
+                                    <li>TypeError - операция применена к объекту несоответствующего типа.</li>
+                                    <li>ValueError - функция получает аргумент правильного типа, но некорректного значения.</li>
+                                    <li>UnicodeError - ошибка, связанная с кодированием / раскодированием unicode в строках.
+                                        <ul>
+                                            <li>UnicodeEncodeError - исключение, связанное с кодированием unicode.</li>
+                                            <li>UnicodeDecodeError - исключение, связанное с декодированием unicode.</li>
+                                            <li>UnicodeTranslateError - исключение, связанное с переводом unicode.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Warning - предупреждение.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Теперь, зная, когда и при каких обстоятельствах могут возникнуть исключения, мы можем их обрабатывать. Для обработки исключений используется конструкция try - except.</p>
+                <p>Первый пример применения этой конструкции:</p>
+                <pre data-language="python3"><span class="k">try</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></pre>
+                <p>В блоке try мы выполняем инструкцию, которая может породить исключение, а в блоке except мы перехватываем их. При этом перехватываются как само исключение, так и его потомки. Например, перехватывая ArithmeticError, мы также перехватываем FloatingPointError, OverflowError и ZeroDivisionError.</p>
+                <pre data-language="python3"><span class="k">try</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ArithmeticError</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></pre>
+                <p>Также возможна инструкция except без аргументов, которая перехватывает вообще всё (и прерывание с клавиатуры, и системный выход и т. д.). Поэтому в такой форме инструкция except практически не используется, а используется except Exception. Однако чаще всего перехватывают исключения по одному, для упрощения отладки (вдруг вы ещё другую ошибку сделаете, а except её перехватит).</p>
+                <p>Ещё две инструкции, относящиеся к нашей проблеме, это finally и else. Finally выполняет блок инструкций в любом случае, было ли исключение, или нет (применима, когда нужно непременно что-то сделать, к примеру, закрыть файл). Инструкция else выполняется в том случае, если исключения не было.</p>
+                <pre data-language="python3"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;1.txt&#39;</span><span class="p">)</span>
+<span class="n">ints</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">ints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Это не число. Выходим.&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Это что ещё такое?&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Всё хорошо.&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Я закрыл файл.&#39;</span><span class="p">)</span>
+    <span class="c1"># Именно в таком порядке: try, группа except, затем else, и только потом finally.</span></pre>
+                <pre class="line_block">Чтобы в своей программе вызвать исключение надо воспользоваться командой raise.
+Чтобы создать свое собственное исключение, надо унаследоваться от одного из уже существующих классов исключения:</pre>
+                <pre data-language="python3"><span class="k">class</span> <span class="nc">MyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="c1">#создали свой класс. Ничего переопределять не обязательно</span>
+    <span class="k">pass</span>
+
+<span class="k">raise</span> <span class="n">MyException</span><span class="p">(</span><span class="s2">&quot;My hovercraft is full of eels&quot;</span><span class="p">)</span>  <span class="c1">#поднятие исключения</span></pre>
+                <p><a href="http://judge2.vdi.mipt.ru/cgi-bin/new-register?contest_id=192108">Контест</a></p>
+            </section>
+        </section>
+    </section>
+</body>
+</div>
+</html>

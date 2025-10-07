@@ -1,0 +1,25 @@
+Date: 2016/11/03 21:41:44
+From: liana199923 (uid 21825)
+Ip: 81.5.117.216
+Command: submit
+Status: ok
+Run-id: 380
+Run-status: CG
+
+Date: 2016/11/03 21:41:47
+From: SYSTEM
+Status: testing completed
+Run-id: 380
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/03 21:41:44.865620
+  Request completion time:           2016/11/03 21:41:47.905352
+  Total testing duration:            3.040
+  Waiting in compile queue duration: 0.625
+  Compilation duration:              0.228
+  Waiting in serve queue duration:   0.168
+  Waiting in run queue duration:     0.141
+  Testing duration:                  1.022
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.855
+

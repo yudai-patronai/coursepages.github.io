@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef unsigned int u32;
+
+// http://stackoverflow.com/a/5406805
+u32 divisors(u32 x) {
+    u32 limit = x, i;
+    u32 numberOfDivisors = 0;
+
+    if (x == 1) return 1;
+
+    for (i = 1; i < limit; ++i) {
+        if (x % i == 0) {
+            limit = x / i;
+            if (limit != i) {
+                numberOfDivisors++;
+            }
+            numberOfDivisors++;
+        }
+    }
+
+    return numberOfDivisors;
+}
+
+int main ( )
+{
+  fclose ( stdin ); fclose ( stdout );
+  stdin = fopen ( "input.txt", "r" );
+  stdout = fopen ( "output.txt", "w" );
+  u32 N, s, num;
+  fscanf ( stdin, "%u", &N );
+  for ( num = 1, s = 1; ; num += ++s )
+    if ( divisors ( num ) > N )
+    {
+      fprintf ( stdout, "%u\n", num );
+      return 0;
+    }
+}

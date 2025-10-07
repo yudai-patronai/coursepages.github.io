@@ -1,0 +1,40 @@
+n,m,k=list(map(int,input().split()))
+B=[0]*k
+A=[0]*n
+for i in range(n):
+    A[i]=[0]*m
+for i in range(k):
+    B[i]=list(map(int,input().split()))
+for w in range(k):
+    A[(B[w][0])-1][(B[w][1])-1]='*'
+for i in range(n):
+    for j in range(m):
+        if A[i][j]!='*':
+            if i>0:
+                if A[i-1][j]=='*':
+                    A[i][j]+=1
+                if j>0:
+                    if A[i-1][j-1]=='*':
+                        A[i][j]+=1
+                if j<m-1:
+                    if A[i-1][j+1]=='*':
+                        A[i][j]+=1
+            if i<n-1:
+                if A[i+1][j]=='*':
+                    A[i][j]+=1
+                if j>0:
+                    if A[i+1][j-1]=='*':
+                        A[i][j]+=1
+                if j<m-1:
+                    if A[i+1][j+1]=='*':
+                        A[i][j]+=1
+            if j>0:
+                if A[i][j-1]=='*':
+                    A[i][j]+=1
+            if j<m-1:
+                if A[i][j+1]=='*':
+                    A[i][j]+=1          
+for i in range(n):
+    for j in range(m):
+        print(A[i][j],end=' ')
+    print()

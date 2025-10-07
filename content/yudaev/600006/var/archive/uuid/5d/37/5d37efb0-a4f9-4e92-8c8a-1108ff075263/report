@@ -1,0 +1,46 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="190" judge-id="69" status="PT" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="1" score="2" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>5d37efb0-a4f9-4e92-8c8a-1108ff075263</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="513" real-time="520" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=418, stime=95, ptime=513, rtime=520, maxvsz=117993472, maxrss=135696384, nvcsw=16, nivcsw=7 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="41">LD_LIBRARY_PATH=/home/judges/compile/lib
+</output>
+      <correct size="42">LD_LIBRARY_PATH=/home/judges/compile/lib
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="WA" time="511" real-time="518" max-memory-used="117993472" nominal-score="2" score="0"  checker-comment="Different number of lines: output: 1, correct: 2" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=409, stime=102, ptime=511, rtime=518, maxvsz=117993472, maxrss=134062080, nvcsw=16, nivcsw=8 }</program-stats-str>
+  <checker-stats-str>{ utime=1, stime=0, ptime=1, rtime=2, maxvsz=307200, maxrss=1323008, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="41">LD_LIBRARY_PATH=/home/judges/compile/lib
+</output>
+      <correct size="75">LD_LIBRARY_PATH=/home/judges/compile/lib
+PATH=/usr/local/bin:/usr/bin:/bin
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="49">Different number of lines: output: 1, correct: 2
+</checker>
+    </test>
+  </tests>
+</testing-report>

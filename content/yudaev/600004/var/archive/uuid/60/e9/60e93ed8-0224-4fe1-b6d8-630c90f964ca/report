@@ -1,0 +1,18 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="284" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>60e93ed8-0224-4fe1-b6d8-630c90f964ca</uuid>
+  <compiler_output>000284.c: In function 'push':
+000284.c:20:34: error: implicit declaration of function 'malloc' [-Werror=implicit-function-declaration]
+         struct tree* p = (struct tree*)malloc(1 * sizeof(struct tree));
+                                  ^
+000284.c:20:40: warning: incompatible implicit declaration of built-in function 'malloc' [enabled by default]
+         struct tree* p = (struct tree*)malloc(1 * sizeof(struct tree));
+                                        ^
+000284.c:59:40: warning: incompatible implicit declaration of built-in function 'malloc' [enabled by default]
+         struct tree* p = (struct tree*)malloc(1 * sizeof(struct tree));
+                                        ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

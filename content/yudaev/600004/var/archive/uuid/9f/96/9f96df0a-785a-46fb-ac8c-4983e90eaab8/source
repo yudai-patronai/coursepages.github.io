@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+
+    int dp[30][30];
+    int width, height;
+    int i,j;
+    scanf("%d%d", &width, &height);
+    ++width;
+    ++height;
+
+    for(i = 0; i < width; ++i)
+        dp[0][i] = 1;
+    for(i = 0; i < height; ++i)
+        dp[i][0] = 1;
+
+    for(i = 1; i < height; ++i)
+        for(j = 1; j < height; ++j)
+            dp[i][j] = dp[i-1][j] + dp[i][j-1];
+
+    printf("%d\n", dp[width-1][height-1]);
+
+    return 0;
+
+}

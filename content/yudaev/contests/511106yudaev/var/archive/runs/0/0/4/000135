@@ -1,0 +1,21 @@
+
+
+def SwapColumn(A, c1,c2):
+    
+    for rn in range(len(A)):
+        tmp=A[rn][c1]
+        A[rn][c1]=A[rn][c2]
+        A[rn][c2]=tmp
+
+A=[]
+n,m=list(map(int,input().split()))
+for row in range(n): 
+    A.append(list())
+    A[row]=list(input().split()) 
+
+i,j=list(map(int,input().split()))
+
+SwapColumn(A,i-1,j-1) 
+
+for row in A: 
+    print(' '.join(row))

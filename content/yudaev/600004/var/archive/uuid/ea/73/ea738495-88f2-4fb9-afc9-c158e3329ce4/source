@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+	int n; int m;
+	scanf("%d%d",&n,&m);
+	unsigned long long int ** p = (unsigned long long  int**) malloc  ((n+1)* sizeof(unsigned long long  int*));
+	int i;
+	for (i = 0; i <= n;i++)
+		p[i] = (unsigned long long  int*) malloc ((m+1)*sizeof(unsigned long long  int));
+	for (i = 0;i <= n;i++) 
+	{
+		p[i][0] = 1;
+	}
+	for (i = 0;i <= m;i++) 
+	{
+		p[0][i] = 1;
+	}
+	int j;
+	for (i = 1;i <= n;i++) 
+		for (j = 1;j <= m;j++) 
+		{
+			p[i][j] = p[i][j-1] + p[i-1][j];
+		}
+	printf("%lld", p[n][m]);
+	for (i = 0; i < (n+1); i++) 
+		free(p[i]);
+	free(p);
+	return 0;
+}
+
+

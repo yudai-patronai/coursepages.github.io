@@ -1,0 +1,15 @@
+nm=input().split()
+n=int(nm[0])
+m=int(nm[1])
+A=[]
+
+for i in range(n):
+     row=input().split()
+     for i in range(m):
+        row[i]=int(row[i])
+     A.append(row)
+
+
+AT=list(zip(*A))
+for row in AT:
+   print(' '.join([str(elem) for elem in row]))  

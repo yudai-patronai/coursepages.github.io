@@ -1,0 +1,66 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int mas[5002][4];
+int propay[5000];
+
+int pay(int n);
+
+int main() {
+	int i = 0;
+	int x, y;
+	for (i = 1; i <= 100; i++) {
+		propay[i] = 999999;
+	}
+
+	scanf("%i", &x);
+	for (i = x; i >= 1; i--) {
+		scanf("%i %i %i", &mas[i][1], &mas[i][2], &mas[i][3]);
+	}
+	for (i = 3; i <= x; i += 3) {
+		propay[i] = pay(i);
+	}
+	y = pay(x);
+
+	printf("%i", y);
+	return 0;
+}
+
+int pay(int n) {
+	int g = 0, i = 1, a = 0, b = 0, c = 0;
+	if (propay[n] != 999999) {
+		return propay[n];
+	}
+
+	if (n < 0) {
+		return 999999;
+	}
+	if (n == 0) {
+		return 0;
+	}
+	if (n == 1) {
+		return (mas[1][1]);
+	}
+	if (n == 2) {
+		if (mas[2][2] <= (mas[2][1] + mas[1][1])) {
+			return (mas[2][2]);
+		}
+		else {
+			return (mas[2][1] + mas[1][1]);
+		}
+	}
+
+	a = pay(n - 1) + mas[n][1];
+	b = pay(n - 2) + mas[n][2];
+	c = pay(n - 3) + mas[n][3];
+	if ((a <= b) && (a <= c)) {
+		g = a;
+	}
+	if ((b <= a) && (b <= c)) {
+		g = b;
+	}
+	if ((c <= b) && (c <= a)) {
+		g = c;
+	}
+	return g;
+}

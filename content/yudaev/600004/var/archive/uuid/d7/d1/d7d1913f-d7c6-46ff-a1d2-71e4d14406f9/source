@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+	int mas[21][21], i, j, n, m;
+	scanf("%d %d", &n, &m);
+	for( i = 0; i <= 20; i++)
+	{
+		mas[i][0]=1;
+		mas[0][i]=1;
+	}
+	for( i = 1; i <= n; i++)
+		for( j = 1; j <= m; j++)
+		{
+			mas[i][j]=mas[i][j-1] + mas[i-1][j];
+		}
+	printf("%d", mas[n][m]);
+	return 0;
+}
+

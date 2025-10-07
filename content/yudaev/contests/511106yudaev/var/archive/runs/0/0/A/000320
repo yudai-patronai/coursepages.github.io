@@ -1,0 +1,14 @@
+import copy
+n = int(input())
+massive = [['' for i in range(n)] for j in range(n)]
+for i in range(n):
+    inp = input().split()
+           massive[i][j] = int(inp[j])
+this_is_not_massive_i_swear = copy.deepcopy(massive)
+for i in range(n):
+    for j in range(n):
+        massive[j][len(massive)-1-i] = this_is_not_massive_i_swear[i][j]
+for i in range(n):
+    for j in range(n):
+        print(massive[i][j], end=' ')
+    print()

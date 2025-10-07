@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="288" judge-id="4" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>1d97bc91-49ff-4f98-b51a-cc0a98022438</uuid>
+  <compiler_output>000288.c: In function 'main':
+000288.c:27:2: error: format '%d' expects argument of type 'int', but argument 2 has type 'long long int' [-Werror=format=]
+  printf(&quot;%d&quot;, table[n][m]);
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

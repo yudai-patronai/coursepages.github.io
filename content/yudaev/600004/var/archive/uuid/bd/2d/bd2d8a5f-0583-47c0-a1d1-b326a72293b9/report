@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="28" judge-id="13" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>bd2d8a5f-0583-47c0-a1d1-b326a72293b9</uuid>
+  <compiler_output>000028.c: In function 'main':
+000028.c:15:2: error: format '%ld' expects argument of type 'long int', but argument 2 has type 'long long unsigned int' [-Werror=format=]
+  printf(&quot;%ld&quot;, a[n][m]);  
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

@@ -1,0 +1,10 @@
+def Transpose(A):
+    return [[A[j][i] for j in range(len(A))] for i in range(len(A[0]))]
+def isSimmetric(A):
+    return A == Transpose(A)
+a = int(input())
+sub = [list (map (int, input().split())) for i in range(a)]
+if isSymmetric(sub):
+   print 'YES'
+else:
+   print 'NO'

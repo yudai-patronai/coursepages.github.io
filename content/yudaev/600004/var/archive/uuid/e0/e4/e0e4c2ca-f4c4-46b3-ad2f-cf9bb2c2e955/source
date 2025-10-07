@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+	int n, m, i;
+	scanf("%d %d", &n, &m);
+	int c;
+	if (m < n) {
+		c = n;
+		n = m;
+		m = c;
+	}
+	c = 1;
+	for (i = m + 1; i < m + n; i++)
+		c = c * i;
+	for (i = 1; i < n; i++)
+		c = c / i;
+	printf("%d\n", c);
+	return 0;
+}

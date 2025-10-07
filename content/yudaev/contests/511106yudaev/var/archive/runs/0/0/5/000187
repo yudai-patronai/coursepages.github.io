@@ -1,0 +1,19 @@
+def SwapColumns(C, a, b):
+    for i in range(len(C)):
+        D = C[i][a]
+        C[i][a] = C[i][b]
+        C[i][b] = D
+    return(C)
+
+
+A = [int(x) for x in input().split()]
+C = []
+for i in range(A[0]):
+    row = input().split()
+    for i in range(len(row)):
+        row[i] = int(row[i])
+    C.append(row)
+B = [int(x) for x in input().split()]
+a, b = B[0], B[1]
+for row in SwapColumns(C, a, b):
+    print(' '.join([str(elem) for elem in row]))

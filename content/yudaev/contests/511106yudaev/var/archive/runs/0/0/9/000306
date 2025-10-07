@@ -1,0 +1,1 @@
+min(int(input()), min(int(input()), min(int(input(), int(input())))))

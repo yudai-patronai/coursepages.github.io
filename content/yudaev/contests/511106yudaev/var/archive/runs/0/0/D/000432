@@ -1,0 +1,8 @@
+N=int(input())
+m=[['.']*N for i in range(N)]
+for i in range(N):
+	m[N//2][i]='*'
+	m[i][N//2]='*'
+	m[i][i]='*'
+	m[i][N-i-1]='*'
+print('\n'.join([' '.join(i) for i in m]))

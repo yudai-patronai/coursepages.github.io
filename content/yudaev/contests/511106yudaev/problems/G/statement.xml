@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <problem
+       package = "ru.ejudge.sample_contest"
+       id = "G"
+       type = "standard">
+      <statement language="ru_RU">
+        <title> Симметричен ли массив? </title>
+        <description><p>Дано число n и массив размером n×n. Проверьте, является ли этот массив симметричным относительно главной диагонали. Выведите слово “YES”, если массив симметричный, и слово “NO” в противном случае.</p><p>Решение оформите в виде функции IsSymmetric(A), возвращающей True или False.</p>
+        </description>
+      </statement>
+      <examples>
+        <example>
+          <input>3
+0 1 2
+1 2 3
+2 3 4
+</input>
+          <output>YES
+</output>
+        </example>
+      </examples>
+    </problem>

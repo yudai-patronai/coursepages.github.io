@@ -1,0 +1,50 @@
+Date: 2015/10/19 20:25:16
+From: lispandhaskell (uid 18519)
+Ip: 213.87.144.192
+Command: submit
+Status: ok
+Run-id: 358
+Run-status: CG
+
+Date: 2015/10/19 20:25:17
+From: SYSTEM
+Status: testing completed
+Run-id: 358
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/10/19 20:25:16.129172
+  Request completion time:           2015/10/19 20:25:17.456773
+  Total testing duration:            1.328
+  Waiting in compile queue duration: 0.131
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.184
+  Waiting in run queue duration:     0.276
+  Testing duration:                  0.227
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.506
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 358
+Run-status: CG
+
+Date: 2015/12/09 20:30:21
+From: SYSTEM
+Status: testing completed
+Run-id: 358
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/12/09 01:52:34.222268
+  Request completion time:           2015/12/09 20:30:21.122303
+  Total testing duration:            67066.900
+  Waiting in compile queue duration: 0.787
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   15.113
+  Waiting in run queue duration:     1050.924
+  Testing duration:                  0.241
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   65999.831
+

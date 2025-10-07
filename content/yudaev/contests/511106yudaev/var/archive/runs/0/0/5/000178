@@ -1,0 +1,16 @@
+def SwapColumns(Mass, i, j):
+    for k in range(len(Mass)):
+        Mass[k][i], Mass[k][j] = Mass[k][j], Mass[k][i]
+    return Mass
+n, m = input().split()
+n, m = int(n), int(m)
+mass = []
+for i in range(n):
+    mass.append(input().split())
+i, j = input().split()
+i, j = int(i), int(j)
+mass = SwapColumns(mass, i, j)
+for k in range(n):
+    for l in range(m):
+        print(mass[k][l], end = ' ')
+    print()

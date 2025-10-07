@@ -1,0 +1,13 @@
+n = int(input())
+mass = []
+for i in range(n):
+    mass.append(['.'] * n)
+for i in range(n):
+    mass[i][n // 2] = '*'
+    mass[n // 2][i] = '*'
+    mass[i][i] = '*'
+    mass[i][-i-1] = '*'
+for i in range(n):
+    for j in range(n):
+        print(mass[i][j], end = ' ')
+    print('\n')

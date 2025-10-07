@@ -1,0 +1,8 @@
+s = list(map(int,input().split())) 
+A = [[0 for k in range(s[1])] for i in range(s[0])] 
+for m in range(s[0]): 
+    A[m] = list(map(int,input().split())) 
+def Transpose(A): 
+    A = [[A[k][i] for k in range(s[0])] for i in range(s[1])] 
+    return (str(A)[2:-2].replace("[","").replace("],","\n").replace("'","").replace(" ","").replace(","," ")) 
+print(Transpose(A))

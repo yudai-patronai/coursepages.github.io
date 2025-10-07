@@ -1,0 +1,15 @@
+import copy 
+n = int(input()) 
+massive = [['' for i in range(n)] for j in range(n)] 
+for i in range(n): 
+    inp = input().split() 
+    for j in range(n): 
+        massive[i][j] = int(inp[j]) 
+goose= copy.deepcopy(massive) 
+for i in range(n): 
+    for j in range(n): 
+        massive[j][len(massive)-1-i] =goose[i][j] 
+for i in range(n): 
+    for j in range(n): 
+        print(massive[i][j], end=' ') 
+    print()

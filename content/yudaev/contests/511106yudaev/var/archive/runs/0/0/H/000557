@@ -1,0 +1,16 @@
+n, m = list(map(int, input().split()))
+l = [[None]*m for a in range(n)]
+for s in range(len(l)):
+    l[s] = list(map(int, input().split()))
+
+
+def Transpose(A):
+    B = [[None]*len(A) for a in range(len(A[0]))]
+    for i in range(len(A)):
+        for j in range(len(A[0])):
+            B[j][i] = A[i][j]
+    return B
+
+
+for z in Transpose(l):
+    print(*z)

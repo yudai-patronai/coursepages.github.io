@@ -1,0 +1,11 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d =int(input())
+def min4(a,b,c,d):
+    
+    e = min(a,b)
+    e = min(e,c)
+    e = min(e,d)
+    print(e)
+min4(a,b,c,d)

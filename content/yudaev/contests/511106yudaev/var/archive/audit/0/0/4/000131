@@ -1,0 +1,50 @@
+Date: 2015/10/16 20:43:10
+From: tanya9779 (uid 18493)
+Ip: 93.175.8.148
+Command: submit
+Status: ok
+Run-id: 131
+Run-status: CG
+
+Date: 2015/10/16 20:43:12
+From: SYSTEM
+Status: testing completed
+Run-id: 131
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/16 20:43:10.644994
+  Request completion time:           2015/10/16 20:43:12.690897
+  Total testing duration:            2.046
+  Waiting in compile queue duration: 0.427
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.602
+  Waiting in run queue duration:     0.411
+  Testing duration:                  0.242
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.360
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 131
+Run-status: CG
+
+Date: 2015/12/09 20:30:23
+From: SYSTEM
+Status: testing completed
+Run-id: 131
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:27.120835
+  Request completion time:           2015/12/09 20:30:23.743819
+  Total testing duration:            67076.623
+  Waiting in compile queue duration: 0.068
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   23.700
+  Waiting in run queue duration:     1072.990
+  Testing duration:                  0.208
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   65979.654
+

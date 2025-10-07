@@ -1,0 +1,21 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="15" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>1ebe8619-c8f2-488c-890e-5491eae6474c</uuid>
+  <compiler_output>000015.c: In function 'main':
+000015.c:22:29: error: 'forensics' undeclared (first use in this function)
+         printf(&quot;%d\n&quot;, (int)forensics.st_size);
+                             ^
+000015.c:22:29: note: each undeclared identifier is reported only once for each function it appears in
+000015.c:9:28: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+         int file, retcode, len;
+                            ^
+000015.c:9:19: warning: unused variable 'retcode' [-Wunused-variable]
+         int file, retcode, len;
+                   ^
+000015.c:9:13: warning: unused variable 'file' [-Wunused-variable]
+         int file, retcode, len;
+             ^
+</compiler_output>
+</testing-report>

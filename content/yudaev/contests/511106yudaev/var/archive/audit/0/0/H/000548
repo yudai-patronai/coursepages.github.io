@@ -1,0 +1,25 @@
+Date: 2016/07/29 01:33:33
+From: Alex007 (uid 19861)
+Ip: 84.51.223.158
+Command: submit
+Status: ok
+Run-id: 548
+Run-status: CG
+
+Date: 2016/07/29 01:33:37
+From: SYSTEM
+Status: testing completed
+Run-id: 548
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/07/29 01:33:33.967909
+  Request completion time:           2016/07/29 01:33:37.462002
+  Total testing duration:            3.494
+  Waiting in compile queue duration: 0.912
+  Compilation duration:              0.035
+  Waiting in serve queue duration:   0.529
+  Waiting in run queue duration:     0.929
+  Testing duration:                  0.525
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.564
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <problem
+       package = "ru.ejudge.sample_contest"
+       id = "E"
+       type = "standard">
+      <statement language="ru_RU">
+        <title> Шахматная доска </title>
+        <description><p>Даны два числа n и m. Создайте двумерный массив размером n×m и заполните его символами "." и "*" в шахматном порядке. В левом верхнем углу должна стоять точка.</p>
+        </description>
+      </statement>
+      <examples>
+        <example>
+          <input>3 4
+</input>
+          <output>. * . *
+* . * .
+. * . *
+</output>
+        </example>
+      </examples>
+    </problem>

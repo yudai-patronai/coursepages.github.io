@@ -1,0 +1,11 @@
+def Rotate(A):
+	n=len(A)
+	for i in range(n):
+		A.append([A[n-j-1][i] for j in range(n)])
+	A[:n]=[]
+
+
+n=int(input())
+A=[input().split() for line in range(n)]
+Rotate(A)
+print('\n'.join([' '.join(i) for i in A]))

@@ -1,0 +1,25 @@
+#input of array
+def arrayInput(n):
+    Arr = [[int(j) for j in input().split()] for i in range(n)]
+    return(Arr)
+
+#output of array
+def arrayOutput(Arr):
+    for i in range(len(Arr)):
+        for j in range(len(Arr[i])):
+            print(Arr[i][j], end=' ')
+        print()
+
+def swapColumns(Arr, a, b):
+    for i in range(len(Arr)):
+        for j in range(len(Arr[i])):
+            temp = Arr[i][a]
+            Arr[i][a] = Arr[i][b]
+            Arr[i][b] = temp
+    return(Arr)
+
+mn = list(map(int, input().split()))
+arr = arrayInput(mn[0])
+ab = list(map(int, input().split()))
+arrswapped = swapColumns(arr, ab[0], ab[1])
+arrayOutput(arrswapped)

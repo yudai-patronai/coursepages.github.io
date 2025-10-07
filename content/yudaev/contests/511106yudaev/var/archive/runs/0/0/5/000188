@@ -1,0 +1,18 @@
+A = (input().split())
+n = int(A[0])
+m = int(A[1])
+B = [0] * n
+for i in range(n):
+    B[i] = [0] * m
+for i in range(n):
+    B[i] = (input().split())
+    for j in range(m):
+        B[i][j] = int(B[i][j])
+maxi = 0
+maxj = 0
+for i in range(n):
+    for j in range(m):
+        if B[i][j] > B[maxi][maxj]:
+            maxi = i
+            maxj = j
+print(maxi, maxj)

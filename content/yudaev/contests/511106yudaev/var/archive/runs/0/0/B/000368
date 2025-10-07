@@ -1,0 +1,13 @@
+def search(arr, maximum):
+    for i in range (b):
+        for j in range (a):
+            if arr[j][i] == maximum:
+                return (i + 1, j)
+            
+sub = list(map (int, input().split()))
+a = sub[0]
+b = sub[1]
+arr = [list (map (int, input().split())) for i in range(a)]
+maximum = max (list (map (max, arr)))
+one, two = search (arr, maximum)
+print (one, two)

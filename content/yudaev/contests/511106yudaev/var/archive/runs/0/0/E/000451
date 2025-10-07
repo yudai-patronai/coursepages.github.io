@@ -1,0 +1,22 @@
+n = int(input())
+A = []
+for i in range(n):
+        A.append([int(x) for x in input().split()])
+
+def IsSymmetric(A):
+    #print(1)
+    f  = 0
+    for i in range(n):
+        for j in range(n):
+            k = i
+            m = j
+            if A[i][j] != A[m][k]:
+                return False
+                f = 1
+    if f ==0:
+        return True
+
+if IsSymmetric(A):
+    print('YES')
+else:
+    print('NO')

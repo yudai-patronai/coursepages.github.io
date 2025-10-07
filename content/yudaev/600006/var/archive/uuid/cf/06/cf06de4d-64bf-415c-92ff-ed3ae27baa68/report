@@ -1,0 +1,42 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="180" judge-id="59" status="PT" scoring="KIROV" run-tests="2" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="0" score="0" max-score="40" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>cf06de4d-64bf-415c-92ff-ed3ae27baa68</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="486" real-time="493" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;1&lt;
+</args>
+  <program-stats-str>{ utime=397, stime=89, ptime=486, rtime=493, maxvsz=117993472, maxrss=134057984, nvcsw=18, nivcsw=7 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="245">TEST
+PASSED
+==23363== Conditional jump or move depends on uninitialised value(s)
+==23363==    at 0x400662: main (000180.c:7)
+==23363==  Uninitialised value was created by a stack allocation
+==23363==    at 0x400640: main (000180.c:4)
+==23363== 
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="487" real-time="495" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;2&lt;
+</args>
+  <program-stats-str>{ utime=391, stime=96, ptime=487, rtime=495, maxvsz=117993472, maxrss=135004160, nvcsw=18, nivcsw=8 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="245">TEST
+PASSED
+==23372== Conditional jump or move depends on uninitialised value(s)
+==23372==    at 0x400662: main (000180.c:7)
+==23372==  Uninitialised value was created by a stack allocation
+==23372==    at 0x400640: main (000180.c:4)
+==23372== 
+</stderr>
+    </test>
+  </tests>
+</testing-report>

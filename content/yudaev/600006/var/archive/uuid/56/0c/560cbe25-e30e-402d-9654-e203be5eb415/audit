@@ -1,0 +1,25 @@
+Date: 2016/11/02 16:43:06
+From: l0ki4 (uid 21632)
+Ip: 10.55.120.100
+Command: submit
+Status: ok
+Run-id: 322
+Run-status: CG
+
+Date: 2016/11/02 16:43:11
+From: SYSTEM
+Status: testing completed
+Run-id: 322
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/02 16:43:06.588032
+  Request completion time:           2016/11/02 16:43:11.724282
+  Total testing duration:            5.136
+  Waiting in compile queue duration: 1.030
+  Compilation duration:              0.223
+  Waiting in serve queue duration:   0.266
+  Waiting in run queue duration:     0.215
+  Testing duration:                  3.053
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.348
+

@@ -1,0 +1,30 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="231" judge-id="3" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>c66512e0-5335-4d62-be5c-af4740cd25bb</uuid>
+  <compiler_output>000231.c: In function 'main':
+000231.c:9:3: error: implicit declaration of function 'binom' [-Werror=implicit-function-declaration]
+   printf(&quot;%u&quot;, binom(M, N));
+   ^
+000231.c:5:15: warning: unused variable 'bin' [-Wunused-variable]
+  unsigned int bin;
+               ^
+000231.c: In function 'fact':
+000231.c:17:2: warning: statement with no effect [-Wunused-value]
+  for (i; i &lt;= n; i++)
+  ^
+000231.c: At top level:
+000231.c:21:14: error: conflicting types for 'binom'
+ unsigned int binom(int n, int k) {
+              ^
+000231.c:9:16: note: previous implicit declaration of 'binom' was here
+   printf(&quot;%u&quot;, binom(M, N));
+                ^
+000231.c: In function 'binom':
+000231.c:25:2: warning: statement with no effect [-Wunused-value]
+  for (i; i &lt;= n + k; i++)
+  ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

@@ -1,0 +1,26 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="340" judge-id="3" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>098277bc-3992-42e6-bdea-5d16149c3d92</uuid>
+  <compiler_output>000340.c: In function 'main':
+000340.c:12:2: error: format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Werror=format=]
+  scanf(&quot;%d&quot;, n);
+  ^
+000340.c:15:3: error: format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Werror=format=]
+   scanf(&quot;%d %d %d\n&quot;, a[i].i1, a[i].i2, a[i].i3);
+   ^
+000340.c:15:3: error: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Werror=format=]
+000340.c:15:3: error: format '%d' expects argument of type 'int *', but argument 4 has type 'int' [-Werror=format=]
+000340.c:19:7: error: expected expression before ')' token
+   if ()
+       ^
+000340.c:11:12: warning: unused variable 's' [-Wunused-variable]
+  int n, i, s;
+            ^
+000340.c:21:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

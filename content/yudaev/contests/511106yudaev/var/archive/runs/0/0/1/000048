@@ -1,0 +1,7 @@
+def SwapColumns(A, i, j):
+	for k in range(len(A)):
+		A[k][i], A[k][j] = A[k][j], A[k][i]
+	return A
+n, m = tuple(int(i) for i in input().split())
+mas = SwapColumns([input().split() for i in range(n)], *tuple(int(i) for i in input().split()))
+print('\n'.join([' '.join(i) for i in mas]))

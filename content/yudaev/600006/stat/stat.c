@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+	struct stat forensics;
+	int file, retcode;
+	if(argc < 2) 
+	{
+		printf("Usage: stat filename\n"); 
+		return 1;
+	}
+	file = open(argv[1], O_RDONLY);
+	if(-1 == file)
+	{
+		printf("Can't open file  %s\n", argv[1]);
+		return 2;
+	}
+	retcode = fstat(file, &forensics);
+	if(retcode != 0)
+		{
+		printf("Can't read file %s status\n", argv[1]);
+		return 3;
+	}
+	printf("%d\n", forensics.st_size);	
+	close(file);
+	return 0;
+}
+

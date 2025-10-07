@@ -1,0 +1,26 @@
+A = input().split()
+n = int(A[0])
+m = int(A[1])
+
+A = []
+for i in range(n):
+T = input().split()
+N = []
+for j in range(m):
+    N.append(T[j])
+A.append(N)
+
+F = input().split()
+i = int(F[0])
+j = int(F[1])
+
+def SwapColums(A,i,j):
+    for k in range(len(A)):
+        A[k][i], A[k][j] = A[k][j], A[k][i]
+    for h in range(len(A)):
+        B = str()
+    for l in range(len(A[h])):
+        B += A[h][l] + ' '
+print(B)
+
+SwapColums(A,i,j)

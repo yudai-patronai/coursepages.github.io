@@ -1,0 +1,13 @@
+n,m=list(map(int,input().split()))
+A=[[0]*m]*n
+for i in range(n):
+    A[i]=list(map(int,input().split()))
+q=0
+for i in range(n):
+    for j in range(q,n,1):
+        A[i][j],A[j][i]=A[j][i],A[i][j]
+    q+=1
+for i in range(n):
+    for j in range(n):
+        print((A[i][j]),end=' ')
+    print()

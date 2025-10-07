@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    int i, m, s = 0;
+    for (i = 1; i < argc; i++)
+    {
+        sscanf(argv[i], "%d", &m);
+        s += m;
+    } 
+    
+    return s;
+}

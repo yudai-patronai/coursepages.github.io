@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <stdio.h>
+unsigned long int factorial(const unsigned long int);
+unsigned long int placement(const unsigned long int, const unsigned long int);
+void swap(int*, int*);
+int main(){
+    int N, M;
+    scanf("%d %d", &N, &M);
+    if (N < M) 
+        swap (&N, &M);
+    printf("%lu\n", placement(N+1, M));
+    return 0;
+}
+unsigned long int factorial(const unsigned long int x){
+    unsigned long int i, p = 1;
+    if (x == 0)
+        return 1;
+    else {
+    for (i = 1; i <= x; i++)
+            p = p * i;
+    }
+    return p;
+}
+unsigned long int placement(const unsigned long int n, const unsigned long int k) {   //размещение из n по k
+    return (factorial(n) / factorial(n - k));
+}
+void swap(int* a, int* b){
+    int c = *a;
+    *a = *b;
+    *b = c;
+}

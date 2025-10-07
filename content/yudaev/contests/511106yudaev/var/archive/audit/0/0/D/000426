@@ -1,0 +1,50 @@
+Date: 2015/10/19 22:40:35
+From: Deadwhisperme (uid 18617)
+Ip: 213.87.137.42
+Command: submit
+Status: ok
+Run-id: 426
+Run-status: CG
+
+Date: 2015/10/19 22:40:37
+From: SYSTEM
+Status: testing completed
+Run-id: 426
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/10/19 22:40:35.044142
+  Request completion time:           2015/10/19 22:40:37.586623
+  Total testing duration:            2.542
+  Waiting in compile queue duration: 0.878
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.130
+  Waiting in run queue duration:     0.942
+  Testing duration:                  0.283
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.306
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 426
+Run-status: CG
+
+Date: 2015/12/09 20:30:17
+From: SYSTEM
+Status: testing completed
+Run-id: 426
+Run-status: PT
+  Profiling information:
+  Request start time:                2015/12/09 01:52:37.426062
+  Request completion time:           2015/12/09 20:30:17.819659
+  Total testing duration:            67060.394
+  Waiting in compile queue duration: 0.846
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   11.208
+  Waiting in run queue duration:     1024.416
+  Testing duration:                  0.249
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66023.670
+

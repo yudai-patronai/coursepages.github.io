@@ -1,0 +1,25 @@
+Date: 2016/11/27 22:53:26
+From: Yan (uid 22893)
+Ip: 93.175.4.78
+Command: submit
+Status: ok
+Run-id: 361
+Run-status: CG
+
+Date: 2016/11/27 22:53:31
+From: SYSTEM
+Status: testing completed
+Run-id: 361
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/27 22:53:26.908726
+  Request completion time:           2016/11/27 22:53:31.456005
+  Total testing duration:            4.547
+  Waiting in compile queue duration: 0.108
+  Compilation duration:              0.058
+  Waiting in serve queue duration:   0.869
+  Waiting in run queue duration:     0.289
+  Testing duration:                  2.623
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.601
+

@@ -1,0 +1,19 @@
+def Transpose(mass):
+    tmass = []
+    for i in range(len(mass[0])):
+        line_i = []
+        for j in range(len(mass)):
+            line_i.append(mass[j][i])
+        tmass.append(line_i)
+    return tmass
+n, m = input().split()
+n, m = int(n), int(m)
+Mass = []
+for i in range(n):
+    Mass.append(input().split())
+Mass = Transpose(Mass)
+for i in range(m):
+    for j in range(n):
+        print(Mass[i][j], end = ' ')
+    print()
+

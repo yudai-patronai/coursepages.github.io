@@ -1,0 +1,14 @@
+tab = []
+znmax = []
+a = input().split()
+n = int(a[0])
+
+
+for i in range(n):
+    tab.append([int(j) for j in input().split()])
+
+for i in range(len(tab)):
+    znmax.append(max(tab[i]))
+
+ind_str_max_el = znmax.index(max(znmax))
+print(ind_str_max_el+1, tab[ind_str_max_el].index(max(tab[ind_str_max_el]))+1)

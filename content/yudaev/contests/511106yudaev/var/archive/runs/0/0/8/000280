@@ -1,0 +1,12 @@
+nums = list(map(int,input().split())) 
+A = [[0 for k in range(nums[1])] for m in range(nums[0])] 
+for m in range(nums[0]): 
+    A[m] = list(map(int,input().split())) 
+maximum = A[0][0] 
+num_line = 0 
+num_column = 0 
+for m in range(nums[0]): 
+    for k in range(nums[1]): 
+        if maximum < A[m][k]: 
+            num_line,num_column,maximum = m,k,A[m][k] 
+print(num_line,num_column)

@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int N, k, i, j, M;
+    k = 0;
+    freopen("input.txt", "r", stdin); //подмена
+    scanf("%d", &N);
+    for(j = 1; ;j++)
+    {
+        k = 0;
+        M = j * (j + 1) / 2;
+        for(i = 1; (i * i) < M; i++)
+        {
+            if((M % i) == 0)
+            {
+                k = k + 2;
+            }
+        }
+        if((i * i) == M)
+            k++;
+        if(k > N)
+            break;
+    }
+    freopen("output.txt", "w", stdout);
+    printf("%d", M);
+    fclose(stdin);
+    return 0;
+}

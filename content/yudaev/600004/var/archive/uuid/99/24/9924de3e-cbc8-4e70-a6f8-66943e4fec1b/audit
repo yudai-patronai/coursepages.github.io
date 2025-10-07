@@ -1,0 +1,25 @@
+Date: 2016/10/24 23:22:18
+From: Alek_Sandor98 (uid 21166)
+Ip: 93.175.7.14
+Command: submit
+Status: ok
+Run-id: 178
+Run-status: CG
+
+Date: 2016/10/24 23:22:22
+From: SYSTEM
+Status: testing completed
+Run-id: 178
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/24 23:22:18.053821
+  Request completion time:           2016/10/24 23:22:22.096435
+  Total testing duration:            4.043
+  Waiting in compile queue duration: 0.440
+  Compilation duration:              0.261
+  Waiting in serve queue duration:   0.412
+  Waiting in run queue duration:     0.141
+  Testing duration:                  2.730
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.058
+

@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int Pascal(int line, int row)
+{
+
+    if(line == 1)
+        return row + 1;
+    if(row  == 1)
+        return line + 1;
+
+    return Pascal(line - 1, row) + Pascal(line, row - 1);
+
+}
+
+int main()
+{
+
+    int width, height;
+    scanf("%d%d", &width, &height);
+
+    printf("%d", Pascal(width, height));
+
+    return 0;
+
+}

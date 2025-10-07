@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int min(int a, int b)
+{
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	int* buffer = (int*) malloc((n + 2) * sizeof(*buffer));
+	int i;
+	int n1;
+	int n2;
+	int n3;
+	scanf("%d %d %d", &n1, &n2, &n3);
+	*buffer = n1;
+	*(buffer + 1) = n2;
+	*(buffer + 2) = n3;
+	for (i = 1; i < n; i++)
+	{
+		scanf("%d %d %d", &n1, &n2, &n3);
+		*(buffer + i) = min(*(buffer + i), *(buffer + i - 1) + n1);
+		*(buffer + i + 1) = min(*(buffer + i + 1), *(buffer + i - 1) + n2);
+		*(buffer + i + 2) = *(buffer + i - 1) + n3;
+	}
+	printf("%d\n", *(buffer + n - 1));
+	free(buffer);
+	return 0;
+}

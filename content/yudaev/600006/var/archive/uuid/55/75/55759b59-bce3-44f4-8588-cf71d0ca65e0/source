@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main ( int argc, char* argv[] )
+{
+	FILE* ptrFile = fopen(argv[1], "r");
+  
+ 
+    // определяем размер файла
+    fseek(ptrFile , 0 , SEEK_END);// устанавливаем позицию в конец файла
+    long lSize = ftell(ptrFile); // получаем размер в байтах
+    
+    char* buffer = (char*) calloc(lSize, sizeof(char)); // выделить память для хранения содержимого файла
+     
+    fread(buffer, sizeof(char), lSize, ptrFile);       // считываем файл в буфер
+	FILE* fp_sort = fopen(argv[2], "w");
+	fwrite(buffer , sizeof(char), lSize, fp_sort);
+	fclose(ptrFile);
+	fclose(fp_sort);
+	free(buffer);
+	return 0;
+}

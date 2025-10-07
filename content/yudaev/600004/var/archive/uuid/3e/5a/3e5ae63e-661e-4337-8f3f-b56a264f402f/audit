@@ -1,0 +1,25 @@
+Date: 2016/10/10 11:31:13
+From: dovakhin (uid 21168)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 57
+Run-status: CG
+
+Date: 2016/10/10 11:31:17
+From: SYSTEM
+Status: testing completed
+Run-id: 57
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/10 11:31:13.054408
+  Request completion time:           2016/10/10 11:31:17.607997
+  Total testing duration:            4.554
+  Waiting in compile queue duration: 0.824
+  Compilation duration:              0.286
+  Waiting in serve queue duration:   0.056
+  Waiting in run queue duration:     0.198
+  Testing duration:                  2.898
+  Post-processing duration:          0.001
+  Waiting in serve queue duration:   0.292
+

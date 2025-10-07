@@ -1,0 +1,16 @@
+K = input().split()
+n = int(K[0])
+m = int(K[1])
+n_max = int()
+m_max = float(0)
+m_max_index = int()
+for i in range(n):
+    A = input().split()
+    for f in range(m):
+        A[f] = float(A[f])
+    m_max_A = float(max(A))
+    if m_max_A > m_max:
+        m_max_index = A.index(m_max_A)
+        n_max = i
+        m_max = m_max_A
+print(n_max, m_max_index)

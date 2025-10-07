@@ -1,0 +1,18 @@
+def IS(a):
+    v=True
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if a[j][i]!=a[i][j]:
+                v=False
+                break
+        if not v:
+            break
+    return(v)
+n= int(input())
+a=[[]]*n
+for i in range(n):
+    a[i]=input().split()
+if IS(a):
+    print('YES')
+else:
+    print('NO')

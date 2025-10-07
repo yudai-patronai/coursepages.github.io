@@ -1,0 +1,7 @@
+x = float(input())
+y=float(input())
+z=float(input())
+d=float(input())
+def distance(x,y,z,d):
+    return (z-x)**2 + (y-d)**2
+print((distance(x,y,z,d))**0.5)

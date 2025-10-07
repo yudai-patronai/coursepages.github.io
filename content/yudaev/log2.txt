@@ -1,0 +1,200 @@
+2017-01-11T12:18:25Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C8KGGE433A71C
+task_Start: execv(3): /home/judges/compile/scripts/python3 000012.py 000012 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000012.txt 2>&1
+2017-01-11T12:18:25Z:info:Compilation sucessful
+2017-01-11T12:18:25Z:info:Copy: /home/judges/compile/var/work/compile/log_000012.txt -> /home/judges/compile/var/compile/101703/report/0b98944a-7053-4592-931e-cb8ec4165a00.txt
+2017-01-11T12:18:25Z:info:writing file /home/judges/compile/var/compile/101703/status/in/29572_localhost.localdomain_0b98944a-7053-4592-931e-cb8ec4165a00
+2017-01-11T12:18:25Z:info:Move: /home/judges/compile/var/compile/101703/status/in/29572_localhost.localdomain_0b98944a-7053-4592-931e-cb8ec4165a00 -> /home/judges/compile/var/compile/101703/status/dir/0b98944a-7053-4592-931e-cb8ec4165a00
+2017-01-11T12:18:25Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:20:44Z:info:scan_dir: found 'G71C7C8OR354IA1537O0' (priority 0)
+2017-01-11T12:20:44Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C8OR354IA1537O0 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C8OR354IA1537O0
+2017-01-11T12:20:44Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C8OR354IA1537O0
+task_Start: execv(3): /home/judges/compile/scripts/gcc 007936.c 007936 0</dev/null 1>>/home/judges/compile/var/work/compile/log_007936.txt 2>&1
+2017-01-11T12:20:44Z:info:Compilation sucessful
+2017-01-11T12:20:44Z:info:Copy: /home/judges/compile/var/work/compile/log_007936.txt -> /home/judges/compile/var/compile/600101/report/7f138b1c-eccc-4c79-ad0e-5f4f0b9dadc5.txt
+2017-01-11T12:20:44Z:info:writing file /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_7f138b1c-eccc-4c79-ad0e-5f4f0b9dadc5
+2017-01-11T12:20:44Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_7f138b1c-eccc-4c79-ad0e-5f4f0b9dadc5 -> /home/judges/compile/var/compile/600101/status/dir/7f138b1c-eccc-4c79-ad0e-5f4f0b9dadc5
+2017-01-11T12:20:44Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:23:30Z:info:scan_dir: found 'G71C7C8U23D433A81U' (priority 0)
+2017-01-11T12:23:30Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C8U23D433A81U -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C8U23D433A81U
+2017-01-11T12:23:30Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C8U23D433A81U
+task_Start: execv(3): /home/judges/compile/scripts/python3 000030.py 000030 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000030.txt 2>&1
+2017-01-11T12:23:30Z:info:Compilation sucessful
+2017-01-11T12:23:30Z:info:Copy: /home/judges/compile/var/work/compile/log_000030.txt -> /home/judges/compile/var/compile/101704/report/c0da404f-c7e3-43f2-b39c-0207880fa57c.txt
+2017-01-11T12:23:30Z:info:writing file /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_c0da404f-c7e3-43f2-b39c-0207880fa57c
+2017-01-11T12:23:30Z:info:Move: /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_c0da404f-c7e3-43f2-b39c-0207880fa57c -> /home/judges/compile/var/compile/101704/status/dir/c0da404f-c7e3-43f2-b39c-0207880fa57c
+2017-01-11T12:23:30Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:24:41Z:info:scan_dir: found 'G71C7C908H3433A6234' (priority 0)
+2017-01-11T12:24:41Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C908H3433A6234 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C908H3433A6234
+2017-01-11T12:24:41Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C908H3433A6234
+task_Start: execv(3): /home/judges/compile/scripts/python3 000100.py 000100 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000100.txt 2>&1
+2017-01-11T12:24:41Z:info:Compilation sucessful
+2017-01-11T12:24:41Z:info:Copy: /home/judges/compile/var/work/compile/log_000100.txt -> /home/judges/compile/var/compile/101702/report/3cca3bbd-da71-4ff1-9b74-3b8c2f54c6bb.txt
+2017-01-11T12:24:41Z:info:writing file /home/judges/compile/var/compile/101702/status/in/29572_localhost.localdomain_3cca3bbd-da71-4ff1-9b74-3b8c2f54c6bb
+2017-01-11T12:24:41Z:info:Move: /home/judges/compile/var/compile/101702/status/in/29572_localhost.localdomain_3cca3bbd-da71-4ff1-9b74-3b8c2f54c6bb -> /home/judges/compile/var/compile/101702/status/dir/3cca3bbd-da71-4ff1-9b74-3b8c2f54c6bb
+2017-01-11T12:24:41Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:24:46Z:info:scan_dir: found 'G71C7C90D7C433A6235' (priority 0)
+2017-01-11T12:24:46Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C90D7C433A6235 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C90D7C433A6235
+2017-01-11T12:24:46Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C90D7C433A6235
+task_Start: execv(3): /home/judges/compile/scripts/python3 000101.py 000101 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000101.txt 2>&1
+2017-01-11T12:24:46Z:info:Compilation sucessful
+2017-01-11T12:24:46Z:info:Copy: /home/judges/compile/var/work/compile/log_000101.txt -> /home/judges/compile/var/compile/101702/report/49e18a12-989b-45b8-a76f-8f5315976f54.txt
+2017-01-11T12:24:46Z:info:writing file /home/judges/compile/var/compile/101702/status/in/29572_localhost.localdomain_49e18a12-989b-45b8-a76f-8f5315976f54
+2017-01-11T12:24:46Z:info:Move: /home/judges/compile/var/compile/101702/status/in/29572_localhost.localdomain_49e18a12-989b-45b8-a76f-8f5315976f54 -> /home/judges/compile/var/compile/101702/status/dir/49e18a12-989b-45b8-a76f-8f5315976f54
+2017-01-11T12:24:46Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:26:10Z:info:scan_dir: found 'G71C7C9319U4IA1537O1' (priority 0)
+2017-01-11T12:26:10Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C9319U4IA1537O1 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9319U4IA1537O1
+2017-01-11T12:26:10Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9319U4IA1537O1
+task_Start: execv(3): /home/judges/compile/scripts/gcc 007937.c 007937 0</dev/null 1>>/home/judges/compile/var/work/compile/log_007937.txt 2>&1
+2017-01-11T12:26:10Z:info:Compilation sucessful
+2017-01-11T12:26:10Z:info:Copy: /home/judges/compile/var/work/compile/log_007937.txt -> /home/judges/compile/var/compile/600101/report/1ae2f4d6-3a5d-4d1f-b7f7-a67de881c16a.txt
+2017-01-11T12:26:10Z:info:writing file /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_1ae2f4d6-3a5d-4d1f-b7f7-a67de881c16a
+2017-01-11T12:26:10Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_1ae2f4d6-3a5d-4d1f-b7f7-a67de881c16a -> /home/judges/compile/var/compile/600101/status/dir/1ae2f4d6-3a5d-4d1f-b7f7-a67de881c16a
+2017-01-11T12:26:10Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:27:31Z:info:scan_dir: found 'G71C7C95IGS4IA1537O2' (priority 0)
+2017-01-11T12:27:31Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C95IGS4IA1537O2 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C95IGS4IA1537O2
+2017-01-11T12:27:31Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C95IGS4IA1537O2
+task_Start: execv(3): /home/judges/compile/scripts/gcc 007938.c 007938 0</dev/null 1>>/home/judges/compile/var/work/compile/log_007938.txt 2>&1
+2017-01-11T12:27:31Z:info:Compilation sucessful
+2017-01-11T12:27:31Z:info:Copy: /home/judges/compile/var/work/compile/log_007938.txt -> /home/judges/compile/var/compile/600101/report/96961066-9cbb-4559-baff-438d1c3de860.txt
+2017-01-11T12:27:31Z:info:writing file /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_96961066-9cbb-4559-baff-438d1c3de860
+2017-01-11T12:27:31Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_96961066-9cbb-4559-baff-438d1c3de860 -> /home/judges/compile/var/compile/600101/status/dir/96961066-9cbb-4559-baff-438d1c3de860
+2017-01-11T12:27:31Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:28:10Z:info:scan_dir: found 'G71C7C96PFF4IA1537O3' (priority 0)
+2017-01-11T12:28:10Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C96PFF4IA1537O3 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C96PFF4IA1537O3
+2017-01-11T12:28:10Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C96PFF4IA1537O3
+task_Start: execv(3): /home/judges/compile/scripts/gcc 007939.c 007939 0</dev/null 1>>/home/judges/compile/var/work/compile/log_007939.txt 2>&1
+2017-01-11T12:28:10Z:info:Compilation sucessful
+2017-01-11T12:28:10Z:info:Copy: /home/judges/compile/var/work/compile/log_007939.txt -> /home/judges/compile/var/compile/600101/report/e8fd3832-a550-46dd-82eb-db6cc9a301e9.txt
+2017-01-11T12:28:10Z:info:writing file /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_e8fd3832-a550-46dd-82eb-db6cc9a301e9
+2017-01-11T12:28:10Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_e8fd3832-a550-46dd-82eb-db6cc9a301e9 -> /home/judges/compile/var/compile/600101/status/dir/e8fd3832-a550-46dd-82eb-db6cc9a301e9
+2017-01-11T12:28:10Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:31:06Z:info:scan_dir: found 'G71C7C9C9M3433A81V' (priority 0)
+2017-01-11T12:31:06Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C9C9M3433A81V -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9C9M3433A81V
+2017-01-11T12:31:06Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9C9M3433A81V
+task_Start: execv(3): /home/judges/compile/scripts/python3 000031.py 000031 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000031.txt 2>&1
+2017-01-11T12:31:06Z:info:Compilation sucessful
+2017-01-11T12:31:06Z:info:Copy: /home/judges/compile/var/work/compile/log_000031.txt -> /home/judges/compile/var/compile/101704/report/ee3d3700-5c40-4a64-a605-e9b5ce0fa996.txt
+2017-01-11T12:31:06Z:info:writing file /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_ee3d3700-5c40-4a64-a605-e9b5ce0fa996
+2017-01-11T12:31:06Z:info:Move: /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_ee3d3700-5c40-4a64-a605-e9b5ce0fa996 -> /home/judges/compile/var/compile/101704/status/dir/ee3d3700-5c40-4a64-a605-e9b5ce0fa996
+2017-01-11T12:31:06Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:31:39Z:info:scan_dir: found 'G71C7C9DB7M4IA1537O4' (priority 0)
+2017-01-11T12:31:39Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C9DB7M4IA1537O4 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9DB7M4IA1537O4
+2017-01-11T12:31:39Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9DB7M4IA1537O4
+task_Start: execv(3): /home/judges/compile/scripts/gcc 007940.c 007940 0</dev/null 1>>/home/judges/compile/var/work/compile/log_007940.txt 2>&1
+2017-01-11T12:31:39Z:info:Compilation sucessful
+2017-01-11T12:31:39Z:info:Copy: /home/judges/compile/var/work/compile/log_007940.txt -> /home/judges/compile/var/compile/600101/report/d57f36ef-4f3b-46a9-9d53-954d403a1303.txt
+2017-01-11T12:31:39Z:info:writing file /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_d57f36ef-4f3b-46a9-9d53-954d403a1303
+2017-01-11T12:31:39Z:info:Move: /home/judges/compile/var/compile/600101/status/in/29572_localhost.localdomain_d57f36ef-4f3b-46a9-9d53-954d403a1303 -> /home/judges/compile/var/compile/600101/status/dir/d57f36ef-4f3b-46a9-9d53-954d403a1303
+2017-01-11T12:31:39Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:40:29Z:info:scan_dir: found 'G71C7C9TT0S433A8210' (priority 0)
+2017-01-11T12:40:29Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7C9TT0S433A8210 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9TT0S433A8210
+2017-01-11T12:40:29Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7C9TT0S433A8210
+task_Start: execv(3): /home/judges/compile/scripts/python3 000032.py 000032 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000032.txt 2>&1
+2017-01-11T12:40:29Z:info:Compilation sucessful
+2017-01-11T12:40:29Z:info:Copy: /home/judges/compile/var/work/compile/log_000032.txt -> /home/judges/compile/var/compile/101704/report/1b051f5b-4e5a-415f-a61a-6646b33e763e.txt
+2017-01-11T12:40:29Z:info:writing file /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_1b051f5b-4e5a-415f-a61a-6646b33e763e
+2017-01-11T12:40:29Z:info:Move: /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_1b051f5b-4e5a-415f-a61a-6646b33e763e -> /home/judges/compile/var/compile/101704/status/dir/1b051f5b-4e5a-415f-a61a-6646b33e763e
+2017-01-11T12:40:29Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:41:44Z:info:scan_dir: found 'G71C7CA089V4I9U13BOI' (priority 0)
+2017-01-11T12:41:44Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CA089V4I9U13BOI -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CA089V4I9U13BOI
+2017-01-11T12:41:44Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CA089V4I9U13BOI
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 012050.c 012050 0</dev/null 1>>/home/judges/compile/var/work/compile/log_012050.txt 2>&1
+2017-01-11T12:41:44Z:info:Compilation sucessful
+2017-01-11T12:41:44Z:info:Copy: /home/judges/compile/var/work/compile/log_012050.txt -> /home/judges/compile/var/compile/600001/report/4792e1be-550d-41c7-b18f-4e63a52257d7.txt
+2017-01-11T12:41:44Z:info:writing file /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_4792e1be-550d-41c7-b18f-4e63a52257d7
+2017-01-11T12:41:44Z:info:Move: /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_4792e1be-550d-41c7-b18f-4e63a52257d7 -> /home/judges/compile/var/compile/600001/status/dir/4792e1be-550d-41c7-b18f-4e63a52257d7
+2017-01-11T12:41:44Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:42:51Z:info:scan_dir: found 'G71C7CA2B1P4I9U13BOJ' (priority 0)
+2017-01-11T12:42:51Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CA2B1P4I9U13BOJ -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CA2B1P4I9U13BOJ
+2017-01-11T12:42:51Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CA2B1P4I9U13BOJ
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 012051.c 012051 0</dev/null 1>>/home/judges/compile/var/work/compile/log_012051.txt 2>&1
+2017-01-11T12:42:52Z:info:Compilation sucessful
+2017-01-11T12:42:52Z:info:Copy: /home/judges/compile/var/work/compile/log_012051.txt -> /home/judges/compile/var/compile/600001/report/875a3d7f-ebf6-4263-ad15-fb187e818d52.txt
+2017-01-11T12:42:52Z:info:writing file /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_875a3d7f-ebf6-4263-ad15-fb187e818d52
+2017-01-11T12:42:52Z:info:Move: /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_875a3d7f-ebf6-4263-ad15-fb187e818d52 -> /home/judges/compile/var/compile/600001/status/dir/875a3d7f-ebf6-4263-ad15-fb187e818d52
+2017-01-11T12:42:52Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T12:46:58Z:info:scan_dir: found 'G71C7CAA1LD433A8211' (priority 0)
+2017-01-11T12:46:58Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CAA1LD433A8211 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CAA1LD433A8211
+2017-01-11T12:46:58Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CAA1LD433A8211
+task_Start: execv(3): /home/judges/compile/scripts/python3 000033.py 000033 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000033.txt 2>&1
+2017-01-11T12:46:58Z:info:Compilation sucessful
+2017-01-11T12:46:58Z:info:Copy: /home/judges/compile/var/work/compile/log_000033.txt -> /home/judges/compile/var/compile/101704/report/94178988-23ab-4c07-84b4-dad2df31d588.txt
+2017-01-11T12:46:58Z:info:writing file /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_94178988-23ab-4c07-84b4-dad2df31d588
+2017-01-11T12:46:58Z:info:Move: /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_94178988-23ab-4c07-84b4-dad2df31d588 -> /home/judges/compile/var/compile/101704/status/dir/94178988-23ab-4c07-84b4-dad2df31d588
+2017-01-11T12:46:58Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:00:42Z:info:scan_dir: found 'G71C7CB3Q0L4I9U13BOK' (priority 0)
+2017-01-11T13:00:42Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CB3Q0L4I9U13BOK -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CB3Q0L4I9U13BOK
+2017-01-11T13:00:42Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CB3Q0L4I9U13BOK
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 012052.c 012052 0</dev/null 1>>/home/judges/compile/var/work/compile/log_012052.txt 2>&1
+2017-01-11T13:00:42Z:info:Compilation sucessful
+2017-01-11T13:00:42Z:info:Copy: /home/judges/compile/var/work/compile/log_012052.txt -> /home/judges/compile/var/compile/600001/report/395d5923-0d36-48d1-b7ed-493596316ff1.txt
+2017-01-11T13:00:42Z:info:writing file /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_395d5923-0d36-48d1-b7ed-493596316ff1
+2017-01-11T13:00:42Z:info:Move: /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_395d5923-0d36-48d1-b7ed-493596316ff1 -> /home/judges/compile/var/compile/600001/status/dir/395d5923-0d36-48d1-b7ed-493596316ff1
+2017-01-11T13:00:42Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:01:06Z:info:scan_dir: found 'G71C7CB4HUL4I9U232PR' (priority 0)
+2017-01-11T13:01:06Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CB4HUL4I9U232PR -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CB4HUL4I9U232PR
+2017-01-11T13:01:06Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CB4HUL4I9U232PR
+task_Start: execv(2): /home/judges/600002/conf/../checkers/formatter 002875.c 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002875.txt 2>&1
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 002875.c 002875 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002875.txt 2>&1
+2017-01-11T13:01:06Z:info:Compilation failed
+2017-01-11T13:01:06Z:info:Copy: /home/judges/compile/var/work/compile/log_002875.txt -> /home/judges/compile/var/compile/600002/report/21a75ea0-7527-4139-bd65-b04524bdbdcb.txt
+2017-01-11T13:01:06Z:info:Copy: /home/judges/compile/var/work/compile/log_002875.txt -> /home/judges/compile/var/compile/600002/report/21a75ea0-7527-4139-bd65-b04524bdbdcb
+2017-01-11T13:01:06Z:info:writing file /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_21a75ea0-7527-4139-bd65-b04524bdbdcb
+2017-01-11T13:01:06Z:info:Move: /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_21a75ea0-7527-4139-bd65-b04524bdbdcb -> /home/judges/compile/var/compile/600002/status/dir/21a75ea0-7527-4139-bd65-b04524bdbdcb
+2017-01-11T13:01:06Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:04:01Z:info:scan_dir: found 'G71C7CBA13U4I9U13BOL' (priority 0)
+2017-01-11T13:04:01Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CBA13U4I9U13BOL -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBA13U4I9U13BOL
+2017-01-11T13:04:01Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBA13U4I9U13BOL
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 012053.c 012053 0</dev/null 1>>/home/judges/compile/var/work/compile/log_012053.txt 2>&1
+2017-01-11T13:04:02Z:info:Compilation sucessful
+2017-01-11T13:04:02Z:info:Copy: /home/judges/compile/var/work/compile/log_012053.txt -> /home/judges/compile/var/compile/600001/report/63db9e19-6553-4747-8422-993370c0bec7.txt
+2017-01-11T13:04:02Z:info:writing file /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_63db9e19-6553-4747-8422-993370c0bec7
+2017-01-11T13:04:02Z:info:Move: /home/judges/compile/var/compile/600001/status/in/29572_localhost.localdomain_63db9e19-6553-4747-8422-993370c0bec7 -> /home/judges/compile/var/compile/600001/status/dir/63db9e19-6553-4747-8422-993370c0bec7
+2017-01-11T13:04:02Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:04:31Z:info:scan_dir: found 'G71C7CBAUH24I9U232PS' (priority 0)
+2017-01-11T13:04:31Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CBAUH24I9U232PS -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBAUH24I9U232PS
+2017-01-11T13:04:31Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBAUH24I9U232PS
+task_Start: execv(2): /home/judges/600002/conf/../checkers/formatter 002876.c 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002876.txt 2>&1
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 002876.c 002876 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002876.txt 2>&1
+2017-01-11T13:04:31Z:info:Compilation sucessful
+2017-01-11T13:04:31Z:info:Copy: /home/judges/compile/var/work/compile/log_002876.txt -> /home/judges/compile/var/compile/600002/report/12937d74-bb89-41f1-91b7-19e2c3ac3abd.txt
+2017-01-11T13:04:31Z:info:writing file /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_12937d74-bb89-41f1-91b7-19e2c3ac3abd
+2017-01-11T13:04:31Z:info:Move: /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_12937d74-bb89-41f1-91b7-19e2c3ac3abd -> /home/judges/compile/var/compile/600002/status/dir/12937d74-bb89-41f1-91b7-19e2c3ac3abd
+2017-01-11T13:04:31Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:07:26Z:info:scan_dir: found 'G71C7CBGDK3433A8212' (priority 0)
+2017-01-11T13:07:26Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CBGDK3433A8212 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBGDK3433A8212
+2017-01-11T13:07:26Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBGDK3433A8212
+task_Start: execv(3): /home/judges/compile/scripts/python3 000034.py 000034 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000034.txt 2>&1
+2017-01-11T13:07:26Z:info:Compilation sucessful
+2017-01-11T13:07:26Z:info:Copy: /home/judges/compile/var/work/compile/log_000034.txt -> /home/judges/compile/var/compile/101704/report/9cd0716c-097d-4551-8bcd-4a4409ffe871.txt
+2017-01-11T13:07:26Z:info:writing file /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_9cd0716c-097d-4551-8bcd-4a4409ffe871
+2017-01-11T13:07:26Z:info:Move: /home/judges/compile/var/compile/101704/status/in/29572_localhost.localdomain_9cd0716c-097d-4551-8bcd-4a4409ffe871 -> /home/judges/compile/var/compile/101704/status/dir/9cd0716c-097d-4551-8bcd-4a4409ffe871
+2017-01-11T13:07:26Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:08:40Z:info:scan_dir: found 'G71C7CBIO794I9U232PT' (priority 0)
+2017-01-11T13:08:40Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CBIO794I9U232PT -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBIO794I9U232PT
+2017-01-11T13:08:40Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBIO794I9U232PT
+task_Start: execv(2): /home/judges/600002/conf/../checkers/formatter 002877.c 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002877.txt 2>&1
+task_Start: execv(3): /home/judges/compile/scripts/gcc-vg 002877.c 002877 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002877.txt 2>&1
+2017-01-11T13:08:40Z:info:Compilation sucessful
+2017-01-11T13:08:40Z:info:Copy: /home/judges/compile/var/work/compile/log_002877.txt -> /home/judges/compile/var/compile/600002/report/30f3d1f4-1034-40e7-b0d5-3486f541d06d.txt
+2017-01-11T13:08:40Z:info:writing file /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_30f3d1f4-1034-40e7-b0d5-3486f541d06d
+2017-01-11T13:08:40Z:info:Move: /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_30f3d1f4-1034-40e7-b0d5-3486f541d06d -> /home/judges/compile/var/compile/600002/status/dir/30f3d1f4-1034-40e7-b0d5-3486f541d06d
+2017-01-11T13:08:40Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:12:42Z:info:scan_dir: found 'G71C7CBQAGQ433A6236' (priority 0)
+2017-01-11T13:12:42Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CBQAGQ433A6236 -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBQAGQ433A6236
+2017-01-11T13:12:42Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CBQAGQ433A6236
+task_Start: execv(3): /home/judges/compile/scripts/python3 000102.py 000102 0</dev/null 1>>/home/judges/compile/var/work/compile/log_000102.txt 2>&1
+2017-01-11T13:12:42Z:info:Compilation sucessful
+2017-01-11T13:12:42Z:info:Copy: /home/judges/compile/var/work/compile/log_000102.txt -> /home/judges/compile/var/compile/101702/report/66848c98-107e-40fe-8687-5a7bb618de7a.txt
+2017-01-11T13:12:42Z:info:writing file /home/judges/compile/var/compile/101702/status/in/29572_localhost.localdomain_66848c98-107e-40fe-8687-5a7bb618de7a
+2017-01-11T13:12:42Z:info:Move: /home/judges/compile/var/compile/101702/status/in/29572_localhost.localdomain_66848c98-107e-40fe-8687-5a7bb618de7a -> /home/judges/compile/var/compile/101702/status/dir/66848c98-107e-40fe-8687-5a7bb618de7a
+2017-01-11T13:12:42Z:info:clear_directory: /home/judges/compile/var/work/compile cleared
+2017-01-11T13:27:50Z:info:scan_dir: found 'G71C7CCMM584I9U232PU' (priority 0)
+2017-01-11T13:27:50Z:info:Move: /home/judges/compile/var/compile/queue/dir/G71C7CCMM584I9U232PU -> /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CCMM584I9U232PU
+2017-01-11T13:27:50Z:info:reading file /home/judges/compile/var/compile/queue/out/29572_localhost.localdomain_G71C7CCMM584I9U232PU
+task_Start: execv(2): /home/judges/600002/conf/../checkers/formatter 002878.c 0</dev/null 1>>/home/judges/compile/var/work/compile/log_002878.txt 2>&1
+2017-01-11T13:27:50Z:info:Copy: /home/judges/compile/var/work/compile/log_002878.txt -> /home/judges/compile/var/compile/600002/report/e8ae4c45-2e17-4c73-88ed-42346e27ca72.txt
+2017-01-11T13:27:50Z:info:Copy: /home/judges/compile/var/work/compile/log_002878.txt -> /home/judges/compile/var/compile/600002/report/e8ae4c45-2e17-4c73-88ed-42346e27ca72
+2017-01-11T13:27:50Z:info:writing file /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_e8ae4c45-2e17-4c73-88ed-42346e27ca72
+2017-01-11T13:27:50Z:info:Move: /home/judges/compile/var/compile/600002/status/in/29572_localhost.localdomain_e8ae4c45-2e17-4c73-88ed-42346e27ca72 -> /home/judges/compile/var/compile/600002/status/dir/e8ae4c45-2e17-4c73-88ed-42346e27ca72
+2017-01-11T13:27:50Z:info:clear_directory: /home/judges/compile/var/work/compile cleared

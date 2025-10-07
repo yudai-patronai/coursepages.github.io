@@ -1,0 +1,15 @@
+A = [int(x) for x in input().split()]
+C = []
+for i in range(A[0]):
+    C += [input(). split()]
+for i in range(A[0]):
+    for j in range(A[1]):
+        C[i][j] = int(C[i][j])
+Max = C[0][0]
+a, b = 0, 0
+for i in range(A[0]):
+    for j in range(A[1]):
+        if C[i][j] > Max:
+            Max = C[i][j]
+            a, b = i, j
+print(a+1,b+1)

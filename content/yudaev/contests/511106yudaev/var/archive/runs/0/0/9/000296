@@ -1,0 +1,17 @@
+n=input().split() 
+n[0]=int(n[0]) 
+n[1]=int(n[1]) 
+a=[] 
+N,M=0,0 
+for i in range(n[0]): 
+    row=input().split() 
+for i in range(len(row)): 
+    row[i]=int(row[i]) 
+    a.append(row) 
+    m=a[0][0] 
+for i in range(n[0]): 
+    for j in range(n[1]):
+        if a[i][j]>m:
+            m=a[i][j] 
+            N,M=int(i),int(j) 
+print(N,M)

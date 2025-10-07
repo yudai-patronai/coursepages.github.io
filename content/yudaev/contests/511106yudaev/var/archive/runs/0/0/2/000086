@@ -1,0 +1,148 @@
+B=input().split()
+n=int(B[0])
+m=int(B[1])
+k=int(B[2])
+bomb=[]
+
+for i in range(k):
+     row=input().split()
+     for i in range(2):
+        row[i]=int(row[i])
+     bomb.append(row) 
+
+pole=[[0 for j in range(m)] for i in range(n)]
+for i in range(k):
+   pole[int(bomb[i][0])-1][int(bomb[i][1])-1]='*'
+#vertical first
+for i in range(1,n-1):
+      flag=0
+      if pole[i][1]=='*':
+         flag+=1
+      if pole[i-1][1]=='*':
+         flag+=1
+      if pole[i+1][1]=='*':
+         flag+=1
+      if pole[i-1][0]=='*':
+         flag+=1
+      if pole[i+1][0]=='*':
+         flag+=1
+      if pole[i][0]!='*':
+          pole[i][0]=int(flag)
+# vertical last
+for i in range(1,n-1):
+      flag=0
+      if pole[i][m-2]=='*':
+         flag+=1
+      if pole[i-1][m-1]=='*':
+         flag+=1
+      if pole[i+1][m-1]=='*':
+         flag+=1
+      if pole[i-1][m-2]=='*':
+         flag+=1
+      if pole[i+1][m-2]=='*':
+         flag+=1
+      if pole[i][m-1]!='*':
+          pole[i][m-1]=int(flag)
+
+#horizontal  up        
+for i in range(1,m-1):
+      flag=0
+      if pole[1][i]=='*':
+         flag+=1
+      if pole[1][i+1]=='*':
+         flag+=1
+      if pole[1][i-1]=='*':
+         flag+=1
+      if pole[0][i+1]=='*':
+         flag+=1
+      if pole[0][i-1]=='*':
+         flag+=1
+      if pole[0][i]!='*':
+          pole[0][i]=int(flag)
+      
+
+#horizontal  dn       
+for i in range(1,m-1):
+      flag=0
+      if pole[n-2][i]=='*':
+         flag+=1
+      if pole[n-2][i+1]=='*':
+         flag+=1
+      if pole[n-2][i-1]=='*':
+         flag+=1
+      if pole[n-1][i+1]=='*':
+         flag+=1
+      if pole[n-1][i-1]=='*':
+         flag+=1
+      if pole[n-1][i]!='*':
+           pole[n-1][i]=int(flag)
+flag1=0
+if pole[0][1]=='*':
+   flag1+=1
+if pole[1][1]=='*':
+   flag1+=1
+if pole[1][0]=='*':
+   flag1+=1
+if pole[0][0]!='*':
+   pole[0][0]=int(flag1)
+
+
+flag2=0
+if pole[0][m-2]=='*':
+   flag2+=1
+if pole[1][m-1]=='*':
+   flag2+=1
+if pole[1][m-2]=='*':
+   flag2+=1
+if pole[0][m-1]!='*':
+   pole[0][m-1]=int(flag2)
+
+flag3=0
+if pole[n-1][m-2]=='*':
+   flag3+=1
+if pole[n-2][m-1]=='*':
+   flag3+=1
+if pole[n-2][m-2]=='*':
+   flag3+=1
+if pole[n-1][m-1]!='*':
+   pole[n-1][m-1]=int(flag3)
+
+flag4=0
+if pole[n-1][1]=='*':
+   flag4+=1
+if pole[n-2][0]=='*':
+   flag4+=1
+if pole[n-2][1]=='*':
+   flag4+=1
+if pole[n-1][0]!='*':
+   pole[n-1][0]=int(flag4)
+
+
+for i in range(1,n-1):
+   for j in range(1,m-1):
+       flag=0
+       if pole[i+1][j+1]=='*':
+         flag+=1
+       if pole[i][j+1]=='*':
+         flag+=1
+       if pole[i-1][j+1]=='*':
+         flag+=1
+       if pole[i-1][j]=='*':
+         flag+=1
+       if pole[i-1][j-1]=='*':
+         flag+=1
+       if pole[i][j-1]=='*':
+         flag+=1
+       if pole[i+1][j-1]=='*':
+         flag+=1
+       if pole[i+1][j]=='*':
+         flag+=1
+       if pole[i][j]!='*':
+           pole[i][j]=int(flag)
+
+
+  
+   
+ 
+for row in pole:
+   print(' '.join([str(elem) for elem in row]))  

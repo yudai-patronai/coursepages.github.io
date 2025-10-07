@@ -1,0 +1,25 @@
+Date: 2016/11/01 11:35:29
+From: Erduyta (uid 21607)
+Ip: 10.55.192.206
+Command: submit
+Status: ok
+Run-id: 158
+Run-status: CG
+
+Date: 2016/11/01 11:35:34
+From: SYSTEM
+Status: testing completed
+Run-id: 158
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/11/01 11:35:29.276119
+  Request completion time:           2016/11/01 11:35:34.158501
+  Total testing duration:            4.882
+  Waiting in compile queue duration: 0.405
+  Compilation duration:              0.217
+  Waiting in serve queue duration:   0.267
+  Waiting in run queue duration:     0.959
+  Testing duration:                  2.978
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.057
+

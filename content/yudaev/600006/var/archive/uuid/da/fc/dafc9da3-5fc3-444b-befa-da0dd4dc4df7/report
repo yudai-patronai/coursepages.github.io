@@ -1,0 +1,18 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="261" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>dafc9da3-5fc3-444b-befa-da0dd4dc4df7</uuid>
+  <compiler_output>000261.c: In function 'main':
+000261.c:24:4: warning: suggest parentheses around comparison in operand of '&amp;' [-Wparentheses]
+    if (p &amp; 2 == 0)
+    ^
+000261.c:10:10: error: 'n2' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  int n1, n2;
+          ^
+000261.c:10:6: error: 'n1' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  int n1, n2;
+      ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

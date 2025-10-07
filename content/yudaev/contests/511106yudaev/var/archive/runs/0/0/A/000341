@@ -1,0 +1,23 @@
+def SC(A,iii,jjj):
+    n = len(A)
+    m = len(A[0])
+    for i in range(n):
+        column = A[i][iii]
+        A[i][iii] = A[i][jjj]
+        A[i][jjj] = column
+    return A
+nm = input().split()
+n = int(nm[0])
+m = int(nm[1])
+massive = [['' for i in range(m)] for j in range(n)]
+for i in range(n):
+    inp = input().split()
+    for j in range(m):
+        massive[i][j] = int(inp[j])
+iijj = input().split()
+ii = int(iijj[0])
+jj = int(iijj[1])
+massive = SC(massive, ii, jj)
+for i in range(n):
+    for j in range(m):
+        print(massive[i][j], end=' ')

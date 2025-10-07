@@ -1,0 +1,9 @@
+n=int(input())
+m=int(input())
+c=int(input())
+k=int(input())
+def min4(n,m,c,k):
+    A=[m,n,c,k]
+    goose=min(A)
+    return goose
+print(min4(n,m,c,k))

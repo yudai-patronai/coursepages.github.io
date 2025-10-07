@@ -1,0 +1,8 @@
+def Transpose(A):
+    return [[A[j][i] for j in range(len(A))] for i in range(len(A[0]))]
+sub = list (map (int, input().split()))
+a, b = sub[0], sub[1]
+sub = [list (map (int, input().split())) for i in range(a)]
+semi = Transpose(sub)
+for i in semi:
+    print (' '.join(list (map (str, i))))

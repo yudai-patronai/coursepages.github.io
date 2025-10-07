@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int A[5003], N = 0, i = 0, a = 0, b = 0, c = 0;
+    for(i = 0; i < 5003; i++)
+        A[i] = 2147483647;
+    scanf("%i", &N);
+    A[0] = 0;
+    for(i = 1; i <= N; i++)
+    {
+        scanf("%i %i %i", &a, &b, &c);
+        if(a + A[i - 1] < A[i])
+            A[i] = a + A[i - 1];
+        if(b + A[i - 1] < A[i + 1])
+            A[i + 1] = b + A[i - 1];
+        if(c + A[i - 1] < A[i + 2])
+            A[i + 2] = c + A[i - 1];
+    }
+    printf("%i", A[N]);
+   return 0;
+}

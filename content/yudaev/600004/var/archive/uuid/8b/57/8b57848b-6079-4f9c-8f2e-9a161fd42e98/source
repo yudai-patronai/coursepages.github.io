@@ -1,0 +1,27 @@
+#include <stdio.h>
+int min(int a, int b)
+{
+    if(a < b)
+        return a;
+    return b;
+}
+int main()
+{
+    int N = 0;
+    scanf("%d", &N);
+    int A[5001], B[5001], C[5001], t([5001];
+    for(int i = 1; i <= N; ++i)
+        scanf("%d%d%d", &A[i], &B[i], &C[i]);
+    t[0] = 0;
+    t[1] = A[1];
+    for(int i = 2; i <= N; ++i)
+    {
+        if(i == 2)
+        {
+            t[i] = min(t[1] + A[i], B[1]);
+        }
+        else
+            t[i] = min(min(t[i - 1] + A[i], t[i - 2] + B[i - 1]), t[i - 3] + C[i - 2]);
+    }
+    printf("%d", t[N]);
+}

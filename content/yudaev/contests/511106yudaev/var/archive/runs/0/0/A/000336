@@ -1,0 +1,18 @@
+def IsSymmetric(a):
+    f=True
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if a[j][i]!=a[i][j]:
+                f=False
+                break
+        if not f:
+            break
+    return(f)
+n= int(input())
+a=[[]]*n
+for i in range(n):
+    a[i]=input().split()
+if IsSymmetric(a):
+    print('YES')
+else:
+    print('NO')

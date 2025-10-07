@@ -1,0 +1,36 @@
+A=input().split()
+n=int(A[0])
+m=int(A[1])
+for i in range(n):
+    B=[]
+    Q=''
+    if i%2==0:
+        k=0
+        for j in range(m):
+            if k==0:
+                B=B+['.']
+                k=1
+            else:
+                B=B+['*']
+                k=0
+        for p in range(m):
+            if p!=(m-1):
+                Q=Q+B[p]+' '
+            else:
+                Q=Q+B[p]
+        print(Q)
+    else:
+        k=1
+        for j in range(m):
+            if k==0:
+                B=B+['.']
+                k=1
+            else:
+                B=B+['*']
+                k=0
+        for p in range(m):
+            if p!=(m-1):
+                Q=Q+B[p]+' '
+            else:
+                Q=Q+B[p]
+        print(Q)

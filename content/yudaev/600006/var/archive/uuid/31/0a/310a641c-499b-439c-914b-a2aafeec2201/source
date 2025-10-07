@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int n, char **a)
+{
+    FILE*fm = fopen(a[1],"r");
+    fseek(fm, 0, SEEK_END);
+    long size = ftell(fm);
+    if (n == 1)
+        printf("Usage: stat filename");
+    else
+    {
+        if (size == -1)
+            printf("Can't open file");
+        else
+        {
+            printf("%ld", size);
+        }
+    }
+    return 0;
+}

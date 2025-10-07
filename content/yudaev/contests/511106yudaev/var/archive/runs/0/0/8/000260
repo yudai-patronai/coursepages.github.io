@@ -1,0 +1,19 @@
+s=input()
+b=s.split()
+a=[['']*int(b[1]) for i in range(int(b[0]))]
+p='*'
+for i in range(int(b[1])):
+        if p=='*':
+            a[0][i]='.'
+        else:
+            a[0][i]='*'
+        p=a[0][i]
+for i in range(1,int(b[0])):
+    for j in range(int(b[1])):
+        if a[i-1][j]=='*':
+            a[i][j]='.'
+        else:
+            a[i][j]='*'
+for i in range(int(b[0])):
+    print(''.join(a[i]))
+                

@@ -1,0 +1,16 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="36" judge-id="16" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>dedc84b5-5747-4d29-924b-68cd50595386</uuid>
+  <compiler_output>000036.c:1:2: error: invalid preprocessing directive #incude
+ #incude &lt;stdio.h&gt;
+  ^
+000036.c: In function 'main':
+000036.c:7:9: error: implicit declaration of function 'sscanf' [-Werror=implicit-function-declaration]
+         sscanf(avgc[i] , &quot;%d&quot; , &amp;b);
+         ^
+000036.c:7:9: warning: incompatible implicit declaration of built-in function 'sscanf' [enabled by default]
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

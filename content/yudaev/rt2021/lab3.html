@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Списки</title>
+    <meta charset="utf-8" />
+    <meta content="2020-10-07 09:00" name="date" />
+    <meta content="Контест на спискам." name="summary" />
+    <meta content="published" name="status" />
+</head>
+<style>
+div{
+  width: 600px;
+  margin: auto;
+  border: 0px ;
+  
+}
+body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="id1">
+        <h1>Списки</h1>
+        <aside id="id2" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#id3">Что это?</a></li>
+                <li><a href="#id4">Создание списка</a>
+                    <ul>
+                        <li><a href="#id5">Генератор списков</a></li>
+                        <li><a href="#list-append">Метод <code>list.append</code></a></li>
+                        <li><a href="#list">Функция <code>list</code></a></li>
+                    </ul>
+                </li>
+                <li><a href="#id6">Элементы списка: доступ и изменение</a>
+                    <ul>
+                        <li><a href="#id7">Изменение элементов</a></li>
+                        <li><a href="#while">Доступ в цикле <code>while</code></a></li>
+                        <li><a href="#for">Доступ в цикле <code>for</code></a>
+                            <ul>
+                                <li><a href="#id8">Питонизмы</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#id9">Соединение и копирование списков</a></li>
+                <li><a href="#id10">Ремарка о строках</a></li>
+                <li><a href="#o5">Контест №5</a></li>
+            </ul>
+        </aside>
+        <section id="id3">
+            <h2>Что это?</h2>
+            <p>Список в Python это:</p>
+            <p>упорядоченная изменяемая последовательность объектов произвольных типов</p>
+            <p>Список Python является гибким в использовании объектом. Как инструмент, программист может использовать списки, например, для создания элементов линейной алгебры: точек, векторов, матриц, тензоров. Или, например, для таблицы с некоторыми данными.</p>
+        </section>
+        <section id="id4">
+            <h2>Создание списка</h2>
+            <p>Список можно создать при помощи литералов. Литерал - это код, который используется для создания объекта "вручную". Например, некоторые литералы уже изученных ранее объектов:</p>
+            <ul>
+                <li><code class="code">int</code>: <code class="code">5</code>, <code class="code">-23</code></li>
+                <li><code class="code">float</code>: <code class="code">5.</code>, <code class="code">5.0</code>, <code class="code">-10.81</code>, <code class="code">-1.081e1</code></li>
+                <li><code class="code">str</code>: <code class="code">'ABCdef'</code>, <code class="code">"ABCdef"</code></li>
+            </ul>
+            <p>В случае списка литералом являются квадратные скобки <code class="code">[]</code>, внутри которых через запятую <code class="code">,</code> перечисляются элементы списка:</p>
+            <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="p">[]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;sapere&#39;</span><span class="p">,</span> <span class="s1">&#39;aude&#39;</span><span class="p">]</span>
+<span class="go">[&#39;sapere&#39;, &#39;aude&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;Gravitational acceleration&#39;</span><span class="p">,</span> <span class="mf">9.80665</span><span class="p">,</span> <span class="s1">&#39;m s^-2&#39;</span><span class="p">]</span>
+<span class="go">[&#39;Gravitational acceleration&#39;, 9.80665, &#39;m s^-2&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">([])</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span></pre>
+            <section id="id5">
+                <h3>Генератор списков</h3>
+                <p>Зачастую требуется создать список, хранящий значения некоторой функции, например, квадратов чисел или арифметическую последовательность. Для этого можно воспользоваться синтаксическим сахаром Python - генератором списка:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">arithm</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arithm</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span>
+<span class="go">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></pre>
+                <p>Однако злоупотреблять генераторами не стоит - если заполнение происходит по сложным правилам, лучше избежать использования генератора в пользу читаемости кода.</p>
+            </section>
+            <section id="list-append">
+                <h3>Метод <code>list.append</code></h3>
+                <p>Метод списков <code class="code">list.append</code> (<em>англ.</em> добавить в конец), как следует из перевода, добавляет элемент в конец списка.</p>
+                <p>В примере ниже инициализируется пустой список <code class="code">fibs</code>, а затем заполняется элементами:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span>
+<span class="go">[1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span>
+<span class="go">[1, 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span>
+<span class="go">[1, 1, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibs</span>
+<span class="go">[1, 1, 2, 3]</span></pre>
+            </section>
+            <section id="list">
+                <h3>Функция <code>list</code></h3>
+                <p>Аналогично функциям преобразования типов <code class="code">int()</code>, <code class="code">float()</code>, <code class="code">str()</code> существует функция <code class="code">list()</code>, создающая список из <em>итерируемого</em> объекта. Её можно использовать, например, для создания списка символов из строки:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;sapere aude&quot;</span><span class="p">)</span>
+<span class="go">[&#39;s&#39;, &#39;a&#39;, &#39;p&#39;, &#39;e&#39;, &#39;r&#39;, &#39;e&#39;, &#39; &#39;, &#39;a&#39;, &#39;u&#39;, &#39;d&#39;, &#39;e&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></pre>
+            </section>
+        </section>
+        <section id="id6">
+            <h2>Элементы списка: доступ и изменение</h2>
+            <p>Для доступа к элементам списка используется операция <em>взятия элемента по индексу</em>. Для этого рядом с литералом или переменной списка необходимо подписать <em>индекс</em> элемента в квадратных скобках:</p>
+            <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;Gravitational acceleration&#39;</span><span class="p">,</span> <span class="mf">9.80665</span><span class="p">,</span> <span class="s1">&#39;m s^-2&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;Gravitational acceleration&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;Gravitational acceleration&#39;</span><span class="p">,</span> <span class="mf">9.80665</span><span class="p">,</span> <span class="s1">&#39;m s^-2&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">9.80665</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s1">&#39;Gravitational acceleration&#39;</span><span class="p">,</span> <span class="mf">9.80665</span><span class="p">,</span> <span class="s1">&#39;m s^-2&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&#39;m s^-2&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">30</span></pre>
+            <p>Нумерация элементов списка начинается с <strong>нуля</strong>.</p>
+            <p>При запросе элемента по несуществующему индексу, происходит ошибка <code>IndexError</code>:</p>
+            <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[10, 20, 30]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">list index out of range</span></pre>
+            <p>Поэтому всегда нужно быть уверенным, что индексация не выходит за пределы <em>длины списка</em>. Получить её можно, как и для строк, с помощью функции <code class="code">len()</code>:</p>
+            <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[10, 20, 30]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="go">30</span></pre>
+            <p>Последняя конструкция встречается нередко, поэтому в Python существует возможность взять элемент по отрицательному индексу:</p>
+            <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[10, 20, 30]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">list index out of range</span></pre>
+            <p>Таким образом для индекса <code>n ≥ 0</code>, <code class="code">l[-n]</code> эвивалентно <code class="code">l[len(l) - n]</code>.</p>
+            <section id="id7">
+                <h3>Изменение элементов</h3>
+                <p>Изменение элементов осуществляется с помощью присваивания:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[10, 20, 30]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[0, 20, 30]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[0, 20, 55]</span></pre>
+            </section>
+            <section id="while">
+                <h3>Доступ в цикле <code>while</code></h3>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[0, 20, 55]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">...</span>
+<span class="go">0 0</span>
+<span class="go">1 20</span>
+<span class="go">2 55</span>
+<span class="go">&gt;&gt;&gt;</span></pre>
+            </section>
+            <section id="for">
+                <h3>Доступ в цикле <code>for</code></h3>
+                <p>Наиболее универсальный способ это использование генератора <code>range</code>:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[0, 20, 55]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">...</span>
+<span class="go">0 0</span>
+<span class="go">1 20</span>
+<span class="go">2 55</span></pre>
+                <section id="id8">
+                    <h4>Питонизмы</h4>
+                    <blockquote>
+                        <p>Конструкции с использованием <code class="code">while</code> и <code class="code">for</code>, изложенные выше, имеют аналоги <strong>практически во всех языках программирования</strong>. Они универсальны, стандартны, переносимы из языка в язык.</p>
+                        <p>Этот раздел относится только к <strong>особенностям языка</strong> Python.</p>
+                        <p>Не злоупотребляйте питонизмами, наша цель - освоить <strong>алгоритмы и структуры данных</strong>, а не Python.</p>
+                    </blockquote>
+                    <p>В языке Python цикл <code class="code">for</code> на самом деле является синтаксическим сахаром, поддерживающим концепцию итерируемого объекта. Его обобщённый синтаксис выглядит примерно так:</p>
+                    <pre data-language="python"><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">any_iterable</span><span class="p">:</span>
+    <span class="c1">#  тело цикла</span></pre>
+                    <p>Здесь <code class="code">item</code> это выбранное программистом имя переменной итерирования, которая доступна в теле цикла. В начале каждой итерации в эту переменную помещается значение из <code class="code">any_iterable</code>. Под <code class="code">any_iterable</code> может стоять <em>любой итерируемый объект</em>.</p>
+                    <p>Знакомые нам примеры итерируемых объектов:</p>
+                    <ul>
+                        <li><code class="code">range</code> - генератор арифметической последовательности, <code class="code">for</code> "просит" новые значения у генератора, пока те не закончатся</li>
+                        <li><code class="code">str</code> - строковый тип, итерирование происходит по символам</li>
+                        <li><code class="code">list</code> - список, итерирование происходит по элементам</li>
+                    </ul>
+                    <p>Таким образом, "pythonic way" пробега по списку может выглядеть так:</p>
+                    <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mi">0</span>
+<span class="mi">20</span>
+<span class="mi">55</span></pre>
+                    <p>Отсюда видно, что программист в таком случае <em>теряет</em> удобный способ получить индекс элемента, если он ему нужен.</p>
+                    <p>Под подобные мелкие задачи существует множество "питонизмов" - специфических для языка Python инструментов.</p>
+                    <p>Один из примеров - <code class="code">enumerate</code> - позволяет программисту получить в цикле индекс <strong>итерации</strong> (!) и сам элемент.</p>
+                    <p>При таком использовании номер итерации совпадает с индексом элемента:</p>
+                    <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="mi">20</span>
+<span class="mi">2</span> <span class="mi">55</span></pre>
+                    <p>Код приведённый для <code class="code">enumerate</code> выше, аналогичен универсальным:</p>
+                    <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)):</span>
+<span class="o">...</span>     <span class="n">elem</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="mi">20</span>
+<span class="mi">2</span> <span class="mi">55</span></pre>
+                    <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">elem</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="o">...</span>
+<span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="mi">20</span>
+<span class="mi">2</span> <span class="mi">55</span></pre>
+                </section>
+            </section>
+        </section>
+        <section id="id9">
+            <h2>Соединение и копирование списков</h2>
+            <p>Списки можно соединять <em>in place</em>, т.е. <em>перезаписывая</em>, с помощью метода <code class="code">list.extend</code>:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span></pre>
+            <p>Или соединять, <em>создавая новый</em> список из исходных:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span></pre>
+            <p>С копированием списков нужно быть осторожным. Python никогда не осуществляет <em>копирование</em> <strong>явно</strong>:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span></pre>
+            <p>В строчке <code class="code">b = a</code> лишь создаётся ещё одна <strong>ссылка</strong> на объект <code class="code">[0, 1, 2]</code>, которая присваивается переменной <code class="code">b</code>. В итоге <code class="code">a</code> и <code class="code">b</code> будут указывать на один и тот же объект.</p>
+            <p>Чтобы создать копию, необходимо <em>поэлементно создать</em> новый список из исходного. Например, с помощью функции <code class="code">list()</code>:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span></pre>
+        </section>
+        <section id="id10">
+            <h2>Ремарка о строках</h2>
+            <p>На самом деле, мы уже ранее сталкивались со списками в предудыщих работах, когда использовали <code class="code">str.split</code>:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ab cd ef1 2 301&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="s1">&#39;ef1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;301&#39;</span><span class="p">]</span></pre>
+            <p>Т.е. <code class="code">str.split</code>, по умолчанию, разбивает строку по символам пустого пространства (пробел, табуляция) и создаёт список из получившихся "слов".</p>
+            <p>Загляните в <code class="code">help(str.split)</code>, чтобы узнать, как изменить такое поведение, и разбивать строку, например, по запятым, что является стандартом для представления таблиц в файлах <code class="code">csv</code> (comma separated values).</p>
+            <p>Методом, являющимся обратным к операции <code class="code">str.split</code> является <code class="code">str.join</code>. Он "собирает" строку из списка строк:</p>
+            <pre data-language="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;ab cd ef1 2 301&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="p">[</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="s1">&#39;ef1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;301&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;430&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="p">[</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="s1">&#39;ef1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;430&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="s1">&#39;ab,cd,ef1,2,430&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39; -- &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="s1">&#39;ab -- cd -- ef1 -- 2 -- 430&#39;</span></pre>
+        </section>
+        <section id="o5">
+            <h2>Контест №5</h2>
+            <p><a href="http://judge2.vdi.mipt.ru/cgi-bin/new-register?contest_id=094106">Участвовать</a> в контесте.</p>
+        </section>
+    </section>
+</body>
+</div>
+</html>

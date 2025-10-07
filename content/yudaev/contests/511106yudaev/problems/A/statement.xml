@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <problem
+       package = "ru.ejudge.sample_contest"
+       id = "A"
+       type = "standard">
+      <statement language="ru_RU">
+        <title> Минимум 4 чисел </title>
+        <description><p>Напишите функцию min4(a, b, c, d), вычисляющую минимум четырех чисел, которая не содержит инструкции if, а использует стандартную функцию min от двух аргументов. Считайте четыре целых числа и выведите их минимум.</p>
+        </description>
+      </statement>
+      <examples>
+        <example>
+          <input>5
+1
+7
+3
+</input>
+          <output>1
+</output>
+        </example>
+      </examples>
+    </problem>

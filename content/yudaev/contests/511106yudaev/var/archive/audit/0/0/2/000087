@@ -1,0 +1,50 @@
+Date: 2015/10/16 14:12:31
+From: backulinivan (uid 18517)
+Ip: 93.175.8.149
+Command: submit
+Status: ok
+Run-id: 87
+Run-status: CG
+
+Date: 2015/10/16 14:12:34
+From: SYSTEM
+Status: testing completed
+Run-id: 87
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/16 14:12:31.907954
+  Request completion time:           2015/10/16 14:12:34.934934
+  Total testing duration:            3.027
+  Waiting in compile queue duration: 0.336
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.682
+  Waiting in run queue duration:     0.769
+  Testing duration:                  0.387
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.849
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 87
+Run-status: CG
+
+Date: 2015/12/09 20:30:17
+From: SYSTEM
+Status: testing completed
+Run-id: 87
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:25.696407
+  Request completion time:           2015/12/09 20:30:17.768984
+  Total testing duration:            67072.073
+  Waiting in compile queue duration: 0.331
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   23.444
+  Waiting in run queue duration:     1024.049
+  Testing duration:                  0.375
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66023.869
+

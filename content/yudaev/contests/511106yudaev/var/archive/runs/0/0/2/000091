@@ -1,0 +1,7 @@
+x = int(input())
+y=int(input())
+z=int(input())
+d=int(input())
+min1=min(x,y)
+min2=min(z,d)
+print(min(min1,min2))

@@ -1,0 +1,25 @@
+Date: 2016/10/31 09:42:15
+From: tetris5 (uid 21919)
+Ip: 10.55.193.86
+Command: submit
+Status: ok
+Run-id: 23
+Run-status: CG
+
+Date: 2016/10/31 09:42:21
+From: SYSTEM
+Status: testing completed
+Run-id: 23
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/10/31 09:42:15.701535
+  Request completion time:           2016/10/31 09:42:21.282890
+  Total testing duration:            5.581
+  Waiting in compile queue duration: 0.861
+  Compilation duration:              0.206
+  Waiting in serve queue duration:   0.223
+  Waiting in run queue duration:     0.963
+  Testing duration:                  2.954
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.374
+

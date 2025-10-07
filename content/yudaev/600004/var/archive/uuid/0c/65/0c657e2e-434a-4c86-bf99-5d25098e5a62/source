@@ -1,0 +1,29 @@
+#include<stdio.h>
+int main()
+{
+	long long int table[22][22];//[n][m]
+	int n, m, i, j;
+	scanf("%d %d", &n, &m);
+	for(i = 0; i != m + 1; i++)
+	{
+		table[0][i] = 1;
+	}
+	for(i = 0; i != m + 1; i++)
+	{
+		table[i][0] = 1;
+	}
+	for(i = 1; i != n + 1; i++)
+	{
+		for(j = 1; j != m + 1; j++)
+		{
+			table[i][j] = table[i][j - 1] + table[i - 1][j];
+		}
+	}
+	if(n * m == 0)
+	{
+		printf("%d", 0);
+		return 0;
+	}
+	printf("%lli", table[n][m]);
+	return 0;
+}

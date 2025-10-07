@@ -1,0 +1,15 @@
+def Transpose(a):
+    b=[['' for i in range(len(a))] for j in range(len(a[1]))]
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            b[j][i]=a[i][j]
+    return b
+c=input().split()
+n=int(c[0])
+m=int(c[1])
+a=[[]]*n
+for i in range(n):
+    a[i]=input().split()
+a=Transpose(a)
+for i in range(m):
+    print(' '.join(a[i]))

@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+int
+main ()
+{
+  int q, t, r, i, j, k, n;
+  int b[100][100], a[100][100];
+  scanf ("%d", &n);
+  q = n;
+//printf("Halo!");
+  for (i = 0; i < n; i++)
+    {
+      for (j = 0; j < n; j++)
+	{
+
+	  if (j <= i)
+	    {
+	      scanf ("%d", &k);
+	      a[i][j] = k;
+	    }
+	  else
+	    {
+	      a[i][j] = 0;
+	    }
+	}
+
+    }
+//for(i=0;i < n;i++)
+//{
+//for(j=0;j < n;j++)
+//{
+//printf("%d ", a[i][j]);
+//}
+//printf("\n");
+//}
+  for (j = 0; j < n; j++)
+    {
+      b[n - 1][j] = a[n - 1][j];
+    }
+//for(i=0;i<n;i++)
+//{
+//for(j=0;j<n;j++)
+//{
+//printf("%d ",b[i][j]);
+//}
+//printf("\n");
+//}
+//printf("%d@ ",q-2);
+  for (t = 1; q > 1; q--)
+    {
+//printf("%d ",q);
+      for (r = 0; r < q - 1; r++)
+	{
+//printf("%d# ",r);
+//printf("%d %d %d !",b[q-1][r],b[q-1][r+1],a[q-2][r]);
+	  if (b[q - 1][r] > b[q - 1][r + 1])
+	    b[q - 2][r] = a[q - 2][r] + b[q - 1][r];
+	  else
+	    b[q - 2][r] = a[q - 2][r] + b[q - 1][r + 1];
+	}
+    }
+//for(i=0;i<n;i++)
+//{
+//for(j=0;j<n;j++)
+//{
+//printf("%d ",b[i][j]);
+//}
+//printf("\n");
+//}
+  printf ("%d", b[0][0]);
+  return 0;
+}

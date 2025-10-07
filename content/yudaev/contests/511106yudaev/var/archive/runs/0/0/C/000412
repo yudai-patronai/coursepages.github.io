@@ -1,0 +1,8 @@
+n = int(input()) 
+A = [[0 for i in range(n)] for k in range(n)] 
+for m in range(n): 
+    A[m] = list(map(int,input().split())) 
+def Rotate(A): 
+    A = [[A[n - 1 - q][p] for q in range(n)] for p in range(n)] 
+    return (str(A)[2:-2].replace("[","").replace("],","\n").replace("'","").replace(" ","").replace(","," ")) 
+print(Rotate(A))

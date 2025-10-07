@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main()
+{
+	int aa, bb, cc, q, i, a, b, c, n;
+	scanf("%d", &n);
+	q = 0;
+	aa = -1;
+	bb = -1;
+	cc = -1;
+	for(i = 0; i < n; i++)
+	{
+		scanf("%d %d %d", &a, &b, &c);
+		if (aa < 0) 
+			aa = q + a; else
+			if (q + a < aa)
+				aa = q + a;
+		if (bb < 0)
+			bb = q + b; else
+			if (q + b < bb)
+				bb = q + b;
+		cc = q + c;		
+		q = aa;
+		aa = bb;
+		bb = cc;
+		cc = -1;
+	}
+	printf("%d", q);
+return 0;
+}

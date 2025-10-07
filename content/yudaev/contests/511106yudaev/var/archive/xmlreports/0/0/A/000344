@@ -1,0 +1,82 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="344" judge-id="345" status="PT" scoring="KIROV" run-tests="7" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="0" score="0" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>ac61ee92-368c-4cce-a6bc-d3608733041b</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="0" visibility="full" >
+      <input size="4">3 4
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+    <test num="2" status="RT" exit-code="1" time="36" real-time="37" max-memory-used="311296" nominal-score="1" score="0" visibility="full" >
+      <input size="4">6 8
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+    <test num="3" status="RT" exit-code="1" time="36" real-time="37" max-memory-used="20619264" nominal-score="1" score="0" >
+      <input size="4">8 3
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+    <test num="4" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">7 5
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+    <test num="5" status="RT" exit-code="1" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">1 6
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+    <test num="6" status="RT" exit-code="1" time="36" real-time="37" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">8 1
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+    <test num="7" status="RT" exit-code="1" time="36" real-time="37" max-memory-used="311296" nominal-score="1" score="0" >
+      <input size="4">1 1
+</input>
+      <output size="0"></output>
+      <stderr size="99">  File &quot;./000344&quot;, line 8
+    if (m + k) % 2 = 0:
+                   ^
+SyntaxError: invalid syntax
+</stderr>
+    </test>
+  </tests>
+</testing-report>

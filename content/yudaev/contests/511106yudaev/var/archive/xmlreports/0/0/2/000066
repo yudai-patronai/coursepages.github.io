@@ -1,0 +1,82 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="66" judge-id="67" status="PT" scoring="KIROV" run-tests="5" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="2" score="2" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>99a90aff-4a68-48f0-9e31-f33242e5859a</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+      <input size="8">0
+0
+1
+1
+</input>
+      <output size="19">1.4142135623730951
+</output>
+      <correct size="19">1.4142135623730951
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="36" real-time="37" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+      <input size="8">0
+0
+1
+0
+</input>
+      <output size="4">1.0
+</output>
+      <correct size="4">1.0
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="3" status="PE" time="36" real-time="53" max-memory-used="307200" nominal-score="1" score="0"  checker-comment="user program output: output: cannot parse double value" >
+      <input size="10">3
+-2
+-1
+7
+</input>
+      <output size="41">(1.8173540210239707+0.5502505227003375j)
+</output>
+      <correct size="18">9.848857801796104
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="55">user program output: output: cannot parse double value
+</checker>
+    </test>
+    <test num="4" status="WA" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="0"  checker-comment="Answers do not match: output: 0.7952707288, correct: 0.1414213562" >
+      <input size="16">0.1
+0.1
+0.2
+0.2
+</input>
+      <output size="19">0.7952707287670506
+</output>
+      <correct size="19">0.1414213562373095
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="66">Answers do not match: output: 0.7952707288, correct: 0.1414213562
+</checker>
+    </test>
+    <test num="5" status="PE" time="36" real-time="38" max-memory-used="311296" nominal-score="1" score="0"  checker-comment="user program output: output: cannot parse double value" >
+      <input size="12">-1
+-1
+-3
+-5
+</input>
+      <output size="41">(1.3065629648763766+1.3065629648763764j)
+</output>
+      <correct size="17">4.47213595499958
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="55">user program output: output: cannot parse double value
+</checker>
+    </test>
+  </tests>
+</testing-report>

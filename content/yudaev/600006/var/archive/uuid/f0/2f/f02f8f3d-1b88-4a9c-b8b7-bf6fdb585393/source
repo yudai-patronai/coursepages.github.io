@@ -1,0 +1,19 @@
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char * argv[])
+{	
+	int i, c, sum;
+	sum = 0;
+	if (argc == 0)
+		return c;
+	else
+		for (i = 1; i < argc; i++)
+		{
+			scanf(argv[i], "%d", &c);
+			sum += c;
+		}
+	return sum;
+}

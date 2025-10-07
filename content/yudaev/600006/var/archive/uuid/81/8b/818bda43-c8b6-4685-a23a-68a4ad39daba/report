@@ -1,0 +1,73 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="73" judge-id="54" status="PT" scoring="KIROV" run-tests="5" contest-id="600006" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" info-available="yes" tests-passed="2" score="4" max-score="50" time-limit-ms="1000" real-time-limit-ms="10000" marked-flag="no" >
+  <uuid>818bda43-c8b6-4685-a23a-68a4ad39daba</uuid>
+  <host>localhost.localdomain</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.831</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="WA" time="540" real-time="547" max-memory-used="117993472" nominal-score="2" score="0" visibility="full" >
+  <program-stats-str>{ utime=404, stime=136, ptime=540, rtime=547, maxvsz=117993472, maxrss=135127040, nvcsw=17, nivcsw=5 }</program-stats-str>
+      <input size="0"></input>
+      <output size="22">Can't open file (null)</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="2" status="WA" time="509" real-time="516" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;trampampam&lt;
+</args>
+  <program-stats-str>{ utime=398, stime=111, ptime=509, rtime=516, maxvsz=117993472, maxrss=134180864, nvcsw=15, nivcsw=8 }</program-stats-str>
+      <input size="0"></input>
+      <output size="0"></output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+    <test num="3" status="OK" time="544" real-time="552" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=425, stime=119, ptime=544, rtime=552, maxvsz=117993472, maxrss=134184960, nvcsw=13, nivcsw=9 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1294336, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="12">123456789ab
+</input>
+      <output size="2">12</output>
+      <correct size="4">12
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="OK" time="538" real-time="545" max-memory-used="117993472" nominal-score="2" score="2"  checker-comment="OK" >
+  <args>[  1]: &gt;output.txt&lt;
+</args>
+  <program-stats-str>{ utime=422, stime=116, ptime=538, rtime=545, maxvsz=117993472, maxrss=134180864, nvcsw=23, nivcsw=16 }</program-stats-str>
+  <checker-stats-str>{ utime=0, stime=1, ptime=1, rtime=2, maxvsz=307200, maxrss=1294336, nvcsw=1, nivcsw=1 }</checker-stats-str>
+      <input size="0"></input>
+      <output size="1">0</output>
+      <correct size="3">0
+
+</correct>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="5" status="TL" time="1228" real-time="1238" max-memory-used="117993472" nominal-score="2" score="0" >
+  <args>[  1]: &gt;input.txt&lt;
+</args>
+  <program-stats-str>{ utime=1107, stime=121, ptime=1228, rtime=1238, maxvsz=117993472, maxrss=134180864, nvcsw=16, nivcsw=8 }</program-stats-str>
+      <input too-big="yes" original-size="1048576" />
+      <output size="7">1048576</output>
+      <stderr size="12">TEST
+PASSED
+</stderr>
+    </test>
+  </tests>
+</testing-report>

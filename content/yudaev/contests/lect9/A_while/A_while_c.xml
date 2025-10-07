@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<problem  package = "ru.ejudge.2012_advanced_11"
+   id = "1"   type = "standard">
+	<statement language="ru_RU">
+		<description>
+<title>Площадь</title>
+<p>
+Функция <b>y=f(x)</b> определяет верхнюю границу фигуры.
+</p>
+<p>
+Отрезок от <b>a</b> до <b>b</b> делится на части размером <b>delta</b>.<br/> <b>delta</b> - размер шага.<br/> Всего получается <b> n = (b-a)/delta</b> шагов
+</p>
+<p>
+<img src="/tasks/kr3/f_left.png" width="400"/>
+</p>
+<hr/>
+<p>
+<b>Пример программы</b>,которая печатает все значения <b>y=f(x)</b>
+на каждом шаге.
+</p>
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+// Функция x * x+4*x+4 (f&gt;=0)
+float f(float x){
+  float y;
+  y = x * x + 4 * x + 4;
+  return y; 
+}
+
+int main(){
+   float y, x; 
+   float a;                         // начало отрезка (a &lt; b)
+   float b;                         // конец отрезка (a &gt;=0, b&gt;=0)
+   float delta;                     // размер шага
+   int i, n;
+   float s=0;
+   
+   delta = 2.0; 
+
+   scanf("%f%f", &amp;a, &amp;b);
+
+   n = (b - a) / delta;             // количество шагов
+
+   x = a;                           // сначала x равен началу отрезка (левые значения)
+
+/*
+   начинаем с нулевого шага i==0
+   пока i &lt; n вычисляем значения функции
+   и печатаем
+*/
+    i = 0;
+    while(i&lt;n){
+
+        y = f(x);                   //  вычислили значения в точке x
+        printf("%i=%f x=%f y=%f ", i, x, y); 
+        
+                                    // готовим следующий шаг
+        x = x + delta;              // изменили x на delta    
+        i++;                        // увеличили номер шага
+   }
+   return 0;
+}
+</pre>
+
+
+<p>
+Чтобы вычислить площадь фигуры <b>S</b> почти точно, можно 
+поделить фигуру на маленькие прямоугольники. Ширина каждого прямоугольника <b>delta</b>. Высота - <b>f(x<sub>i</sub>)</b>. 
+</p>
+<img src="/tasks/kr3/s_left.png" width="400"/>
+
+<p>
+Площадь каждого прямоугольника можно вычислить. <b>S=f(x)*delta</b>
+</p>
+<hr/>
+<p>
+<b>a</b> и <b>b</b> - границы отрезка. <br/>
+<b>delta=2.0</b>.<br/>
+<b>f(x) = x<sup>2</sup>+4*x+4</b> - для этой функции нужно вычислить площадь фигуры на отрезке от <b>a</b> до <b>b</b>. 
+</p>
+<p>
+<b>Написать программу</b>, котрая вычисляет площадь всей фигуры на отрезке от <b>a</b> до <b>b</b>. Шаг <b>delta=2.0</b>.
+</p>
+
+<hr/>
+
+	</description>
+	
+		<input_format>
+			<p>Числа  <b>a</b> <b>b</b></p>
+		</input_format>
+		<output_format>
+			<p>число <b> S</b> - площадь фигуры</p>
+		</output_format>
+	</statement>
+	<examples>
+		<example>
+			<input>0 10</input>
+			<output>440</output>
+		</example>
+	</examples>
+</problem>
+

@@ -1,0 +1,138 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="0" judge-id="1" status="OK" scoring="KIROV" run-tests="9" contest-id="540106" real-time-available="yes" max-memory-used-available="yes" correct-available="yes" tests-passed="9" score="100" max-score="100" time-limit-ms="1000" real-time-limit-ms="5000" marked-flag="no" >
+  <uuid>138b8508-232a-4966-b3eb-eb528835b50b</uuid>
+  <host>judge2</host>
+  <cpu-model>Intel(R) Xeon(R) CPU            5160  @ 3.00GHz</cpu-model>
+  <cpu-mhz>2992.496</cpu-mhz>
+  <compiler_output></compiler_output>
+  <tests>
+    <test num="1" status="OK" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+      <input size="8">4
+5
+6
+7
+</input>
+      <output size="2">4
+</output>
+      <correct size="2">4
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="2" status="OK" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" visibility="full" >
+      <input size="8">5
+4
+6
+7
+</input>
+      <output size="2">4
+</output>
+      <correct size="2">4
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="3" status="OK" time="37" real-time="39" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">5
+7
+4
+6
+</input>
+      <output size="2">4
+</output>
+      <correct size="2">4
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="4" status="OK" time="37" real-time="38" max-memory-used="311296" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">7
+6
+5
+4
+</input>
+      <output size="2">4
+</output>
+      <correct size="2">4
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="5" status="OK" time="36" real-time="37" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">6
+4
+5
+7
+</input>
+      <output size="2">4
+</output>
+      <correct size="2">4
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="6" status="OK" time="36" real-time="37" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">1
+1
+1
+1
+</input>
+      <output size="2">1
+</output>
+      <correct size="2">1
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="7" status="OK" time="37" real-time="39" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">1
+1
+2
+2
+</input>
+      <output size="2">1
+</output>
+      <correct size="2">1
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="8" status="OK" time="36" real-time="38" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">2
+2
+1
+1
+</input>
+      <output size="2">1
+</output>
+      <correct size="2">1
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+    <test num="9" status="OK" time="37" real-time="38" max-memory-used="307200" nominal-score="1" score="1"  checker-comment="OK" >
+      <input size="8">1
+1
+1
+2
+</input>
+      <output size="2">1
+</output>
+      <correct size="2">1
+</correct>
+      <stderr size="0"></stderr>
+      <checker size="3">OK
+</checker>
+    </test>
+  </tests>
+</testing-report>

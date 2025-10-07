@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<problem  package = "ru.ejudge.2012_advanced_11"
+   id = "1"   type = "standard">
+	<statement language="ru_RU">
+		<description>
+            <title>Шеренга-2</title>
+			<p>Студентов надо построить в шеренгу от самого легкого до самого тяжелого. <del>Кто мало весит - тем выдать матпомощь.</del>.<br/> При одинаковом весе сначала идет студент с большим ростом (тощий).</p>
+		</description>
+		<input_format>
+			<p>Целое число N, 0 &lt; N &lt; 100, - количество студентов. Затем N пар чисел (float) через пробел - рост в метрах и вес в килограммах одного студента. </p>
+		</input_format>
+		<output_format>
+			<p>Рост и вес (печатать рост с точностью до сантиметров, а вес - до граммов) по одному студенту на строку от первого студента в шеренге к последнему</p>
+		</output_format>
+	</statement>
+	<examples>
+		<example>
+			<input><pre>3
+1.8 70
+1.75 70
+1.8 69.5
+</pre></input>
+			<output><pre>1.80 69.500
+1.80 70.000            
+1.75 70.000</pre></output>
+		</example>
+	</examples>
+</problem>

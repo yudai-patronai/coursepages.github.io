@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main()
+{
+    int i, n, k, c, d;
+
+    if (NULL == freopen("input.txt", "rt", stdin))
+    {
+        printf("Can't open the file");
+        return 1;
+    }
+    scanf("%d", &n);
+    fclose(stdin);
+
+    k = 1;
+    d = 0;
+    i = 0;
+    while (d <= n)
+    {
+        i = k * (k + 1) / 2;
+        d = 0;
+        for (c = 1; c * c < i; c++)
+        {
+            if (i % c == 0)
+                d += 2;
+        }
+        if (c * c == i)
+                ++d;
+        ++k;
+    }
+
+
+    if (NULL == freopen("output.txt", "wt", stdout))
+    {
+        printf("Can't open the file");
+        return 2;
+    }
+    printf("%d", i);
+    fclose(stdout);
+
+    return 0;
+}

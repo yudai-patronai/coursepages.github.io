@@ -1,0 +1,12 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="219" judge-id="19" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>6af94e7d-3170-4e11-bee4-e3c4ec9f1647</uuid>
+  <compiler_output>000219.c: In function 'main':
+000219.c:18:5: error: format '%d' expects argument of type 'int *', but argument 2 has type 'long int *' [-Werror=format=]
+     scanf(&quot;%d&quot;, &amp;n);
+     ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

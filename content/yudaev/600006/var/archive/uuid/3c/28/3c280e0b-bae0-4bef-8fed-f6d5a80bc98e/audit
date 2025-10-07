@@ -1,0 +1,25 @@
+Date: 2016/10/31 10:41:54
+From: nbveha (uid 20356)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 61
+Run-status: CG
+
+Date: 2016/10/31 10:41:56
+From: SYSTEM
+Status: testing completed
+Run-id: 61
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/31 10:41:54.683483
+  Request completion time:           2016/10/31 10:41:56.399382
+  Total testing duration:            1.716
+  Waiting in compile queue duration: 0.050
+  Compilation duration:              0.218
+  Waiting in serve queue duration:   0.116
+  Waiting in run queue duration:     0.109
+  Testing duration:                  1.105
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.117
+

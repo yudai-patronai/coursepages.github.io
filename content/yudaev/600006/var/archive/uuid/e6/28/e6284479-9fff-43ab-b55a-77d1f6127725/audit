@@ -1,0 +1,25 @@
+Date: 2016/11/02 23:58:38
+From: alexpan98 (uid 21630)
+Ip: 213.87.156.248
+Command: submit
+Status: ok
+Run-id: 360
+Run-status: CG
+
+Date: 2016/11/02 23:58:44
+From: SYSTEM
+Status: testing completed
+Run-id: 360
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/02 23:58:38.913048
+  Request completion time:           2016/11/02 23:58:44.019992
+  Total testing duration:            5.107
+  Waiting in compile queue duration: 0.338
+  Compilation duration:              0.227
+  Waiting in serve queue duration:   0.539
+  Waiting in run queue duration:     0.845
+  Testing duration:                  2.691
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.467
+

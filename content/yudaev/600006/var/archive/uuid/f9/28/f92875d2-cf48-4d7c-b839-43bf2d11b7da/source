@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ( int argc, char** argv, char** envp )
+{
+  int res = 0, i;
+  for ( i = 0; i < atoi(argv[1]); ++i )
+  {
+    printf ( "%s\n", envp[i] );
+  }
+  return 0;
+}

@@ -1,0 +1,10 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="118" judge-id="11" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>b2071fe3-6d1a-4761-b940-9f824e315517</uuid>
+  <compiler_output>/usr/lib/gcc/x86_64-redhat-linux/4.8.3/../../../../lib64/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+</compiler_output>
+</testing-report>

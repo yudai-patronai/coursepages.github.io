@@ -1,0 +1,14 @@
+n, m = list(map(int,input().split()))
+l = [[None] for a in range(n)]
+for s in range(len(l)):
+    l[s] = list(map(int, input().split()))
+i, j = list(map(int,input().split()))
+
+
+def SwapColumns(A, i, j):
+    for line in A:
+        line[i],line[j] = line[j], line[i]
+    return A
+SwapColumns(l, i, j)
+for z in l:
+    print(*z)

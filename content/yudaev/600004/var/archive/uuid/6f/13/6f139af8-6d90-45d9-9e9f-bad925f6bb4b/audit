@@ -1,0 +1,25 @@
+Date: 2016/11/09 16:38:34
+From: Ann8156712 (uid 20843)
+Ip: 93.175.29.93
+Command: submit
+Status: ok
+Run-id: 297
+Run-status: CG
+
+Date: 2016/11/09 16:38:40
+From: SYSTEM
+Status: testing completed
+Run-id: 297
+Run-status: PT
+  Profiling information:
+  Request start time:                2016/11/09 16:38:34.792156
+  Request completion time:           2016/11/09 16:38:40.170469
+  Total testing duration:            5.378
+  Waiting in compile queue duration: 0.550
+  Compilation duration:              0.285
+  Waiting in serve queue duration:   0.312
+  Waiting in run queue duration:     0.942
+  Testing duration:                  2.716
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.573
+

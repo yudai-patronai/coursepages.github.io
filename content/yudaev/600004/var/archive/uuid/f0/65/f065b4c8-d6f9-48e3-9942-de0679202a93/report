@@ -1,0 +1,21 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="100" judge-id="1" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>f065b4c8-d6f9-48e3-9942-de0679202a93</uuid>
+  <compiler_output>000100.c: In function 'main':
+000100.c:11:5: error: 'for' loop initial declarations are only allowed in C99 mode
+     for (int i= 0; i &lt; n; i++)
+     ^
+000100.c:11:5: note: use option -std=c99 or -std=gnu99 to compile your code
+000100.c:13:14: error: redefinition of 'i'
+     for (int i = n - 1; i &gt;= 0;) {
+              ^
+000100.c:11:14: note: previous definition of 'i' was here
+     for (int i= 0; i &lt; n; i++)
+              ^
+000100.c:13:5: error: 'for' loop initial declarations are only allowed in C99 mode
+     for (int i = n - 1; i &gt;= 0;) {
+     ^
+</compiler_output>
+</testing-report>

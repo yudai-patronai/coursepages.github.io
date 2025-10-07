@@ -1,0 +1,16 @@
+n=int(input())
+A=[]
+for i in range(n):
+    A.append(list(map(int,input().split())))
+def Rotate(Array):
+    Array=list(zip(*Array[ : : -1]))
+    return Array
+A=Rotate(A)
+for i in range(n):
+    Q=''
+    for j in range(n):
+        if j!=n-1:
+            Q=Q+str(A[i][j])+' '
+        else:
+            Q=Q+str(A[i][j])
+    print(Q)

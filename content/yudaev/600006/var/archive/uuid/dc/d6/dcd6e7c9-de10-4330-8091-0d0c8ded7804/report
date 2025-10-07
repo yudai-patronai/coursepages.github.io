@@ -1,0 +1,15 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="78" judge-id="59" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>dcd6e7c9-de10-4330-8091-0d0c8ded7804</uuid>
+  <compiler_output>000078.c: In function 'main':
+000078.c:17:9: error: too many arguments for format [-Werror=format-extra-args]
+         printf(&quot;Usage: stat filename&quot;, argv[1]);
+         ^
+000078.c:31:5: error: format '%d' expects argument of type 'int', but argument 2 has type 'long int' [-Werror=format=]
+     printf(&quot;%d&quot;, ftell(stdin));
+     ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

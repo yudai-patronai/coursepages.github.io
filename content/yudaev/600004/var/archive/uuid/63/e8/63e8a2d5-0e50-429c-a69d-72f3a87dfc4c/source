@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+unsigned int fact(int);
+unsigned int binom(int, int);
+int main() {
+	unsigned int bin;
+	int N, M;
+	scanf("%d %d", &N, &M);
+	if (N < M)
+		printf("%u", binom(M, N));
+	else
+		printf("%u", binom(N, M));
+	return 0;
+}
+unsigned int fact(int n) {
+	unsigned int k = 1;
+	int i = 2;
+	for (i; i <= n; i++)
+		k *= i;
+	return k;
+}
+unsigned int binom(int n, int k) {
+	int i = k +1;
+	unsigned int p = fact(k);
+	unsigned int bik = 1;
+	for (i; i <= n + k; i++)
+		bik *= i;
+	return bik / p;
+}

@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main(int argv, char* try[])
+{
+    int i, k=0, l;
+    for(i=1; i < argv; i++)
+    {
+        sscanf(try[i], "%d", &l);
+        k+=l;
+    }
+    return k;
+}

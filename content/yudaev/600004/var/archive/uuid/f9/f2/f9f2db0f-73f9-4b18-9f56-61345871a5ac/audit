@@ -1,0 +1,25 @@
+Date: 2016/10/18 15:31:08
+From: ink699 (uid 21811)
+Ip: 93.175.6.226
+Command: submit
+Status: ok
+Run-id: 128
+Run-status: CG
+
+Date: 2016/10/18 15:31:38
+From: SYSTEM
+Status: testing completed
+Run-id: 128
+Run-status: OK
+  Profiling information:
+  Request start time:                2016/10/18 15:31:08.296786
+  Request completion time:           2016/10/18 15:31:38.803851
+  Total testing duration:            30.507
+  Waiting in compile queue duration: 0.282
+  Compilation duration:              0.294
+  Waiting in serve queue duration:   0.188
+  Waiting in run queue duration:     0.077
+  Testing duration:                  28.786
+  Post-processing duration:          0.003
+  Waiting in serve queue duration:   0.877
+

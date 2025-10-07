@@ -1,0 +1,25 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="126" judge-id="3" status="CE" scoring="KIROV" run-tests="0" contest-id="600004" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>fbbe9b77-4301-42bb-bc30-4ead1c6b553a</uuid>
+  <compiler_output>000126.c: In function 'main':
+000126.c:13:5: error: 'for' loop initial declarations are only allowed in C99 mode
+     for(int i = 1; i &lt;= N; ++i)
+     ^
+000126.c:13:5: note: use option -std=c99 or -std=gnu99 to compile your code
+000126.c:17:9: error: redefinition of 'i'
+     int i = 0;
+         ^
+000126.c:13:13: note: previous definition of 'i' was here
+     for(int i = 1; i &lt;= N; ++i)
+             ^
+000126.c:27:5: error: expected declaration or statement at end of input
+     printf(&quot;%d&quot;, t[N]);
+     ^
+000126.c:27:5: error: control reaches end of non-void function [-Werror=return-type]
+     printf(&quot;%d&quot;, t[N]);
+     ^
+cc1: some warnings being treated as errors
+</compiler_output>
+</testing-report>

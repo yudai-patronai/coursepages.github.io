@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int (int n, char** a)
+{
+    //scanf("%d", n);
+    //printf("%d", n);
+    if (n != 0)
+        return n;
+    else
+        return 0;
+}

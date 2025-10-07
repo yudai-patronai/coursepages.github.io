@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 120
+
+int max(int a, int b) {
+    if(a >= b) return(a);
+    else return b;
+}
+
+int main() {
+    int n, T[MAX][MAX], i, j, ANSW[MAX][MAX];
+    for(i = 0; i < MAX; i++) {
+        for(j = 0; j < MAX; j++) {
+            T[i][j] = 0;
+            ANSW[i][j] = 0;
+        }
+    }
+    scanf("%d", &n);
+    for(i = 0; i < n; i++) {
+        for(j = 0; j <= i; j ++) {
+            scanf("%d", &T[i][j]);
+        }
+    }
+    for(i = 0; i < n ; i++) {
+        ANSW[n - 1][i] = T[n - 1][i];
+        //printf("%d",  ANSW[n - 1][i]);
+    }
+    for(i = n - 2; i >= 0; i--){
+        for(j = 0; j <= i; j++) {
+            ANSW[i][j] = T[i][j] + max(ANSW[i + 1][j], ANSW[i + 1][j + 1]);
+            //printf("A %d T %d max %d \n", ANSW[i][j], T[i][j], max(ANSW[i + 1][j], ANSW[i + 1][j + 1]));
+        }
+    }
+    printf("%d", ANSW[0][0]);
+    //system("pause");
+    return 0;
+}

@@ -1,0 +1,22 @@
+n=int(input()) 
+B=[0]*n 
+for i in range(n): 
+    B[i]=[0]*n 
+for i in range(n): 
+    A=list(map(int,input().split())) 
+for j in range(n): 
+    B[i][j]=A[j] 
+def IsSymmetric(B): 
+    for i in range (len(B)): 
+        for j in range(len(B)): 
+            if B[i][j]==B[j][i]: 
+                Z=True 
+            else: 
+                Z=False 
+                return(Z) 
+                break 
+    return(Z) 
+if IsSymmetric(B)==True: 
+    print('YES') 
+else: 
+    print('NO')

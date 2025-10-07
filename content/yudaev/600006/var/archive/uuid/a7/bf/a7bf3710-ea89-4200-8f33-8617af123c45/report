@@ -1,0 +1,11 @@
+Content-type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<testing-report run-id="152" judge-id="31" status="CE" scoring="KIROV" run-tests="0" contest-id="600006" compile-error="yes" tests-passed="0" score="0" max-score="0" >
+  <uuid>a7bf3710-ea89-4200-8f33-8617af123c45</uuid>
+  <compiler_output>000152.c:1:18: fatal error: stdlib: No such file or directory
+ #include &lt;stdlib&gt;
+                  ^
+compilation terminated.
+</compiler_output>
+</testing-report>

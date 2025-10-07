@@ -1,0 +1,50 @@
+Date: 2015/10/15 20:20:49
+From: azazoth (uid 18498)
+Ip: 93.175.8.148
+Command: submit
+Status: ok
+Run-id: 47
+Run-status: CG
+
+Date: 2015/10/15 20:20:51
+From: SYSTEM
+Status: testing completed
+Run-id: 47
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/10/15 20:20:49.138574
+  Request completion time:           2015/10/15 20:20:51.383569
+  Total testing duration:            2.245
+  Waiting in compile queue duration: 0.934
+  Compilation duration:              0.004
+  Waiting in serve queue duration:   0.095
+  Waiting in run queue duration:     0.940
+  Testing duration:                  0.216
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   0.056
+
+Date: 2015/12/09 01:52:23
+From: ejudge (uid 1)
+Ip: 93.175.4.142
+Command: rejudge
+Status: ok
+Run-id: 47
+Run-status: CG
+
+Date: 2015/12/09 20:29:59
+From: SYSTEM
+Status: testing completed
+Run-id: 47
+Run-status: OK
+  Profiling information:
+  Request start time:                2015/12/09 01:52:24.653914
+  Request completion time:           2015/12/09 20:30:00.103913
+  Total testing duration:            67055.450
+  Waiting in compile queue duration: 0.217
+  Compilation duration:              0.003
+  Waiting in serve queue duration:   20.027
+  Waiting in run queue duration:     884.826
+  Testing duration:                  0.216
+  Post-processing duration:          0.000
+  Waiting in serve queue duration:   66150.161
+

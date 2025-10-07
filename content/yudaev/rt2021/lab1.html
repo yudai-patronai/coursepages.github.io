@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Основы shell и Python3</title>
+    <meta charset="utf-8" />
+    <meta content="2019-09-09 09:00" name="date" />
+    <meta content="Работа в интерпретаторе Python 3." name="summary" />
+    <meta content="draft" name="status" />
+</head>
+<style>
+div{
+  width: 600px;
+  margin: auto;
+  border: 0px ;
+  
+}
+body{background-color: #ccc;}
+</style>
+<div>
+<body>
+    <section id="shell-python3">
+        <h1>Основы shell и Python3</h1>
+        <aside id="id1" class="topic contents">
+            <h1>Содержание</h1>
+            <ul>
+                <li><a href="#id2">Командный интерпретатор</a></li>
+                <li><a href="#id3">Команды</a>
+                    <ul>
+                        <li><a href="#echo">echo</a></li>
+                        <li><a href="#man">man</a></li>
+                        <li><a href="#pwd-ls-cd">Директории. Команды pwd, ls, cd</a></li>
+                        <li><a href="#cd">Команда cd</a></li>
+                        <li><a href="#mkdir">Команда mkdir</a></li>
+                        <li><a href="#cat">Команда cat</a></li>
+                        <li><a href="#id4">Перенаправление ввода-вывода</a></li>
+                    </ul>
+                </li>
+                <li><a href="#python3">Введение в Python3</a>
+                    <ul>
+                        <li><a href="#id5">Интерактивный режим</a></li>
+                        <li><a href="#id6">Программируемый режим</a></li>
+                        <li><a href="#o1">Упражнение №1: первая программа</a></li>
+                    </ul>
+                </li>
+                <li><a href="#python-3">Базовый синтаксис языка Python 3</a>
+                    <ul>
+                        <li><a href="#id7">Типы данных</a></li>
+                        <li><a href="#id8">Операции с числами</a></li>
+                        <li><a href="#id9">Операции над строками</a></li>
+                        <li><a href="#id10">Ветвление</a></li>
+                        <li><a href="#id11">Вложенные условные инструкции</a></li>
+                        <li><a href="#id12">Операторы сравнения</a></li>
+                        <li><a href="#bool">Тип данных bool</a></li>
+                        <li><a href="#id13">Каскадные условные инструкции</a></li>
+                        <li><a href="#while">Цикл while</a></li>
+                        <li><a href="#for">Цикл for</a></li>
+                    </ul>
+                </li>
+                <li><a href="#id14">Контест №1</a></li>
+            </ul>
+        </aside>
+        <section id="id2">
+            <h2>Командный интерпретатор</h2>
+            <p>Kомандный интерпретатор (или командная оболочка) – это программа, принимающая и выполняющая программы. Командный интерпретатор также поддерживает конструкции программирования, позволяя составлять сложные команды из более простых. Эти сложные команды, или сценарии можно сохранять в виде файлов, которые могут становиться новыми самостоятельными командами. В действительности многие команды в обычной Linux-системе являются сценариями. Мы рассмотрим командный интерпретатор bash – это один из нескольких интерпретаторов, доступных в Linux.</p>
+            <p>Для ввода данных и вывода результатов интерпретаторы используют три стандартных потока ввода/вывода:</p>
+            <ol type="1">
+                <li><code class="code">stdin</code> – стандартный поток ввода (standard input stream), обеспечивающий ввод для команд.</li>
+                <li><code class="code">stdout</code> – стандартный поток вывода (standard output stream), обеспечивающий отображение результатов выполнения команд.</li>
+                <li><code class="code">stderr</code> – стандартный поток ошибок (standard error stream), обеспечивающий отображение ошибок, возникающих при выполнении команд.</li>
+            </ol>
+            <p>При помощи потоков ввода обеспечивается ввод данных для команд (обычно с клавиатуры). Потоки вывода отображают текстовые символы, которые обычно выводятся на экран.</p>
+            <p>Команды в ОС Linux состоят из имени, опций и параметров. Некоторые команды не имеют ни опций, ни параметров, некоторые имеют и то, и другое, а некоторые – только опции или только параметры.</p>
+        </section>
+        <section id="id3">
+            <h2>Команды</h2>
+            <section id="echo">
+                <h3>echo</h3>
+                <p>Команда echo выводит на экран свои аргументы, как показано в примере ниже</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ <span class="nb">echo</span> Hello World
+Hello World
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ <span class="nb">echo</span> Hello      World
+Hello World
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&quot;Hello      World&quot;</span>
+Hello      World
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&quot;Hello      World&quot;</span>  <span class="c1"># comment here</span>
+Hello      World
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&quot;\&quot;Hello  World\&quot;&quot;</span>  <span class="c1"># comment here</span>
+<span class="s2">&quot;Hello  World&quot;</span>
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>Bash использует символы-разделители, такие как пробелы, символы табуляции и символы новой строки для разделения входной строки на маркеры, которые передаются на вход вашей команде, поэтому в третьей строке все пробелы были сокращены до одного. Чтобы избежать этого, необходимо заключить строку в кавычки – либо в двойные, либо в одинарные.</p>
+                <p>Другими словами, если строка заключена в кавычки, то все дополнительные символы-разделители сохраняются, и вся строка воспринимается как один маркер. Чтобы использовать кавычки внутри кавычек необходимо использовать символ \» как показано в последнем примере.</p>
+                <p>Если строка содержит символ #, то все последующие символы вы этой строке игнорируются.</p>
+            </section>
+            <section id="man">
+                <h3>man</h3>
+                <p>По ходу использования операционной системы Linux вам часто будет требоваться информация о том, что делает та или иная команда или системный вызов, какие у них параметры и опции, для чего предназначены некоторые системные файлы, каков их формат и т.д. Получить эту информацию можно при помощи утилиты <code class="code">man</code>:</p>
+                <pre data-language="bash">man &lt;имя&gt;</pre>
+                <p>где имя – это имя интересующей вас команды, утилиты, системного вызова, библиотечной функции или файла.</p>
+                <p>Например:</p>
+                <pre data-language="bash">man <span class="nb">echo</span></pre>
+                <p>чтобы выйти из man, нажмите клавишу «q».</p>
+                <p>Иногда имена команд интерпретатора и системных вызовов или какие-либо еще имена совпадают. Тогда чтобы найти интересующую вас информацию, необходимо задать утилите <code class="code">man</code> категорию, к которой относится эта информация (номер раздела). Деление информации по категориям может слегка отличаться от одной версии UNIX к другой. В Linux, например, принято следующее разделение:</p>
+                <ol type="1">
+                    <li>Исполняемые файлы или команды интерпретатора.</li>
+                    <li>Системные вызовы.</li>
+                    <li>Библиотечные функции.</li>
+                    <li>Специальные файлы (обычно файлы устройств).</li>
+                    <li>Формат системных файлов и принятые соглашения.</li>
+                    <li>Игры (обычно отсутствуют).</li>
+                    <li>Макропакеты и утилиты – такие как сам man.</li>
+                    <li>Команды системного администратора.</li>
+                    <li>Подпрограммы ядра (нестандартный раздел).</li>
+                </ol>
+                <p>Если вы знаете раздел, к которому относится информация, то утилиту man можно вызвать в Linux с дополнительным параметром</p>
+                <pre data-language="bash">man &lt;номер_раздела&gt; &lt;имя&gt;</pre>
+                <p>В других операционных системах этот вызов может выглядеть иначе. Для получения точной информации о разбиении на разделы, форме указания номера раздела и дополнительных возможностях утилиты man наберите команду</p>
+                <pre data-language="bash">man man</pre>
+            </section>
+            <section id="pwd-ls-cd">
+                <h3>Директории. Команды pwd, ls, cd</h3>
+                <p>Каждая выполняемая программа «работает» в строго определённой директории файловой системы. Такая директория называется текущей директорией, можно представлять, что программа во время работы «находится» именно в этой директории, это её «рабочее место». В зависимости от текущей директория может меняться поведение программы: зачастую программа будет по умолчанию работать с файлами, расположенными именно в текущей директория — до них она «дотянется» в первую очередь. Текущая директория есть у любой программы, в том числе и у командной оболочки пользователя. Поскольку взаимодействие пользователя с системой обязательно опосредовано командной оболочкой, можно говорить о том, что пользователь «находится» в той директория, которая в данный момент является текущей директорией его командной оболочки.</p>
+                <p>Все команды, отдаваемые пользователем при помощи <code class="code">bash</code>, наследуют текущую директорию <code class="code">bash</code>, т. е. «работают» в той же директория. По этой причине пользователю важно знать текущую директория <code class="code">bash</code>. Для этого служит утилита <code class="code">pwd</code>:</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ <span class="nb">pwd</span>
+/home/user
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>Команда <code class="code">pwd</code> возвращает полный путь текущей директории <code class="code">bash</code>. В данном случае текущей является директория «/home/user».</p>
+                <p>Утилиты, которые мы рассмотрим далее, по умолчанию читают и создают файлы в текущей директории.</p>
+                <p>Для вывода содержимого текущей директории испольузется команда <code class="code">ls</code>:</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ ls
+Desktop    Music       Public     Documents  Downloads
+Pictures    Templates
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>Если указать опцию <code class="code">-a</code>, можно будет увидеть все файлы, включая скрытые (имена которых начинаются с точки).</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ ls -a
+.                   ..                .bash_history
+.icons              .bash_logout      .selected_editor
+.bash_profile       .java             .ssh
+.bashrc             .lesshst          Desktop
+.mc                 Templates         Music
+Documents           Downloads         .nano
+.viminfo            Pictures          Public
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>Первая ссылка указывает на текущую папку (.), вторая (..) указывает на папку уровнем выше. Это открывает еще более широкие возможности для навигации по каталогам.</p>
+                <p>После самой команды <code class="code">ls</code> в качестве ее аргумента можно указать один или более файлов или директорий. Если указать имя файла, то команда <code class="code">ls</code> выведет информацию только об этом файле. А если указать название директории, <code class="code">ls</code> покажет все ее содержимое. Опция <code class="code">-l</code> команды <code class="code">ls</code> бывает очень полезной если вы хотите кроме имен файлов узнать более подробную информацию о них (права на файл, имя владельца, время последнего изменения файла и его размер). В следующем примере показано применение опции <code class="code">-l</code> для вывода информации о файлах хранящихся в директории <code class="code">/usr</code></p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ ls -l /usr
+total <span class="m">276</span>
+drwxr-xr-x   <span class="m">2</span> root root <span class="m">131072</span> Sep  <span class="m">8</span> <span class="m">21</span>:25 bin
+drwxr-xr-x   <span class="m">2</span> root root   <span class="m">4096</span> Sep  <span class="m">6</span>  <span class="m">2016</span> games
+drwxr-xr-x  <span class="m">48</span> root root  <span class="m">20480</span> Sep  <span class="m">4</span> <span class="m">22</span>:31 include
+drwxr-xr-x <span class="m">222</span> root root  <span class="m">69632</span> Sep  <span class="m">4</span> <span class="m">23</span>:35 lib
+drwxr-xr-x  <span class="m">10</span> root root   <span class="m">4096</span> Oct  <span class="m">7</span>  <span class="m">2010</span> <span class="nb">local</span>
+drwxr-xr-x   <span class="m">3</span> root root   <span class="m">4096</span> Aug <span class="m">19</span>  <span class="m">2016</span> locale
+drwxr-xr-x   <span class="m">2</span> root root  <span class="m">12288</span> Sep  <span class="m">4</span> <span class="m">23</span>:35 sbin
+drwxr-xr-x <span class="m">427</span> root root  <span class="m">20480</span> Sep  <span class="m">4</span> <span class="m">23</span>:35 share
+drwxrwsr-x   <span class="m">6</span> root src    <span class="m">4096</span> Sep  <span class="m">8</span> <span class="m">21</span>:25 src
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>В первой колонке показана информация о правах доступа к каждому файлу в списке. Следующая колонка показывает количество ссылок на каждый элемент списка. Третья и четвертая колонки — владелец и группа файла соответственно. Пятая колонка — размер. Шестая — время последнего изменения файла ('last modified time' или mtime). Последняя колонка — имя файла или директории (Если это ссылка, то после знака «–&gt;» стоит имя объекта на который она ссылается).</p>
+                <p>Иногда возникает потребность посмотреть информацию только о директориях, а не о всем их содержимом. С этой задачей поможет справиться опция <code class="code">-d</code>, которая указывает команде выводить информацию только о директориях.</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ ls -dl /usr
+drwxr-xr-x <span class="m">11</span> root root <span class="m">4096</span> Aug <span class="m">19</span>  <span class="m">2016</span> /usr</pre>
+                <p>Действие опции <code class="code">-R</code> противоположно действию <code class="code">-d</code>. Она позволяет выводить информацию о файлах находящихся в директории рекурсивно. Сначала показывается содержимое директории верхнего уровня, потом по очереди содержимое всех поддиректорий и так далее. Вывод этой команды может быть достаточно объемным, поэтому мы не приводим ее пример, но вы можете попробовать сделать это самостоятельно, набрав в командной строке <code class="code">ls -R</code> или <code class="code">ls -Rl</code>.</p>
+            </section>
+            <section id="cd">
+                <h3>Команда cd</h3>
+                <p>Для смены текущей директории командного интерпретатора можно воспользоваться командой <code class="code">cd</code>. Для этого необходимо набрать команду в виде</p>
+                <pre data-language="bash"><span class="nb">cd</span> &lt;имя директории&gt;</pre>
+                <p>где &lt;имя директории&gt; – полное или относительное имя директории, которую вы хотите сделать текущей. Команда <code class="code">cd</code> без параметров сделает текущей директорией домашнюю директорию пользователя.</p>
+                <p>В операционной системе Linux может быть несколько видов путей к файлу:</p>
+                <ol type="1">
+                    <li>Полный, абсолютный путь linux от корня файловой системы — начинается от корня «/» и описывает весь путь к файлу. Например: «/home/user/myfile»</li>
+                    <li>Относительный путь linux — это путь к файлу относительно текущей папки. Например (для файла находящегося в родительской папке): «../myfile».</li>
+                    <li>Путь относительно домашний папки текущего пользователя — путь в файловой системе, только не от корня, а от папки текущего пользователя. Чтобы задать путь подобным образом он должен начинаться с «~/». Например: «~/myfile».</li>
+                </ol>
+                <p>Отделить путь к файлу от его имени можно с помощью команд <code class="code">dirname</code> и <code class="code">basename</code> соответственно:</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ basename /home/user/somefile
+somefile
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ basename somefile
+somefile
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ dirname /home/user/somefile
+/home/somefile
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ dirname ./somefile
+.
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ dirname somefile
+.
+<span class="o">[</span>user@comp ~<span class="o">]</span></pre>
+                <p>Заметим, что для «somefile» и «./somefile» <code class="code">dirname</code> выдаёт одинаковый результат: «.», что понятно: как было сказано выше, эти формы пути совершенно эквивалентны, а при автоматической обработке результатов dirname гораздо лучше получить «.», чем пустую строку.</p>
+            </section>
+            <section id="mkdir">
+                <h3>Команда mkdir</h3>
+                <p>Для создания новой поддиректории используется команда <code class="code">mkdir</code>. В простейшем виде команда выглядит следующим образом:</p>
+                <pre data-language="bash">mkdir &lt;имя_директории&gt;</pre>
+                <p>По умолчанию команда <code class="code">mkdir</code> не может создать вложенной структуры директорий. Поэтому, если вам нужно создать несколько вложенных одна в другую директорий (my/super/dir), то вам придется три раза поочередно вызывать эту команду:</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ mkdir my/super/dir
+mkdir: cannot create directory <span class="s1">&#39;my/super/dir&#39;</span>: No such file or directory
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ mkdir my
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ mkdir my/super
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ mkdir my/super/dir
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>Упростить эту операцию можно добавив опцию <code class="code">-p</code> к команде <code class="code">mkdir</code>. Эта опция позволяет создавать вложенную структуру директорий:</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ mkdir -p my/super/dir
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+            </section>
+            <section id="cat">
+                <h3>Команда cat</h3>
+                <p>Команда <code class="code">cat</code> может быт использована для просмотра содержимого небольшого текстового файла на экране. Если набрать ее в виде</p>
+                <pre data-language="bash">cat &lt;имя файла&gt;</pre>
+                <p>то на экран будет выдано все его содержимое.</p>
+                <p>Не пытайтесь рассматривать на экране содержимое директорий – все равно не получится. Не пытайтесь просматривать содержимое неизвестных файлов, особенно если вы не знаете, текстовый он или бинарный. Вывод на экран бинарного файла может привести к непредсказуемому поведению терминала.</p>
+                <p>Если даже ваш файл и текстовый, но большой, то все равно вы увидите только его последнюю страницу. Большой текстовый файл удобнее рассматривать с помощью утилиты <code class="code">more</code>:</p>
+                <pre data-language="bash">more &lt;текстовый файл&gt;</pre>
+                <p>Если мы в качестве параметров для команды <code class="code">cat</code> зададим не одно имя, а имена нескольких файлов</p>
+                <pre data-language="bash">cat файл1 файл2 ... файлN</pre>
+                <p>то система выдаст на экран их содержимое в указанном порядке.</p>
+            </section>
+            <section id="id4">
+                <h3>Перенаправление ввода-вывода</h3>
+                <p>Вывод команды cat можно перенаправить с экрана терминала в какой-нибудь файл, воспользовавшись символом перенаправления выходного потока данных – знаком "больше" – "&gt;". Команда</p>
+                <pre data-language="bash">cat файл1 файл2 ... файлN &gt; &lt;файл результата&gt;</pre>
+                <p>запишет содержимое всех файлов, чьи имена стоят перед знаком "&gt;", воедино в «файл результата» – конкатенирует их. Прием перенаправления выходных данных со стандартного потока вывода (экрана) в файл является стандартным для всех команд, выполняемых командным интерпретатором. Вы можете получить файл, содержащий список всех файлов текущей директории, если выполните команду ls -a с перенаправлением выходных данных</p>
+                <pre data-language="bash">ls -a &gt; &lt;новый файл&gt;</pre>
+                <p>Если имена входных файлов для команды <code class="code">cat</code> не заданы, то она будет использовать в качестве входных данных информацию, которая вводится с клавиатуры, до тех пор, пока вы не наберете признак окончания ввода – комбинацию клавиш &lt;CTRL&gt; и &lt;d&gt;.</p>
+                <p>Таким образом, команда</p>
+                <pre data-language="bash">cat &gt; &lt;новый файл&gt;</pre>
+                <p>позволяет создать новый текстовый файл с именем «новый файл» и содержимым, которое пользователь введет с клавиатуры. У команды <code class="code">cat</code> существует множество различных опций. Посмотреть ее полное описание можно в UNIX Manual.</p>
+                <p>Заметим, что наряду с перенаправлением выходных данных существует способ перенаправить входные данные. Если во время выполнения некоторой команды требуется ввести данные с клавиатуры, можно положить их заранее в файл, а затем перенаправить стандартный ввод этой команды с помощью знака "меньше" – "&lt;" и следующего за ним имени файла с входными данными.</p>
+                <p>Перенаправление с помощью "&gt;" перезаписывает соержимое файла заново. Если нужно дописать в конец, то следует воспользоваться "&gt;&gt;".</p>
+                <p>Например:</p>
+                <pre data-language="bash"><span class="o">[</span>user@comp ~<span class="o">]</span>$ ls -a &gt; list.txt
+<span class="o">[</span>user@comp ~<span class="o">]</span>$ ls -a &gt;&gt; list.txt
+<span class="o">[</span>user@comp ~<span class="o">]</span>$</pre>
+                <p>файл <code class="code">list.txt</code> будет содержать результат работы обеих запусков команды <code class="code">ls</code>.</p>
+            </section>
+        </section>
+        <section id="python3">
+            <h2>Введение в Python3</h2>
+            <p>Данный курс будет посвящен изучению программирования с использованием языка <strong>Python</strong>. Python — это современный язык программирования, работающий на всех распространённых операционных системах.</p>
+            <p>В настоящее время существует две версии языка Python: более старая и стремительно теряющая популярность версия 2 и современная версия 3. Мы будем использовать версию 3 данного языка. Именно её необходимо установить дома, скачав данную версию с сайта <a href="http://www.python.org">www.python.org</a>.</p>
+            <p>Запустить интерпретатор python можно из командной строки:</p>
+            <pre data-language="bash">python3</pre>
+            <p>Будьте внимательны: команда <code class="code">python</code> запустит интерпретатор версии 2, с которым мы работать не будем. В системе Windows можно использовать пункт меню «Python (command line)».</p>
+            <section id="id5">
+                <h3>Интерактивный режим</h3>
+                <p>Откройте командную строку и напишите команду python3.</p>
+                <p>Вы увидите примерно следующее приглашение командной строки:</p>
+                <pre data-language="pycon"><span class="go">Python 3.1.2 (r312:79147, Jun 12 2010, 15:29:06)</span>
+<span class="go">[GCC 4.4.3 20100316 (ALT Linux 4.4.3-alt2)] on linux2</span>
+<span class="go">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
+<span class="go">&gt;&gt;&gt;</span></pre>
+                <p>Вводите команды и наслаждайтесь результатом. А что можно вводить? Несколько примеров:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">**</span> <span class="mi">100</span>
+<span class="go">1267650600228229401496703205376</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Hello&#39;</span> <span class="o">+</span> <span class="s1">&#39;World&#39;</span>
+<span class="go">&#39;HelloWorld&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;ABC&#39;</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="go">&#39;ABCABCABCABCABCABCABCABCABCABC&#39;</span></pre>
+                <p>Первая команда вычисляет сумму двух чисел, вторая команда вычисляет 2 в степени 100, третья команда выполняет операцию <strong>конкатенации</strong> ("склеивания") для строк, а четвертая команда печатает строку <code class="code">'ABC'</code>, повторенную 10 раз.</p>
+                <p>Хотите закончить работу с питоном? Введите команду <code class="code">exit()</code> (именно так, со скобочками, так как это — <strong>функция</strong>) или нажмите <code>Ctrl+D</code>.</p>
+            </section>
+            <section id="id6">
+                <h3>Программируемый режим</h3>
+                <p>В предыдущей главе мы использовали Python для простых разовых вычислений, используя интерактивный режим. Теперь создадим программу и выполним её целиком.</p>
+                <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">179</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">197</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span></pre>
+                <p>Здесь мы используем <strong>переменные</strong> — объекты, в которых можно сохранять различные (числовые, строковые и прочие) значения. В первой строке переменной <code class="code">a</code> присваивается значение <code class="code">179</code>, затем переменной <code class="code">b</code> присваивается значение <code class="code">971</code>, затем переменной <code class="code">c</code> присваивается значение арифметического выражения, равного длине гипотенузы. После этого значение переменной <code class="code">c</code> выводится на экран.</p>
+            </section>
+            <section id="o1">
+                <h3>Упражнение №1: первая программа</h3>
+                <p>Откройте произвольный текстовый редактор, например, <code class="code">gedit</code>. Скопируйте туда текст программы, написанной выше. Сохраните текст в файле с именем <code class="code">hypot.py</code>.</p>
+                <p>Запустите <em>терминал</em>, перейдите в каталог, где лежит файл <code class="code">hypot.py</code> и выполните эту программу:</p>
+                <pre data-language="bash">python3 hypot.py</pre>
+                <p>Интерпретатор языка Python вместо интерактивного режима выполнит последовательность команд из файла.</p>
+                <p>При этом значения вычисленных выражений не выводятся на экран (в отличие от интерактивного режима), поэтому для того, чтобы вывести результат работы программы, то есть значение переменной <code class="code">c</code>, нужна функция <code class="code">print()</code>.</p>
+            </section>
+        </section>
+        <section id="python-3">
+            <h2>Базовый синтаксис языка Python 3</h2>
+            <section id="id7">
+                <h3>Типы данных</h3>
+                <p>Итак, мы видим, что Python умеет работать как минимум с двумя видами данных — числами и строками. Числа записываются последовательностью цифр, также перед числом может стоять знак минус, а строки записываются в одинарных кавычках. <code class="code">2</code> и <code class="code">'2'</code> — это разные объекты, первый объект — число, а второй — строка. Операция <code>+</code> для целых чисел и для строк работает по-разному: для чисел это сложение, а для строк — конкатенация.</p>
+                <p>Кроме целых чисел есть и другой класс чисел: действительные (вещественные числа), представляемые в виде десятичных дробей. Они записываются с использованием десятичной точки, например, <code class="code">2.0</code>.</p>
+                <p>Определить тип объекта можно при помощи функции <code class="code">type</code>:</p>
+                <pre data-language="pycon"><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span></pre>
+                <p>Обратите внимание: <code class="code">type</code> является функцией, аргументы функции указываются в скобках после ее имени.</p>
+            </section>
+            <section id="id8">
+                <h3>Операции с числами</h3>
+                <p>Вот список основных операций для чисел:</p>
+                <ul>
+                    <li><code class="code">A+B</code> — сумма;</li>
+                    <li><code class="code">A-B</code> — разность;</li>
+                    <li><code class="code">A*B</code> — произведение;</li>
+                    <li><code class="code">A/B</code> — частное;</li>
+                    <li><code class="code">A**B</code> — возведение в степень.</li>
+                </ul>
+                <p>Полезно помнить, что квадратный корень из числа <code>x</code> — это <code class="code">x**0.5</code>, а корень степени <code>n</code> — это <code class="code">x**(1/n)</code>.</p>
+                <p>Есть также унарный вариант операции <code>-</code>, то есть это операция с одним аргументом. Она возвращает число, противоположное данному. Например: <code class="code">-A</code>.</p>
+                <p>В выражении может встречаться много операций подряд. Как в этом случае определяется порядок действий? Например, чему будет равно <code class="code">1+2*3**1+1</code>? В данном случае ответ будет 8, так как сначала выполняется возведение в степень, затем — умножение, затем — сложение.</p>
+                <p>Более общие правила определения приоритетов операций такие:</p>
+                <ol type="1">
+                    <li>Выполняются возведения в степень <strong>справа налево</strong>, то есть <code class="code">3**3**3</code> это 3²⁷.</li>
+                    <li>Выполняются унарные минусы (отрицания).</li>
+                    <li>Выполняются умножения и деления слева направо. Операции умножения и деления имеют одинаковый приоритет.</li>
+                    <li>Выполняются сложения и вычитания слева направо. Операции сложения и вычитания имеют одинаковый приоритет.</li>
+                </ol>
+            </section>
+            <section id="id9">
+                <h3>Операции над строками</h3>
+                <ul>
+                    <li><code class="code">A+B</code> — конкатенация;</li>
+                    <li><code class="code">A*n</code> — повторение <code>n</code> раз, значение <code>n</code> должно быть целого типа.</li>
+                </ul>
+            </section>
+            <section id="id10">
+                <h3>Ветвление</h3>
+                <p>Ветвление (или условная инструкция) в Python имеет следующий синтаксис:</p>
+                <pre data-language="python"><span class="k">if</span> <span class="n">Условие</span><span class="p">:</span>
+    <span class="n">Блок_инструкций_1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">Блок_инструкций_2</span></pre>
+                <p><code class="code">Блок_инструкций_1</code> будет выполнен, если <code class="code">Условие</code> истинно. Если <code class="code">Условие</code> ложно, будет выполнен <code class="code">Блок_инструкций_2</code>.</p>
+                <p>В условной инструкции может отсутствовать слово <code class="code">else</code> и последующий блок. Такая инструкция называется неполным ветвлением. Например, если дано число <code class="code">x</code> и мы хотим заменить его на абсолютную величину <code class="code">x</code>, то это можно сделать следующим образом:</p>
+                <pre data-language="python"><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></pre>
+                <p>В этом примере переменной <code class="code">x</code> будет присвоено значение <code class="code">-x</code>, но только в том случае, когда <code class="code">x&lt;0</code>. А вот инструкция <code class="code">print(x)</code> будет выполнена всегда, независимо от проверяемого условия.</p>
+                <p>Для выделения блока инструкций, относящихся к инструкции <code class="code">if</code> или <code class="code">else</code>, в языке Python используются отступы. Все инструкции, которые относятся к одному блоку, должны иметь равную величину отступа, то есть одинаковое число пробелов в начале строки. Рекомендуется использовать <em>отступ в 4 пробела</em>.</p>
+            </section>
+            <section id="id11">
+                <h3>Вложенные условные инструкции</h3>
+                <p>Внутри условных инструкций можно использовать любые инструкции языка Python, в том числе и условную инструкцию. Вложенное ветвление — после одной развилки в ходе исполнения программы появляется другая развилка. При этом вложенные блоки имеют больший размер отступа (например, 8 пробелов).</p>
+                <p>Примере программы, которая по данным ненулевым числам x и y определяет, в какой из четвертей координатной плоскости находится точка (x,y):</p>
+                <pre data-language="python"><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>               <span class="c1"># x&gt;0, y&gt;0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Первая четверть&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>                   <span class="c1"># x&gt;0, y&lt;0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Четвертая четверть&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>               <span class="c1"># x&lt;0, y&gt;0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Вторая четверть&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>                   <span class="c1"># x&lt;0, y&lt;0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Третья четверть&quot;</span><span class="p">)</span></pre>
+                <p>В этом примере мы использовали <em>комментарии</em> – текст, который интерпретатор игнорирует. Комментариями в Pythonе является символ <code class="code">#</code> и весь текст после этого символа до конца строки. Желательно писать код так, чтобы комментарии были излишними, однако допускается писать их там, где возникают "призраки" (утверждения или теоремы, которые использованы при написании кода, но не следуют из самого кода). Однако код выше является <strong>плохим примером документации</strong>: комментарии врут, поскольку автором не учтены точки на осях.</p>
+            </section>
+            <section id="id12">
+                <h3>Операторы сравнения</h3>
+                <p>Как правило, в качестве проверяемого условия используется результат вычисления одного из следующих операторов сравнения:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Оператор</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code class="code">&lt;</code></td>
+                            <td>Меньше — условие верно, если первый операнд меньше второго.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">&gt;</code></td>
+                            <td>Больше — условие верно, если первый операнд больше второго.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">&lt;=</code></td>
+                            <td>Меньше или равно — условие верно, если первый операнд меньше или равен второму.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">&gt;=</code></td>
+                            <td>Больше или равно — условие верно, если первый операнд больше или равен второму.</td>
+                        </tr>
+                        <tr>
+                            <td><code class="code">==</code></td>
+                            <td>Равенство. Условие верно, если два операнда равны.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Например, условие <code class="code">(x * x &lt; 1000)</code> означает «значение <code class="code">x * x</code> меньше 1000», а условие <code class="code">(2 * x != y)</code> означает «удвоенное значение переменной <code class="code">x</code> не равно значению переменной <code class="code">y</code>».</p>
+                <p>Операторы сравнения в можно объединять в цепочки, например, <code class="code">a == b == c</code> или <code class="code">1 &lt;= x &lt;= 10</code>.</p>
+            </section>
+            <section id="bool">
+                <h3>Тип данных bool</h3>
+                <p>Операторы сравнения возвращают значения специального логического типа <code class="code">bool</code>. Значения логического типа могут принимать одно из двух значений: <code class="code">True</code> (истина) или <code class="code">False</code> (ложь). Если преобразовать логическое <code class="code">True</code> к типу <code class="code">int</code>, то получится 1, а преобразование <code class="code">False</code> даст 0. При обратном преобразовании число 0 преобразуется в <code class="code">False</code>, а любое ненулевое число в <code class="code">True</code>. При преобразовании <code class="code">str</code> в <code class="code">bool</code> пустая строка преобразовывается в <code class="code">False</code>, а любая непустая строка в <code class="code">True</code>.</p>
+            </section>
+            <section id="id13">
+                <h3>Каскадные условные инструкции</h3>
+                <p>Пример программы, определяющий четверть координатной плоскости, можно переписать, используя «каскадную» последовательность инструкцией <code class="code">if... elif... else</code>:</p>
+                <pre data-language="python"><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Первая четверть&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Вторая четверть&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Третья четверть&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Четвертая четверть&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Точка находится на осях или в центре координат.&quot;</span><span class="p">)</span></pre>
+                <p>В такой конструкции условия <code class="code">if</code>, ..., <code class="code">elif</code> проверяются по очереди, выполняется блок, соответствующий первому из истинных условий. Если все проверяемые условия ложны, то выполняется блок <code class="code">else</code>, если он присутствует. Обратите внимание, что таким образом мы чётче видим условия наступления случаев (нет "призраков"), а также отлавливаем ситуацию, когда точка не находится ни в одной из четвертей.</p>
+            </section>
+            <section id="while">
+                <h3>Цикл while</h3>
+                <p>Цикл <code class="code">while</code> («пока») позволяет выполнить одну и ту же последовательность действий, пока проверяемое условие истинно. Условие записывается до тела цикла и проверяется до выполнения тела цикла. Как правило, цикл <code class="code">while</code> используется, когда невозможно определить точное значение количества проходов исполнения цикла.</p>
+                <p>Синтаксис цикла <code class="code">while</code> в простейшем случае выглядит так:</p>
+                <pre data-language="python"><span class="k">while</span> <span class="n">Условие</span><span class="p">:</span>
+    <span class="n">Блок_инструкций</span></pre>
+                <p>При выполнении цикла <code class="code">while</code> сначала проверяется условие. Если оно ложно, то выполнение цикла прекращается и управление передается на следующую инструкцию после тела цикла <code class="code">while</code>. Если условие истинно, то выполняется инструкция, после чего условие проверяется снова и снова выполняется инструкция. Так продолжается до тех пор, пока условие будет истинно. Как только условие станет ложно, работа цикла завершится и управление передастся следующей инструкции после цикла.</p>
+                <p>Например, следующий фрагмент программы напечатает на экран всех целые числа, не превосходящие n:</p>
+                <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span></pre>
+                <p>Общая схема цикла <code class="code">while</code> в данном случае для перебора всех подходящих значений такая:</p>
+                <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="n">начальное_значение</span>
+<span class="k">while</span> <span class="n">а_является_подходящим_числом</span><span class="p">:</span>
+    <span class="n">обработать_a</span>
+    <span class="n">перейти_к_следующему_a</span></pre>
+                <p>Выведем все степени двойки, не превосходящие числа n:</p>
+                <pre data-language="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">*=</span> <span class="mi">2</span></pre>
+            </section>
+            <section id="for">
+                <h3>Цикл for</h3>
+                <p>Цикл <code class="code">for</code> может быть использован как более краткая альтернатива циклу <code class="code">while</code>.</p>
+                <p>Для последовательного перебора целых чисел из диапазона <code class="code">[0; n)</code> можно использовать цикл <code class="code">for</code>:</p>
+                <pre data-language="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></pre>
+                <p>Этот код по выполняемым действиям полностью соответствуют циклу <code class="code">while</code>:</p>
+                <pre data-language="python"><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span></pre>
+                <p>Можно задавать начальные и конечные значения для переменной цикла, а также шаг:</p>
+                <pre data-language="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></pre>
+                <p>Аналогичный цикл <code class="code">while</code></p>
+                <pre data-language="python"><span class="n">i</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">i</span> <span class="o">-=</span> <span class="mi">2</span></pre>
+            </section>
+        </section>
+        <section id="id14">
+            <h2>Контест №1</h2>
+            <p>Программированию учатся на практике, поэтому в курсе каждую неделю будет <em>контест</em>. Контест - это набор задач с системой автоматической проверки решения на тестовых наборах данных. <a href="http://olymp3.vdi.mipt.ru/cgi-bin/new-register?contest_id=191301">Вход в контест</a></p>
+            <p></p>
+            <p><strong>Не забудьте указать ваши реальные ФИО для таблицы результатов.</strong></p>
+            <p>Попробуйте сдать решение первой задачи:</p>
+            <!--<pre data-language="python"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span></pre>-->
+        </section>
+    </section>
+</body>
+</div>
+</html>

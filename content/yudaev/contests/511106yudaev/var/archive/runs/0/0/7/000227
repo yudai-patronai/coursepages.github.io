@@ -1,0 +1,14 @@
+n=int(input())
+A=[]
+for i in range(n):
+    A.append(list(map(int,input().split())))
+def IsSymmetric(A1):
+    result='YES'
+    for i in range(n):
+        for j in range(n):
+            if A1[i][j]!=A1[j][i]:
+                result='NO'
+        if result=='NO':
+            break
+    return result
+print(IsSymmetric(A))

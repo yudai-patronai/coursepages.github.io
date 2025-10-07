@@ -1,0 +1,14 @@
+N, M = (input().split())
+n=int(N)
+m=int(M)
+a=[list(map(int, input().split())) for p in range(n)]
+i, j =map(int, input().split())
+def SwapColumns(A, i, j):
+    n=len(A)
+    m=len(A[0])
+    for q in range(n):
+        A[q][i], A[q][j] = A[q][j], A[q][i]
+    return A
+a=SwapColumns(a,i,j)
+for row in a:
+    print(' '.join([str(elem) for elem in row]))

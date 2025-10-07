@@ -1,0 +1,32 @@
+
+def CountMines(A):
+    rows=len(A)
+    cols=len(A[0])
+    for i in range(rows):
+        for j in range(cols):
+            if A[i][j]=='*':
+                continue 
+            else:
+                tmp=0 
+                for x in range(max(0,i-1),min(i+2,rows)):
+                    for y in range(max(0,j-1),min(j+2,cols)):
+                        if x!=i or y!=j: 
+                            if A[x][y]=='*':
+                                tmp+=1
+                A[i][j]=tmp 
+
+
+A=[]
+n,m,k=list(map(int,input().split()))
+for i in range(n):
+    A.append([0]*m) 
+
+for i in range(k):
+    r,c=list(map(int,input().split()))
+    A[r-1][c-1]='*' 
+
+
+CountMines(A)
+
+for row in A:
+    print(' '.join(list(map(str,row))))

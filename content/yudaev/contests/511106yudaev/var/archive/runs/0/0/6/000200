@@ -1,0 +1,15 @@
+n=int(input())
+m=int(input())
+A=[[0]*m]*n
+max=None
+for i in range(n):
+    A[i]=list(map(int,input().split()))
+print(A)
+for i in range(n):
+    for j in range(m):
+        if i!=j:
+            if (max==None) or (A[i][j]>max):
+                max=A[i][j]
+                k=i
+                l=j
+print(k,l)
